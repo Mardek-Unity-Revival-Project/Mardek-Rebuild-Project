@@ -124,7 +124,6 @@ public class GameMaster : MonoBehaviour
         {
             steps = 0;
             step_limit = Random.Range(min, max + 1);
-            Frame_3.InitializeBattle(troop[Random.Range(0, troop_count)]);
         }
     }
     private string Converter(string input)
