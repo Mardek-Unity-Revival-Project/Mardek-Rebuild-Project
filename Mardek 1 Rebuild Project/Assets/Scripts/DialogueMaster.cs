@@ -23,7 +23,7 @@ public class DialogueMaster : MonoBehaviour
 {
     DialogueData[] DialogueData;
     int i = -1;
-    public Image image;
+    private Image image;
     public void Update()
     {
         if (ApplicationData.lockdown == false)
@@ -39,11 +39,9 @@ public class DialogueMaster : MonoBehaviour
         Text text = go.GetComponent<Text>(); //stores text in variable
         GameObject go2 = GameObject.Find("Header"); //finds header in UI
         Text text2 = go2.GetComponent<Text>(); //stores header text seperately
-        GameObject go3 = GameObject.Find("DialogueBox");
-        image = go3.GetComponent<Image>();
-        image.enabled = true;
-        
-
+        GameObject go3 = GameObject.Find("DialogueBox"); //finds DialogueBox in UI
+        image = go3.GetComponent<Image>(); //stores Dialogue box in variable
+        image.enabled = true; //Dialogue box image is enabled, opening it
         text.text = DialogueData[i].text; //writes body text
         text2.text = DialogueData[i].header; //writes header text
 
@@ -51,7 +49,7 @@ public class DialogueMaster : MonoBehaviour
         {
             if (DialogueData[i].end)
             {
-                image.enabled = false;
+                image.enabled = false; //Dialogue box image is diabled, closing it
                 text.text = ""; //clears body text
                 text2.text = ""; //clears header text
                 i = -1;
