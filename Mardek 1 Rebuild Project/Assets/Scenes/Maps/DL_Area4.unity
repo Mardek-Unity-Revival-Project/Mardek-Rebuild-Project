@@ -1344,6 +1344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
+  nombre: 
   spriteRenderer: {fileID: 0}
 --- !u!212 &890322613
 SpriteRenderer:
@@ -1461,6 +1462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
+  nombre: 
   spriteRenderer: {fileID: 0}
 --- !u!212 &910534790
 SpriteRenderer:
@@ -1738,6 +1740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
+  nombre: Deugan_Hero
   spriteRenderer: {fileID: 0}
 --- !u!212 &1047322678
 SpriteRenderer:
@@ -15817,6 +15820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
   position: {x: 0, y: 0}
+  nombre: Mardek_Hero
   spriteRenderer: {fileID: 0}
 --- !u!61 &2083615114
 BoxCollider2D:
@@ -15828,7 +15832,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
