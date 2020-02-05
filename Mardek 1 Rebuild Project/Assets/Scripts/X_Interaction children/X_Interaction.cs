@@ -6,7 +6,7 @@ public abstract class X_Interaction : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X)&&unlocked==true&& ApplicationData.lockdown ==false)
+        if (Input.GetKeyDown(KeyCode.X)&&unlocked==true&& GameFile.lockdown ==false)
         {
             DoAction();
         }
