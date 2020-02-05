@@ -26,7 +26,7 @@ public class DialogueMaster : MonoBehaviour
     public Image image;
     public void Update()
     {
-        if (GameFile.lockdown == false)
+        if (ApplicationData.lockdown == false)
         {
             return;
         }
@@ -55,7 +55,7 @@ public class DialogueMaster : MonoBehaviour
                 text.text = ""; //clears body text
                 text2.text = ""; //clears header text
                 i = -1;
-                GameFile.lockdown = false;
+                ApplicationData.lockdown = false;
                 return;
             }
             i++;
@@ -64,6 +64,6 @@ public class DialogueMaster : MonoBehaviour
     public void SendData(DialogueData[] _DialogueData)
     {
         DialogueData = _DialogueData;
-        GameFile.lockdown = true;
+        ApplicationData.lockdown = true;
     }
 }
