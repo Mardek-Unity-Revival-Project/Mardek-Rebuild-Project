@@ -9,16 +9,10 @@ using Random = UnityEngine.Random;
 
 public class GameMaster : MonoBehaviour
 {
+
     public bool custom;
     private const int SIZE = 0;
     public int size; // set both sizes via inspector on same value
-    private int i = 0;
-    private int steps = 0;
-    private int max;
-    private int min;
-    private int step_limit;
-    private int troop_count;
-    private string[][] troop;
     public string[] way = new string[SIZE];
     public int size_dialogue;
     public string[] text = new string[SIZE];
@@ -26,37 +20,51 @@ public class GameMaster : MonoBehaviour
     public string[] element = new string[SIZE];
     public string[] font = new string[SIZE];
     private DialogueData[] DialogueData;
+    private int steps = 0;
+    private int i = 0;
+
+    //combat based
+    private int max;
+    private int min;
+    private int step_limit;
+    private int troop_count;
+    private string[][] troop;
     private void Start()
     {
-        int i = SceneManager.GetActiveScene().buildIndex;
-        string path = SceneManager.GetActiveScene().name;
-        if (ApplicationData.Custom_Played.Contains(path))
+        int index = SceneManager.GetActiveScene().buildIndex;
+        if (GameFile.Custom_Played.Contains(index))
         {
             custom = false;
         }
-        System.IO.StreamReader file = new System.IO.StreamReader(@"c:\Mardek\Scene Setting\" + path + ".txt");
-        file.ReadLine();
-        file.ReadLine();
-        min = int.Parse(file.ReadLine());
-        file.ReadLine();
-        max = int.Parse(file.ReadLine());
-        file.ReadLine();
-        troop_count = int.Parse(file.ReadLine());
-        troop = new string[troop_count][];
-        for (int j = 0; j < troop_count; j++)
-        {
-            troop[j] = new string[4];
-            for (int k = 0; k < 4; k++)
+        string path = "Assets/Data/Random_Encounters/" + SceneManager.GetActiveScene().name + ".txt";
+        if (File.Exists(path)){
+            StreamReader file = new StreamReader(path);
+            Debug.Log(file.ReadToEnd());
+            /*file.ReadLine();
+            file.ReadLine();
+            min = int.Parse(file.ReadLine());
+            file.ReadLine();
+            max = int.Parse(file.ReadLine());
+            file.ReadLine();
+            troop_count = int.Parse(file.ReadLine());
+            troop = new string[troop_count][];
+            for (int j = 0; j < troop_count; j++)
             {
-                file.ReadLine();
-                troop[j][k] = Converter(file.ReadLine());
+                troop[j] = new string[4];
+                for (int k = 0; k < 4; k++)
+                {
+                    file.ReadLine();
+                    troop[j][k] = Converter(file.ReadLine());
+                }
             }
+            step_limit = Random.Range(min, max + 1);*/
+            file.Close();
         }
-        step_limit = Random.Range(min, max + 1);
+
     }
     public virtual int GetMovement()
     {
-        if (ApplicationData.lockdown)
+        if (GameFile.lockdown)
             return 0;
         if (custom)
         {
@@ -116,7 +124,7 @@ public class GameMaster : MonoBehaviour
             if (custom == true)
             {
                 CustomIsFalse();
-                ApplicationData.Custom_Played.Add(SceneManager.GetActiveScene().name);
+                GameFile.Custom_Played.Add(SceneManager.GetActiveScene().buildIndex);
             }
         }
         steps ++;
@@ -152,9 +160,9 @@ public class GameMaster : MonoBehaviour
             DialogueMaster.SendData(DialogueData);
         }
     }
-    public void OnParticleTrigger()
+    public void setcustom()
     {
-        if (ApplicationData.Custom_Played.Contains(SceneManager.GetActiveScene().name))
+        if (!GameFile.Custom_Played.Contains(SceneManager.GetActiveScene().buildIndex))
         {
             custom = true;
         }

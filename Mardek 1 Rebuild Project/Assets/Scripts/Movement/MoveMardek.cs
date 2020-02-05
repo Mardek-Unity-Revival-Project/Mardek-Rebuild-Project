@@ -17,7 +17,7 @@ public class MoveMardek : MonoBehaviour
     private Tagger tagger_W;
     private Tagger tagger_E;
     private GameMaster GameMaster;
-    public string nombre;
+    private string nombre;
     private Sprite Sprite_up1;
     private Sprite Sprite_up2;
     private Sprite Sprite_down1;
@@ -31,18 +31,11 @@ public class MoveMardek : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Sprite_up1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up1.png", typeof(Sprite));
-        Sprite_up2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up2.png", typeof(Sprite));
-        Sprite_right1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Right1.png", typeof(Sprite));
-        Sprite_right2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Right2.png", typeof(Sprite));
-        Sprite_left1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Left1.png", typeof(Sprite));
-        Sprite_left2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Left2.png", typeof(Sprite));
-        Sprite_down1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Down1.png", typeof(Sprite));
-        Sprite_down2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Down2.png", typeof(Sprite));
+        nombre = GameFile.party_members[0];
         rb = GetComponent<Rigidbody2D>();
         speed = speed / waiting;
         waiting_s = waiting;
-        position = new Vector2(ApplicationData.x, ApplicationData.y);
+        position = new Vector2(GameFile.x, GameFile.y);
         rb.MovePosition(position);
         GameObject go = GameObject.Find("Tagger");
         go.tag = "Tagger";
@@ -60,10 +53,10 @@ public class MoveMardek : MonoBehaviour
         go = Instantiate(go);
         go.name = "Tagger_N";
         tagger_N = go.GetComponent<Tagger>();
-        go= GameObject.Find("GameMaster");
+        go = GameObject.Find("GameMaster");
         GameMaster = go.GetComponent<GameMaster>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // we are accessing the SpriteRenderer that is attached to the Gameobject
-        spriteRenderer.sprite = Sprite_up1; // set the sprite to sprite1
+        change_nombre(nombre);
         velocity = Vector2.zero;
         MoveTaggers();
     }
@@ -84,7 +77,7 @@ public class MoveMardek : MonoBehaviour
             return;
         }
         WalkAnim2();
-        if (GameMaster.GetMovement()==Constants.DOWN)
+        if (GameMaster.GetMovement() == Constants.DOWN)
         {
             tagger.rb.MovePosition(position + new Vector2(0, -0.16f));
             spriteRenderer.sprite = Sprite_down1;
@@ -210,5 +203,56 @@ public class MoveMardek : MonoBehaviour
             }
         }
     }
-
+    void change_nombre(string _nombre)
+    {
+        nombre = _nombre;
+        int aux=-1;
+        if (spriteRenderer.sprite == Sprite_down1)
+            aux = 0;
+        else if (spriteRenderer.sprite == Sprite_down2)
+            aux = 1;
+        else if (spriteRenderer.sprite == Sprite_left1)
+            aux = 2;
+        else if (spriteRenderer.sprite == Sprite_left2)
+            aux = 3;
+        else if (spriteRenderer.sprite == Sprite_right1)
+            aux = 4;
+        else if (spriteRenderer.sprite == Sprite_right2)
+            aux = 5;
+        else if (spriteRenderer.sprite == Sprite_up2)
+            aux = 6;
+        Renderer rend = GetComponent<Renderer>();
+        if (nombre == "")
+        {
+            rend.enabled = false;
+        }
+        else
+        {
+            rend.enabled = true;
+            Sprite_up1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up1.png", typeof(Sprite));
+            Sprite_up2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up2.png", typeof(Sprite));
+            Sprite_right1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Right1.png", typeof(Sprite));
+            Sprite_right2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Right2.png", typeof(Sprite));
+            Sprite_left1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Left1.png", typeof(Sprite));
+            Sprite_left2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Left2.png", typeof(Sprite));
+            Sprite_down1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Down1.png", typeof(Sprite));
+            Sprite_down2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Down2.png", typeof(Sprite));
+        }
+        if (aux==-1)
+            spriteRenderer.sprite = Sprite_up1;
+        else if (aux==0)
+            spriteRenderer.sprite = Sprite_down1;
+        else if (aux == 1)
+            spriteRenderer.sprite = Sprite_down2;
+        else if (aux == 2)
+            spriteRenderer.sprite = Sprite_left1;
+        else if (aux == 3)
+            spriteRenderer.sprite = Sprite_left2;
+        else if (aux == 4)
+            spriteRenderer.sprite = Sprite_right1;
+        else if (aux == 5)
+            spriteRenderer.sprite = Sprite_right2;
+        else if (aux == 6)
+            spriteRenderer.sprite = Sprite_up2;
+    }
 }
