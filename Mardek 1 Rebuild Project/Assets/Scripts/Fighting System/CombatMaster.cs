@@ -12,11 +12,11 @@ public class CombatMaster : MonoBehaviour
     void Start()
     {
         //remove this
-        GameFile.e[0] = new Fighter("Evil Mardek", "Mardek_Hero", 20, 25, 25, 17, 23, 24, 1, 40, 0, 0, 35);
-        GameFile.e[1] = new Fighter("Evil Deugan", "Deugan_Hero", 25, 23, 30, 25, 19, 19, 1, 40, 0, 0, 35);
-        GameFile.e[2] = new Fighter();
-        GameFile.e[3] = new Fighter();
-        //remove this
+        Progress.e[0] = new Fighter("Evil Mardek", "Mardek_Hero", 20, 25, 25, 17, 23, 24, 1, 40, 0, 0, 35);
+        Progress.e[1] = new Fighter("Evil Deugan", "Deugan_Hero", 25, 23, 30, 25, 19, 19, 1, 40, 0, 0, 35);
+        Progress.e[2] = new Fighter();
+        Progress.e[3] = new Fighter();
+
 
         string str;
         for (int i = 0; i < 4; i++)
@@ -24,7 +24,7 @@ public class CombatMaster : MonoBehaviour
             str = "e" + i.ToString();
             GameObject go = GameObject.Find(str);
             left[i]= go.GetComponent<Fighter_Enemy>();
-            left[i].Create(GameFile.e[i]);
+            left[i].Create(Progress.e[i]);
         }
     }
 }
