@@ -15,7 +15,7 @@ public class EnterMenu : MonoBehaviour
         GameObject go = GameObject.Find("EnterMenuBackground"); //Finds EnterMenuBackground image
         image = go.GetComponent<Image>(); // Stores the image component in variable
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) //When enter is pressed
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) //When enter is pressed
         {
             if (!open) //If menu is not open
             {

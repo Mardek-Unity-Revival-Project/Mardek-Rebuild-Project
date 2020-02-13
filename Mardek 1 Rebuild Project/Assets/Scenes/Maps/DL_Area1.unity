@@ -1278,6 +1278,7 @@ GameObject:
   - component: {fileID: 1044407007}
   - component: {fileID: 1044407006}
   - component: {fileID: 1044407005}
+  - component: {fileID: 1044407008}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1333,6 +1334,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1044407008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044407004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c0bc256fe70be4892b0d8f3dc78bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1046084582 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8942140002944199238, guid: 3c0a796b1f7ffe145bd30a7cc4b4ecef,
@@ -45923,6 +45936,16 @@ PrefabInstance:
     - target: {fileID: 6821490479003630415, guid: 93050c5b726683b4293b6f76d327a1bb,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692040226372384366, guid: 93050c5b726683b4293b6f76d327a1bb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692040226372384366, guid: 93050c5b726683b4293b6f76d327a1bb,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
