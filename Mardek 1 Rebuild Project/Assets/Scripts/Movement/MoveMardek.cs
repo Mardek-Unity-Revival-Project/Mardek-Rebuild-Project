@@ -17,7 +17,7 @@ public class MoveMardek : MonoBehaviour
     private Tagger tagger_W;
     private Tagger tagger_E;
     private GameMaster GameMaster;
-    public string nombre;
+    private string nombre;
     private Sprite Sprite_up1;
     private Sprite Sprite_up2;
     private Sprite Sprite_down1;
@@ -31,6 +31,7 @@ public class MoveMardek : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nombre = GameProgressData.party[0];
         Sprite_up1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up1.png", typeof(Sprite));
         Sprite_up2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up2.png", typeof(Sprite));
         Sprite_right1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Right1.png", typeof(Sprite));
@@ -42,7 +43,7 @@ public class MoveMardek : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         speed = speed / waiting;
         waiting_s = waiting;
-        position = new Vector2(ApplicationData.x, ApplicationData.y);
+        position = new Vector2(GameProgressData.x, GameProgressData.y);
         rb.MovePosition(position);
         GameObject go = GameObject.Find("Tagger");
         go.tag = "Tagger";

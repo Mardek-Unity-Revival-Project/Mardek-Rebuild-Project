@@ -30,7 +30,7 @@ public class GameMaster : MonoBehaviour
     {
         int i = SceneManager.GetActiveScene().buildIndex;
         string path = SceneManager.GetActiveScene().name;
-        if (ApplicationData.Custom_Played.Contains(path))
+        if (GameProgressData.Custom_Played.Contains(i))
         {
             custom = false;
         }
@@ -56,7 +56,7 @@ public class GameMaster : MonoBehaviour
     }
     public virtual int GetMovement()
     {
-        if (ApplicationData.lockdown)
+        if (GameProgressData.lockdown)
             return 0;
         if (custom)
         {
@@ -116,7 +116,7 @@ public class GameMaster : MonoBehaviour
             if (custom == true)
             {
                 CustomIsFalse();
-                ApplicationData.Custom_Played.Add(SceneManager.GetActiveScene().name);
+                GameProgressData.Custom_Played.Add(SceneManager.GetActiveScene().buildIndex);
             }
         }
         steps ++;
@@ -154,7 +154,7 @@ public class GameMaster : MonoBehaviour
     }
     public void OnParticleTrigger()
     {
-        if (ApplicationData.Custom_Played.Contains(SceneManager.GetActiveScene().name))
+        if (GameProgressData.Custom_Played.Contains(SceneManager.GetActiveScene().buildIndex))
         {
             custom = true;
         }

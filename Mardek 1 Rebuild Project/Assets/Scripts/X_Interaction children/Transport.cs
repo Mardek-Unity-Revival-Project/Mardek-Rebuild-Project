@@ -13,8 +13,8 @@ public class Transport : X_Interaction
     // Update is called once per frame
     public override void DoAction()
     {
-        GameFile.x = x;
-        GameFile.y = y;
+        GameProgressData.x = x;
+        GameProgressData.y = y;
         SceneManager.LoadScene(destination);
     }
 }
