@@ -70,7 +70,7 @@ public class EnterMenu : MonoBehaviour
                 text9.enabled = true;
                 text10.enabled = true;
                 text11.enabled = true;
-                ApplicationData.lockdown = true;
+                GameProgressData.lockdown = true;
                 open = true; //Menu is open
             }
             else
@@ -87,10 +87,9 @@ public class EnterMenu : MonoBehaviour
                 text9.enabled = false;
                 text10.enabled = false;
                 text11.enabled = false;
-                ApplicationData.lockdown = false;
+                GameProgressData.lockdown = false;
                 open = false; //Menu is closed
-            }
-            
+            }            
         }
     }
 }
