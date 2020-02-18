@@ -12,5 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2ecf8b5ed266141b4334e27116062e, type: 3}
   m_Name: dialogue 1
   m_EditorClassIdentifier: 
-  speaker: Mardek
-  line: Hello!
+  speeches:
+  - speaker: {fileID: 11400000, guid: 3e6c551dd894407419786a01a0957c34, type: 2}
+    text: Well Deugan, this is the Dragon's Lair!
+  - speaker: {fileID: 11400000, guid: 5a5362242a702764d8a8368cf82c989b, type: 2}
+    text: Yes, Mardek, that it is! We have to get to the dragon and slay it to rescue
+      the Princess! Tally-ho!
+  - speaker: {fileID: 11400000, guid: 3e6c551dd894407419786a01a0957c34, type: 2}
+    text: What does 'tally-ho' mean?
+  - speaker: {fileID: 11400000, guid: 5a5362242a702764d8a8368cf82c989b, type: 2}
+    text: Uhm... I'm not sure! But I've heard adventurers say it before maybe! It
+      sounds like something they'd say!
+  - speaker: {fileID: 11400000, guid: 3e6c551dd894407419786a01a0957c34, type: 2}
+    text: Tally-ho!
+  - speaker: {fileID: 11400000, guid: 5a5362242a702764d8a8368cf82c989b, type: 2}
+    text: Tally-ho! We're adventurers! En guard! Forsooth! Bloody goblins!
+  - speaker: {fileID: 11400000, guid: 3e6c551dd894407419786a01a0957c34, type: 2}
+    text: Tally-ho!
+  - speaker: {fileID: 11400000, guid: 5a5362242a702764d8a8368cf82c989b, type: 2}
+    text: Now let's go and save that Princess! Tally-ho!
+  - speaker: {fileID: 11400000, guid: 5a5362242a702764d8a8368cf82c989b, type: 2}
+    text: Oh, but Mardek, just a reminder about things! We can open the menu with
+      the ENTER key to check our stats, skills and items, or to save! And we can also
+      open doors and talk to people and stuff with the X key! Remember these things!
+  - speaker: {fileID: 11400000, guid: 5a5362242a702764d8a8368cf82c989b, type: 2}
+    text: It might be a good idea to read the Help section of the menu now if you
+      didn't read the Instructions already!
+  - speaker: {fileID: 11400000, guid: 3e6c551dd894407419786a01a0957c34, type: 2}
+    text: '...Huh?'
+  - speaker: {fileID: 11400000, guid: 5a5362242a702764d8a8368cf82c989b, type: 2}
+    text: Uh, I mean... Tally-ho! Let's go and slay that dragon!

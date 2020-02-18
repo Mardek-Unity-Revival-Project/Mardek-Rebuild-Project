@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SequenceElement : ScriptableObject
-{
-    public abstract void Trigger(); /*{
-        Debug.Log("Abstract SequenceElement trigger");
-    }*/
+
+// this is a abstract class that every sequence element (dialogues, choices, item checks/changes...) will inherit from
+public abstract class SequenceElement : ScriptableObject {
+
+    public abstract void Trigger();
 }
