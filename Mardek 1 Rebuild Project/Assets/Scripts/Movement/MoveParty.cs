@@ -18,7 +18,7 @@ public class MoveParty : MonoBehaviour
     private Tagger tagger_W;
     private Tagger tagger_E;
     private int starter;
-    public string nombre;
+    private string nombre;
     private GameMaster GameMaster;
     private Sprite Sprite_up1;
     private Sprite Sprite_up2;
@@ -34,15 +34,10 @@ public class MoveParty : MonoBehaviour
     void Start()
     {
         Renderer rend = GetComponent<Renderer>();
-        if (nombre == "")
-        {
-            rend.enabled = false;
-            nombre = "Deugan_Hero";
-        }
         rb = GetComponent<Rigidbody2D>();
         speed = speed / waiting;
         waiting_s = waiting;
-        position = new Vector2(ApplicationData.x, ApplicationData.y);
+        position = new Vector2(GameProgressData.x, GameProgressData.y);
         rb.MovePosition(position);
         GameObject go = GameObject.Find("PC 1");
         Mardek = go.GetComponent<MoveMardek>();
@@ -50,19 +45,27 @@ public class MoveParty : MonoBehaviour
         if (gameObject.name == "PC 2")
         {
             starter = waiting_s;
+            nombre = GameProgressData.party[1];
         }
-        if (gameObject.name == "PC 3")
+        else if (gameObject.name == "PC 3")
         {
             go = GameObject.Find("PC 2");
             ahead = go.GetComponent<MoveParty>();
             starter = waiting_s;
+            nombre = GameProgressData.party[2];
+
         }
-        if (gameObject.name == "PC 4")
+        else if (gameObject.name == "PC 4")
         {
             go = GameObject.Find("PC 3");
             ahead = go.GetComponent<MoveParty>();
             starter = waiting_s * 3;
+            nombre = GameProgressData.party[3];
+
         }
+        else
+            nombre = "";
+
         go = GameObject.Find("Tagger_W");
         tagger_W = go.GetComponent<Tagger>();
         go = GameObject.Find("Tagger_E");
@@ -73,20 +76,20 @@ public class MoveParty : MonoBehaviour
         tagger_S = go.GetComponent<Tagger>();
         go = GameObject.Find("GameMaster");
         GameMaster = go.GetComponent<GameMaster>();
-
-        spriteRenderer = GetComponent<SpriteRenderer>(); // we are accessing the SpriteRenderer that is attached to the Gameobject
-        if (gameObject.name != "Main Camera")
+        if (nombre == "")
         {
-            Sprite_up1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up1.png", typeof(Sprite));
-            Sprite_up2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up2.png", typeof(Sprite));
-            Sprite_right1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Right1.png", typeof(Sprite));
-            Sprite_right2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Right2.png", typeof(Sprite));
-            Sprite_left1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Left1.png", typeof(Sprite));
-            Sprite_left2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Left2.png", typeof(Sprite));
-            Sprite_down1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Down1.png", typeof(Sprite));
-            Sprite_down2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Down2.png", typeof(Sprite));
-            spriteRenderer.sprite = Sprite_up1; // set the sprite to sprite1
+            rend.enabled = false;
         }
+        spriteRenderer = GetComponent<SpriteRenderer>(); // we are accessing the SpriteRenderer that is attached to the Gameobject
+        Sprite_up1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up1.png", typeof(Sprite));
+        Sprite_up2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Up2.png", typeof(Sprite));
+        Sprite_right1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Right1.png", typeof(Sprite));
+        Sprite_right2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Right2.png", typeof(Sprite));
+        Sprite_left1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Left1.png", typeof(Sprite));
+        Sprite_left2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Left2.png", typeof(Sprite));
+        Sprite_down1 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Down1.png", typeof(Sprite));
+        Sprite_down2 = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Visual Assets/Sprites/Characters/" + nombre + "_Down2.png", typeof(Sprite));
+        spriteRenderer.sprite = Sprite_up1; // set the sprite to sprite1
     }
 
     void Update() // Is called every frame
