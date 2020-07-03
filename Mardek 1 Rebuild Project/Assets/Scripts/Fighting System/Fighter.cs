@@ -27,9 +27,6 @@ public class Fighter
     public bool lock_MP;
     public bool alive;
 
-
-
-
     public Fighter()
     {
         alive = false;
@@ -81,14 +78,14 @@ public class Fighter
     {
         Random rnd = new Random();
         int random = rnd.Next(-20, 21);
-        float damage = 0;
+        double damage = 0;
         if (type == 'M')
         {
-            damage=(float)((pierce - MDEF) * power*attacker.SPR * Math.Pow(1.07177346, attacker.LVL-LVL) *(1+random/100)/ 50); //2=1.07177346^10
+            damage=((pierce - MDEF) * power*attacker.SPR * Math.Pow(1.07177346, attacker.LVL-LVL) *(1+random/100)/ 50); //2=1.07177346^10
         }
         if (type == 'P')
         {
-            damage = (float)((pierce - DEF) * power * attacker.STR * Math.Pow(1.07177346, attacker.LVL - LVL) * (1 + random / 100) / 50);
+            damage = ((pierce - DEF) * power * attacker.STR * Math.Pow(1.07177346, attacker.LVL - LVL) * (1 + random / 100) / 50);
         }
         if (damage < 0)
             return 0;
