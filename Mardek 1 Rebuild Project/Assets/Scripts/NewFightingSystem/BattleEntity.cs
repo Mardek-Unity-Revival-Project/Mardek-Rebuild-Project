@@ -10,7 +10,7 @@ namespace Assets.Scripts.NewFightingSystem
 {
     abstract class BattleEntity : MonoBehaviour
     {
-        public Statistics stats;
+        public Stats stats;
 
         /// <summary>
         /// Deal damage to a target, optionally applying one or more status effects.
@@ -36,7 +36,7 @@ namespace Assets.Scripts.NewFightingSystem
             {
                 foreach (StatusEffect effect in effects.Keys)
                 {
-                    target.InflictStatus(effect, effects[effect]);
+                    target.ModifyStatus(effect, effects[effect]);
                 } 
             }
             return target.TakeDamage((int)damage, element, isMP);
@@ -65,11 +65,11 @@ namespace Assets.Scripts.NewFightingSystem
         
 
         /// <summary>
-        /// Inflict one or more status effects on this entity.
+        /// Inflict one or more status effects on this entity. Negative chances remove the effect instead
         /// </summary>
         /// <param name="effect">The effect to inflict.</param>
         /// <param name="chance">The base chance to inflict this effect</param>
-        public void InflictStatus(StatusEffect effect, float chance)
+        public void ModifyStatus(StatusEffect effect, float chance)
         {
             float realChance = chance;
             //calculate status effect resistances if you're trying to inflict the effect
@@ -84,6 +84,7 @@ namespace Assets.Scripts.NewFightingSystem
             //if the chance is -100%, remove the effect
             if (realChance <= -1)
             {
+                // &= ~effect is like (binary op) 110 & 101 = 100
                 this.stats.currentEffects &= ~effect;
             }
             //else, try to roll to remove the effect

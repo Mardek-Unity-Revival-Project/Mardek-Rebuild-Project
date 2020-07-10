@@ -15,7 +15,7 @@ namespace Assets.Scripts.Entities
     public abstract class Entity : MonoBehaviour
     {
         public string Name;
-        public Statistics stats;
+        public Stats stats;
         public Element Element;
         public Equipment[] Equipment = new Equipment[6];
     }

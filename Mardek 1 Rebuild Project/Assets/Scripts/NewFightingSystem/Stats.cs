@@ -10,7 +10,7 @@ namespace Assets.Scripts.NewFightingSystem
     /// <summary>
     /// The Statistics class holds all the important entity specific statistics 
     /// </summary>
-    public class Statistics : ScriptableObject
+    public class Stats : ScriptableObject
     {
         public int STR;
         public int VIT;
@@ -22,9 +22,9 @@ namespace Assets.Scripts.NewFightingSystem
         public float ACC; //in %
         public int ATK;
         public int HP;
-        public int MaxHP;
+        public int MaxHP; //will be a calculation
         public int MP;
-        public int MaxMP;
+        public int MaxMP; //will be a calculation
         public int XP;
         public int LVL;
         public bool lock_HP;
