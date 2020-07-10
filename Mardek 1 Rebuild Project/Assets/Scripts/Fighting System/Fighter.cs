@@ -6,6 +6,7 @@ using Random = System.Random;
 
 public class Fighter
 {
+	public int id;
     public float STR;
     public float VIT;
     public float SPR;

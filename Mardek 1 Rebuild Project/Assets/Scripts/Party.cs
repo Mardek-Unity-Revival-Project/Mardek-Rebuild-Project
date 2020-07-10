@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Party : MonoBehaviour
 {
-	private Entity[] characterList = new Entity[2];
-	//This will store the list of characters for this chapter, in this case Mardek and Deugan.
+	private Fighter[] characterList = new Fighter[4];
+	//This will store the list of characters for this chapter,
+	//in this case the two versions of Mardek and Deugan.
 	
 	private int listTotal = 0;
 	//The number of characters in the list, for the array-manip methods to reference.
 	
-	private Entity[] currentParty = new Entity[4];
+	private Fighter[] currentParty = new Fighter[4];
 	//This will store the player's current party.
 	
 	private int partyTotal;
@@ -26,9 +27,9 @@ public class Party : MonoBehaviour
 	//The party's current gold.
 	
 	
-	public void addChar(Entity chara)
+	public void addChar(Fighter chara)
 	{
-		characterList[listTotal] = chara;
+		characterList[chara.id] = chara;
 		listTotal++;
 	}
 	//Adds a new character to the first open spot in the CharacterList and increments listTotal accordingly.
@@ -85,18 +86,13 @@ public class Party : MonoBehaviour
 	
 	public void macguffinAdd(QuestItem toAdd)
 	{
-		if (numQI < macguffinList.length)
-			macguffinList[numQI] = toAdd;
+		macGuffinList[toAdd.getID] = toAdd;
 	}
 	//Inserts a new Quest Item into the list.
 	
 	public void macguffinRemove(QuestItem toRemove)
 	{
-		for (int i = 0; i < macguffinList.length; i++)
-		{
-			if (macguffinList[i].getThing().equals(toRemove.getThing()))
-				macguffinList[i] = null;
-		}
+		macGuffinList[toRemove.getID] = null;
 	}
 	//Annuls an item in the QuestItem array.
 	
