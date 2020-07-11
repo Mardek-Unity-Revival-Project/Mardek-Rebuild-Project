@@ -5,11 +5,11 @@ using UnityEngine;
 public class QuestItem : MonoBehaviour
 {
 	private int qid = 0;
-	private String name;
+	private string name;
 	private Sprite img;
-	private String desc;
+	private string desc;
 	
-	public QuestItem(int idIn, String nameIn, Sprite imgIn, String descIn)
+	public QuestItem(int idIn, string nameIn, Sprite imgIn, string descIn)
 	{
 		qid = idIn;
 		name = nameIn;
