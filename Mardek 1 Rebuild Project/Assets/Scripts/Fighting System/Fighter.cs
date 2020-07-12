@@ -96,4 +96,13 @@ public class Fighter
         return (int)damage;
     }
 
+    internal object getThing()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal bool isNecessary()
+    {
+        throw new NotImplementedException();
+    }
 }
