@@ -12,24 +12,26 @@ namespace Assets.Scripts.NewFightingSystem
     /// </summary>
     public class Stats : ScriptableObject
     {
-        public int STR;
-        public int VIT;
-        public int SPR;
-        public int AGI;
-        public int DEF;
-        public int MDEF;
-        public float EVA; //in %
-        public float ACC; //in %
-        public int ATK;
-        public int HP;
-        public int MaxHP; //will be a calculation
-        public int MP;
-        public int MaxMP; //will be a calculation
-        public int XP;
-        public int LVL;
-        public bool lock_HP;
-        public bool lock_MP;
-        public bool IsAlive { get{ return (HP > 0); } }
+        public int STR { get; set; }
+        public int VIT { get; set; }
+        public int SPR { get; set; }
+        public int AGI { get; set; }
+        public int DEF { get; set; }
+        public int MDEF { get; set; }
+        public float EVA { get; set; }
+        public float ACC { get; set; }
+        public int ATK { get; set; }
+        public int HP { get; set; }
+        public int MaxHP { get { return (3 * VIT + 2 * VIT * LVL); } }
+        public int MP { get; set; }
+        public int MaxMP { get { return (SPR * 17 / 6 + SPR * LVL / 6); } }
+        public int XP { get; set; }
+        public int LVL { get; set; }
+        public bool Lock_HP { get; set; }
+        public bool Lock_MP { get; set; }
+
+        public bool IsAlive { get { return (HP > 0); } }
+
         public StatusEffect currentEffects;
         public Dictionary<StatusEffect, float> StatusResists;
         public Dictionary<Element, float> ElementResists;

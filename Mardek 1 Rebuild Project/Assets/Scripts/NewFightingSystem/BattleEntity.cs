@@ -29,7 +29,7 @@ namespace Assets.Scripts.NewFightingSystem
         public virtual int DealDamage(BattleEntity target, int power, int pierce, bool isMagic, Element element, bool isMP = false, Dictionary<StatusEffect, float> effects = null)
         {
             double damage = 0;
-            //calculate damage, taking into account the bonuses from equipment/skills/etc
+            //TODO:calculate damage, taking into account the bonuses from equipment/skills/etc
 
             //attempt to inflict added status effects, based on their given chance
             if (!(effects is null))

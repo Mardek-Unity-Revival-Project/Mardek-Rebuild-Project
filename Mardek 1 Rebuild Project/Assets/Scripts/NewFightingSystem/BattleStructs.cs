@@ -9,7 +9,7 @@ namespace Assets.Scripts.NewFightingSystem
         /// <summary>
         /// The Attack struct defines a single attack and its effects
         /// </summary>
-        public struct Attack
+        public class Attack
         {
             /// <summary>
             /// The power of the attack
