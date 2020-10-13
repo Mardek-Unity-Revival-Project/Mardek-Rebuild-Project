@@ -5,12 +5,12 @@ using TMPro;
 
 public class Clock : MonoBehaviour
 {
-    private float playedTime;
+    public static float playedTime { get; private set; }
+
     public TextMeshProUGUI displayText;
     private int seconds;
     private int minutes;
     private int hours;
-    private string stringSeconds;
     
 
     // Start is called before the first frame update
@@ -28,26 +28,10 @@ public class Clock : MonoBehaviour
         playedTime += Time.deltaTime;
         seconds = Mathf.RoundToInt(playedTime);
 
-        if (playedTime > 60)
-        {
-            playedTime = 0;
-            minutes += 1;
-        }
-        if (minutes > 60)
-        {
-            minutes = 0;
-            hours += 1;
-        }
+        hours = seconds / 3600;
+        minutes = (seconds % 3600) / 60;
+        seconds = (seconds % 3600) % 60;
 
-        if (seconds < 10)
-        {
-            stringSeconds = "0" + seconds.ToString();
-        }
-        else
-        {
-            stringSeconds = seconds.ToString();
-        }
-
-        displayText.text = string.Format("{0}:{1}:{2}", hours.ToString(), minutes.ToString("X2"), stringSeconds); 
+        displayText.text = string.Format("{0}:{1}:{2}", hours.ToString(), minutes.ToString("D2"), seconds.ToString("D2")); 
     }
 }

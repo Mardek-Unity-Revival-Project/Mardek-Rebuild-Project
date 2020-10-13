@@ -8,7 +8,7 @@ public class SelectThisButton : MonoBehaviour
     private GameObject partyButtonGo;
     private Button button;
    
-    private void OnEnable()
+    private void Awake()
     {
         partyButtonGo = gameObject;
         button = partyButtonGo.GetComponent<Button>();

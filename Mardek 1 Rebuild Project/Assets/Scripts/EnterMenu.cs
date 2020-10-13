@@ -9,14 +9,17 @@ public class EnterMenu : MonoBehaviour
     bool open = false; //Menu starts closed
     private GameObject images;
     private GameObject buttons;
+    private GameObject subMenus;
 
     void Start()
     {
         images = GameObject.Find("Images");
-        buttons = GameObject.Find("Buttons"); 
+        buttons = GameObject.Find("Buttons");
+        subMenus = GameObject.Find("SubMenus");
 
         images.SetActive(false); //Disables the menu at the start
         buttons.SetActive(false); // ^
+        subMenus.SetActive(false); // ^
 
         
     }
@@ -31,6 +34,7 @@ public class EnterMenu : MonoBehaviour
             {
                 images.SetActive(true); //Enables menu
                 buttons.SetActive(true); // ^
+                subMenus.SetActive(true); // ^
                 
                 GameProgressData.lockdown = true; // Pauses the game
                 open = true; //Menu is open
@@ -39,6 +43,8 @@ public class EnterMenu : MonoBehaviour
             {
                 images.SetActive(false); // Disables menu
                 buttons.SetActive(false); // ^
+                subMenus.SetActive(false); // ^
+
                 GameProgressData.lockdown = false; // Resumes the game
                 open = false; //Menu is closed
             }            

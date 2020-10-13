@@ -51,6 +51,8 @@ public class EnterMenuHighlight : MonoBehaviour, ISelectHandler
             targetImage.sprite = menuButton.normalSprite;
             text.colorGradientPreset = menuButton.normalGradient;
         }
+
+        // Updates text in upper left corner (tabtext)
         TextMeshProUGUI tabText = tabTextGo.GetComponent<TextMeshProUGUI>();
         if (menuButtonList.Contains(EventSystem.current.currentSelectedGameObject.GetComponent<Button>()))
         {
