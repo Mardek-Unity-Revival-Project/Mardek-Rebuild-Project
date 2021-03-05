@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 53794468}
   - component: {fileID: 53794466}
   - component: {fileID: 53794465}
-  - component: {fileID: 53794470}
   - component: {fileID: 53794471}
+  - component: {fileID: 53794469}
   m_Layer: 0
   m_Name: Event
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MonoBehaviour:
   OnTriggerEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 53794470}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: JRPG.SequenceHandler, Assembly-CSharp
         m_MethodName: Trigger
         m_Mode: 1
@@ -192,7 +192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53794464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: -3.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -224,7 +224,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &53794470
+--- !u!114 &53794469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,10 +233,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 53794464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03bcf0929b7a3c94ab221502b7023bd8, type: 3}
+  m_Script: {fileID: 11500000, guid: e18e7e3814c881b488b18c5e62bdd2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequence: {fileID: 0}
+  movementSpeed: 1
 --- !u!212 &53794471
 SpriteRenderer:
   m_ObjectHideFlags: 0

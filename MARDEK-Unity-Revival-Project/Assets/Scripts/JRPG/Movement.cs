@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] bool gridMovement = true;
+    //[SerializeField] bool gridMovement = true;
     [SerializeField] float movementSpeed = 1f;
 
     bool isMoving = false;

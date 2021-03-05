@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-public class NewSOWindow : EditorWindow
+public class CreateSOWindow : EditorWindow
 {
     static List<Type> types;
     static SerializedProperty property;
@@ -55,7 +55,7 @@ public class NewSOWindow : EditorWindow
         }
         else
         {
-            NewSOWindow window = ScriptableObject.CreateInstance<NewSOWindow>();
+            CreateSOWindow window = ScriptableObject.CreateInstance<CreateSOWindow>();
             window.ShowUtility();
             property = serializedProperty;
             types = System.AppDomain.CurrentDomain.GetAllDerivedTypes(type);

@@ -1,10 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
+﻿using UnityEngine;
 using System.Reflection;
 
-[CustomPropertyDrawer(typeof(ScriptableObject),true)]
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+public class ExtendedSOAttribute : PropertyAttribute
+{
+
+}
+
+[CustomPropertyDrawer(typeof(ExtendedSOAttribute), true)]
 public class ScriptableObjectDrawer : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -28,6 +34,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
         return height;
     }
 
+    // Cached scriptable object editor
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         // rect will be the work rect for the various elements in the drawers, it starts as a copy of position.
@@ -56,7 +63,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
             // draw "New" button
             if (GUI.Button(rect, new GUIContent("New"), buttonStyle))
             {
-                NewSOWindow.Open(type, ref property);
+                CreateSOWindow.Open(type, ref property);
             }
             rect.x += rect.width;
         }
@@ -69,46 +76,56 @@ public class ScriptableObjectDrawer : PropertyDrawer
                 // draw "Save" button
                 if (GUI.Button(rect, new GUIContent("Save"), buttonStyle))
                 {
-                    NewSOWindow.SaveSOToAsset((ScriptableObject)property.objectReferenceValue);
+                    CreateSOWindow.SaveSOToAsset((ScriptableObject)property.objectReferenceValue);
                 }
                 rect.x += rect.width;
             }
         }
-        
-        // Draw SO object holder/picker
+
+        //Draw SO object holder/ picker
         rect.xMax = position.xMax;
         int ignoredIndentLevel = EditorGUI.indentLevel;
         EditorGUI.indentLevel = 0;
+
         property.objectReferenceValue = EditorGUI.ObjectField(rect, property.objectReferenceValue, type, false);
         EditorGUI.indentLevel = ignoredIndentLevel;
 
         // draw SO's children properties
+
+        //if (!editor)
+        //    editor = Editor.CreateEditor(property.objectReferenceValue);
+        //editor.OnInspectorGUI();
+
         if (property.objectReferenceValue != null)
         {
+            var data = (ScriptableObject)property.objectReferenceValue;
+            var propertyObject = new SerializedObject(data);
+
+            //var propertyObject = new SerializedObject(property.objectReferenceValue);
             
-            SerializedObject targetObject = new SerializedObject(property.objectReferenceValue);
-            SerializedProperty field = targetObject.GetIterator();
-            field.NextVisible(true);
+            var field = propertyObject.GetIterator();
+            field.Next(true);
+            field.NextVisible(false);
 
             rect.x = position.x;
             rect.width = position.width;
             rect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             EditorGUI.indentLevel++;
 
-            //Color randColor = new Color(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), .2f);
             while (field.NextVisible(false))
             {
-                //EditorGUI.DrawRect(rect, randColor);
-                EditorGUI.PropertyField(rect, field, true);
-                rect.y += EditorGUI.GetPropertyHeight(field, true) + EditorGUIUtility.standardVerticalSpacing;
+                EditorGUI.PropertyField(rect, field);
+                rect.y += EditorGUI.GetPropertyHeight(field) + EditorGUIUtility.standardVerticalSpacing;
             }
+            propertyObject.ApplyModifiedProperties();
+            
             EditorGUI.indentLevel--;
-            targetObject.ApplyModifiedProperties();
         }
 
+        if (GUI.changed)
+            property.serializedObject.ApplyModifiedProperties();
         EditorGUI.EndProperty();
     }
-
 
     // modified from https://answers.unity.com/questions/1347203/a-smarter-way-to-get-the-type-of-serializedpropert.html
     private System.Type GetSOType(SerializedProperty property)
@@ -123,7 +140,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
         {
             fi = parent.GetField(paths[i], flags);
 
-            if(fi == null) 
+            if (fi == null)
                 return null;
 
             if (fi.FieldType.IsArray)
