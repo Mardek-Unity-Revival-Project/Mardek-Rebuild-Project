@@ -7,32 +7,37 @@ using System;
 public class NewSOWindow : EditorWindow
 {
     static List<Type> types;
-    static NewSOWindow window;
     static SerializedProperty property;
 
     private void OnGUI()
     {
         EditorGUILayout.BeginVertical();
-        foreach (Type t in types)
+        if (types != null)
         {
-            // TODO: check abstract class
-            if (GUILayout.Button(new GUIContent(t.Name)))
+            foreach (Type t in types)
             {
-                ScriptableObject newSO = CreateInstance(t);
-                newSO.name = "(Instance)" + newSO.name;
-                property.objectReferenceValue = newSO;
-                if(property.objectReferenceValue == null)
+
+                // TODO: check abstract class
+                if (GUILayout.Button(new GUIContent(t.Name)))
                 {
-                    // couldn't hold SO instance, save it to a .asset
-                    Debug.LogWarning("An asset can't hold a reference to a non-asset instance (Type Mismatch), saving the created object as asset first");
-                    SaveSOToAsset(newSO);
+                    ScriptableObject newSO = CreateInstance(t);
+                    newSO.name = "(Instance)" + newSO.name;
                     property.objectReferenceValue = newSO;
+                    if (property.objectReferenceValue == null)
+                    {
+                        // couldn't hold SO instance, save it to a .asset
+                        Debug.LogWarning("An asset can't hold a reference to a non-asset instance (Type Mismatch), saving the created object as asset first");
+                        SaveSOToAsset(newSO);
+                        property.objectReferenceValue = newSO;
+                    }
+                    property.serializedObject.ApplyModifiedProperties();
+                    this.Close();
                 }
-                property.serializedObject.ApplyModifiedProperties();
             }
         }
         EditorGUILayout.EndVertical();
     }
+
     public static void SaveSOToAsset(ScriptableObject so)
     {
         string path = EditorUtility.SaveFilePanelInProject(so.name, $"New {so.GetType().Name}", "asset", "save scriptable object as asset");
@@ -42,7 +47,6 @@ public class NewSOWindow : EditorWindow
         }
     }
 
-
     public static void Open(Type type, ref SerializedProperty serializedProperty)
     {
         if (type == typeof(ScriptableObject))
@@ -51,7 +55,8 @@ public class NewSOWindow : EditorWindow
         }
         else
         {
-            window = GetWindow<NewSOWindow>();
+            NewSOWindow window = ScriptableObject.CreateInstance<NewSOWindow>();
+            window.ShowUtility();
             property = serializedProperty;
             types = System.AppDomain.CurrentDomain.GetAllDerivedTypes(type);
             types.Add(type);
@@ -63,7 +68,6 @@ public static class ReflectionHelpers
 {
     public static List<Type> GetAllDerivedTypes(this System.AppDomain aAppDomain, System.Type aType)
     {
-        Debug.Log("a");
         var result = new List<System.Type>();
         var assemblies = aAppDomain.GetAssemblies();
         foreach (var assembly in assemblies)
