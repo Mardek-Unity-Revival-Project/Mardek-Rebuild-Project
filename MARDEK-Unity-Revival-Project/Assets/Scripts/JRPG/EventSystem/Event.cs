@@ -18,12 +18,17 @@ namespace JRPG
         [ExtendedSO]
         [SerializeField] List<CommandBase> commands = default;
         List<CommandBase> commandsBeingExecuted = new List<CommandBase>();
-        CommandBase ongoingCommand
+        CommandBase currentCommand
         {
             get
             {
-                if (commandsBeingExecuted.Count > 0)
-                    return commandsBeingExecuted[0];
+                while (commandsBeingExecuted.Count > 0)
+                {
+                    if (commandsBeingExecuted[0] == null)
+                        RemoveCommandAt0();
+                    else
+                        return commandsBeingExecuted[0];
+                }
                 return null;
             }
         }
@@ -36,7 +41,7 @@ namespace JRPG
 
         private void Update()
         {
-            if(commandsBeingExecuted.Count > 0)
+            if(currentCommand)
                 CheckOngoingCommand();
         }
 
@@ -45,6 +50,11 @@ namespace JRPG
         {
             if (Application.isPlaying)
             {
+                if (currentCommand)
+                {
+                    Debug.LogError("Can't trigger an ongoing event");
+                    return;
+                }                    
                 commandsBeingExecuted = new List<CommandBase>(commands);
                 TryTriggerNextCommand();
             }
@@ -54,22 +64,9 @@ namespace JRPG
 
         void TryTriggerNextCommand()
         {
-            // check trigger
-            if (commandsBeingExecuted.Count == 0)
+            if (currentCommand)
             {
-
-            }
-            else
-            {
-                //get and trigger next command
-                if(ongoingCommand == null)
-                {
-                    Debug.LogWarning("Skipping execution of Null command");
-                    commandsBeingExecuted.RemoveAt(0);
-                    TryTriggerNextCommand();
-                    return;
-                }
-                ongoingCommand.Trigger();
+                currentCommand.Trigger();
                 CheckOngoingCommand();
             }
         }
@@ -77,19 +74,18 @@ namespace JRPG
         void CheckOngoingCommand()
         {
             // check ongoing (current event is non-null and can be converted to OngoingCommand)
-            if (ongoingCommand is OngoingCommand)
+            OngoingCommand command = currentCommand as OngoingCommand;
+            if (command == null || command.IsOngoing() == false || command.waitForExecutionEnd == false)
             {
-                OngoingCommand command = ongoingCommand as OngoingCommand;
-                if (command.IsOngoing() == false || command.waitForExecutionEnd == false)
-                {
-                    commandsBeingExecuted.RemoveAt(0);
-                    TryTriggerNextCommand();
-                }
+                RemoveCommandAt0();
+                TryTriggerNextCommand();
             }
-            else
-            {
+        }
+
+        void RemoveCommandAt0()
+        {
+            if (commandsBeingExecuted.Count > 0)
                 commandsBeingExecuted.RemoveAt(0);
-            }
         }
     }
 }
