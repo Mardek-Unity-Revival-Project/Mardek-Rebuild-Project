@@ -157,21 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onStart: 1
-  OnTriggerEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: JRPG.SequenceHandler, Assembly-CSharp
-        m_MethodName: Trigger
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  commands:
+  - {fileID: 482867918}
+  - {fileID: 2062391532}
 --- !u!114 &53794466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +276,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &482867918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31ad1e34f546c340bf85a02096374f6, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 737810041}
+--- !u!114 &737810041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ca26e8c41c6bf45bc17b3afd5463ed, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  dialogueEntries:
+  - a
+  - b
 --- !u!1 &750473221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2102,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1716673445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ca26e8c41c6bf45bc17b3afd5463ed, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  dialogueEntries:
+  - c
+  - d
+--- !u!114 &2062391532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31ad1e34f546c340bf85a02096374f6, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 1716673445}
 --- !u!1001 &948702547976262591
 PrefabInstance:
   m_ObjectHideFlags: 0
