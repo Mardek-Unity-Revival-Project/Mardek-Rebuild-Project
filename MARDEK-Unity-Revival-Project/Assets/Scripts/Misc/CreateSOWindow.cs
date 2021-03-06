@@ -8,21 +8,18 @@ public class CreateSOWindow : EditorWindow
 {
     static List<Type> types;
     static SerializedProperty property;
+    static CreateSOWindow window;
 
     private void OnGUI()
     {
         EditorGUILayout.BeginVertical();
         if (types != null)
         {
-            foreach (Type t in types)
+            foreach (Type type in types)
             {
-
-                // TODO: check abstract class
-                if (GUILayout.Button(new GUIContent(t.Name)))
+                if (GUILayout.Button(new GUIContent(type.Name)))
                 {
-                    ScriptableObject newSO = CreateInstance(t);
-                    newSO.name = "(Instance)" + newSO.name;
-                    property.objectReferenceValue = newSO;
+                    ScriptableObject newSO = AssignNewInstance(property, type);
                     if (property.objectReferenceValue == null)
                     {
                         // couldn't hold SO instance, save it to a .asset
@@ -31,11 +28,20 @@ public class CreateSOWindow : EditorWindow
                         property.objectReferenceValue = newSO;
                     }
                     property.serializedObject.ApplyModifiedProperties();
-                    this.Close();
+                    Close();
                 }
             }
         }
         EditorGUILayout.EndVertical();
+    }
+
+    static ScriptableObject AssignNewInstance(SerializedProperty property, Type type)
+    {
+        ScriptableObject newSO = CreateInstance(type);
+        newSO.name = "(Instance)" + newSO.name;
+        property.objectReferenceValue = newSO;
+        property.serializedObject.ApplyModifiedProperties();
+        return newSO;
     }
 
     public static void SaveSOToAsset(ScriptableObject so)
@@ -55,27 +61,42 @@ public class CreateSOWindow : EditorWindow
         }
         else
         {
-            CreateSOWindow window = ScriptableObject.CreateInstance<CreateSOWindow>();
-            window.ShowUtility();
             property = serializedProperty;
-            types = System.AppDomain.CurrentDomain.GetAllDerivedTypes(type);
-            types.Add(type);
+            types = AppDomain.CurrentDomain.GetAllDerivedTypes(type);
+            if(types.Count == 0)
+            {
+                Debug.LogError("No concrete types found for this field");
+            }
+            else if(types.Count == 1)
+            {
+                AssignNewInstance(property, types[0]);
+            }
+            else
+            {
+                if (window)
+                    window.Close();
+                window = CreateInstance<CreateSOWindow>();
+                window.ShowUtility();
+            }
         }
     }
 }
 
 public static class ReflectionHelpers
 {
-    public static List<Type> GetAllDerivedTypes(this System.AppDomain aAppDomain, System.Type aType)
+    public static List<Type> GetAllDerivedTypes(this AppDomain aAppDomain, Type aType)
     {
-        var result = new List<System.Type>();
+        var result = new List<Type>();
         var assemblies = aAppDomain.GetAssemblies();
+
+        if(!aType.IsAbstract)
+            result.Add(aType);
         foreach (var assembly in assemblies)
         {
             var types = assembly.GetTypes();
             foreach (var type in types)
             {
-                if (type.IsSubclassOf(aType))
+                if (type.IsSubclassOf(aType) && !type.IsAbstract)
                     result.Add(type);                
             }
         }
