@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MoveCommand : OngoingCommand
 {
+    [SerializeField] List<MoveDirection> movements;
+
     public override bool IsOngoing()
     {
         throw new System.NotImplementedException();

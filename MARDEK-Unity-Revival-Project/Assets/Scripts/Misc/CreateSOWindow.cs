@@ -9,6 +9,7 @@ public class CreateSOWindow : EditorWindow
     static List<Type> types;
     static SerializedProperty property;
     static CreateSOWindow window;
+    UnityEngine.Object[] objects;
 
     private void OnGUI()
     {
@@ -19,29 +20,44 @@ public class CreateSOWindow : EditorWindow
             {
                 if (GUILayout.Button(new GUIContent(type.Name)))
                 {
-                    ScriptableObject newSO = AssignNewInstance(property, type);
-                    if (property.objectReferenceValue == null)
-                    {
-                        // couldn't hold SO instance, save it to a .asset
-                        Debug.LogWarning("An asset can't hold a reference to a non-asset instance (Type Mismatch), saving the created object as asset first");
-                        SaveSOToAsset(newSO);
-                        property.objectReferenceValue = newSO;
-                    }
-                    property.serializedObject.ApplyModifiedProperties();
+                    AssignNewInstance(property, type);
                     Close();
+                    // TODO: remove this quickfix when a list field stop not updating itself
+                    DeselectThenReselectToRefreshInspector();
                 }
             }
         }
         EditorGUILayout.EndVertical();
     }
 
-    static ScriptableObject AssignNewInstance(SerializedProperty property, Type type)
+    void DeselectThenReselectToRefreshInspector()
+    {
+        objects = Selection.objects;
+        Selection.objects = null;
+        EditorApplication.delayCall += ReselectObjects;
+    }
+
+    void ReselectObjects()
+    {
+        Selection.objects = objects;
+        EditorApplication.delayCall -= ReselectObjects;
+    }
+
+    static void AssignNewInstance(SerializedProperty property, Type type)
     {
         ScriptableObject newSO = CreateInstance(type);
         newSO.name = "(Instance)" + newSO.name;
         property.objectReferenceValue = newSO;
+        property.serializedObject.ApplyModifiedProperties(); 
+        if (property.objectReferenceValue == null)
+        {
+            // couldn't hold SO instance, save it to a .asset
+            Debug.LogWarning("An asset can't hold a reference to a non-asset instance (Type Mismatch), saving the created object as asset first");
+            SaveSOToAsset(newSO);
+            property.objectReferenceValue = newSO;
+        }
         property.serializedObject.ApplyModifiedProperties();
-        return newSO;
+        property.serializedObject.Update();
     }
 
     public static void SaveSOToAsset(ScriptableObject so)
