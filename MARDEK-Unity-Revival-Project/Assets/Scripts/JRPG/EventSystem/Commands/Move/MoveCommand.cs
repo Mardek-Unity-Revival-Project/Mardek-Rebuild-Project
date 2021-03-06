@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class MoveCommand : OngoingCommand
 {
-    [SerializeField] List<MoveDirection> movements;
+    [SerializeField] Movement target = null;
+    [SerializeField] List<MoveDirection> moves;
 
     public override bool IsOngoing()
     {
-        throw new System.NotImplementedException();
+        return target.isMoving;
     }
 
     public override void Trigger()
     {
-        throw new System.NotImplementedException();
+        target.EnqueueMoves(moves);
     }
 }

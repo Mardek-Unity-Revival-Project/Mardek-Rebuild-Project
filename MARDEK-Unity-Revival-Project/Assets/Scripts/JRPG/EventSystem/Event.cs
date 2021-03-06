@@ -27,7 +27,8 @@ namespace JRPG
 
         private void Update()
         {
-            
+            if(commandsBeingExecuted.Count > 0)
+                CheckOngoingCommand();
         }
 
         [ContextMenu("Trigger")]
@@ -47,7 +48,7 @@ namespace JRPG
             // check trigger
             if (commandsBeingExecuted.Count == 0)
             {
-                Debug.Log("CommandListEnded");
+
             }
             else
             {
@@ -59,11 +60,11 @@ namespace JRPG
 
         void CheckOngoingCommand()
         {
-            // check ongoing (current event is non-null and can be converted to OngoingCommand
+            // check ongoing (current event is non-null and can be converted to OngoingCommand)
             if (commandsBeingExecuted[0] is OngoingCommand)
             {
                 OngoingCommand command = commandsBeingExecuted[0] as OngoingCommand;
-                if (command.IsOngoing() == false)
+                if (command.IsOngoing() == false || command.waitForExecutionEnd == false)
                 {
                     commandsBeingExecuted.RemoveAt(0);
                     TryTriggerNextCommand();

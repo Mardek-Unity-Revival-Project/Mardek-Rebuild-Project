@@ -7,28 +7,41 @@ public class Movement : MonoBehaviour
     //[SerializeField] bool gridMovement = true;
     [SerializeField] float movementSpeed = 1f;
 
-    bool isMoving = false;
+    public bool isMoving { get; private set; }
     Vector2 targetPosition = Vector2.zero;
     Queue<Vector2> queuedMoves = new Queue<Vector2>();
 
-    public void Move(Vector2 direction)
+    public void EnqueueMoves(List<MoveDirection> moves)
     {
-        queuedMoves.Enqueue(direction);
+        foreach(MoveDirection m in moves)
+            queuedMoves.Enqueue(m.value);
+        UpdateMoveState();
+    }
+
+    public void Move(MoveDirection direction)
+    {
+        queuedMoves.Enqueue(direction.value); 
+        UpdateMoveState();
     }
 
     private void FixedUpdate()
     {
+        if (isMoving)
+        {
+            isMoving = !MoveToFixed(transform, targetPosition, movementSpeed);
+        }
+        UpdateMoveState();
+    }
+
+    void UpdateMoveState()
+    {
         if (isMoving == false)
         {
-            if(queuedMoves.Count > 0)
+            if (queuedMoves.Count > 0)
             {
                 targetPosition = (Vector2)transform.position + queuedMoves.Dequeue();
                 isMoving = true;
             }
-        }
-        if (isMoving)
-        {
-            isMoving = !MoveToFixed(transform, targetPosition, movementSpeed);
         }
     }
 
