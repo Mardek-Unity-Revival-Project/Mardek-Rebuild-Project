@@ -18,6 +18,15 @@ namespace JRPG
         [ExtendedSO]
         [SerializeField] List<CommandBase> commands = default;
         List<CommandBase> commandsBeingExecuted = new List<CommandBase>();
+        CommandBase ongoingCommand
+        {
+            get
+            {
+                if (commandsBeingExecuted.Count > 0)
+                    return commandsBeingExecuted[0];
+                return null;
+            }
+        }
 
         void Start()
         {
@@ -53,7 +62,14 @@ namespace JRPG
             else
             {
                 //get and trigger next command
-                commandsBeingExecuted[0].Trigger();
+                if(ongoingCommand == null)
+                {
+                    Debug.LogWarning("Skipping execution of Null command");
+                    commandsBeingExecuted.RemoveAt(0);
+                    TryTriggerNextCommand();
+                    return;
+                }
+                ongoingCommand.Trigger();
                 CheckOngoingCommand();
             }
         }
@@ -61,9 +77,9 @@ namespace JRPG
         void CheckOngoingCommand()
         {
             // check ongoing (current event is non-null and can be converted to OngoingCommand)
-            if (commandsBeingExecuted[0] is OngoingCommand)
+            if (ongoingCommand is OngoingCommand)
             {
-                OngoingCommand command = commandsBeingExecuted[0] as OngoingCommand;
+                OngoingCommand command = ongoingCommand as OngoingCommand;
                 if (command.IsOngoing() == false || command.waitForExecutionEnd == false)
                 {
                     commandsBeingExecuted.RemoveAt(0);

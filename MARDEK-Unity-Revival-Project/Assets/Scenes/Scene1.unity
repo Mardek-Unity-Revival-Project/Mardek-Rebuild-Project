@@ -159,7 +159,7 @@ MonoBehaviour:
   onStart: 1
   commands:
   - {fileID: 1488403970}
-  - {fileID: 525228219}
+  - {fileID: 0}
   - {fileID: 507555452}
 --- !u!114 &53794466
 MonoBehaviour:
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4eb8959f8228364e99a75252fac3c67, type: 3}
   m_Name: (Instance)
   m_EditorClassIdentifier: 
-  waitExcecutionEnd: 1
+  _waitExcecutionEnd: 1
   target: {fileID: 53794469}
   moves:
   - {fileID: 11400000, guid: b19d088da4eb0fe4c83aa92cbc400e36, type: 2}
@@ -298,20 +298,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
   - {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
   - {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
---- !u!114 &525228219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e31ad1e34f546c340bf85a02096374f6, type: 3}
-  m_Name: (Instance)
-  m_EditorClassIdentifier: 
-  waitExcecutionEnd: 1
-  dialogue: {fileID: 1349449300}
 --- !u!1 &750473221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,21 +2052,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1349449300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91ca26e8c41c6bf45bc17b3afd5463ed, type: 3}
-  m_Name: (Instance)
-  m_EditorClassIdentifier: 
-  dialogueEntries:
-  - Hello there
-  - General Kenobi!
 --- !u!114 &1488403970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,7 +2064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4eb8959f8228364e99a75252fac3c67, type: 3}
   m_Name: (Instance)
   m_EditorClassIdentifier: 
-  waitExcecutionEnd: 1
+  _waitExcecutionEnd: 1
   target: {fileID: 53794469}
   moves:
   - {fileID: 11400000, guid: a51fa9789f30cd14b903b94df523d503, type: 2}
