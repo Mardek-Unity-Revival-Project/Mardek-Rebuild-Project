@@ -111,31 +111,3 @@ public class DialogueManager : MonoBehaviour
         }
     }
 }
-
-    //void GetNextLine()
-    //{
-    //    while(dialogues.Count > 0)
-    //    {
-    //        var lines = dialogues[0].GetLines();
-    //        while(lines.Count > 0)
-    //        {                
-    //            var line = lines[0];
-    //            if (!string.IsNullOrEmpty(line))
-    //            {
-    //                if(currentLine == null)
-    //                {
-    //                    currentLine = line;
-    //                    return;
-    //                }
-    //                else
-    //                {
-    //                    currentLine = null;
-    //                }
-    //            }
-    //            lines.RemoveAt(0);
-    //        }
-    //        dialogues.RemoveAt(0);
-    //    }
-    //    currentLine = null;
-    //    return;
-    //}
