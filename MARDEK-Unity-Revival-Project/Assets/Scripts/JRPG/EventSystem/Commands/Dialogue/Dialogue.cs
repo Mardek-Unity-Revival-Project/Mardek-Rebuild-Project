@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dialogue : ScriptableObject
+namespace JRPG
 {
-    [SerializeField] CharacterBio character = null;
-    [SerializeField] List<string> dialogueLines = new List<string>();
-
-    public string GetCharacterName()
+    public class Dialogue : ScriptableObject
     {
-        if (character)
-            return character.GetName();
-        return "Null name";
-    }
+        [SerializeField] CharacterBio character = null;
+        [SerializeField] List<string> dialogueLines = new List<string>();
 
-    public List<string> GetLines()
-    {
-        return dialogueLines;
+        public string GetCharacterName()
+        {
+            if (character)
+                return character.GetName();
+            return "Null name";
+        }
+
+        public List<string> GetLines()
+        {
+            return dialogueLines;
+        }
     }
 }

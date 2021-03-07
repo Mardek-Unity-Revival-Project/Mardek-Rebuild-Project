@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayBGM : CommandBase
+namespace JRPG
 {
-    public override void Trigger()
+    public class PlayBGM : CommandBase
     {
-        Debug.LogWarning("PlayBGM command not implemented yet");
+        public override void Trigger()
+        {
+            Debug.LogWarning("PlayBGM command not implemented yet");
+        }
     }
 }

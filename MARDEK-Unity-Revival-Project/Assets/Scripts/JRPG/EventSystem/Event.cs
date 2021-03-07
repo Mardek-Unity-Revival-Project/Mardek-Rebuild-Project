@@ -7,14 +7,9 @@ namespace JRPG
 {
     public class Event : MonoBehaviour
     {
-        [Header("Trigger Methods")]
-        //[SerializeField] bool onInteractionKey = false;
-        //[SerializeField] bool onPlayerTouch = false;
-        [SerializeField] bool onStart = false;
-
-        [Space(10)]
         [ExtendedSO]
         [SerializeField] List<CommandBase> commands = default;
+
         List<CommandBase> commandsBeingExecuted = new List<CommandBase>();
         CommandBase currentCommand
         {
@@ -29,12 +24,6 @@ namespace JRPG
                 }
                 return null;
             }
-        }
-
-        void Start()
-        {
-            if (onStart)
-                Trigger();
         }
 
         private void Update()

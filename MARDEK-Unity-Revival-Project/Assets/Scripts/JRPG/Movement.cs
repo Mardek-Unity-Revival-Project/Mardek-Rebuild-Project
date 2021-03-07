@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace JRPG
 {
-    [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(GridObject))]
     public class Movement : MonoBehaviour
     {

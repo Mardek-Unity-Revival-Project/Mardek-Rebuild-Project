@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveDirection : ScriptableObject
+namespace JRPG
 {
-    [SerializeField] Vector2 direction;
-    public Vector2 value
+    public class MoveDirection : ScriptableObject
     {
-        get { return direction; }
+        [SerializeField] Vector2 direction;
+        public Vector2 value
+        {
+            get { return direction; }
+        }
     }
 }

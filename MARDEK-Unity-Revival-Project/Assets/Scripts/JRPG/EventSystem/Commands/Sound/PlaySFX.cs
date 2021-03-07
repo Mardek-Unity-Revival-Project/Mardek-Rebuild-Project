@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaySFX : CommandBase
+namespace JRPG
 {
-    public override void Trigger()
+    public class PlaySFX : CommandBase
     {
-        Debug.LogWarning("PlaySFX command not implemented yet");
+        public override void Trigger()
+        {
+            Debug.LogWarning("PlaySFX command not implemented yet");
+        }
     }
 }

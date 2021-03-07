@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueCommand : OngoingCommand
+namespace JRPG
 {
-    [ExtendedSO]
-    [SerializeField] List<Dialogue> dialogues;
-
-    public override bool IsOngoing()
+    public class DialogueCommand : OngoingCommand
     {
-        return DialogueManager.isOngoing;
-    }
+        [ExtendedSO]
+        [SerializeField] List<Dialogue> dialogues;
 
-    public override void Trigger()
-    {
-        DialogueManager.EnqueueDialogue(dialogues);
+        public override bool IsOngoing()
+        {
+            return DialogueManager.isOngoing;
+        }
+
+        public override void Trigger()
+        {
+            DialogueManager.EnqueueDialogue(dialogues);
+        }
     }
 }
