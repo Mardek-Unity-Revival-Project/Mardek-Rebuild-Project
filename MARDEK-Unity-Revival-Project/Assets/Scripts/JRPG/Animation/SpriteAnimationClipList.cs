@@ -13,8 +13,16 @@ namespace JRPG
             if (reference == null)
                 return null;
             foreach (SpriteAnimationClip clip in clips)
+            {
                 if (clip.indexBySOReference == reference)
                     return clip;
+
+                //return by movedirections of same value
+                MoveDirection refDir = reference as MoveDirection;
+                MoveDirection clipDir = clip.indexBySOReference as MoveDirection;
+                if (refDir && clipDir && refDir.value == clipDir.value)
+                    return clip;
+            }                    
             return null;
         }
     }
