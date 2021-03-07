@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class Dialogue : ScriptableObject
 {
-    [SerializeField] List<string> dialogueEntries = new List<string>();
+    [SerializeField] CharacterBio character = null;
+    [SerializeField] List<string> dialogueLines = new List<string>();
 
-    public List<string> GetEntries()
+    public string GetCharacterName()
     {
-        return dialogueEntries;
+        if (character)
+            return character.GetName();
+        return "Null name";
+    }
+
+    public List<string> GetLines()
+    {
+        return dialogueLines;
     }
 }

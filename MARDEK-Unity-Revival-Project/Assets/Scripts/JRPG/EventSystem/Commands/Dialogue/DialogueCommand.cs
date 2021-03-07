@@ -5,15 +5,15 @@ using UnityEngine;
 public class DialogueCommand : OngoingCommand
 {
     [ExtendedSO]
-    [SerializeField] Dialogue dialogue;
+    [SerializeField] List<Dialogue> dialogues;
 
     public override bool IsOngoing()
     {
-        return DialogueManager.IsOngoing();
+        return DialogueManager.isOngoing;
     }
 
     public override void Trigger()
     {
-        DialogueManager.EnqueueDialogue(dialogue);
+        DialogueManager.EnqueueDialogue(dialogues);
     }
 }

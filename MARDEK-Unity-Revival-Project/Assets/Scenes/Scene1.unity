@@ -161,7 +161,7 @@ MonoBehaviour:
   - {fileID: 1520436348}
   - {fileID: 1084466447}
   - {fileID: 1488403970}
-  - {fileID: 0}
+  - {fileID: 1068338041}
   - {fileID: 507555452}
   - {fileID: 589070018}
 --- !u!114 &53794466
@@ -301,6 +301,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
   - {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
   - {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
+--- !u!114 &571575075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ca26e8c41c6bf45bc17b3afd5463ed, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
+  dialogueLines:
+  - c
+  - d
+  - d2
 --- !u!114 &589070018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2070,6 +2087,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1068338041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31ad1e34f546c340bf85a02096374f6, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  _waitExcecutionEnd: 1
+  dialogues:
+  - {fileID: 2110422604}
+  - {fileID: 571575075}
 --- !u!114 &1084466447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2161,6 +2194,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2110422604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ca26e8c41c6bf45bc17b3afd5463ed, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
+  dialogueLines:
+  - a
+  - b
+  - b2
 --- !u!1001 &948702547976262591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2329,6 +2379,10 @@ PrefabInstance:
     - target: {fileID: 5577278130705883467, guid: 62e723969551b3149975abd31df3cc8c, type: 3}
       propertyPath: m_Name
       value: DialogueBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577278130705883467, guid: 62e723969551b3149975abd31df3cc8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62e723969551b3149975abd31df3cc8c, type: 3}
