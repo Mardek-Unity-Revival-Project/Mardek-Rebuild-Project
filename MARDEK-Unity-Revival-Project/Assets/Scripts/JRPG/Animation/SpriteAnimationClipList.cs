@@ -8,19 +8,13 @@ namespace JRPG
     {
         [SerializeField] List<SpriteAnimationClip> clips = new List<SpriteAnimationClip>();
 
-        public SpriteAnimationClip GetClipByReference(ScriptableObject reference)
+        public SpriteAnimationClip GetClipByReference(MoveDirection reference)
         {
             if (reference == null)
                 return null;
             foreach (SpriteAnimationClip clip in clips)
             {
                 if (clip.indexBySOReference == reference)
-                    return clip;
-
-                //return by movedirections of same value
-                MoveDirection refDir = reference as MoveDirection;
-                MoveDirection clipDir = clip.indexBySOReference as MoveDirection;
-                if (refDir && clipDir && refDir.value == clipDir.value)
                     return clip;
             }                    
             return null;
@@ -30,7 +24,7 @@ namespace JRPG
     [System.Serializable]
     public class SpriteAnimationClip
     {
-        [SerializeField] public ScriptableObject indexBySOReference = null;
+        [SerializeField] public MoveDirection indexBySOReference = null;
         [SerializeField] float durationMultiplier = 1f;
         [SerializeField] List<Sprite> spriteSequence = new List<Sprite>();
 

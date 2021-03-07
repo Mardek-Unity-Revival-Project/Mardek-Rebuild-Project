@@ -7,5 +7,6 @@ namespace JRPG
     public abstract class MovementController : MonoBehaviour
     {
         [SerializeField] protected Movement controlledMovement = null;
+        [SerializeField] protected List<MoveDirection> allowedDirections = new List<MoveDirection>();
     }
 }

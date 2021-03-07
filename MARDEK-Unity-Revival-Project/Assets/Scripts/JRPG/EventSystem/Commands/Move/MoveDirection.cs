@@ -11,13 +11,5 @@ namespace JRPG
         {
             get { return direction; }
         }
-
-        public void Initialize(Vector2 _direction)
-        {
-            if (direction == Vector2.zero)
-                direction = _direction;
-            else
-                Debug.LogWarning("You shouldn't change the value of a MoveDirection object");
-        }
     }
 }

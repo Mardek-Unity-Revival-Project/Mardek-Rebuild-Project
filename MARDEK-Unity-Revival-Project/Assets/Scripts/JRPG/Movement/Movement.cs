@@ -22,13 +22,6 @@ namespace JRPG
             UpdateMoveState();
         }
 
-        public void Move(Vector2 vector)
-        {
-            MoveDirection direction = ScriptableObject.CreateInstance<MoveDirection>();
-            direction.Initialize(vector);
-            Move(direction);
-        }
-
         public void Move(MoveDirection direction)
         {
             if (isMoving)

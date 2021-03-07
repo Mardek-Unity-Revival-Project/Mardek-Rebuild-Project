@@ -10,13 +10,16 @@ namespace JRPG
         [SerializeField] float animationSpeed = 1f;
         [ExtendedSO]
         [SerializeField] SpriteAnimationClipList clipList = null;
+        
         SpriteAnimationClip currentClip = null;
+        SpriteRenderer spriteRenderer = null;
 
         float animationTimer = 0f;
 
         private void Awake()
         {
             currentClip = clipList.GetClipByReference(null);
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void Update()
@@ -27,10 +30,10 @@ namespace JRPG
             animationTimer += animationSpeed * Time.deltaTime;
             while (animationTimer > 1)
                 animationTimer -= 1;
-            GetComponent<SpriteRenderer>().sprite = currentClip.GetSprite(animationTimer);
+            spriteRenderer.sprite = currentClip.GetSprite(animationTimer);
         }
 
-        public void ChangeClipByReferecen(ScriptableObject reference)
+        public void ChangeClipByReferecen(MoveDirection reference)
         {
             currentClip = clipList.GetClipByReference(reference);
         }
