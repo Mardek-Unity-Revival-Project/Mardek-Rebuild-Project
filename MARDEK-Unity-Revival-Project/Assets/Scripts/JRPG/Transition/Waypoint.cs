@@ -11,7 +11,7 @@ namespace JRPG {
         {
             if (thisWaypoint)
                 if (thisWaypoint == Transition.usedWaypoint)
-                    Debug.Log(transform.position);
+                    InMapParty.PositionPartyAt(transform.position);
         }
     }    
 }
