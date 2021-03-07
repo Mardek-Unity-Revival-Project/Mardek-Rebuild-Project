@@ -2,68 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+namespace JRPG
 {
-    //[SerializeField] bool gridMovement = true;
-    [SerializeField] float movementSpeed = 1f;
-
-    public bool isMoving { get; private set; }
-    Vector2 targetPosition = Vector2.zero;
-    Queue<Vector2> queuedMoves = new Queue<Vector2>();
-
-    public void EnqueueMoves(List<MoveDirection> moves)
+    [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(GridObject))]
+    public class Movement : MonoBehaviour
     {
-        foreach(MoveDirection m in moves)
-            queuedMoves.Enqueue(m.value);
-        UpdateMoveState();
-    }
+        [SerializeField] float movementSpeed = 1f;
+        [SerializeField] SpriteAnimator animator = null;
 
-    public void Move(MoveDirection direction)
-    {
-        queuedMoves.Enqueue(direction.value); 
-        UpdateMoveState();
-    }
+        public bool isMoving { get; private set; }
+        Vector2 targetPosition = Vector2.zero;
+        Queue<MoveDirection> queuedMoves = new Queue<MoveDirection>();
 
-    private void FixedUpdate()
-    {
-        if (isMoving)
+        public void EnqueueMoves(List<MoveDirection> directions)
         {
-            isMoving = !MoveToFixed(transform, targetPosition, movementSpeed);
+            foreach (MoveDirection direction in directions)
+                queuedMoves.Enqueue(direction);
+            UpdateMoveState();
         }
-        UpdateMoveState();
-    }
 
-    void UpdateMoveState()
-    {
-        if (isMoving == false)
+        public void Move(MoveDirection direction)
         {
-            if (queuedMoves.Count > 0)
+            queuedMoves.Enqueue(direction);
+            UpdateMoveState();
+        }
+
+        private void FixedUpdate()
+        {
+            if (isMoving)
             {
-                targetPosition = (Vector2)transform.position + queuedMoves.Dequeue();
-                isMoving = true;
+                isMoving = !MoveToFixed(transform, targetPosition, movementSpeed);
+                UpdateMoveState();
             }
         }
-    }
 
-    bool MoveToFixed(Transform transform, Vector2 targetPosition, float movementSpeed)
-    {
-        Vector2 positionDifferece = new Vector2(targetPosition.x, targetPosition.y) - (Vector2)transform.position;
-        if (positionDifferece == Vector2.zero)
+        void UpdateMoveState()
         {
-            return true;
+            if (isMoving == false)
+            {
+                if (queuedMoves.Count > 0)
+                {
+                    //start new movement
+                    MoveDirection newDirection = queuedMoves.Dequeue();
+                    targetPosition = (Vector2)transform.position + newDirection.value;
+                    isMoving = true;
+                    if (animator)
+                        animator.ChangeClipByReferecen(newDirection);
+                }
+                if (isMoving == false)
+                {
+                    //stoped moving
+                    if (animator)
+                        animator.ChangeClipByReferecen(null);
+                }
+            }
         }
-        Vector2 increment = positionDifferece.normalized * Time.fixedDeltaTime * movementSpeed;
-        if (increment.sqrMagnitude < positionDifferece.sqrMagnitude)
-        {
-            transform.position = ((Vector2)transform.position + increment);
-            return false;
-        }
-        else
-        {
-            //end movement
-            transform.position = (targetPosition);
-            return true;
-        }
-    }
 
+        bool MoveToFixed(Transform transform, Vector2 targetPosition, float movementSpeed)
+        {
+            Vector2 positionDifferece = new Vector2(targetPosition.x, targetPosition.y) - (Vector2)transform.position;
+            if (positionDifferece == Vector2.zero)
+            {
+                return true;
+            }
+            Vector2 increment = positionDifferece.normalized * Time.fixedDeltaTime * movementSpeed;
+            if (increment.sqrMagnitude < positionDifferece.sqrMagnitude)
+            {
+                transform.position = ((Vector2)transform.position + increment);
+                return false;
+            }
+            else
+            {
+                //end movement
+                transform.position = (targetPosition);
+                return true;
+            }
+        }
+
+    }
 }

@@ -12,7 +12,7 @@ public class SpriteAnimator : MonoBehaviour
 
     float animationTimer = 0f;
 
-    private void Start()
+    private void Awake()
     {
         currentClip = clipList.GetClipByReference(null);
     }
@@ -30,6 +30,6 @@ public class SpriteAnimator : MonoBehaviour
 
     public void ChangeClipByReferecen(ScriptableObject reference)
     {
-        currentClip = clipList.GetClipByReference(null);
+        currentClip = clipList.GetClipByReference(reference);
     }
 }

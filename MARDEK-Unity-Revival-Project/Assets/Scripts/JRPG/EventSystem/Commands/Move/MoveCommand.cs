@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCommand : OngoingCommand
+namespace JRPG
 {
-    [SerializeField] Movement target = null;
-    [SerializeField] List<MoveDirection> moves;
-
-    public override bool IsOngoing()
+    public class MoveCommand : OngoingCommand
     {
-        return target.isMoving;
-    }
+        [SerializeField] Movement target = null;
+        [SerializeField] List<MoveDirection> moves;
 
-    public override void Trigger()
-    {
-        target.EnqueueMoves(moves);
+        public override bool IsOngoing()
+        {
+            return target.isMoving;
+        }
+
+        public override void Trigger()
+        {
+            target.EnqueueMoves(moves);
+        }
     }
 }

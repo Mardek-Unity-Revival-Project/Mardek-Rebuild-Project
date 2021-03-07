@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 namespace JRPG
 {
-    [RequireComponent(typeof(BoxCollider2D))]
-    [RequireComponent(typeof(GridObject))]
     public class Event : MonoBehaviour
     {
         [Header("Trigger Methods")]
