@@ -54,29 +54,44 @@ namespace JRPG
                     return;
                 }                    
                 commandsBeingExecuted = new List<CommandBase>(commands);
-                TryTriggerNextCommand();
+                TriggerCurrentCommand();
             }
             else
                 Debug.LogError("You can only trigger events when the game is playing");
         }
 
-        void TryTriggerNextCommand()
+        void TriggerNextCommand()
         {
-            if (currentCommand)
-            {
-                currentCommand.Trigger();
-                CheckOngoingCommand();
-            }
+            RemoveCommandAt0();
+            TriggerCurrentCommand();
+        }
+
+        void TriggerCurrentCommand()
+        {
+            if (currentCommand == null)
+                return;
+            currentCommand.Trigger();
+            CheckOngoingCommand();
         }
 
         void CheckOngoingCommand()
         {
             // check ongoing (current event is non-null and can be converted to OngoingCommand)
             OngoingCommand command = currentCommand as OngoingCommand;
-            if (command == null || command.IsOngoing() == false || command.waitForExecutionEnd == false)
+            if (command)
             {
-                RemoveCommandAt0();
-                TryTriggerNextCommand();
+                if(command.IsOngoing() == false || command.waitForExecutionEnd == false)
+                {
+                    TriggerNextCommand();
+                }
+                else
+                {
+                    command.Update();
+                }
+            }
+            else
+            {
+                TriggerNextCommand();
             }
         }
 
