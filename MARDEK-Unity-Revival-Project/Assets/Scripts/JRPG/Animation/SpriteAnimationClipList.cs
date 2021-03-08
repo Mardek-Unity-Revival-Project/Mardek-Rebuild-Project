@@ -4,9 +4,17 @@ using UnityEngine;
 
 namespace JRPG
 {
+    [CreateAssetMenu(menuName = "JRPG/AnimationClipList")]
     public class SpriteAnimationClipList : ScriptableObject
     {
         [SerializeField] List<SpriteAnimationClip> clips = new List<SpriteAnimationClip>();
+
+        public SpriteAnimationClip GetClipByIndex(int i)
+        {
+            if (clips.Count > i)
+                return clips[i];
+            return null;
+        }
 
         public SpriteAnimationClip GetClipByReference(MoveDirection reference)
         {
@@ -18,20 +26,6 @@ namespace JRPG
                     return clip;
             }                    
             return null;
-        }
-    }
-
-    [System.Serializable]
-    public class SpriteAnimationClip
-    {
-        [SerializeField] public MoveDirection indexBySOReference = null;
-        [SerializeField] float durationMultiplier = 1f;
-        [SerializeField] List<Sprite> spriteSequence = new List<Sprite>();
-
-        public Sprite GetSprite(float time)
-        {
-            int index = Mathf.FloorToInt(spriteSequence.Count * time / durationMultiplier);
-            return spriteSequence[index];
         }
     }
 }

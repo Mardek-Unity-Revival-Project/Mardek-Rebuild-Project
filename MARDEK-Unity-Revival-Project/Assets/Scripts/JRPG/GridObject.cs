@@ -3,6 +3,7 @@ using UnityEngine;
 namespace JRPG
 {
     [ExecuteInEditMode]
+    [SelectionBase]
     public class GridObject : MonoBehaviour
     {
         private void OnValidate()

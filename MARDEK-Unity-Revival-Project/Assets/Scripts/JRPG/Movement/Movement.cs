@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace JRPG
 {
-    [RequireComponent(typeof(GridObject))]
+    //[RequireComponent(typeof(GridObject))]
     public class Movement : MonoBehaviour
     {
         [SerializeField] float movementSpeed = 1f;

@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace JRPG
 {
-    public class EventTrigger : MonoBehaviour
+    public class JRPGEventTrigger : MonoBehaviour
     {
         [SerializeField] Event _event = null;
 
