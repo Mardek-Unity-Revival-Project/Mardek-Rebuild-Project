@@ -22,4 +22,17 @@ public class Utilities2D
         }
         return pos;
     }
+
+    //public static LayerMask GetCollisionMask(GameObject gameObject)
+    //{
+    //    int myLayer = gameObject.layer;
+    //    int layerMask = 0;
+    //    for (int i = 0; i<32; i++)
+    //    {
+    //        if (!Physics.GetIgnoreLayerCollision(myLayer, i))
+    //        {
+    //            layerMask = layerMask | 1 << i;
+    //        }
+    //    }
+    //}
 }

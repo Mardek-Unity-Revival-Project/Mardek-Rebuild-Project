@@ -24,18 +24,25 @@ namespace JRPG
 
         private void Update()
         {
-            if (currentClip == null)
-                return;
-
             animationTimer += animationSpeed * Time.deltaTime;
             while (animationTimer > 1)
                 animationTimer -= 1;
-            spriteRenderer.sprite = currentClip.GetSprite(animationTimer);
+            UpdateSprite();
+        }
+
+        void UpdateSprite()
+        {
+            if(currentClip != null)
+                spriteRenderer.sprite = currentClip.GetSprite(animationTimer);
         }
 
         public void ChangeClipByReferecen(MoveDirection reference)
         {
-            currentClip = clipList.GetClipByReference(reference);
+            SpriteAnimationClip nextClip = clipList.GetClipByReference(reference);
+            if(currentClip != nextClip)
+                animationTimer = 0;
+            currentClip = nextClip;
+            UpdateSprite();
         }
     }
 }
