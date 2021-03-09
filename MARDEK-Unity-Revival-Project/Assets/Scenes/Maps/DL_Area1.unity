@@ -224,7 +224,7 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1248200197}
+      - m_Target: {fileID: 1248200202}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -236,6 +236,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1089494148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31ad1e34f546c340bf85a02096374f6, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  _waitExcecutionEnd: 1
+  dialogues:
+  - {fileID: 1243857273}
 --- !u!1001 &1195594341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,9 +332,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4524198ac264da046815598c35039adc, type: 3}
---- !u!61 &1248200197 stripped
+--- !u!114 &1243857273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ca26e8c41c6bf45bc17b3afd5463ed, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
+  dialogueLines:
+  - Save Crystal WIP
+--- !u!61 &1248200202 stripped
 BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2819716778804588787, guid: 44cb51e1864b5cc41b320b3fed9be8b3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6510736911221117555, guid: 44cb51e1864b5cc41b320b3fed9be8b3, type: 3}
   m_PrefabInstance: {fileID: 4429947451694562766}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1611162745
@@ -6680,6 +6710,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 93526961, guid: d1dcdf008fb60a340a9abd2867b93fc8, type: 3}
+      propertyPath: commands.Array.data[0]
+      value: 
+      objectReference: {fileID: 1089494148}
     - target: {fileID: 2801880452226114186, guid: d1dcdf008fb60a340a9abd2867b93fc8, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -6740,10 +6774,6 @@ PrefabInstance:
     - target: {fileID: 774406556250587404, guid: 44cb51e1864b5cc41b320b3fed9be8b3, type: 3}
       propertyPath: m_Name
       value: Door_2Height
-      objectReference: {fileID: 0}
-    - target: {fileID: 4660755693881305298, guid: 44cb51e1864b5cc41b320b3fed9be8b3, type: 3}
-      propertyPath: commands.Array.size
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4660755693881305298, guid: 44cb51e1864b5cc41b320b3fed9be8b3, type: 3}
       propertyPath: commands.Array.data[0]

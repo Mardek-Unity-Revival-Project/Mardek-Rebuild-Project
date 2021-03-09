@@ -39,7 +39,7 @@ namespace JRPG
             {
                 if (currentCommand)
                 {
-                    Debug.LogError("Can't trigger an ongoing event");
+                    Debug.LogError("This event is ongoing already, can't re-trigger it");
                     return;
                 }                    
                 commandsBeingExecuted = new List<CommandBase>(commands);
