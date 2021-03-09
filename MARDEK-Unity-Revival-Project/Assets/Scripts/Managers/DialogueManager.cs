@@ -33,7 +33,18 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            ResetManager();
+        }
+    }
+
+    private void ResetManager()
+    {
+        isOngoing = false;
+        dialogueIndex = 0;
+        lineIndex = 0;
+        dialogues = new List<Dialogue>();
     }
 
     [ContextMenu("OnGoToNextLine")]
@@ -86,7 +97,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        isOngoing = false;
+        ResetManager();
         canvas.SetActive(false);
     }
 

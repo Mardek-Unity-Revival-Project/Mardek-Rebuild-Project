@@ -8,19 +8,18 @@ namespace JRPG
         [SerializeField] Event _event = null;
 
         [Header("Trigger Methods")]
-        //[SerializeField] bool onInteractionKey = false;
-        //[SerializeField] bool onPlayerTouch = false;
         [SerializeField] bool onStart = false;
+        [SerializeField] bool onInteractionKey = false;
+        //[SerializeField] bool onPlayerTouch = false;
 
         void Start()
         {
-            if (onStart)
-                _event.Trigger();
+            if (onStart) _event.Trigger();
         }
 
         public void Interact()
         {
-            _event.Trigger();
+            if(onInteractionKey) _event.Trigger();
         }
     }
 }

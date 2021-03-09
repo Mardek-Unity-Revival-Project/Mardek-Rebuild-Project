@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2859971442608448862}
   - component: {fileID: 4872008754745725967}
+  - component: {fileID: 25316847360606543}
   m_Layer: 0
   m_Name: InMapParty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2859971442608448862
 Transform:
@@ -46,6 +47,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inMapCharacters:
   - {fileID: 1161224228780747505}
+--- !u!114 &25316847360606543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859971442608448863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271d59cc9c1d57944b15fb4357da0e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4818007647286671874
 PrefabInstance:
   m_ObjectHideFlags: 0
