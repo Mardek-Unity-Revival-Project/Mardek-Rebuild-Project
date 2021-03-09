@@ -9,75 +9,78 @@ namespace JRPG
     public class Movement : MonoBehaviour
     {
         [SerializeField] float movementSpeed = 1f;
+        [SerializeField] ColliderHelper colliderHelper = null;
         [SerializeField] SpriteAnimator animator = null;
 
-        
         public bool isMoving { get; private set; }
         MoveDirection currentDirection = null;
         Vector2 targetPosition = Vector2.zero;
         Queue<MoveDirection> queuedMoves = new Queue<MoveDirection>();
 
-        new Collider2D collider = null;
-        ContactFilter2D filter = default;
-        
+
         private void Awake()
         {
-            targetPosition = transform.position;
-            collider = GetComponent<Collider2D>();
-            if (collider)
-            {
-                filter.useLayerMask = true;
-                LayerMask mask = Physics2D.GetLayerCollisionMask(gameObject.layer);
-                filter.layerMask = mask;
-            }
+            targetPosition = transform.position;            
         }
 
         public void EnqueueMoves(List<MoveDirection> directions)
         {
             foreach (MoveDirection direction in directions)
                 queuedMoves.Enqueue(direction);
-            TryToStartMove();
+            UpdateMoveStatus();
         }
 
-        public void Move(MoveDirection direction)
+        public void MoveInDirectionOnce(MoveDirection direction)
         {
-            if (isMoving)
-                return;
             queuedMoves = new Queue<MoveDirection>();
-            queuedMoves.Enqueue(direction);
-            TryToStartMove();
+            if(direction != null)
+            {
+                queuedMoves.Enqueue(direction);
+                UpdateMoveStatus();
+            }
         }
 
         private void FixedUpdate()
         {
             if (isMoving)
             {
-                bool previousIsMoving = isMoving;
-                isMoving = !MoveToFixed(transform, targetPosition, movementSpeed);
-                TryToStartMove();
+                isMoving = !MoveToPosition(transform, targetPosition, movementSpeed, Time.fixedDeltaTime);
+                UpdateMoveStatus();
             }
         }
 
-        void TryToStartMove()
-        {
-            // wont call get next if isMoving is true
-            bool hasNextMove = (isMoving == false) && GetNextTargetPosition();
-            MoveColliderToPosition(targetPosition);
-
-            if (ColliderOverlaps() == false)
+        void UpdateMoveStatus()
+        {            
+            if (isMoving == false)
             {
-                if (hasNextMove)
+                bool shouldMove = ShouldMove();
+                UpdateAnimatorWithCurrentDirection();
+                if (shouldMove)
                 {
-                    isMoving = true; 
-                    UpdateAnimator();
+                    isMoving = true;
+                }
+                else
+                {
+                    colliderHelper.OffsetCollider(Vector2.zero);
+                    StopAnimator();
                 }
             }
             else
-                MoveColliderToPosition(transform.position);
+                colliderHelper.OffsetCollider(targetPosition - (Vector2)transform.position);
+        }
 
-            if (isMoving == false)
-                UpdateAnimator();
-
+        bool ShouldMove()
+        {
+            bool hasNextMove = GetNextTargetPosition();
+            if (hasNextMove)
+            {
+                colliderHelper.OffsetCollider(targetPosition - (Vector2)transform.position);
+                if (colliderHelper.Overlaping().Count == 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         bool GetNextTargetPosition()
@@ -85,44 +88,32 @@ namespace JRPG
             if(queuedMoves.Count > 0)
             {
                 currentDirection = queuedMoves.Dequeue();
+                if (currentDirection == null)
+                    return false;
                 targetPosition = (Vector2)transform.position + currentDirection.value;
                 return true;
             }
             return false;
         }
 
-        private void UpdateAnimator()
+        private void UpdateAnimatorWithCurrentDirection()
         {
-            if (animator == null)
-                return;
-            animator.ChangeClipByReferecen(currentDirection);
-            if(!isMoving)
-                animator.ChangeClipByReferecen(null);
+            if (animator) animator.PlayClipByMoveDirectionReference(currentDirection);
         }
 
-        private void MoveColliderToPosition(Vector2 position)
+        void StopAnimator()
         {
-            if (collider)
-                collider.offset = position - (Vector2)transform.position;
+            if (animator) animator.StopCurrentAnimation();
         }
 
-        private bool ColliderOverlaps()
-        {
-            if (collider == null)
-                return false;
-            Collider2D[] results = new Collider2D[64];
-            int n = collider.OverlapCollider(filter, results);
-            return (n > 0);
-        }
-
-        bool MoveToFixed(Transform transform, Vector2 targetPosition, float movementSpeed)
+        bool MoveToPosition(Transform transform, Vector2 targetPosition, float movementSpeed, float deltaTime)
         {
             Vector2 positionDifferece = new Vector2(targetPosition.x, targetPosition.y) - (Vector2)transform.position;
             if (positionDifferece == Vector2.zero)
             {
                 return true;
             }
-            Vector2 increment = positionDifferece.normalized * Time.fixedDeltaTime * movementSpeed;
+            Vector2 increment = positionDifferece.normalized * deltaTime * movementSpeed;
             if (increment.sqrMagnitude < positionDifferece.sqrMagnitude)
             {
                 transform.position = ((Vector2)transform.position + increment);

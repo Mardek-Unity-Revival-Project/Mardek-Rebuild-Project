@@ -25,8 +25,11 @@ namespace JRPG
         private void OnValidate()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
-            currentClip = clipList.GetClipByIndex(0);
-            UpdateSprite(0);
+            currentClip = clipList?.GetClipByIndex(0);
+            if (currentClip == null)
+                spriteRenderer.sprite = null;
+            else
+                UpdateSprite(0);
         }
 
         private void Update()
@@ -49,22 +52,32 @@ namespace JRPG
             }
         }
 
-        void UpdateSprite(float time)
+        void UpdateSprite(float animationRatio)
         {
             if(currentClip != null)
-                spriteRenderer.sprite = currentClip.GetSprite(time);
+                spriteRenderer.sprite = currentClip.GetSprite(animationRatio);
         }
 
-        public void ChangeClipByReferecen(MoveDirection reference)
+        public void StopCurrentAnimation()
         {
+            Debug.Log("stop");
+            isAnimating = false;
+        }
+
+        public void PlayClipByMoveDirectionReference(MoveDirection reference)
+        {
+            Debug.Log("play");
+
             SpriteAnimationClip nextClip = clipList.GetClipByReference(reference);
+
             if(nextClip != null)
             {
+                bool resetAnim = nextClip != currentClip;
+                currentClip = nextClip;
                 isAnimating = true;
-                animationTimer = 0;
+                if(resetAnim)
+                    UpdateSprite(0);
             }
-            currentClip = nextClip;
-            UpdateSprite(0);
         }
     }
 }

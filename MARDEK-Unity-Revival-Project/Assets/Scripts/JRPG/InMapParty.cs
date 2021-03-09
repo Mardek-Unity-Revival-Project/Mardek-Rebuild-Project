@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+[SelectionBase]
 public class InMapParty : MonoBehaviour
 {
     static InMapParty instance;
@@ -21,6 +22,7 @@ public class InMapParty : MonoBehaviour
             for(int i = 0; i < instance.inMapCharacters.Count; i++)
             {
                 instance.inMapCharacters[i].transform.position = position;
+                GameFile.AddProgress(1);
             }
         }
         else

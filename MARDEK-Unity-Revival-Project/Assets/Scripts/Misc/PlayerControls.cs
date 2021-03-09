@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/PlayerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Misc/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
@@ -20,7 +20,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""6c609b02-eeaf-4e17-ac5a-aeb8ed3508b8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",

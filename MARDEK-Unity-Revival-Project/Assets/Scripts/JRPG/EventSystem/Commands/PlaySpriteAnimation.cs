@@ -16,7 +16,7 @@ namespace JRPG
 
         public override void Trigger()
         {
-            targetAnimator.ChangeClipByReferecen(animationDirection);   
+            targetAnimator.PlayClipByMoveDirectionReference(animationDirection);   
         }
     }
 }

@@ -12,9 +12,11 @@ namespace JRPG
         public void OnMovementInput(InputAction.CallbackContext ctx)
         {
             Vector2 direction = ctx.ReadValue<Vector2>();
+
             if (direction.x == 0 || direction.y == 0)
                 desiredDirection = AproximanteDirectionByVector2(direction);
-                
+            else
+                desiredDirection = null;
         }
 
         MoveDirection AproximanteDirectionByVector2(Vector2 vector)
@@ -36,13 +38,9 @@ namespace JRPG
             return null;
         }
 
-        private void Update()
+        private void LateUpdate()
         {
-            if(desiredDirection != null)
-            {
-                controlledMovement.Move(desiredDirection);
-                //desiredDirection = null;
-            }
+            if (controlledMovement) controlledMovement.MoveInDirectionOnce(desiredDirection);
         }
     }
 }
