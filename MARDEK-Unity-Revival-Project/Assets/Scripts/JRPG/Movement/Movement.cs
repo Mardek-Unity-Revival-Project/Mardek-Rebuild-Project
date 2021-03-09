@@ -34,6 +34,8 @@ namespace JRPG
 
         public void MoveInDirectionOnce(MoveDirection direction)
         {
+            if (isMoving)
+                return;
             queuedMoves = new Queue<MoveDirection>();
             if(direction != null)
             {
@@ -108,7 +110,7 @@ namespace JRPG
 
         void StopAnimator()
         {
-            if (animator) animator.StopCurrentAnimation();
+            if (animator) animator.StopCurrentAnimation(true);
         }
 
         bool MoveToPosition(Transform transform, Vector2 targetPosition, float movementSpeed, float deltaTime)

@@ -8,19 +8,14 @@ namespace JRPG
     public class SpriteAnimator : MonoBehaviour
     {
         [SerializeField] float animationSpeed = 1f;
-        [ExtendedSO]
-        [SerializeField] SpriteAnimationClipList clipList = null;
+        [SerializeField] bool _isAnimating = false;
+        [ExtendedSO] [SerializeField] SpriteAnimationClipList clipList = null;
+        
+        public bool isAnimating { get { return _isAnimating; } private set { _isAnimating = value; } }
         
         SpriteAnimationClip currentClip = null;
         SpriteRenderer spriteRenderer = null;
-
-        public bool isAnimating { get; private set; }
         float animationTimer = 0f;
-
-        private void Awake()
-        {
-            currentClip = clipList.GetClipByReference(null);
-        }
 
         private void OnValidate()
         {
@@ -58,15 +53,15 @@ namespace JRPG
                 spriteRenderer.sprite = currentClip.GetSprite(animationRatio);
         }
 
-        public void StopCurrentAnimation()
+        public void StopCurrentAnimation(bool resetToFirstSprite)
         {
-            //Debug.Log("stop");
             isAnimating = false;
+            if(resetToFirstSprite)
+                UpdateSprite(0);
         }
 
         public void PlayClipByMoveDirectionReference(MoveDirection reference)
         {
-            //Debug.Log("play");
             SpriteAnimationClip nextClip = clipList.GetClipByReference(reference);
 
             if(nextClip != null)
