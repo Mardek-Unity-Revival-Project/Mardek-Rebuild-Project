@@ -52,6 +52,7 @@ namespace JRPG
         {
             if (isMoving)
             {
+                bool previousIsMoving = isMoving;
                 isMoving = !MoveToFixed(transform, targetPosition, movementSpeed);
                 TryToStartMove();
             }
@@ -66,12 +67,17 @@ namespace JRPG
             if (ColliderOverlaps() == false)
             {
                 if (hasNextMove)
-                    isMoving = true;
+                {
+                    isMoving = true; 
+                    UpdateAnimator();
+                }
             }
             else
                 MoveColliderToPosition(transform.position);
 
-            UpdateAnimator();
+            if (isMoving == false)
+                UpdateAnimator();
+
         }
 
         bool GetNextTargetPosition()
