@@ -6,11 +6,6 @@ namespace JRPG
     [SelectionBase]
     public class GridObject : MonoBehaviour
     {
-        private void OnValidate()
-        {
-            enabled = true;
-        }
-
         void Update()
         {
             if (!Application.isPlaying)
@@ -19,7 +14,9 @@ namespace JRPG
 
         void EditorUpdate()
         {
+            float z = transform.position.z;
             Vector3 pos = Utilities2D.SnapPositionToGrid(transform.position);
+            pos.z = z;
             if (transform.position != pos)
                 transform.position = pos;
         }

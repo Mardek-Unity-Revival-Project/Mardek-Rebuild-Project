@@ -34,7 +34,7 @@ public class ColliderHelper : MonoBehaviour
         Collider2D[] colliders = new Collider2D[64];
         collider.OverlapCollider(filter, colliders);
         foreach (Collider2D c in colliders)
-            if (c != null)
+            if (c != null && c.isActiveAndEnabled)
                 results.Add(c);
         return results;
     }

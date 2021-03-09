@@ -13,9 +13,9 @@ namespace JRPG
         [SerializeField] float durationMultiplier = 1f;
         [SerializeField] List<Sprite> spriteSequence = new List<Sprite>();
 
-        public Sprite GetSprite(float time)
+        public Sprite GetSprite(float animationRatio)
         {
-            int index = Mathf.FloorToInt(spriteSequence.Count * time / durationMultiplier);
+            int index = Mathf.FloorToInt(spriteSequence.Count * animationRatio / durationMultiplier);
             return spriteSequence[index];
         }
     }

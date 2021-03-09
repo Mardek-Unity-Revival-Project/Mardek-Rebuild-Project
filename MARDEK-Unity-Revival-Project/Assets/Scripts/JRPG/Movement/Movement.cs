@@ -19,7 +19,6 @@ namespace JRPG
         Vector2 targetPosition = Vector2.zero;
         Queue<MoveDirection> queuedMoves = new Queue<MoveDirection>();
 
-
         private void Awake()
         {
             targetPosition = transform.position;            

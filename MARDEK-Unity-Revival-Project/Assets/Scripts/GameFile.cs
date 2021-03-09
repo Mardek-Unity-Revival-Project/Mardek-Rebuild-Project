@@ -24,7 +24,8 @@ public class GameFile : ScriptableObject
 
     public static void AddProgress(int i)
     {
-        instance.progress += i;
+        if(instance)
+            instance.progress += i;
     }
 
     [ContextMenu("LogInstance")]
