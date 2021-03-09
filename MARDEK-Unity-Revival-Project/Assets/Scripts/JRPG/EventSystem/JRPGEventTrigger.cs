@@ -17,5 +17,10 @@ namespace JRPG
             if (onStart)
                 _event.Trigger();
         }
+
+        public void Interact()
+        {
+            _event.Trigger();
+        }
     }
 }

@@ -60,14 +60,13 @@ namespace JRPG
 
         public void StopCurrentAnimation()
         {
-            Debug.Log("stop");
+            //Debug.Log("stop");
             isAnimating = false;
         }
 
         public void PlayClipByMoveDirectionReference(MoveDirection reference)
         {
-            Debug.Log("play");
-
+            //Debug.Log("play");
             SpriteAnimationClip nextClip = clipList.GetClipByReference(reference);
 
             if(nextClip != null)

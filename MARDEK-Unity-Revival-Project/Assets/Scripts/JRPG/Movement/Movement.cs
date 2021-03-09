@@ -9,11 +9,13 @@ namespace JRPG
     public class Movement : MonoBehaviour
     {
         [SerializeField] float movementSpeed = 1f;
-        [SerializeField] ColliderHelper colliderHelper = null;
+
+        [SerializeField] ColliderHelper _colliderHelper = null;
         [SerializeField] SpriteAnimator animator = null;
 
+        public ColliderHelper colliderHelper { get { return _colliderHelper; } }
         public bool isMoving { get; private set; }
-        MoveDirection currentDirection = null;
+        public MoveDirection currentDirection { get; private set; }
         Vector2 targetPosition = Vector2.zero;
         Queue<MoveDirection> queuedMoves = new Queue<MoveDirection>();
 
@@ -61,12 +63,13 @@ namespace JRPG
                 }
                 else
                 {
-                    colliderHelper.OffsetCollider(Vector2.zero);
+                    if (colliderHelper) colliderHelper.OffsetCollider(Vector2.zero);
                     StopAnimator();
                 }
             }
             else
-                colliderHelper.OffsetCollider(targetPosition - (Vector2)transform.position);
+                if(colliderHelper)
+                    colliderHelper.OffsetCollider(targetPosition - (Vector2)transform.position);
         }
 
         bool ShouldMove()
@@ -74,6 +77,8 @@ namespace JRPG
             bool hasNextMove = GetNextTargetPosition();
             if (hasNextMove)
             {
+                if (colliderHelper == null)
+                    return true;
                 colliderHelper.OffsetCollider(targetPosition - (Vector2)transform.position);
                 if (colliderHelper.Overlaping().Count == 0)
                 {

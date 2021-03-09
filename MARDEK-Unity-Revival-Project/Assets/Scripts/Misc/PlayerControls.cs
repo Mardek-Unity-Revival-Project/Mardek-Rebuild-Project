@@ -25,6 +25,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""51f5ebf4-417f-4b8d-b098-451de96cf095"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -82,6 +90,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""505a3d4e-dfca-4ddb-add0-f61112ae57cc"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -91,6 +110,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // DefaultMap
         m_DefaultMap = asset.FindActionMap("DefaultMap", throwIfNotFound: true);
         m_DefaultMap_Movement = m_DefaultMap.FindAction("Movement", throwIfNotFound: true);
+        m_DefaultMap_Interaction = m_DefaultMap.FindAction("Interaction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,11 +161,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_DefaultMap;
     private IDefaultMapActions m_DefaultMapActionsCallbackInterface;
     private readonly InputAction m_DefaultMap_Movement;
+    private readonly InputAction m_DefaultMap_Interaction;
     public struct DefaultMapActions
     {
         private @PlayerControls m_Wrapper;
         public DefaultMapActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_DefaultMap_Movement;
+        public InputAction @Interaction => m_Wrapper.m_DefaultMap_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_DefaultMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -158,6 +180,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnMovement;
+                @Interaction.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnInteraction;
+                @Interaction.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnInteraction;
+                @Interaction.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnInteraction;
             }
             m_Wrapper.m_DefaultMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -165,6 +190,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Interaction.started += instance.OnInteraction;
+                @Interaction.performed += instance.OnInteraction;
+                @Interaction.canceled += instance.OnInteraction;
             }
         }
     }
@@ -172,5 +200,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IDefaultMapActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
     }
 }
