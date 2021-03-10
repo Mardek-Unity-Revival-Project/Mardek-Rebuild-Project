@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _event: {fileID: 93526961}
   onStart: 0
+  onInteractionKey: 0
 --- !u!114 &93526961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +84,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 353c081689b896646b1a47b47b492ec7, type: 3}
+    - target: {fileID: 3189322718074030912, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189322718074030912, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 772041843
+      objectReference: {fileID: 0}
     - target: {fileID: 3189322718074030912, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
