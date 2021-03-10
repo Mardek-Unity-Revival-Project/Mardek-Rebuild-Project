@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdbda093b0e7f8459fd56b3b67d8276, type: 3}
+  m_Name: Torch
+  m_EditorClassIdentifier: 
+  clips:
+  - indexBySOReference: {fileID: 0}
+    _loop: 1
+    durationMultiplier: 1
+    spriteSequence:
+    - {fileID: 21300000, guid: 4638ec5759a2e414e80c9868c9b28c76, type: 3}
+    - {fileID: 21300000, guid: b6915ad5db7874249886d6927c603287, type: 3}
+    - {fileID: 21300000, guid: ed27a3e2e24f0a647a1b1eebd8e95b1e, type: 3}
+    - {fileID: 21300000, guid: 5cea857c1382f8d40a778b3d001e18c8, type: 3}
