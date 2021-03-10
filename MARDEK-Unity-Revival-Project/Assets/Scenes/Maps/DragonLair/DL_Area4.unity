@@ -237,6 +237,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4524198ac264da046815598c35039adc, type: 3}
+--- !u!114 &44319723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d350eb06de3fd4b99e34a9eb6e543f, type: 3}
+  m_Name: (Instance)
+  m_EditorClassIdentifier: 
+  scene:
+    sceneAsset: {fileID: 102900000, guid: db3d379e88afc7c4ca0b98ccd8d6c1ec, type: 3}
+    scenePath: Assets/Scenes/Maps/DragonLair/DL_Area3.unity
+  waypoint: {fileID: 0}
 --- !u!1 &107479241
 GameObject:
   m_ObjectHideFlags: 0
@@ -13992,6 +14008,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_2Height
       objectReference: {fileID: 0}
+    - target: {fileID: 3197827636559488704, guid: 44cb51e1864b5cc41b320b3fed9be8b3, type: 3}
+      propertyPath: onInteractionKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660755693881305298, guid: 44cb51e1864b5cc41b320b3fed9be8b3, type: 3}
+      propertyPath: commands.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660755693881305298, guid: 44cb51e1864b5cc41b320b3fed9be8b3, type: 3}
+      propertyPath: commands.Array.data[0]
+      value: 
+      objectReference: {fileID: 44319723}
     - target: {fileID: 7411704889919389341, guid: 44cb51e1864b5cc41b320b3fed9be8b3, type: 3}
       propertyPath: m_RootOrder
       value: 1
