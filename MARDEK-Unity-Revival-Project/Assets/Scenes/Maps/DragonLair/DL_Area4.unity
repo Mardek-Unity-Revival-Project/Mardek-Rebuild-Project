@@ -252,7 +252,7 @@ MonoBehaviour:
   scene:
     sceneAsset: {fileID: 102900000, guid: db3d379e88afc7c4ca0b98ccd8d6c1ec, type: 3}
     scenePath: Assets/Scenes/Maps/DragonLair/DL_Area3.unity
-  waypoint: {fileID: 0}
+  waypoint: {fileID: 11400000, guid: 842e83eeb0e1db24484fdec1314e5d7e, type: 2}
 --- !u!1 &107479241
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ Transform:
   m_Children:
   - {fileID: 1551307993}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &227735362
 PrefabInstance:
@@ -354,6 +354,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52b234cf4c402414a8008dbdcb3ab9c9, type: 3}
+--- !u!1001 &1026024413
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603034590301548658, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: thisWaypoint
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f9b2ae1276af9e4c99574865a536c61, type: 2}
+    - target: {fileID: 2603034590301548669, guid: e6596d43268899347a1a39df54914f58, type: 3}
+      propertyPath: m_Name
+      value: Waypoint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6596d43268899347a1a39df54914f58, type: 3}
 --- !u!1001 &1111953421
 PrefabInstance:
   m_ObjectHideFlags: 0
