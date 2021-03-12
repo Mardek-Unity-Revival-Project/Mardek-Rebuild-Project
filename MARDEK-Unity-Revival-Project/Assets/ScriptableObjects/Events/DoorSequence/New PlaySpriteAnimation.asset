@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e895bba6dc3e645825653af7d89099, type: 3}
-  m_Name: DL_2 top door
+  m_Script: {fileID: 11500000, guid: 468ab9e89b061f54f9c29f99c3df2626, type: 3}
+  m_Name: New PlaySpriteAnimation
   m_EditorClassIdentifier: 
+  _waitExcecutionEnd: 1
+  targetAnimator: {fileID: 0}
+  animationDirection: {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
