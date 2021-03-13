@@ -60,7 +60,6 @@ namespace JRPG
                 if (shouldMove)
                 {
                     isMoving = true;
-                    UpdateAnimatorWithCurrentDirection();
                 }
                 else
                 {
@@ -78,6 +77,7 @@ namespace JRPG
             bool hasNextMove = GetNextTargetPosition();
             if (hasNextMove)
             {
+                UpdateAnimatorWithCurrentDirection();
                 if (colliderHelper == null)
                     return true;
                 colliderHelper.OffsetCollider(targetPosition - (Vector2)transform.position);
