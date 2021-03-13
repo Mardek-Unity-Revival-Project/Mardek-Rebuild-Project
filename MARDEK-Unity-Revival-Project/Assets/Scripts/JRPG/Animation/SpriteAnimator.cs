@@ -15,7 +15,7 @@ namespace JRPG
         
         SpriteAnimationClip currentClip = null;
         SpriteRenderer spriteRenderer = null;
-        float animationTimer = 0f;
+        float animationRatio = 0f;
 
         private void OnValidate()
         {
@@ -33,45 +33,47 @@ namespace JRPG
             {
                 if (isAnimating)
                 {
-                    animationTimer += animationSpeed * Time.deltaTime;
-                    bool endAnimation = !currentClip.loop && animationTimer > 1;
-                    if(endAnimation)
+                    animationRatio += animationSpeed * Time.deltaTime;
+                    bool endAnimation = !currentClip.loop && animationRatio > 1;
+                    if (endAnimation)
+                    {
                         isAnimating = false;
+                        animationRatio = 0;
+                    }
                     else
                     {
-                        while (animationTimer > 1)
-                            animationTimer -= 1;
-                        UpdateSprite(animationTimer);
+                        UpdateSprite(animationRatio);
+                        while (animationRatio > 1)
+                            animationRatio -= 1;
                     }
                 }                
             }
         }
 
-        void UpdateSprite(float animationRatio)
+        void UpdateSprite(float _animationRatio)
         {
             if(currentClip != null)
-                spriteRenderer.sprite = currentClip.GetSprite(animationRatio);
+                spriteRenderer.sprite = currentClip.GetSprite(_animationRatio);
         }
 
-        public void StopCurrentAnimation(bool resetToFirstSprite)
+        public void StopCurrentAnimation(float forceAnimationRatio)
+        {
+            StopCurrentAnimation();
+            animationRatio = forceAnimationRatio;
+            UpdateSprite(animationRatio);
+        }
+
+        public void StopCurrentAnimation()
         {
             isAnimating = false;
-            if(resetToFirstSprite)
-                UpdateSprite(0);
         }
 
         public void PlayClipByMoveDirectionReference(MoveDirection reference)
         {
             SpriteAnimationClip nextClip = clipList.GetClipByReference(reference);
-
-            if(nextClip != null)
-            {
-                bool resetAnim = nextClip != currentClip;
-                currentClip = nextClip;
-                isAnimating = true;
-                if(resetAnim)
-                    UpdateSprite(0);
-            }
+            currentClip = nextClip;
+            isAnimating = true;                    
+            animationRatio = 0;
         }
     }
 }

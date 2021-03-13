@@ -16,6 +16,7 @@ namespace JRPG
         public Sprite GetSprite(float animationRatio)
         {
             int index = Mathf.FloorToInt(spriteSequence.Count * animationRatio / durationMultiplier);
+            index = Mathf.Clamp(index, 0, spriteSequence.Count - 1);
             return spriteSequence[index];
         }
     }

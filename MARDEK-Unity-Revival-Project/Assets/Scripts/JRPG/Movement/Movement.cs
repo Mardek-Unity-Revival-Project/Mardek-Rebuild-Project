@@ -57,10 +57,10 @@ namespace JRPG
             if (isMoving == false)
             {
                 bool shouldMove = ShouldMove();
-                UpdateAnimatorWithCurrentDirection();
                 if (shouldMove)
                 {
                     isMoving = true;
+                    UpdateAnimatorWithCurrentDirection();
                 }
                 else
                 {
@@ -104,12 +104,14 @@ namespace JRPG
 
         private void UpdateAnimatorWithCurrentDirection()
         {
+            Debug.Log("play");
             if (animator) animator.PlayClipByMoveDirectionReference(currentDirection);
         }
 
         void StopAnimator()
         {
-            if (animator) animator.StopCurrentAnimation(true);
+            Debug.Log("stop");
+            if (animator) animator.StopCurrentAnimation(1); //end with last sprite
         }
 
         bool MoveToPosition(Transform transform, Vector2 targetPosition, float movementSpeed, float deltaTime)
