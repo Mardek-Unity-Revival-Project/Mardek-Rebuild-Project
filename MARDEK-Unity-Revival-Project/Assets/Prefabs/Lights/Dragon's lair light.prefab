@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7155169061294506196}
   - component: {fileID: 2541447841013757433}
+  - component: {fileID: 5203063565427354936}
   m_Layer: 0
   m_Name: Dragon's lair light
   m_TagString: Untagged
@@ -82,3 +83,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5203063565427354936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305416901211941519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4bc7498799af074e8098f2317847c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerFrequency: 1
+  flickerAmplitude: {x: 0.1, y: 0.1}
