@@ -14,9 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commands:
   - id: 0
+  - id: 0
+  - id: 1
+  - id: 2
   references:
     version: 1
     00000000:
+      type: {class: , ns: , asm: }
+    00000001:
+      type: {class: PlaySpriteAnimation, ns: JRPG, asm: Assembly-CSharp}
+      data:
+        _waitExcecutionEnd: 1
+        targetAnimator: {fileID: 7774782862683153936}
+        animationDirection: {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
+    00000002:
       type: {class: Transition, ns: JRPG, asm: Assembly-CSharp}
       data:
         scene:
@@ -109,6 +120,10 @@ PrefabInstance:
       propertyPath: clipList
       value: 
       objectReference: {fileID: 11400000, guid: f098f545727c7cf45845302a3f348224, type: 2}
+    - target: {fileID: 6753876585966324207, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
+      propertyPath: animationSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7009682148586093238, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
       propertyPath: m_Name
       value: Door
@@ -120,3 +135,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7009682148586093238, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
   m_PrefabInstance: {fileID: 3917855881389142015}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7774782862683153936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6753876585966324207, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
+  m_PrefabInstance: {fileID: 3917855881389142015}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d9d51b44fad864586f36ff1de5897f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,11 +7,20 @@ namespace JRPG
 {
     public class PlayerController : MovementController
     {
+        public static int playerControllerLockValue;
 
         MoveDirection desiredDirection = null;
 
+        private void Awake()
+        {
+            playerControllerLockValue = 0;
+        }
+
         public void OnInteraction(InputAction.CallbackContext ctx)
         {
+            if (playerControllerLockValue > 0)
+                return;
+
             if (ctx.performed == false)
                 return;
             if(movement == null || movement.isMoving || movement.currentDirection == null)
@@ -42,6 +51,8 @@ namespace JRPG
         //late update to avoid race conditions with the input system calls
         private void LateUpdate()
         {
+            if (playerControllerLockValue > 0)
+                return;
             SendDirection(desiredDirection);
         }
     }

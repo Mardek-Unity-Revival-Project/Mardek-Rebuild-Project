@@ -104,13 +104,13 @@ namespace JRPG
 
         private void UpdateAnimatorWithCurrentDirection()
         {
-            Debug.Log("play");
+            //Debug.Log("play");
             if (animator) animator.PlayClipByMoveDirectionReference(currentDirection);
         }
 
         void StopAnimator()
         {
-            Debug.Log("stop");
+            //Debug.Log("stop");
             if (animator) animator.StopCurrentAnimation(1); //end with last sprite
         }
 

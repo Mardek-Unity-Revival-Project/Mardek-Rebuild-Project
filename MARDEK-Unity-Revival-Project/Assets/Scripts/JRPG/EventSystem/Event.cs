@@ -41,7 +41,7 @@ namespace JRPG
                 {
                     Debug.LogWarning("Trying to trigger event, but this event is already ongoing");
                     return;
-                }                    
+                }       
                 commandsBeingExecuted = new List<CommandBase>(commands);
                 TriggerCurrentCommand();
             }
@@ -51,6 +51,9 @@ namespace JRPG
 
         void TriggerNextCommand()
         {
+            // first unlock player based on the last command executed
+            SetPlayerLockByCurrentEventType(false); 
+            // get next command and trigger it
             RemoveCommandAt0();
             TriggerCurrentCommand();
         }
@@ -60,6 +63,7 @@ namespace JRPG
             if (currentCommand == null)
                 return;
             currentCommand.Trigger();
+            SetPlayerLockByCurrentEventType(true);
             CheckOngoingCommand();
         }
 
@@ -88,6 +92,18 @@ namespace JRPG
         {
             if (commandsBeingExecuted.Count > 0)
                 commandsBeingExecuted.RemoveAt(0);
+        }
+
+        void SetPlayerLockByCurrentEventType(bool setValue)
+        {
+            OngoingCommand cmd = currentCommand as OngoingCommand;
+            if(cmd != null && cmd.waitForExecutionEnd)
+            {
+                if(setValue == true)
+                    PlayerController.playerControllerLockValue++;
+                else
+                    PlayerController.playerControllerLockValue--;
+            }
         }
     }
 }
