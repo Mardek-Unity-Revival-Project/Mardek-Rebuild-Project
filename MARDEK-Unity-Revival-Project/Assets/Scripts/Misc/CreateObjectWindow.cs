@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-public class CreateSOWindow : EditorWindow
+public class CreateObjectWindow : EditorWindow
 {
     static List<Type> types;
     static SerializedProperty property;
-    static CreateSOWindow window;
+    static CreateObjectWindow window;
     UnityEngine.Object[] objects;
 
     private void OnGUI()
@@ -23,7 +23,7 @@ public class CreateSOWindow : EditorWindow
                     AssignNewInstance(property, type);
                     Close();
                     // TODO: remove this quickfix when a list field stop not updating itself
-                    DeselectThenReselectToRefreshInspector();
+                    // DeselectThenReselectToRefreshInspector();
                 }
             }
         }
@@ -45,16 +45,26 @@ public class CreateSOWindow : EditorWindow
 
     static void AssignNewInstance(SerializedProperty property, Type type)
     {
-        ScriptableObject newSO = CreateInstance(type);
-        newSO.name = "(Instance)" + newSO.name;
-        property.objectReferenceValue = newSO;
-        property.serializedObject.ApplyModifiedProperties(); 
-        if (property.objectReferenceValue == null)
+        if(type.IsSubclassOf(typeof(ScriptableObject)))
         {
-            // couldn't hold SO instance, save it to a .asset
-            Debug.LogWarning("An asset can't hold a reference to a non-asset instance (Type Mismatch), saving the created object as asset first");
-            SaveSOToAsset(newSO);
+            ScriptableObject newSO = CreateInstance(type); 
+            newSO.name = "(Instance)" + newSO.name;
             property.objectReferenceValue = newSO;
+            property.serializedObject.ApplyModifiedProperties(); 
+            if (property.objectReferenceValue == null)
+            {
+                // couldn't hold SO instance, save it to a .asset
+                Debug.LogWarning("An asset can't hold a reference to a non-asset instance (Type Mismatch), saving the created object as asset first");
+                SaveSOToAsset(newSO);
+                property.objectReferenceValue = newSO;
+            }
+        }
+        else
+        {
+            if(property.propertyType == SerializedPropertyType.ManagedReference)
+                property.managedReferenceValue = Activator.CreateInstance(type);
+            else
+                Debug.LogError($"can't assing managed value of {property.propertyType} type property");
         }
         property.serializedObject.ApplyModifiedProperties();
         property.serializedObject.Update();
@@ -62,6 +72,14 @@ public class CreateSOWindow : EditorWindow
 
     public static void SaveSOToAsset(ScriptableObject so)
     {
+        //string prefabPath = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage()?.assetPath;
+        //if (string.IsNullOrEmpty(prefabPath) == false)
+        //{
+        //    Debug.Log($"saving SO to prefab: {prefabPath}");
+        //    //so.hideFlags = HideFlags.HideInHierarchy;
+        //    AssetDatabase.AddObjectToAsset(so, prefabPath);
+        //    return;
+        //}
         string path = EditorUtility.SaveFilePanelInProject(so.name, $"New {so.GetType().Name}", "asset", "save scriptable object as asset");
         if (path.Length != 0)
         {
@@ -91,7 +109,7 @@ public class CreateSOWindow : EditorWindow
             {
                 if (window)
                     window.Close();
-                window = CreateInstance<CreateSOWindow>();
+                window = CreateInstance<CreateObjectWindow>();
                 window.ShowUtility();
             }
         }

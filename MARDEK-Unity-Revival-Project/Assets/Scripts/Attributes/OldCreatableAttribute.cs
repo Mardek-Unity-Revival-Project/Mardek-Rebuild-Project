@@ -5,13 +5,13 @@ using System.Reflection;
 using UnityEditor;
 #endif
 
-public class ExtendedSOAttribute : PropertyAttribute
+public class OldCreatableAttribute : PropertyAttribute
 {
 
 }
 
-[CustomPropertyDrawer(typeof(ExtendedSOAttribute), true)]
-public class ScriptableObjectDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(OldCreatableAttribute), true)]
+public class CreatableObjectDrawer : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
@@ -43,12 +43,12 @@ public class ScriptableObjectDrawer : PropertyDrawer
         //EditorGUI.DrawRect(rect, new Color(1, 0, 0, 0.2f));
         EditorGUI.BeginProperty(rect, label, property);
 
-        // Draw SO label
+        // Draw object label
         rect.width = EditorGUIUtility.labelWidth;
         EditorGUI.LabelField(rect, label);
         rect.x += rect.width;
 
-        // Get referenced SO's type
+        // Get referenced object type
         System.Type type = GetSOType(property);
 
         // Style for new and save buttons
@@ -58,31 +58,34 @@ public class ScriptableObjectDrawer : PropertyDrawer
         //rect = EditorGUI.IndentedRect(rect); //indent the buttons and object holder
         rect.width = 45; // width for new/save buttons
 
-        if (property.objectReferenceValue == null)
+        if (property.objectReferenceValue as Object == null)
         {
             // draw "New" button
             if (GUI.Button(rect, new GUIContent("New"), buttonStyle))
             {
-                CreateSOWindow.Open(type, ref property);
+                CreateObjectWindow.Open(type, ref property);
             }
             rect.x += rect.width;
         }
         else
         {
-            // check if the referenced SO is an asset
-            string path = AssetDatabase.GetAssetPath(property.objectReferenceValue);
-            if (path == "" || string.IsNullOrEmpty(path))
+            if(property.objectReferenceValue is ScriptableObject)
             {
-                // draw "Save" button
-                if (GUI.Button(rect, new GUIContent("Save"), buttonStyle))
+                // check if the referenced SO is an asset
+                string path = AssetDatabase.GetAssetPath(property.objectReferenceValue);
+                if (string.IsNullOrEmpty(path))
                 {
-                    CreateSOWindow.SaveSOToAsset((ScriptableObject)property.objectReferenceValue);
+                    // draw "Save" button
+                    if (GUI.Button(rect, new GUIContent("Save"), buttonStyle))
+                    {
+                        CreateObjectWindow.SaveSOToAsset((ScriptableObject)property.objectReferenceValue);
+                    }
+                    rect.x += rect.width;
                 }
-                rect.x += rect.width;
             }
         }
 
-        //Draw SO object holder/ picker
+        //Draw object holder/ picker
         rect.xMax = position.xMax;
         int ignoredIndentLevel = EditorGUI.indentLevel;
         EditorGUI.indentLevel = 0;
@@ -90,11 +93,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
         property.objectReferenceValue = EditorGUI.ObjectField(rect, property.objectReferenceValue, type, false);
         EditorGUI.indentLevel = ignoredIndentLevel;
 
-        // draw SO's children properties
-
-        //if (!editor)
-        //    editor = Editor.CreateEditor(property.objectReferenceValue);
-        //editor.OnInspectorGUI();
+        // draw children properties
 
         if (property.objectReferenceValue != null)
         {
@@ -102,7 +101,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
             var propertyObject = new SerializedObject(data);
 
             //var propertyObject = new SerializedObject(property.objectReferenceValue);
-            
+
             var field = propertyObject.GetIterator();
             field.Next(true);
             field.NextVisible(false);
@@ -118,7 +117,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
                 rect.y += EditorGUI.GetPropertyHeight(field) + EditorGUIUtility.standardVerticalSpacing;
             }
             propertyObject.ApplyModifiedProperties();
-            
+
             EditorGUI.indentLevel--;
         }
 

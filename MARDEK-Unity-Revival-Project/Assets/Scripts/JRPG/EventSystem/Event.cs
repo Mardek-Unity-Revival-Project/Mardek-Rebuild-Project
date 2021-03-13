@@ -7,8 +7,8 @@ namespace JRPG
 {
     public class Event : MonoBehaviour
     {
-        [ExtendedSO]
-        [SerializeField] List<CommandBase> commands = default;
+        [CreateReference(type = typeof(CommandBase))] 
+        [SerializeReference] List<CommandBase> commands = new List<CommandBase>();
 
         List<CommandBase> commandsBeingExecuted = new List<CommandBase>();
         CommandBase currentCommand
@@ -28,7 +28,7 @@ namespace JRPG
 
         private void Update()
         {
-            if(currentCommand)
+            if(currentCommand != null)
                 CheckOngoingCommand();
         }
 
@@ -37,7 +37,7 @@ namespace JRPG
         {
             if (Application.isPlaying)
             {
-                if (currentCommand)
+                if (currentCommand != null)
                 {
                     Debug.LogWarning("Trying to trigger event, but this event is already ongoing");
                     return;
@@ -67,7 +67,7 @@ namespace JRPG
         {
             // check ongoing (current event is non-null and can be converted to OngoingCommand)
             OngoingCommand command = currentCommand as OngoingCommand;
-            if (command)
+            if (command != null)
             {
                 if(command.IsOngoing() == false || command.waitForExecutionEnd == false)
                 {

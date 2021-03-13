@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace JRPG
 {
-    public abstract class CommandBase : ScriptableObject
+    [System.Serializable]
+    public abstract class CommandBase
     {
         public abstract void Trigger();
     }

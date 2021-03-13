@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace JRPG
 {
+    [CreateAssetMenu(menuName = "JRPG/Dialogue")]
     public class Dialogue : ScriptableObject
     {
         [SerializeField] CharacterBio character = null;

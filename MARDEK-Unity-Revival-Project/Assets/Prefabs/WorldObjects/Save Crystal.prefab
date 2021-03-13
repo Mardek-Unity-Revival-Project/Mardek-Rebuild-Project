@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _event: {fileID: 93526961}
   onStart: 0
-  onInteractionKey: 0
+  onInteractionKey: 1
 --- !u!114 &93526961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,7 +28,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commands:
-  - {fileID: 0}
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DialogueCommand, ns: JRPG, asm: Assembly-CSharp}
+      data:
+        _waitExcecutionEnd: 1
+        dialogues:
+        - {fileID: 11400000, guid: ef164f6f14f3870438d2ac734c50ad18, type: 2}
 --- !u!1001 &3153002801420167085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58,15 +66,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 946864481000588583, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 946864481000588583, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 946864481000588583, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 946864481000588583, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
