@@ -11,12 +11,13 @@ namespace JRPG
 
         public override bool IsOngoing()
         {
-            return target.isMoving;
+            return target && target.isMoving;
         }
 
         public override void Trigger()
         {
-            target.EnqueueMoves(moves);
+            if(target)
+                target.EnqueueMoves(moves);
         }
     }
 }

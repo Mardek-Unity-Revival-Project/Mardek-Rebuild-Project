@@ -9,7 +9,7 @@ namespace JRPG
     {
         [SerializeField] float animationSpeed = 1f;
         [SerializeField] bool _isAnimating = false;
-        [OldCreatable] [SerializeField] SpriteAnimationClipList clipList = null;
+        [SerializeField] SpriteAnimationClipList clipList = null;
         
         public bool isAnimating { get { return _isAnimating; } private set { _isAnimating = value; } }
         

@@ -5,12 +5,12 @@ using System.Reflection;
 using UnityEditor;
 #endif
 
-public class OldCreatableAttribute : PropertyAttribute
+public class OldOldCreatableAttribute : PropertyAttribute
 {
 
 }
 
-[CustomPropertyDrawer(typeof(OldCreatableAttribute), true)]
+[CustomPropertyDrawer(typeof(OldOldCreatableAttribute), true)]
 public class CreatableObjectDrawer : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
