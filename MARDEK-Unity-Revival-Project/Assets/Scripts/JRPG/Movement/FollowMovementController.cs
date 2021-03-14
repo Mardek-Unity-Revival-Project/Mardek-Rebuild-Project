@@ -23,7 +23,6 @@ namespace JRPG
 
         void OnFollowedMovementMoved()
         {
-            Debug.Log("follows");
             shouldFollow = true;
             MoveToFollowed();
         }
@@ -34,7 +33,6 @@ namespace JRPG
             MoveDirection followDirection = ApproximanteDirectionByVector2(desiredDelta);
             if (followDirection)
             {
-                //Debug.Log("a");
                 SendDirection(followDirection);
             }
         }

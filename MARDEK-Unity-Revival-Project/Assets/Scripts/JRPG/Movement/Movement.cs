@@ -81,7 +81,6 @@ namespace JRPG
                 if (shouldMove)
                 {
                     isMoving = true;
-                    Debug.Log("moved");
                     OnMove.Invoke();
                 }
                 else
