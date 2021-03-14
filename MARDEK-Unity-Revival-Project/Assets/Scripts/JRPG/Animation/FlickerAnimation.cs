@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class FlickerAnimation : MonoBehaviour
 {
-    [SerializeField] float flicksPerSecond = 1f;
+    [SerializeField] float flicksCyclesPerSecond = 1f;
     [SerializeField] Vector2 flickerAmplitude = .1f * Vector2.one;
+    [SerializeField] bool smoothAnimation = true;
+
     Vector3 startingScale = Vector3.one;
     float timer = 0;
 
@@ -16,7 +18,15 @@ public class FlickerAnimation : MonoBehaviour
 
     private void Update()
     {
-        float flickerMultiplier = Mathf.Sin(timer * flicksPerSecond * 2 * Mathf.PI);
+        float flickerMultiplier;
+
+        if (smoothAnimation)
+            flickerMultiplier = Mathf.Sin(timer * flicksCyclesPerSecond * 2 * Mathf.PI);
+        else
+            flickerMultiplier = 1 - 2* Mathf.FloorToInt((flicksCyclesPerSecond * timer) % 2);
+
+        Debug.Log(flickerMultiplier);
+
         Vector2 fickerAmout = flickerAmplitude * flickerMultiplier;
         Vector3 newScale = startingScale + (Vector3)fickerAmout;
         transform.localScale = newScale;
