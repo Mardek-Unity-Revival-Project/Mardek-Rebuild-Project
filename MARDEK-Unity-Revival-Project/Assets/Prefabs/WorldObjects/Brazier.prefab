@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: _isAnimating
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6753876585966324207, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
+      propertyPath: animationSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7009682148586093238, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
       propertyPath: m_Name
       value: Brazier
@@ -92,6 +96,18 @@ PrefabInstance:
     - target: {fileID: 1305416901211941519, guid: 05c66c38747862441b92da7fdee4942b, type: 3}
       propertyPath: m_Name
       value: Dragon's lair light
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203063565427354936, guid: 05c66c38747862441b92da7fdee4942b, type: 3}
+      propertyPath: flicksPerSecond
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203063565427354936, guid: 05c66c38747862441b92da7fdee4942b, type: 3}
+      propertyPath: flickerAmplitude.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203063565427354936, guid: 05c66c38747862441b92da7fdee4942b, type: 3}
+      propertyPath: flickerAmplitude.y
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7155169061294506196, guid: 05c66c38747862441b92da7fdee4942b, type: 3}
       propertyPath: m_RootOrder
