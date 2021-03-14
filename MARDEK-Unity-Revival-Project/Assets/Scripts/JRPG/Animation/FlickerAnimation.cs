@@ -25,8 +25,6 @@ public class FlickerAnimation : MonoBehaviour
         else
             flickerMultiplier = 1 - 2* Mathf.FloorToInt((flicksCyclesPerSecond * timer) % 2);
 
-        Debug.Log(flickerMultiplier);
-
         Vector2 fickerAmout = flickerAmplitude * flickerMultiplier;
         Vector3 newScale = startingScale + (Vector3)fickerAmout;
         transform.localScale = newScale;
