@@ -21,8 +21,11 @@ public class InMapParty : MonoBehaviour
         {
             for(int i = 0; i < instance.inMapCharacters.Count; i++)
             {
-                instance.inMapCharacters[i].transform.position = position;
-                GameFile.AddProgress(1);
+                GameObject character = instance.inMapCharacters[i];
+                if(character != null)
+                {
+                    character.transform.position = position;
+                }
             }
         }
         else

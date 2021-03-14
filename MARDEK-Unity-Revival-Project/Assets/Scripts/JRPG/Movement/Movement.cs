@@ -16,8 +16,22 @@ namespace JRPG
         public ColliderHelper colliderHelper { get { return _colliderHelper; } }
         public bool isMoving { get; private set; }
         public MoveDirection currentDirection { get; private set; }
+        public Vector2 lastPosition
+        {
+            get
+            {
+                if (currentDirection) 
+                    return targetPosition - currentDirection.value;
+                else 
+                    return transform.position;
+            }
+        }
         Vector2 targetPosition = Vector2.zero;
         Queue<MoveDirection> queuedMoves = new Queue<MoveDirection>();
+
+        public delegate void MoveDelegate();
+
+        public event MoveDelegate OnMove = delegate { };
 
         private void Awake()
         {
@@ -35,7 +49,7 @@ namespace JRPG
         {
             if (isMoving)
                 return;
-            queuedMoves = new Queue<MoveDirection>();
+            queuedMoves.Clear();
             if(direction != null)
             {
                 queuedMoves.Enqueue(direction);
@@ -43,11 +57,11 @@ namespace JRPG
             }
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (isMoving)
             {
-                isMoving = !MoveToPosition(transform, targetPosition, movementSpeed, Time.fixedDeltaTime);
+                isMoving = !MoveToPosition(transform, targetPosition, movementSpeed, Time.deltaTime);
                 UpdateMoveStatus();
             }
         }
@@ -60,10 +74,12 @@ namespace JRPG
                 if (shouldMove)
                 {
                     isMoving = true;
+                    OnMove.Invoke();
                 }
                 else
                 {
                     if (colliderHelper) colliderHelper.OffsetCollider(Vector2.zero);
+                    targetPosition = transform.position;
                     StopAnimator();
                 }
             }

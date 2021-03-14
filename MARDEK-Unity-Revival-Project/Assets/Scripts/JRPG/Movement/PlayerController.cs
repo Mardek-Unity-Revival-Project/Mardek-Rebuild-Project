@@ -43,13 +43,13 @@ namespace JRPG
             Vector2 direction = ctx.ReadValue<Vector2>();
 
             if (direction.x == 0 || direction.y == 0)
-                desiredDirection = AproximanteDirectionByVector2(direction);
+                desiredDirection = ApproximanteDirectionByVector2(direction);
             else
                 desiredDirection = null;
         }
 
         //late update to avoid race conditions with the input system calls
-        private void LateUpdate()
+        private void Update()
         {
             if (playerControllerLockValue > 0)
                 return;

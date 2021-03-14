@@ -14,9 +14,9 @@ namespace JRPG
             if (movement) movement.MoveInDirectionOnce(direction);
         }
 
-        public MoveDirection AproximanteDirectionByVector2(Vector2 vector)
+        public MoveDirection ApproximanteDirectionByVector2(Vector2 vector)
         {
-            if (vector == Vector2.zero)
+            if (vector.sqrMagnitude < Vector2.kEpsilonNormalSqrt)
                 return null;
             if (allowedDirections.Count > 0)
             {

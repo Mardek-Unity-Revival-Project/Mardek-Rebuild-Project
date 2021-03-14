@@ -44,7 +44,7 @@ namespace JRPG
                     {
                         UpdateSprite(animationRatio);
                         while (animationRatio > 1)
-                            animationRatio -= 1;
+                            animationRatio = 0;
                     }
                 }                
             }
