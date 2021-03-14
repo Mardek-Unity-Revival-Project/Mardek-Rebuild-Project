@@ -34,7 +34,8 @@ namespace JRPG
             if (currentClip == null)
                 spriteRenderer.sprite = null;
             else
-                UpdateSprite(0);
+                if(spriteRenderer.sprite == null)
+                    UpdateSprite(0);
         }
 
         private void Update()

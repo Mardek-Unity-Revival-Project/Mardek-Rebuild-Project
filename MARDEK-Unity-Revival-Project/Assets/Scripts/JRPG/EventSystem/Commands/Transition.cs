@@ -28,6 +28,7 @@ namespace JRPG
                 transitionFacingDirection = overrideFacingDirection;
             else
                 transitionFacingDirection = PlayerController.GetPlayerMovement().currentDirection;
+            Debug.Log(transitionFacingDirection);
         }
     }
 }
