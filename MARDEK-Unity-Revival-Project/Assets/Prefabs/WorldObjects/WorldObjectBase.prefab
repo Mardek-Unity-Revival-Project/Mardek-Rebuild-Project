@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3576582507082672585}
   - component: {fileID: 2675089600757325610}
   - component: {fileID: 1424670210720913386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WorldObjectBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 2376157961937866309}
   - component: {fileID: 3189322718074030912}
   - component: {fileID: 6753876585966324207}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,3 +198,4 @@ MonoBehaviour:
   animationSpeed: 1
   _isAnimating: 0
   clipList: {fileID: 0}
+  spriteRenderer: {fileID: 3189322718074030912}

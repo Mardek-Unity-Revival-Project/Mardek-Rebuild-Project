@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,3 +49,4 @@ public class SelectImplementationDrawer : PropertyDrawer
         return types.Where(p => interfaceType.IsAssignableFrom(p) && !p.IsAbstract).ToArray();
     }
 }
+#endif

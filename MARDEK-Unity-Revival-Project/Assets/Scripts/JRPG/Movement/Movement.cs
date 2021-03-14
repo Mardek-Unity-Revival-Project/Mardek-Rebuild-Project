@@ -158,8 +158,5 @@ namespace JRPG
                 return true;
             }
         }
-
-        
-
     }
 }

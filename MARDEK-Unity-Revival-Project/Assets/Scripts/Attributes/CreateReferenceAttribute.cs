@@ -1,7 +1,10 @@
+
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+using UnityEngine;
 using System;
 using System.Reflection;
 
@@ -14,7 +17,7 @@ public class CreateReferenceAttribute : PropertyAttribute {
         type = fieldType;
     }
 }
-
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(CreateReferenceAttribute), true)]
 public class CreateReference : PropertyDrawer
 {
@@ -126,3 +129,4 @@ public class CreateReference : PropertyDrawer
         return fi.FieldType;
     }
 }
+#endif

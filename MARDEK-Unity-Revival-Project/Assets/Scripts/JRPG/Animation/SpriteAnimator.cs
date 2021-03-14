@@ -14,10 +14,20 @@ namespace JRPG
         public bool isAnimating { get { return _isAnimating; } private set { _isAnimating = value; } }
         
         SpriteAnimationClip currentClip = null;
-        SpriteRenderer spriteRenderer = null;
+        [HideInInspector] [SerializeField] SpriteRenderer spriteRenderer = null;
         float animationRatio = 0f;
 
         private void OnValidate()
+        {
+            InitializeFields();
+        }
+
+        private void Awake()
+        {
+            InitializeFields();
+        }
+
+        void InitializeFields()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             currentClip = clipList?.GetClipByIndex(0);

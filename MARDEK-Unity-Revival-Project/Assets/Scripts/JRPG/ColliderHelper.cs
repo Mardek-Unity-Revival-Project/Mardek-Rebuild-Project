@@ -5,11 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class ColliderHelper : MonoBehaviour
 {
-
     new Collider2D collider = null;
     ContactFilter2D filter = default;
 
-    private void OnValidate()
+    private void Awake()
+    {
+        InitializeFields();
+    }
+
+    void InitializeFields()
     {
         collider = GetComponent<Collider2D>();
         if (collider)

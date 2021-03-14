@@ -3,7 +3,6 @@ using System.Reflection;
 
 #if UNITY_EDITOR
 using UnityEditor;
-#endif
 
 public class OldOldCreatableAttribute : PropertyAttribute
 {
@@ -164,3 +163,5 @@ public class CreatableObjectDrawer : PropertyDrawer
         return fi.FieldType;
     }
 }
+
+#endif

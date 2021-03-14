@@ -7,16 +7,15 @@ namespace JRPG {
     {
         [SerializeField] WaypointEnum thisWaypoint = null;
 
-        private void Start()
+        private void Awake()
         {
             if (Transition.usedWaypoint)
             {
                 if (thisWaypoint == Transition.usedWaypoint)
                 {
                     InMapParty.PositionPartyAt(transform.position, Transition.transitionFacingDirection);
-                    Debug.Log(Transition.transitionFacingDirection);
                 }
             }
         }
-    }    
+    } 
 }
