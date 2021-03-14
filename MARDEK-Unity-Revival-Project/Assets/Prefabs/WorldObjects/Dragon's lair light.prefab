@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flicksPerSecond: 5
   flickerAmplitude: {x: 0.02, y: 0.02}
+  smoothAnimation: 0
 --- !u!1 &7760289477907001533
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,3 +196,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flicksPerSecond: 5
   flickerAmplitude: {x: 0, y: 0}
+  smoothAnimation: 0
