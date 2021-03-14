@@ -26,7 +26,7 @@ public class DialogueMaster : MonoBehaviour
     private Image image;
     public void Update()
     {
-        if (GameProgressData.lockdown == false)
+        if (GameProgressData.lockdown == false || DialogueData == null)
         {
             return;
         }
@@ -54,6 +54,7 @@ public class DialogueMaster : MonoBehaviour
                 text2.text = ""; //clears header text
                 i = -1;
                 GameProgressData.lockdown = false;
+                DialogueData = null;
                 return;
             }
             i++;
