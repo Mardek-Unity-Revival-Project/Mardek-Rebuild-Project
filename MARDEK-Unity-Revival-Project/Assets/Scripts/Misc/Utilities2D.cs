@@ -22,4 +22,9 @@ public class Utilities2D
         }
         return pos;
     }
+
+    public static void SetTransformPosition(Transform transform, Vector2 position)
+    {
+        transform.position = new Vector3(position.x, position.y, transform.position.z);
+    }
 }

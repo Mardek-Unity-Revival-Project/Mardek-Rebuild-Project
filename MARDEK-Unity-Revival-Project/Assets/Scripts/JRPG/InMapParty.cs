@@ -27,7 +27,7 @@ namespace JRPG
                     GameObject character = instance.inMapCharacters[i];
                     if (character != null)
                     {
-                        character.transform.position = position;
+                        Utilities2D.SetTransformPosition(character.transform, position);
                         if (facingDirection)
                             character.GetComponent<Movement>().FaceDirection(facingDirection);
                     }

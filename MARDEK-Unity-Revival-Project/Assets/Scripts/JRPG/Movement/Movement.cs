@@ -64,7 +64,7 @@ namespace JRPG
             StopAnimator();
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (isMoving)
             {
@@ -81,12 +81,12 @@ namespace JRPG
                 if (shouldMove)
                 {
                     isMoving = true;
+                    Debug.Log("moved");
                     OnMove.Invoke();
                 }
                 else
                 {
                     if (colliderHelper) colliderHelper.OffsetCollider(Vector2.zero);
-                    targetPosition = transform.position;
                     StopAnimator();
                 }
             }
@@ -97,6 +97,7 @@ namespace JRPG
 
         bool ShouldMove()
         {
+            Vector2 previousTargetPosition = targetPosition;
             bool hasNextMove = GetNextTargetPosition();
             if (hasNextMove)
             {
@@ -109,6 +110,7 @@ namespace JRPG
                     return true;
                 }
             }
+            targetPosition = previousTargetPosition;
             return false;
         }
 
@@ -147,21 +149,18 @@ namespace JRPG
             Vector2 increment = positionDifferece.normalized * deltaTime * movementSpeed;
             if (increment.sqrMagnitude < positionDifferece.sqrMagnitude)
             {
-                SetTransformPosition(transform, ((Vector2)transform.position + increment));
+                Utilities2D.SetTransformPosition(transform, ((Vector2)transform.position + increment));
                 return false;
             }
             else
             {
                 //end movement
-                SetTransformPosition(transform, targetPosition);
+                Utilities2D.SetTransformPosition(transform, targetPosition);
                 return true;
             }
         }
 
-        void SetTransformPosition(Transform transform, Vector2 position)
-        {
-            transform.position = new Vector3(position.x, position.y, transform.position.z);
-        }
+        
 
     }
 }

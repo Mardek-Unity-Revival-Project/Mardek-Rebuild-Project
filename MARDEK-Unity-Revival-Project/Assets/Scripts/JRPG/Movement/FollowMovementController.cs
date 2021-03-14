@@ -23,6 +23,7 @@ namespace JRPG
 
         void OnFollowedMovementMoved()
         {
+            Debug.Log("follows");
             shouldFollow = true;
             MoveToFollowed();
         }
@@ -31,14 +32,18 @@ namespace JRPG
         {
             Vector2 desiredDelta = followedMovement.lastPosition - (Vector2)transform.position;
             MoveDirection followDirection = ApproximanteDirectionByVector2(desiredDelta);
-            SendDirection(followDirection);
+            if (followDirection)
+            {
+                //Debug.Log("a");
+                SendDirection(followDirection);
+            }
         }
 
         private void Update()
         {
             if (shouldFollow)
             {
-                if (Vector2.Distance(followedMovement.lastPosition, (Vector2)transform.position) < Vector2.kEpsilon)
+                if (Vector2.Distance(followedMovement.lastPosition, transform.position) < Vector2.kEpsilonNormalSqrt)
                     shouldFollow = false;
                 else
                     MoveToFollowed();

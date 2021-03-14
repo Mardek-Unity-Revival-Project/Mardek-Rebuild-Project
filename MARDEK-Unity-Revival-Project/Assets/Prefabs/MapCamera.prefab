@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8926902617732141707}
   - component: {fileID: 121064919}
   - component: {fileID: 121064920}
+  - component: {fileID: 202725143311528387}
   m_Layer: 0
   m_Name: MapCamera
   m_TagString: MainCamera
@@ -113,3 +114,23 @@ MonoBehaviour:
   movementSpeed: 4
   _colliderHelper: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &202725143311528387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926902617732141708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 16
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_UpscaleRT: 1
+  m_PixelSnapping: 1
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
