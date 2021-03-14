@@ -7,13 +7,42 @@ namespace JRPG
 {
     public class PlayerController : MovementController
     {
-        public static int playerControllerLockValue;
+        static PlayerController instance;
+
+        int _lockValue = 0;
+
+        public static int playerControllerLockValue
+        {
+            get
+            {
+                if (instance)
+                    return instance._lockValue;
+                else
+                    return 0;
+            }
+            set
+            {
+                if (instance)
+                    instance._lockValue = value;
+            }
+        }
 
         MoveDirection desiredDirection = null;
 
         private void Awake()
         {
-            playerControllerLockValue = 0;
+            if (instance == null)
+                instance = this;
+            else
+                Debug.LogError("there was already a PlayerController intance when a new PlayerController awoke");
+        }
+
+        public static Movement GetPlayerMovement()
+        {
+            if (instance)
+                return instance.movement;
+            else
+                return null;
         }
 
         public void OnInteraction(InputAction.CallbackContext ctx)

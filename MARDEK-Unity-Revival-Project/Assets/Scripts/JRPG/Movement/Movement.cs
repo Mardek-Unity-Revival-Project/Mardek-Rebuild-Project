@@ -57,6 +57,13 @@ namespace JRPG
             }
         }
 
+        public void FaceDirection(MoveDirection direction)
+        {
+            currentDirection = direction;
+            UpdateAnimatorWithCurrentDirection();
+            StopAnimator();
+        }
+
         private void Update()
         {
             if (isMoving)
@@ -140,15 +147,21 @@ namespace JRPG
             Vector2 increment = positionDifferece.normalized * deltaTime * movementSpeed;
             if (increment.sqrMagnitude < positionDifferece.sqrMagnitude)
             {
-                transform.position = ((Vector2)transform.position + increment);
+                SetTransformPosition(transform, ((Vector2)transform.position + increment));
                 return false;
             }
             else
             {
                 //end movement
-                transform.position = (targetPosition);
+                SetTransformPosition(transform, targetPosition);
                 return true;
             }
         }
+
+        void SetTransformPosition(Transform transform, Vector2 position)
+        {
+            transform.position = new Vector3(position.x, position.y, transform.position.z);
+        }
+
     }
 }

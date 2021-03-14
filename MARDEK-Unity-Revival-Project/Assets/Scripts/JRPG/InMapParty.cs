@@ -1,36 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-[SelectionBase]
-public class InMapParty : MonoBehaviour
+
+namespace JRPG
 {
-    static InMapParty instance;
-
-    [SerializeField] List<GameObject> inMapCharacters = new List<GameObject>();
-
-    private void Awake()
+    [SelectionBase]
+    public class InMapParty : MonoBehaviour
     {
-        if (instance)
-            Destroy(instance);
-        instance = this;
-    }
+        static InMapParty instance;
 
-    public static void PositionPartyAt(Vector2 position)
-    {
-        if (instance)
+        [SerializeField] List<GameObject> inMapCharacters = new List<GameObject>();
+
+        private void Awake()
         {
-            for(int i = 0; i < instance.inMapCharacters.Count; i++)
+            if (instance)
+                Destroy(instance);
+            instance = this;
+        }
+
+        public static void PositionPartyAt(Vector2 position, MoveDirection facingDirection)
+        {
+            if (instance)
             {
-                GameObject character = instance.inMapCharacters[i];
-                if(character != null)
+                for (int i = 0; i < instance.inMapCharacters.Count; i++)
                 {
-                    character.transform.position = position;
+                    GameObject character = instance.inMapCharacters[i];
+                    if (character != null)
+                    {
+                        character.transform.position = position;
+                        if (facingDirection)
+                            character.GetComponent<Movement>().FaceDirection(facingDirection);
+                    }
                 }
             }
-        }
-        else
-        {
-            Debug.LogError("No InMapParty found");
+            else
+            {
+                Debug.LogError("No InMapParty found");
+            }
         }
     }
 }

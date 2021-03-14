@@ -9,9 +9,14 @@ namespace JRPG {
 
         private void Start()
         {
-            if (thisWaypoint)
+            if (Transition.usedWaypoint)
+            {
                 if (thisWaypoint == Transition.usedWaypoint)
-                    InMapParty.PositionPartyAt(transform.position);
+                {
+                    InMapParty.PositionPartyAt(transform.position, Transition.transitionFacingDirection);
+                    Debug.Log(Transition.transitionFacingDirection);
+                }
+            }
         }
     }    
 }
