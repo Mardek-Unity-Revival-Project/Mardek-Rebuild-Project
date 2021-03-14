@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bc7498799af074e8098f2317847c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flicksPerSecond: 5
+  flicksCyclesPerSecond: 15
   flickerAmplitude: {x: 0.02, y: 0.02}
   smoothAnimation: 0
 --- !u!1 &7760289477907001533
@@ -194,6 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bc7498799af074e8098f2317847c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flicksPerSecond: 5
+  flicksCyclesPerSecond: 1
   flickerAmplitude: {x: 0, y: 0}
   smoothAnimation: 0
