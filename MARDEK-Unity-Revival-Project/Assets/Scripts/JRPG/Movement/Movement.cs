@@ -16,14 +16,18 @@ namespace JRPG
         public ColliderHelper colliderHelper { get { return _colliderHelper; } }
         public bool isMoving { get; private set; }
         public MoveDirection currentDirection { get; private set; }
+
+        Vector2 _lastPosition = Vector2.zero;
+
         public Vector2 lastPosition
         {
             get
             {
-                if (currentDirection) 
-                    return targetPosition - currentDirection.value;
-                else 
-                    return transform.position;
+                return _lastPosition;
+            }
+            private set
+            {
+                _lastPosition = value;
             }
         }
         Vector2 targetPosition = Vector2.zero;
@@ -80,13 +84,14 @@ namespace JRPG
                 bool shouldMove = ShouldMove();
                 if (shouldMove)
                 {
+                    lastPosition = transform.position;
                     isMoving = true;
                     OnMove.Invoke();
                 }
                 else
                 {
                     if (colliderHelper) colliderHelper.OffsetCollider(Vector2.zero);
-                    StopAnimator();
+                    FaceDirection(currentDirection);
                 }
             }
             else
