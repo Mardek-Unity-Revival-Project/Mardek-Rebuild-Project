@@ -16,6 +16,8 @@ namespace JRPG
 
         public override void Trigger()
         {
+            if (target == null)
+                target = PlayerController.GetPlayerMovement();
             if(target)
                 target.EnqueueMoves(moves);
         }
