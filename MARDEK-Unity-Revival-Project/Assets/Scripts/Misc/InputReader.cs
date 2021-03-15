@@ -45,7 +45,8 @@ public class InputReader : MonoBehaviour
     }
 
     [System.Serializable]
-    class InputActionBind{
+    class InputActionBind
+    {
         [SerializeField] public InputActionProperty action = default;
         [SerializeField] bool bindStarted = false;
         [SerializeField] bool bindPerformed = true;
