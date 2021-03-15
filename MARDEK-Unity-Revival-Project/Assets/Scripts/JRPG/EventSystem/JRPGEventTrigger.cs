@@ -10,7 +10,7 @@ namespace JRPG
         [Header("Trigger Methods")]
         [SerializeField] bool onStart = false;
         [SerializeField] bool onInteractionKey = false;
-        //[SerializeField] bool onPlayerTouch = false;
+        [SerializeField] bool onTriggerEnter = false;
 
         void Start()
         {
@@ -20,6 +20,13 @@ namespace JRPG
         public void Interact()
         {
             if(onInteractionKey) _event.Trigger();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (onTriggerEnter)
+                if (collision.GetComponent<PlayerController>())
+                    _event.Trigger();
         }
     }
 }
