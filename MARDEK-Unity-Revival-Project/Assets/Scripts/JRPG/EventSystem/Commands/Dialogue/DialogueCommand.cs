@@ -6,7 +6,7 @@ namespace JRPG
 {
     public class DialogueCommand : OngoingCommand
     {
-        [SerializeField] List<Dialogue> dialogues;
+        [SerializeField] List<Dialogue> dialogues = new List<Dialogue>();
 
         public override bool IsOngoing()
         {

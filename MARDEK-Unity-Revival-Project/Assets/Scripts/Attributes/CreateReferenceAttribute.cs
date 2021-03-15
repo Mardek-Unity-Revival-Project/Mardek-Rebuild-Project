@@ -12,11 +12,12 @@ public class CreateReferenceAttribute : PropertyAttribute {
 
     public Type type = null;
 
-    public CreateReferenceAttribute(Type fieldType =  null)
+    public CreateReferenceAttribute(Type fieldType)
     {
         type = fieldType;
     }
 }
+
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(CreateReferenceAttribute), true)]
 public class CreateReference : PropertyDrawer
@@ -24,27 +25,21 @@ public class CreateReference : PropertyDrawer
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         float height = 0;
-
         height += EditorGUI.GetPropertyHeight(property);
-
         return height;
     }
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        // Get referenced object type
-        Type type;
-
-        type = (attribute as CreateReferenceAttribute).type;
-
-        if (type == null)
-            type = GetReferenceType(property);
-
-        if(type == null)
+        if(property.propertyType != SerializedPropertyType.ManagedReference)
         {
-            Debug.LogError("type is null");
+            Debug.LogWarning("trying to use create CreateReferenceAttribute in a non-managedReference property");
+            base.OnGUI(position, property, label);
             return;
         }
+        // Get referenced object type
+        Type baseType = (attribute as CreateReferenceAttribute).type;
+        
         // rect will be the work rect for the various elements in the drawers, it starts as a copy of position.
         Rect rect = new Rect(position);
         rect.height = EditorGUIUtility.singleLineHeight;
@@ -61,31 +56,56 @@ public class CreateReference : PropertyDrawer
 
         rect.width = 45; // width for new/save buttons
 
-        if (true)   //property.objectReferenceValue == null)
+        // draw "New" button
+        if (true)
         {
-            // draw "New" button
             if (GUI.Button(rect, new GUIContent("New"), buttonStyle))
             {
-                CreateObjectWindow.Open(type, ref property);
+                CreateObjectWindow.Open(baseType, ref property);
+                property.isExpanded = true;
             }
             rect.x += rect.width;
         }
 
-        if (type.IsSubclassOf(typeof(UnityEngine.Object)))
+        rect.xMax = position.xMax;
+
+        var typeStr = "None";
+        SerializedProperty prop = property.serializedObject.GetIterator();
+        do
         {
-            //Draw object holder/ picker
-            rect.xMax = position.xMax;
-            int ignoredIndentLevel = EditorGUI.indentLevel;
-            EditorGUI.indentLevel = 0;
-            property.objectReferenceValue = EditorGUI.ObjectField(rect, property.objectReferenceValue, type, false);
-            EditorGUI.indentLevel = ignoredIndentLevel;
+            if (prop.propertyPath == property.propertyPath)
+            {
+                string[] fullPath = prop.managedReferenceFullTypename.Split(' ');
+                string path = fullPath[fullPath.Length - 1];
+                if (string.IsNullOrEmpty(path) == false)
+                {
+                    typeStr = path;
+                    break;
+                }
+            }
         }
-        else
+        while (prop.NextVisible(true));
+
+        rect.xMin += 10;
+        EditorGUI.LabelField(rect, typeStr);
+        rect.xMin = position.xMin;
+
+        try 
+        { 
+            EditorGUI.PropertyField(rect, property, true); 
+        }
+        catch (Exception e)
         {
-            rect.xMax = position.xMax;
-            rect.xMin = position.xMin;
-            EditorGUI.PropertyField(rect, property, true);
+            if(e.Message == "Queue empty.")
+            {
+                // ignore unity inspector bug
+            }
+            else
+            {
+                throw e;
+            }
         }
+
         if (GUI.changed)
             property.serializedObject.ApplyModifiedProperties();
         EditorGUI.EndProperty();

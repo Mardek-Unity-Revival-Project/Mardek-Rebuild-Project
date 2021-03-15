@@ -7,7 +7,7 @@ namespace JRPG
 {
     public class Event : MonoBehaviour
     {
-        [CreateReference(type = typeof(CommandBase))] 
+        [CreateReference(typeof(CommandBase))]
         [SerializeReference] List<CommandBase> commands = new List<CommandBase>();
 
         List<CommandBase> commandsBeingExecuted = new List<CommandBase>();
