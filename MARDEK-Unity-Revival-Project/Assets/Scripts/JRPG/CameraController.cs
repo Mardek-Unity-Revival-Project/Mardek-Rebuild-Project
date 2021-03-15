@@ -16,6 +16,10 @@ namespace JRPG {
         {
             instance = this;
             zOffset = transform.position.z;
+        }
+
+        private void Start()
+        {
             MoveCameraXY(followTarget.transform.position);
             lastPosition = followTarget.transform.position;
         }
