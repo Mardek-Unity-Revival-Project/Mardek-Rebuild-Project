@@ -7,6 +7,8 @@ public class ColliderHelper : MonoBehaviour
 {
     new Collider2D collider = null;
     ContactFilter2D filter = default;
+    List<Collider2D> results = new List<Collider2D>();
+    Collider2D[] colliders = new Collider2D[8];
 
     private void Awake()
     {
@@ -32,10 +34,10 @@ public class ColliderHelper : MonoBehaviour
 
     public List<Collider2D> Overlaping()
     {
-        List<Collider2D> results = new List<Collider2D>();
+        results.Clear();
         if (collider == null)
             return results;
-        Collider2D[] colliders = new Collider2D[64];
+        System.Array.Clear(colliders, 0, colliders.Length);
         collider.OverlapCollider(filter, colliders);
         foreach (Collider2D c in colliders)
             if (c != null && c.isActiveAndEnabled)
