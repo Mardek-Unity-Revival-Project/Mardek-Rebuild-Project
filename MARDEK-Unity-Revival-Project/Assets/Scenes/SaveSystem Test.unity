@@ -184,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759414318624094659, guid: 06edf4f702630404da735584c188f8fb, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6759414318624094659, guid: 06edf4f702630404da735584c188f8fb, type: 3}
       propertyPath: m_AnchorMax.y
@@ -395,8 +395,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text (TMP) Base (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7587511134435628749, guid: 06edf4f702630404da735584c188f8fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06edf4f702630404da735584c188f8fb, type: 3}
+--- !u!114 &196682970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5794454240468253569, guid: 06edf4f702630404da735584c188f8fb, type: 3}
+  m_PrefabInstance: {fileID: 52740366}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &365783139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -509,6 +524,8 @@ GameObject:
   m_Component:
   - component: {fileID: 720239768}
   - component: {fileID: 720239770}
+  - component: {fileID: 720239769}
+  - component: {fileID: 720239767}
   m_Layer: 0
   m_Name: SaveHandler
   m_TagString: Untagged
@@ -516,6 +533,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &720239767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720239766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6ecbffdd9440c42a9358a66b7b068c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: 1fad84e3f2bdf1449172e117f64d54a2
+  value: 0
 --- !u!4 &720239768
 Transform:
   m_ObjectHideFlags: 0
@@ -528,8 +559,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &720239769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720239766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c223d8a3017aa704d88917eab174c6dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 196682970}
 --- !u!114 &720239770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,8 +605,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SaveHandler, Assembly-CSharp
-          m_MethodName: SerializeObject
+          m_TargetAssemblyTypeName: AddressableMB, Assembly-CSharp
+          m_MethodName: Save
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -572,6 +616,73 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 720239769}
+          m_TargetAssemblyTypeName: SaveUI, Assembly-CSharp
+          m_MethodName: UpdateUI
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &755566451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755566453}
+  - component: {fileID: 755566452}
+  m_Layer: 0
+  m_Name: ChangeScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &755566452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755566451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e455390153c9954cb98e17a844085e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commands:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: Transition, ns: JRPG, asm: Assembly-CSharp}
+      data:
+        scene:
+          sceneAsset: {fileID: 102900000, guid: 0f64771ed0af50046af6c8953eee2370, type: 3}
+          scenePath: Assets/Scenes/SaveSystem Test.unity
+        waypoint: {fileID: 0}
+        overrideFacingDirection: {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
+--- !u!4 &755566453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755566451}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773850770
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +774,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1510024035
 GameObject:
@@ -746,7 +857,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1748736814
 PrefabInstance:
@@ -769,7 +880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4948326371249647573, guid: df1bcd03d4d40b1498eec39ab94ab726, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4948326371249647573, guid: df1bcd03d4d40b1498eec39ab94ab726, type: 3}
       propertyPath: m_AnchorMax.x
