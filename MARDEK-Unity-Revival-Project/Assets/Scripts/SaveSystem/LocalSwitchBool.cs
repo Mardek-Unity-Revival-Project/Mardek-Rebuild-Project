@@ -2,7 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocalSwitchBool : AddressableMB
+[System.Serializable]
+public class LocalSwitchBool : AddressableMB, IBoolCheck
 {
     [SerializeField] bool value = false;
+
+    public bool GetBoolValue()
+    {
+        return value;
+    }
 }
