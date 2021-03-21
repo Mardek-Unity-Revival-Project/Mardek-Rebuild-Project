@@ -42,6 +42,64 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - action:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Action
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: e887347c-3043-4cd8-9bbc-fa476ddfcfd5
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+      m_Reference: {fileID: 1986530392988518947, guid: 842e31e9d541ad04c8c2cd7997d79b05, type: 3}
+    bindStarted: 1
+    bindPerformed: 0
+    bindCanceled: 0
+    _event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 680050175}
+          m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+          m_MethodName: SetSkipping
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - action:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Action
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: e887347c-3043-4cd8-9bbc-fa476ddfcfd5
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+      m_Reference: {fileID: 1986530392988518947, guid: 842e31e9d541ad04c8c2cd7997d79b05, type: 3}
+    bindStarted: 0
+    bindPerformed: 0
+    bindCanceled: 1
+    _event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 680050175}
+          m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+          m_MethodName: SetSkipping
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5577278130705883467
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 437987761534143219}
   dialogueText: {fileID: 138099289154438629}
+  dialogueSpeed: 30
 --- !u!1001 &1384966723212727527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -507,8 +566,16 @@ PrefabInstance:
       value: 4288472565
       objectReference: {fileID: 0}
     - target: {fileID: 5794454240468253569, guid: 06edf4f702630404da735584c188f8fb, type: 3}
+      propertyPath: m_horizontalMapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794454240468253569, guid: 06edf4f702630404da735584c188f8fb, type: 3}
+      propertyPath: m_wordWrappingRatios
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794454240468253569, guid: 06edf4f702630404da735584c188f8fb, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6759414318624094659, guid: 06edf4f702630404da735584c188f8fb, type: 3}
       propertyPath: m_Pivot.x

@@ -25,10 +25,13 @@ public class DialogueManager : MonoBehaviour
     
     [SerializeField] GameObject canvas = null;
     [SerializeField] TMPro.TMP_Text dialogueText = null;
+    [SerializeField] float dialogueSpeed = 5;
 
     List<Dialogue> dialogues;
     int dialogueIndex = 0;
     int lineIndex = 0;
+    float letterIndex = 0;
+    bool isSkipping = false;
     
     private void Awake()
     {
@@ -39,21 +42,42 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (isOngoing)
+        {
+            if(letterIndex >= 0)
+                letterIndex += Time.deltaTime * dialogueSpeed;
+            UpdateUI();
+            if (isSkipping)
+                OnGoToNextLine();
+        }
+    }
+
     private void ResetManager()
     {
-        isOngoing = false;
+        isOngoing = false; 
+        isSkipping = false;
         dialogueIndex = 0;
-        lineIndex = 0;
+        lineIndex = -1;
         dialogues = new List<Dialogue>();
     }
 
     [ContextMenu("OnGoToNextLine")]
     public void OnGoToNextLine()
     {
-        if(AdvanceLine())
-            UpdateUI();
+        if (letterIndex < 0)
+        {
+            if (AdvanceLine() == false)
+                EndDialogue();
+        }
         else
-            EndDialogue();
+            letterIndex = -1;
+    }
+
+    public void SetSkipping(bool value)
+    {
+        isSkipping = value;
     }
 
     void TryStartDialogues()
@@ -70,7 +94,17 @@ public class DialogueManager : MonoBehaviour
     string CurrentLine()
     {
         var linesInDialogue = dialogues[dialogueIndex].GetLines();
-        return linesInDialogue[lineIndex];
+        string FullLine = linesInDialogue[lineIndex];
+
+        int lengthToShow = FullLine.Length;
+        if (letterIndex >= FullLine.Length || letterIndex < 0)
+            letterIndex = -1;
+        else
+            lengthToShow = Mathf.FloorToInt(letterIndex);
+
+        string lineToShow = FullLine.Substring(0, lengthToShow) + "<color=#00000000>";
+        lineToShow += FullLine.Substring(lengthToShow, FullLine.Length - lengthToShow) + "</color>";
+        return lineToShow;
     }
 
     bool AdvanceLine()
@@ -81,6 +115,7 @@ public class DialogueManager : MonoBehaviour
         {
             return AdvanceDialogueList();
         }
+        letterIndex = 0;
         return true;
     }
 
