@@ -9,39 +9,30 @@ namespace JRPG
         [SerializeField] Object check;
         [CreateReference(typeof(CommandBase))]
         [SerializeReference] List<CommandBase> ifTrueCommands = null;
-        [SerializeField] CommandList ifFalseCommands = new CommandList();
-
-        CommandList ongoingCommandList = null;
+        [CreateReference(typeof(CommandBase))]
+        [SerializeReference] List<CommandBase> ifFalseCommands = null;
 
         public override void Trigger()
         {
+            if (IsOngoing())
+            {
+                Debug.LogWarning("Trying to trigger event, but this event is already ongoing");
+                return;
+            }
+
             IBoolCheck boolCheck = check as IBoolCheck;
             if(boolCheck == null)
             {
                 Debug.LogError("branch check is null or not of required type");
                 return;
             }
+
             if (boolCheck.GetBoolValue())
-            {
-                //ongoingCommandList = ifTrueCommands;
-            }
+                commandsBeingExecuted = new List<CommandBase>(ifTrueCommands);
             else
-            {
-                ongoingCommandList = ifFalseCommands;
-            }
-            if (ongoingCommandList != null) ongoingCommandList.Trigger();
-        }
+                commandsBeingExecuted = new List<CommandBase>(ifFalseCommands);
 
-        public override void Update()
-        {
-            if (IsOngoing()) ongoingCommandList.Update();
-        }
-
-        public override bool IsOngoing()
-        {
-            if (ongoingCommandList == null)
-                return false;
-            return ongoingCommandList.IsOngoing();
+            base.Trigger();
         }
     }
 }
