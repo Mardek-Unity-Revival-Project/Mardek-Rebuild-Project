@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JRPG
 {
-    public class BoolBranchCommand : BranchCommand
+    public class BoolBranch : BranchCommand
     {
         [SerializeField] Object check;
         [CreateReference(typeof(CommandBase))]

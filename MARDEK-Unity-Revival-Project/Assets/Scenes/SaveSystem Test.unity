@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6ecbffdd9440c42a9358a66b7b068c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedGuid: 1fad84e3f2bdf1449172e117f64d54a2
+  serializedGuid: 
   value: 0
 --- !u!4 &720239768
 Transform:
@@ -656,6 +656,7 @@ MonoBehaviour:
         - id: 2
     00000001:
       type: {class: PlayBGM, ns: JRPG, asm: Assembly-CSharp}
+      data: {}
     00000002:
       type: {class: DialogueCommand, ns: JRPG, asm: Assembly-CSharp}
       data:

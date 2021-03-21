@@ -11,4 +11,10 @@ public class LocalSwitchBool : AddressableMB, IBoolCheck
     {
         return value;
     }
+
+    public void SetBoolValue(bool setValue)
+    {
+        value = setValue;
+        Save();
+    }
 }
