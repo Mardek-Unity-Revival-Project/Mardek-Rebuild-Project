@@ -12,6 +12,15 @@ namespace JRPG
         [SerializeField] SpriteAnimationClipList clipList = null;
         
         public bool isAnimating { get { return _isAnimating; } private set { _isAnimating = value; } }
+        public bool currentClipLoops
+        {
+            get
+            {
+                if (currentClip == null)
+                    return false;
+                return currentClip.loop;
+            }
+        }
         
         SpriteAnimationClip currentClip = null;
         [HideInInspector] [SerializeField] SpriteRenderer spriteRenderer = null;
@@ -81,6 +90,11 @@ namespace JRPG
 
         public void PlayClipByMoveDirectionReference(MoveDirection reference)
         {
+            if(reference == null)
+            {
+                StopCurrentAnimation(1);
+                return;
+            }
             SpriteAnimationClip nextClip = clipList.GetClipByReference(reference);
             currentClip = nextClip;
             isAnimating = true;                    

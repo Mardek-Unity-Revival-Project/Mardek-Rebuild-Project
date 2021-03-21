@@ -523,7 +523,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 720239768}
-  - component: {fileID: 720239770}
   - component: {fileID: 720239769}
   - component: {fileID: 720239767}
   - component: {fileID: 720239771}
@@ -546,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6ecbffdd9440c42a9358a66b7b068c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedGuid: 
+  serializedGuid: 5c36da81f8e7ad4bb714cf0f9f981266
   value: 0
 --- !u!4 &720239768
 Transform:
@@ -575,60 +574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 196682970}
---- !u!114 &720239770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720239766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4372188b3f0cda4e84043ba4bd429b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  binds:
-  - action:
-      m_UseReference: 1
-      m_Action:
-        m_Name: Action
-        m_Type: 0
-        m_ExpectedControlType: 
-        m_Id: f36ef670-5c6b-4319-9c13-a45b411c2a1f
-        m_Processors: 
-        m_Interactions: 
-        m_SingletonActionBindings: []
-      m_Reference: {fileID: 663451883571341888, guid: 842e31e9d541ad04c8c2cd7997d79b05, type: 3}
-    bindStarted: 0
-    bindPerformed: 1
-    bindCanceled: 0
-    _event:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: AddressableMB, Assembly-CSharp
-          m_MethodName: Save
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 720239769}
-          m_TargetAssemblyTypeName: SaveUI, Assembly-CSharp
-          m_MethodName: UpdateUI
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &720239771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,22 +591,7 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: BoolBranchCommand, ns: JRPG, asm: Assembly-CSharp}
-      data:
-        _waitExcecutionEnd: 1
-        check: {fileID: 720239767}
-        ifTrueCommands:
-        - id: 1
-        ifFalseCommands:
-        - id: 2
-    00000001:
-      type: {class: PlayBGM, ns: JRPG, asm: Assembly-CSharp}
-      data: {}
-    00000002:
-      type: {class: DialogueCommand, ns: JRPG, asm: Assembly-CSharp}
-      data:
-        _waitExcecutionEnd: 1
-        dialogues: []
+      type: {class: , ns: , asm: }
 --- !u!1 &755566451
 GameObject:
   m_ObjectHideFlags: 0

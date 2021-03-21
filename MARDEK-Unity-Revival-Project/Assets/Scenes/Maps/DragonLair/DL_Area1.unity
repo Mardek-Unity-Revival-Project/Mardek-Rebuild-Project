@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &260319740 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4985415874749477527, guid: 4524198ac264da046815598c35039adc, type: 3}
-  m_PrefabInstance: {fileID: 1195594341}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e18e7e3814c881b488b18c5e62bdd2b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &579402720 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7774782862683153936, guid: b113440698ed91445a4aad7285fdf655, type: 3}
@@ -637,6 +626,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4524198ac264da046815598c35039adc, type: 3}
+--- !u!114 &1195594342 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 815192942536371346, guid: 4524198ac264da046815598c35039adc, type: 3}
+  m_PrefabInstance: {fileID: 1195594341}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d9d51b44fad864586f36ff1de5897f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1219834069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,6 +708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1611162748}
+  - component: {fileID: 1611162749}
   - component: {fileID: 1611162747}
   - component: {fileID: 1611162746}
   m_Layer: 0
@@ -716,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1611162746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,26 +732,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commands:
   - id: 0
-  - id: 1
   references:
     version: 1
     00000000:
+      type: {class: BoolBranch, ns: JRPG, asm: Assembly-CSharp}
+      data:
+        _waitExcecutionEnd: 1
+        check: {fileID: 1611162749}
+        ifTrueCommands: []
+        ifFalseCommands:
+        - id: 1
+        - id: 2
+        - id: 3
+        - id: 4
+        - id: 5
+    00000001:
       type: {class: MoveCommand, ns: JRPG, asm: Assembly-CSharp}
       data:
         _waitExcecutionEnd: 1
-        target: {fileID: 260319740}
+        target: {fileID: 0}
         moves:
         - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
         - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
         - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
         - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
         - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
-    00000001:
+    00000002:
+      type: {class: PlaySpriteAnimation, ns: JRPG, asm: Assembly-CSharp}
+      data:
+        _waitExcecutionEnd: 1
+        targetAnimator: {fileID: 1195594342}
+        animationDirection: {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
+    00000003:
+      type: {class: StopSpriteAnimation, ns: JRPG, asm: Assembly-CSharp}
+      data:
+        targetAnimator: {fileID: 1195594342}
+        sendStopRate: 1
+        animationStopRate: 1
+    00000004:
       type: {class: DialogueCommand, ns: JRPG, asm: Assembly-CSharp}
       data:
         _waitExcecutionEnd: 1
         dialogues:
         - {fileID: 11400000, guid: a35d2e8b545f54d4babcc2f378e75245, type: 2}
+    00000005:
+      type: {class: SetBoolSwitch, ns: JRPG, asm: Assembly-CSharp}
+      data:
+        boolObject: {fileID: 1611162749}
+        setValue: 1
 --- !u!114 &1611162747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,6 +810,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1611162749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611162745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6ecbffdd9440c42a9358a66b7b068c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: c2dea570ad90504b938402012e3d93f9
+  value: 0
 --- !u!1001 &1624301143
 PrefabInstance:
   m_ObjectHideFlags: 0

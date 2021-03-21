@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JRPG
 {
-    public class SetBoolCommand : CommandBase
+    public class SetBoolSwitch : CommandBase
     {
         [SerializeField] Object boolObject;
         [SerializeField] bool setValue;

@@ -11,7 +11,7 @@ namespace JRPG
 
         public override bool IsOngoing()
         {
-            return targetAnimator.isAnimating;
+            return targetAnimator.isAnimating && !targetAnimator.currentClipLoops; // don't wait for a looping animation to end
         }
 
         public override void Trigger()
