@@ -7,29 +7,35 @@ namespace JRPG
 {
     public class Event : MonoBehaviour
     {
-        [CreateReference(typeof(CommandBase))]
-        [SerializeReference] List<CommandBase> commands = new List<CommandBase>();
+        [Header("Event Commands")]
+        [SerializeField] CommandQueue commands;
 
-        List<CommandBase> commandsBeingExecuted = new List<CommandBase>();
-        CommandBase currentCommand
+        [Header("Event Triggers")]
+        [SerializeField] bool onStart = false;
+        [SerializeField] bool onInteractionKey = false;
+        [SerializeField] bool onTriggerEnter = false;
+
+        void Start()
         {
-            get
-            {
-                while (commandsBeingExecuted.Count > 0)
-                {
-                    if (commandsBeingExecuted[0] == null)
-                        RemoveCommandAt0();
-                    else
-                        return commandsBeingExecuted[0];
-                }
-                return null;
-            }
+            if (onStart) commands.TriggerFirst();
+        }
+
+        public void Interact()
+        {
+            if (onInteractionKey) commands.TriggerFirst();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (onTriggerEnter)
+                if (collision.GetComponent<PlayerController>())
+                    commands.TriggerFirst();
         }
 
         private void Update()
         {
-            if(currentCommand != null)
-                CheckOngoingCommand();
+            if (commands.isOngoing)
+                commands.TryAdvanceQueue();
         }
 
         [ContextMenu("Trigger")]
@@ -37,73 +43,10 @@ namespace JRPG
         {
             if (Application.isPlaying)
             {
-                if (currentCommand != null)
-                {
-                    Debug.LogWarning("Trying to trigger event, but this event is already ongoing");
-                    return;
-                }       
-                commandsBeingExecuted = new List<CommandBase>(commands);
-                TriggerCurrentCommand();
+                commands.TriggerFirst();
             }
             else
                 Debug.LogError("You can only trigger events when the game is playing");
-        }
-
-        void TriggerNextCommand()
-        {
-            // first unlock player based on the last command executed
-            SetPlayerLockByCurrentEventType(false); 
-            // get next command and trigger it
-            RemoveCommandAt0();
-            TriggerCurrentCommand();
-        }
-
-        void TriggerCurrentCommand()
-        {
-            if (currentCommand == null)
-                return;
-            currentCommand.Trigger();
-            SetPlayerLockByCurrentEventType(true);
-            CheckOngoingCommand();
-        }
-
-        void CheckOngoingCommand()
-        {
-            // check ongoing (current event is non-null and can be converted to OngoingCommand)
-            OngoingCommand command = currentCommand as OngoingCommand;
-            if (command != null)
-            {
-                if(command.IsOngoing() == false || command.waitForExecutionEnd == false)
-                {
-                    TriggerNextCommand();
-                }
-                else
-                {
-                    command.Update();
-                }
-            }
-            else
-            {
-                TriggerNextCommand();
-            }
-        }
-
-        void RemoveCommandAt0()
-        {
-            if (commandsBeingExecuted.Count > 0)
-                commandsBeingExecuted.RemoveAt(0);
-        }
-
-        void SetPlayerLockByCurrentEventType(bool setValue)
-        {
-            OngoingCommand cmd = currentCommand as OngoingCommand;
-            if(cmd != null && cmd.waitForExecutionEnd)
-            {
-                if(setValue == true)
-                    PlayerController.playerControllerLockValue++;
-                else
-                    PlayerController.playerControllerLockValue--;
-            }
         }
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace JRPG
 {
-    [System.Serializable]
-    public abstract class CommandBase
+    //[System.Serializable]
+    public abstract class CommandBase : MonoBehaviour
     {
         public abstract void Trigger();
     }

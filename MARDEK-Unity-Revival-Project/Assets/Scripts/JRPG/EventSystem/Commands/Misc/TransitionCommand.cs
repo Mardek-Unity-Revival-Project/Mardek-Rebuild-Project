@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace JRPG
 {
-    public class Transition : CommandBase
+    public class TransitionCommand : CommandBase
     {
         [SerializeField] SceneReference scene = null;
         [SerializeField] WaypointEnum waypoint = null;

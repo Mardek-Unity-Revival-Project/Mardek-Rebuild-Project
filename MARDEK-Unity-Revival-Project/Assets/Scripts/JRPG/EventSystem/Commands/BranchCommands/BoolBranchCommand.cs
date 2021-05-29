@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace JRPG
 {
-    public class BoolBranch : BranchCommand
+    public class BoolBranchCommand : BranchCommand
     {
         [SerializeField] Object check;
-        [CreateReference(typeof(CommandBase))]
+
         [SerializeReference] List<CommandBase> ifTrueCommands = null;
-        [CreateReference(typeof(CommandBase))]
+
         [SerializeReference] List<CommandBase> ifFalseCommands = null;
 
         public override void Trigger()

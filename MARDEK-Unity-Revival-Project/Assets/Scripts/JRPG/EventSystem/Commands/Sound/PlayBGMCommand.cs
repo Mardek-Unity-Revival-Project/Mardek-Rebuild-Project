@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace JRPG
 {
-    public class PlaySFX : CommandBase
+    public class PlayBGMCommand : CommandBase
     {
         public override void Trigger()
         {
-            Debug.LogWarning("PlaySFX command not implemented yet");
+            Debug.LogWarning("PlayBGM command not implemented yet");
         }
     }
 }

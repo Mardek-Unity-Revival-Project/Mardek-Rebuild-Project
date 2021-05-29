@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &93526960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5370212228709162267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffef4d8227d1e1f42afb4e0e2e713d25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _event: {fileID: 93526961}
-  onStart: 0
-  onInteractionKey: 1
 --- !u!114 &93526961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,15 +13,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commands:
-  - id: 0
-  references:
-    version: 1
-    00000000:
-      type: {class: DialogueCommand, ns: JRPG, asm: Assembly-CSharp}
-      data:
-        _waitExcecutionEnd: 1
-        dialogues:
-        - {fileID: 11400000, guid: ef164f6f14f3870438d2ac734c50ad18, type: 2}
+    commandsGameObject: {fileID: 3762223282813047487}
+  onStart: 0
+  onInteractionKey: 1
+  onTriggerEnter: 0
+--- !u!1 &3762223282813047487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4144129632367787962}
+  - component: {fileID: 8052052526800668165}
+  m_Layer: 7
+  m_Name: Save Crytal Commands
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4144129632367787962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762223282813047487}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2801880452226114186}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8052052526800668165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762223282813047487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31ad1e34f546c340bf85a02096374f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitExcecutionEnd: 1
+  dialogues:
+  - {fileID: 11400000, guid: ef164f6f14f3870438d2ac734c50ad18, type: 2}
 --- !u!1001 &3153002801420167085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -125,5 +151,10 @@ PrefabInstance:
 --- !u!1 &5370212228709162267 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7009682148586093238, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
+  m_PrefabInstance: {fileID: 3153002801420167085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2801880452226114186 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 946864481000588583, guid: cebde8a71b5d92b449f312c784ae012b, type: 3}
   m_PrefabInstance: {fileID: 3153002801420167085}
   m_PrefabAsset: {fileID: 0}

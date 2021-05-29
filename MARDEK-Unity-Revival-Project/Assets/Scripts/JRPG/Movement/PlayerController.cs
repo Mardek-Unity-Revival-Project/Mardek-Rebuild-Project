@@ -60,8 +60,8 @@ namespace JRPG
             List<Collider2D> collidersHit = movement.colliderHelper.Overlaping();
             foreach(Collider2D c in collidersHit)
             {
-                JRPGEventTrigger trigger = c.GetComponent<JRPGEventTrigger>();
-                if (trigger) trigger.Interact();
+                Event ev = c.GetComponent<Event>();
+                if (ev) ev.Interact();
             }
             //return collider to place
             movement.colliderHelper.OffsetCollider(Vector2.zero);

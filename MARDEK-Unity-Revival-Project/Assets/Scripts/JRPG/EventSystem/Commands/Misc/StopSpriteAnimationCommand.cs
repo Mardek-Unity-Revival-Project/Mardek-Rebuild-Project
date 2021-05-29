@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JRPG
 {
-    public class StopSpriteAnimation : CommandBase
+    public class StopSpriteAnimationCommand : CommandBase
     {
         [SerializeField] SpriteAnimator targetAnimator;
         [SerializeField] bool sendStopRate = false;

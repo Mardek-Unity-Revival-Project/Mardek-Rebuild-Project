@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JRPG
 {
-    public class PlaySpriteAnimation : OngoingCommand
+    public class PlaySpriteAnimationCommand : OngoingCommand
     {
         [SerializeField] SpriteAnimator targetAnimator;
         [SerializeField] MoveDirection animationDirection = null;

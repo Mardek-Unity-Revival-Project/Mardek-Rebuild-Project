@@ -134,103 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d9d51b44fad864586f36ff1de5897f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &644316197
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0]
-      value: Assembly-CSharp JRPG.DialogueCommand
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0].data
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3].waypoint
-      value: 
-      objectReference: {fileID: 11400000, guid: ff586c8d0686320458090021be35841e, type: 2}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3].scene.scenePath
-      value: Assets/Scenes/Maps/DragonLair/DL_Area2.unity
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3].scene.sceneAsset
-      value: 
-      objectReference: {fileID: 102900000, guid: a837e96160bdf1143be4673903b63b55, type: 3}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0]._waitExcecutionEnd
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0].dialogues.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0].dialogues.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 8b218ed12dd7b394ca0988ea854d956e, type: 2}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6275873750965622089, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_Name
-      value: Door (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6275873750965622089, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b113440698ed91445a4aad7285fdf655, type: 3}
 --- !u!1001 &677156580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
       propertyPath: commands.Array.data[3]
-      value: Assembly-CSharp JRPG.Transition
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
       propertyPath: commands.Array.data[2].data
@@ -457,9 +360,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5595241650096756026, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: scene.scenePath
+      value: Assets/Scenes/Maps/DragonLair/DL_Area2.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595241650096756026, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: scene.sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: a837e96160bdf1143be4673903b63b55, type: 3}
     - target: {fileID: 6275873750965622089, guid: b113440698ed91445a4aad7285fdf655, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794147184846744558, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: onStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794147184846744558, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: onInteractionKey
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b113440698ed91445a4aad7285fdf655, type: 3}
@@ -626,17 +545,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4524198ac264da046815598c35039adc, type: 3}
---- !u!114 &1195594342 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 815192942536371346, guid: 4524198ac264da046815598c35039adc, type: 3}
-  m_PrefabInstance: {fileID: 1195594341}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d9d51b44fad864586f36ff1de5897f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1219834069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -709,8 +617,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1611162748}
   - component: {fileID: 1611162749}
-  - component: {fileID: 1611162747}
   - component: {fileID: 1611162746}
+  - component: {fileID: 1611162747}
+  - component: {fileID: 1611162750}
+  - component: {fileID: 1611162751}
+  - component: {fileID: 1611162752}
   m_Layer: 0
   m_Name: Cutscene
   m_TagString: Untagged
@@ -731,55 +642,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commands:
-  - id: 0
-  references:
-    version: 1
-    00000000:
-      type: {class: BoolBranch, ns: JRPG, asm: Assembly-CSharp}
-      data:
-        _waitExcecutionEnd: 1
-        check: {fileID: 1611162749}
-        ifTrueCommands: []
-        ifFalseCommands:
-        - id: 1
-        - id: 2
-        - id: 3
-        - id: 4
-        - id: 5
-    00000001:
-      type: {class: MoveCommand, ns: JRPG, asm: Assembly-CSharp}
-      data:
-        _waitExcecutionEnd: 1
-        target: {fileID: 0}
-        moves:
-        - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
-        - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
-        - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
-        - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
-        - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
-    00000002:
-      type: {class: PlaySpriteAnimation, ns: JRPG, asm: Assembly-CSharp}
-      data:
-        _waitExcecutionEnd: 1
-        targetAnimator: {fileID: 1195594342}
-        animationDirection: {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
-    00000003:
-      type: {class: StopSpriteAnimation, ns: JRPG, asm: Assembly-CSharp}
-      data:
-        targetAnimator: {fileID: 1195594342}
-        sendStopRate: 1
-        animationStopRate: 1
-    00000004:
-      type: {class: DialogueCommand, ns: JRPG, asm: Assembly-CSharp}
-      data:
-        _waitExcecutionEnd: 1
-        dialogues:
-        - {fileID: 11400000, guid: a35d2e8b545f54d4babcc2f378e75245, type: 2}
-    00000005:
-      type: {class: SetBoolSwitch, ns: JRPG, asm: Assembly-CSharp}
-      data:
-        boolObject: {fileID: 1611162749}
-        setValue: 1
+    commandsGameObject: {fileID: 1611162745}
+  onStart: 1
+  onInteractionKey: 0
+  onTriggerEnter: 0
 --- !u!114 &1611162747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,13 +655,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1611162745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffef4d8227d1e1f42afb4e0e2e713d25, type: 3}
+  m_Script: {fileID: 11500000, guid: c4eb8959f8228364e99a75252fac3c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _event: {fileID: 1611162746}
-  onStart: 1
-  onInteractionKey: 0
-  onTriggerEnter: 0
+  _waitExcecutionEnd: 1
+  target: {fileID: 0}
+  moves:
+  - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
+  - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
+  - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
+  - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
+  - {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
 --- !u!4 &1611162748
 Transform:
   m_ObjectHideFlags: 0
@@ -824,6 +694,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedGuid: c2dea570ad90504b938402012e3d93f9
   value: 0
+--- !u!114 &1611162750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611162745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468ab9e89b061f54f9c29f99c3df2626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitExcecutionEnd: 1
+  targetAnimator: {fileID: 1748964671}
+  animationDirection: {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}
+--- !u!114 &1611162751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611162745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468ab9e89b061f54f9c29f99c3df2626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitExcecutionEnd: 1
+  targetAnimator: {fileID: 1748964671}
+  animationDirection: {fileID: 0}
+--- !u!114 &1611162752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611162745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31ad1e34f546c340bf85a02096374f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitExcecutionEnd: 1
+  dialogues:
+  - {fileID: 11400000, guid: a35d2e8b545f54d4babcc2f378e75245, type: 2}
 --- !u!1001 &1624301143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -886,6 +801,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4703835174973606244, guid: 217ed5616bcd94a41b39231e7717a94d, type: 3}
   m_PrefabInstance: {fileID: 1624301143}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1748964671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 815192942536371346, guid: 4524198ac264da046815598c35039adc, type: 3}
+  m_PrefabInstance: {fileID: 1195594341}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d9d51b44fad864586f36ff1de5897f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1801120084
 GameObject:
   m_ObjectHideFlags: 0
