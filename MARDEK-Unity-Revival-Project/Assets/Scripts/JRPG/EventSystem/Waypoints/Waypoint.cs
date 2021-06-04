@@ -13,6 +13,7 @@ namespace JRPG {
             {
                 if (thisWaypoint == TransitionCommand.usedWaypoint)
                 {
+                    Debug.Log($"Arriving at waypoint {thisWaypoint}");
                     InMapParty.PositionPartyAt(transform.position, TransitionCommand.transitionFacingDirection);
                 }
             }

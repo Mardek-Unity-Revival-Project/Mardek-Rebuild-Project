@@ -8,9 +8,9 @@ namespace JRPG
     {
         [SerializeField] Object check;
 
-        [SerializeReference] List<CommandBase> ifTrueCommands = null;
+        [SerializeField] CommandQueue ifTrueCommands = null;
 
-        [SerializeReference] List<CommandBase> ifFalseCommands = null;
+        [SerializeField] CommandQueue ifFalseCommands = null;
 
         public override void Trigger()
         {
@@ -28,9 +28,9 @@ namespace JRPG
             }
 
             if (boolCheck.GetBoolValue())
-                commandsBeingExecuted = new List<CommandBase>(ifTrueCommands);
+                commandsBeingExecuted = ifTrueCommands;
             else
-                commandsBeingExecuted = new List<CommandBase>(ifFalseCommands);
+                commandsBeingExecuted = ifFalseCommands;
 
             base.Trigger();
         }

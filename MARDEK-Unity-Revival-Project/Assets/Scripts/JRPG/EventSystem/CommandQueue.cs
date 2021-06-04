@@ -21,6 +21,10 @@ namespace JRPG
             }
             else
             {
+                if(commandsGameObject == null)
+                {
+                    return;
+                }
                 commandQueue = new Queue<CommandBase>(commandsGameObject.GetComponents<CommandBase>());
                 if (commandQueue.Count > 0)
                 {
@@ -64,7 +68,7 @@ namespace JRPG
                 }
                 else
                 {
-                    command.Update();
+                    command.UpdateCommand();
                 }
             }
             else

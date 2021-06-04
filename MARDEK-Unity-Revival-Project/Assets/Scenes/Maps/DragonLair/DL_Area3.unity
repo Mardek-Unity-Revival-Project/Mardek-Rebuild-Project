@@ -185,126 +185,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1150562451965924189, guid: 34e6dc5b1bafd1e46a833b0d52d5a377, type: 3}
   m_PrefabInstance: {fileID: 167421844}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &234854948
+--- !u!1001 &298991677
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0]
-      value: 
+    - target: {fileID: 3265152173036777289, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
+      propertyPath: m_Name
+      value: Door DOWN (TransitionEvent)
       objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3]
-      value: Assembly-CSharp JRPG.Transition
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[2].data
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0].waypoint
-      value: 
-      objectReference: {fileID: 11400000, guid: a99347ea4c2cec248af624819ff13e32, type: 2}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3].waypoint
-      value: 
-      objectReference: {fileID: 11400000, guid: a99347ea4c2cec248af624819ff13e32, type: 2}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3].targetAnimator
-      value: 
-      objectReference: {fileID: 234854949}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0].scene.scenePath
-      value: Assets/Scenes/Maps/DragonLair/DL_Area2.unity
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3].scene.scenePath
-      value: Assets/Scenes/Maps/DragonLair/DL_Area2.unity
-      objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0].scene.sceneAsset
-      value: 
-      objectReference: {fileID: 102900000, guid: a837e96160bdf1143be4673903b63b55, type: 3}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3].scene.sceneAsset
-      value: 
-      objectReference: {fileID: 102900000, guid: a837e96160bdf1143be4673903b63b55, type: 3}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3]._waitExcecutionEnd
+    - target: {fileID: 3265152173036777289, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[3].animationDirection
-      value: 
-      objectReference: {fileID: 11400000, guid: 68156aea096e65743afea262fcebc62c, type: 2}
-    - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: commands.Array.data[0].overrideFacingDirection
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+    - target: {fileID: 4698576466535043288, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6275873750965622089, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-      propertyPath: m_Name
-      value: Door
+    - target: {fileID: 8727420034804483783, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
+      propertyPath: scene.scenePath
+      value: Assets/Scenes/Maps/DragonLair/DL_Area2.unity
       objectReference: {fileID: 0}
+    - target: {fileID: 8727420034804483783, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
+      propertyPath: scene.sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: a837e96160bdf1143be4673903b63b55, type: 3}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b113440698ed91445a4aad7285fdf655, type: 3}
---- !u!114 &234854949 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7774782862683153936, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-  m_PrefabInstance: {fileID: 234854948}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d9d51b44fad864586f36ff1de5897f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_SourcePrefab: {fileID: 100100000, guid: 51a1a5b6894933746b65f674bac4ad69, type: 3}
 --- !u!1001 &321312872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -624,7 +573,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1435,7 +1384,7 @@ PrefabInstance:
     - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
       propertyPath: commands.Array.data[3].targetAnimator
       value: 
-      objectReference: {fileID: 1304789706}
+      objectReference: {fileID: 0}
     - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
       propertyPath: commands.Array.data[0].scene.scenePath
       value: Assets/Scenes/Maps/DragonLair/DL_Area4.unity
@@ -1463,6 +1412,10 @@ PrefabInstance:
     - target: {fileID: 671390728201646631, guid: b113440698ed91445a4aad7285fdf655, type: 3}
       propertyPath: commands.Array.data[0].overrideFacingDirection
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265152173036777289, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4286570394605218520, guid: b113440698ed91445a4aad7285fdf655, type: 3}
       propertyPath: m_RootOrder
@@ -1508,23 +1461,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4698576466535043288, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698576466535043288, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698576466535043288, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 30.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6275873750965622089, guid: b113440698ed91445a4aad7285fdf655, type: 3}
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 8727420034804483783, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: scene.scenePath
+      value: Assets/Scenes/Maps/DragonLair/DL_Area4.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727420034804483783, guid: b113440698ed91445a4aad7285fdf655, type: 3}
+      propertyPath: scene.sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: 6febde95d7660a449b1ff57bbfa809ea, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b113440698ed91445a4aad7285fdf655, type: 3}
---- !u!114 &1304789706 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7774782862683153936, guid: b113440698ed91445a4aad7285fdf655, type: 3}
-  m_PrefabInstance: {fileID: 1304789705}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d9d51b44fad864586f36ff1de5897f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1397469294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4845,13 +4807,13 @@ Tilemap:
   - first: {x: 0, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 3
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
-      m_AllTileFlags: 2147483649
+      m_AllTileFlags: 1
   - first: {x: 1, y: -4, z: 0}
     second:
       serializedVersion: 2
@@ -20825,13 +20787,13 @@ Tilemap:
   - first: {x: 0, y: 30, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 3
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
-      m_AllTileFlags: 2147483649
+      m_AllTileFlags: 1
   - first: {x: 1, y: 30, z: 0}
     second:
       serializedVersion: 2
@@ -23414,7 +23376,7 @@ Tilemap:
       m_AllTileFlags: 2147483649
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 562
+  - m_RefCount: 564
     m_Data: {fileID: 11400000, guid: cc2513d1c41adde42920ec7343324cc6, type: 2}
   - m_RefCount: 34
     m_Data: {fileID: 11400000, guid: 08f1ad1f5f5389a43b51b064bbcad76d, type: 2}
@@ -23422,18 +23384,18 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: ad10853bb04ea7c4ca6c4bef88006d03, type: 2}
   - m_RefCount: 21
     m_Data: {fileID: 11400000, guid: a2e8fabcd8475ac4cb61c63833ae463a, type: 2}
-  - m_RefCount: 1443
+  - m_RefCount: 1441
     m_Data: {fileID: 11400000, guid: 022e6fec6d64caa4e8dfd03c0ee01599, type: 2}
   - m_RefCount: 21
     m_Data: {fileID: 11400000, guid: ff50f7f79fce0ee42bf47eeb28e17e80, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 562
+  - m_RefCount: 564
     m_Data: {fileID: 21300000, guid: 0d84b899677b92243bd07bcb5c0499ea, type: 3}
   - m_RefCount: 34
     m_Data: {fileID: 21300000, guid: 64e9e35fb0a19f14a8df4f9e0f2a639a, type: 3}
   - m_RefCount: 34
     m_Data: {fileID: 21300000, guid: dd6c96093c0c6c34494ebd319aae9d42, type: 3}
-  - m_RefCount: 1443
+  - m_RefCount: 1441
     m_Data: {fileID: 21300000, guid: 9eca18042a7db1c4d80c2de482900489, type: 3}
   - m_RefCount: 21
     m_Data: {fileID: 21300000, guid: f18f3deab647a02428a466b0075a63bc, type: 3}
@@ -23510,7 +23472,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2603034590301548656, guid: e6596d43268899347a1a39df54914f58, type: 3}
       propertyPath: m_LocalPosition.x
