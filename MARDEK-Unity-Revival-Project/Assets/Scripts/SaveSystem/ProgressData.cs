@@ -20,7 +20,7 @@ public class ProgressData : AddressableMB
     }
 
     [ContextMenu("RebuildLoadedScene")]
-    void RebuildLoadedScene()
+    public void RebuildLoadedScene()
     {
         InMapParty.positionsToLoad = inMapPartyPositions;
         InMapParty.directionsToLoad = inMapPartyDirections;
