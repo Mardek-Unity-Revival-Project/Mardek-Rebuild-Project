@@ -31,9 +31,9 @@ namespace JRPG
             //Debug.Log(transitionFacingDirection);
         }
 
-        public static void ClearFacingDirection()
+        public static void ClearUsedWaypoint()
         {
-            transitionFacingDirection = null;
+            usedWaypoint = null;
         }
     }
 }

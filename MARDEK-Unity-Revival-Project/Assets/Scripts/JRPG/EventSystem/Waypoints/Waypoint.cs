@@ -9,7 +9,7 @@ namespace JRPG {
 
         private void Awake()
         {
-            if (TransitionCommand.usedWaypoint)
+            if (TransitionCommand.usedWaypoint != null)
             {
                 if (thisWaypoint == TransitionCommand.usedWaypoint)
                 {
@@ -17,8 +17,8 @@ namespace JRPG {
                     var pos = new List<Vector2>();
                     pos.Add(transform.position);
                     InMapParty.positionsToLoad = pos;
-                    //InMapParty.PositionPartyAt(pos, TransitionCommand.transitionFacingDirection);
-                    TransitionCommand.ClearFacingDirection();
+                    InMapParty.directionsToLoad = new List<MoveDirection>(){TransitionCommand.transitionFacingDirection};
+                    TransitionCommand.ClearUsedWaypoint();
                 }
             }
         }
