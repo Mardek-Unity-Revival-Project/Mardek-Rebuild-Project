@@ -4,12 +4,12 @@ using UnityEngine;
 using System;
 using FullSerializer;
 
-public static class SaveSystem
+public class SaveSystem: MonoBehaviour
 {
     static Dictionary<Guid, string> guidObjectMap = new Dictionary<Guid, string>();
     static fsSerializer serializer = new fsSerializer();
     static bool saveOrLoadOutsidePlaymode = false;
-    static string persistentPath
+    string persistentPath
     {
         get
         {
@@ -26,14 +26,17 @@ public static class SaveSystem
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void Initialization()
     {
+        Debug.LogWarning("Clearing guid map");
         guidObjectMap.Clear();
     }
 
-    public static string PrintObjectMap()
+    [ContextMenu("PrintObjectMap")]
+    public string PrintObjectMap()
     {
         serializer.TrySerialize(guidObjectMap, out fsData data);
         return fsJsonPrinter.PrettyJson(data);
     }
+
     public static void SaveObject(IAddressableGuid addressable)
     {
         if (saveOrLoadOutsidePlaymode == false && Application.isPlaying == false)
@@ -57,14 +60,27 @@ public static class SaveSystem
         JsonUtility.FromJsonOverwrite(json, addressable);
     }
 
-    public static void SaveToFile(string fileName = "quicksave.json")
+    [ContextMenu("SaveToFile")]
+    public void Save()
+    {
+        SaveToFile();
+    }
+
+    public void SaveToFile(string fileName = "quicksave.json")
     {
         string filePath = System.IO.Path.Combine(persistentPath, fileName);
         string contents = PrintObjectMap();
         System.IO.File.WriteAllText(filePath, contents);
         Debug.Log($"saved file to {filePath}");
     }
-    public static void LoadFromFile(string fileName = "quicksave.json")
+
+    [ContextMenu("LoadFromFile")]
+    public void Load()
+    {
+        LoadFromFile();
+    }
+
+    public void LoadFromFile(string fileName = "quicksave.json")
     {
         string filePath = System.IO.Path.Combine(persistentPath, fileName); // TODO: check if path exists
         string contents = System.IO.File.ReadAllText(filePath);

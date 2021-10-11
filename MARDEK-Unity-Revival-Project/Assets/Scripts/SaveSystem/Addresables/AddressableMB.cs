@@ -47,7 +47,7 @@ public class AddressableMB : MonoBehaviour, IAddressableGuid
     }
 
     [ContextMenu("Load")]
-    public void Load()
+    public virtual void Load()
     {
         SaveSystem.LoadObject(this);
     }
