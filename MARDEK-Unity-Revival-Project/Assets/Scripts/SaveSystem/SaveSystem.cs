@@ -9,7 +9,7 @@ public class SaveSystem: MonoBehaviour
     static Dictionary<Guid, string> guidObjectMap = new Dictionary<Guid, string>();
     static fsSerializer serializer = new fsSerializer();
     static bool saveOrLoadOutsidePlaymode = false;
-    string persistentPath
+    static string persistentPath
     {
         get
         {
@@ -28,6 +28,7 @@ public class SaveSystem: MonoBehaviour
     {
         Debug.LogWarning("Clearing guid map");
         guidObjectMap.Clear();
+        LoadFromFile();
     }
 
     [ContextMenu("PrintObjectMap")]
@@ -80,7 +81,7 @@ public class SaveSystem: MonoBehaviour
         LoadFromFile();
     }
 
-    public void LoadFromFile(string fileName = "quicksave.json")
+    public static void LoadFromFile(string fileName = "quicksave.json")
     {
         string filePath = System.IO.Path.Combine(persistentPath, fileName); // TODO: check if path exists
         string contents = System.IO.File.ReadAllText(filePath);

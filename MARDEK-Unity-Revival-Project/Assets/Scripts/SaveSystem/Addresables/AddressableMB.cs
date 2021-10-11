@@ -41,12 +41,22 @@ public class AddressableMB : MonoBehaviour, IAddressableGuid
     }
 
     [ContextMenu("Save")]
-    public void Save()
+    void SaveWrapper()
+    {
+        Save();
+    }
+
+    public virtual void Save()
     {
         SaveSystem.SaveObject(this);
     }
 
     [ContextMenu("Load")]
+    void LoadWrapper()
+    {
+        Load();
+    }
+
     public virtual void Load()
     {
         SaveSystem.LoadObject(this);
