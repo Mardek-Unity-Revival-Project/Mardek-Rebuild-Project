@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class LocalSwitchBool : AddressableMB, IBoolCheck
+public class LocalSwitchBool : AddressableMonoBehaviour, IBoolCheck
 {
     [SerializeField] bool value = false;
+
+    private void Awake()
+    {
+        Load();
+    }
 
     public bool GetBoolValue()
     {

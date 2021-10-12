@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using JRPG;
 using System.Threading;
 
-public class ProgressData : AddressableMB
+public class ProgressData : AddressableMonoBehaviour
 {
     [SerializeField] string currentScene = default;
     [SerializeField] List<Vector2> inMapPartyPositions = new List<Vector2>();

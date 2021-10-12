@@ -22,9 +22,9 @@ public class SaveSystem: MonoBehaviour
     }
     static bool formatSaveFiles = true;
     const string formatterDataFieldName = "\"jsonData\": ";
+    [SerializeField] List<AddressableMonoBehaviour> objsToSaveBeforeSavingToFile = new List<AddressableMonoBehaviour>();
 
     class AddresableSaveWrapper {
-        public string name = default;
         public string jsonData = default;
     }
     static Dictionary<Guid, AddresableSaveWrapper> loadedAddressables = new Dictionary<Guid, AddresableSaveWrapper>();
@@ -36,8 +36,11 @@ public class SaveSystem: MonoBehaviour
         loadedAddressables.Clear();
     }
 
-    public static void SaveToFile(string fileName = "quicksave.json")
+    public void SaveToFile(string fileName = "quicksave.json")
     {
+        foreach (var o in objsToSaveBeforeSavingToFile)
+            o.Save();
+
         serializer.TrySerialize(loadedAddressables, out fsData data);
         string json = fsJsonPrinter.PrettyJson(data);
         if(formatSaveFiles)
@@ -52,6 +55,7 @@ public class SaveSystem: MonoBehaviour
         string json = System.IO.File.ReadAllText(filePath);
         if (formatSaveFiles)
             json = FormatLoadFile(json);
+        //Debug.Log(json);
         fsJsonParser.Parse(json, out fsData data);
         serializer.TryDeserialize(data, ref loadedAddressables);
         Debug.Log($"Game file loaded from {filePath}");
@@ -119,18 +123,24 @@ public class SaveSystem: MonoBehaviour
         var newWrapper = new AddresableSaveWrapper() { jsonData = json };
         loadedAddressables[guid] = newWrapper;
     }
-    public static void LoadObject(IAddressableGuid addressable)
+    public static bool LoadObject(IAddressableGuid addressable)
     {
         if (Application.isPlaying == false)
             throw new Exception("Don't Load while outside playmode");
 
-        Guid guid = addressable.GetGuid();
+        Guid guid = (addressable).GetGuid();
         if (loadedAddressables.ContainsKey(guid))
         {
             // Addressable found, override object from json
             loadedAddressables.TryGetValue(guid, out AddresableSaveWrapper wrappedAddressable);
-            JsonUtility.FromJsonOverwrite(wrappedAddressable.jsonData, addressable);
+            fsJsonParser.Parse(wrappedAddressable.jsonData, out fsData data);
+            var type = addressable.GetType();
+            var obj = addressable as object;
+            serializer.TryDeserialize(data, storageType: type, ref obj);
+            //JsonUtility.FromJsonOverwrite(wrappedAddressable.jsonData, addressable);
+            return true;
         }
+        return false;
     }
     
     [ContextMenu("SaveToFile")]

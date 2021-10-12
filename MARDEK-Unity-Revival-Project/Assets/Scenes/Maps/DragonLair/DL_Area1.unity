@@ -123,6 +123,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &107635164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3762223282813047487, guid: d1dcdf008fb60a340a9abd2867b93fc8, type: 3}
+  m_PrefabInstance: {fileID: 1203709084379945950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &107635165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107635164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f400f26fd7be9248953abd319ad1a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2146084617}
+        m_TargetAssemblyTypeName: SaveSystem, Assembly-CSharp
+        m_MethodName: SaveToFile
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: quicksave.json
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &677156580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,6 +407,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapScenePrefabPack
       objectReference: {fileID: 0}
+    - target: {fileID: 5577729240283316782, guid: 4524198ac264da046815598c35039adc, type: 3}
+      propertyPath: objsToSaveBeforeSavingToFile.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577729240283316782, guid: 4524198ac264da046815598c35039adc, type: 3}
+      propertyPath: objsToSaveBeforeSavingToFile.Array.data[0]
+      value: 
+      objectReference: {fileID: 2146084616}
     - target: {fileID: 6599496172459131805, guid: 4524198ac264da046815598c35039adc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -502,7 +542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1331894463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,7 +773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1611162746
 MonoBehaviour:
   m_ObjectHideFlags: 0
