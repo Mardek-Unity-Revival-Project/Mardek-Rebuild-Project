@@ -44,7 +44,7 @@ public class SaveSystem: MonoBehaviour
         serializer.TrySerialize(loadedAddressables, out fsData data);
         string json = fsJsonPrinter.PrettyJson(data);
         if(formatSaveFiles)
-            json = FormatSaveFile(json);
+            json = FormatSaveFile(json, true);
         string filePath = System.IO.Path.Combine(persistentPath, fileName);
         System.IO.File.WriteAllText(filePath, json);
         Debug.Log($"Game file saved to {filePath}");
@@ -54,14 +54,13 @@ public class SaveSystem: MonoBehaviour
         string filePath = System.IO.Path.Combine(persistentPath, fileName); // TODO: check if path exists
         string json = System.IO.File.ReadAllText(filePath);
         if (formatSaveFiles)
-            json = FormatLoadFile(json);
-        //Debug.Log(json);
+            json = FormatSaveFile(json, false);
         fsJsonParser.Parse(json, out fsData data);
         serializer.TryDeserialize(data, ref loadedAddressables);
         Debug.Log($"Game file loaded from {filePath}");
     }
     
-    static string FormatSaveFile(string content)
+    static string FormatSaveFile(string content, bool isSaving)
     {
         string result = default;
         while (true)
@@ -69,42 +68,26 @@ public class SaveSystem: MonoBehaviour
             var Separatorindex = content.IndexOf(formatterDataFieldName);
             if (Separatorindex == -1)
             {
-                result += content;
+                result += content; //append the rest of the string
                 break;
             }
             string beforeSeparator = content.Substring(0, Separatorindex + formatterDataFieldName.Length);
             string AfterSeparator = content.Substring(Separatorindex + formatterDataFieldName.Length);
-            int jsonStringIndex = AfterSeparator.IndexOf(Environment.NewLine);
-            string jsonString = AfterSeparator.Substring(0, jsonStringIndex);
-            content = AfterSeparator.Substring(jsonStringIndex);
+            int endOfJsonStringIndex = AfterSeparator.IndexOf(Environment.NewLine); //TODO: find end of json string in another way, maybe count "{" and "}"
+            string jsonString = AfterSeparator.Substring(0, endOfJsonStringIndex);
+            content = AfterSeparator.Substring(endOfJsonStringIndex);
 
             result += beforeSeparator;
-            jsonString = jsonString.Substring(1, jsonString.Length - 2); // remove first and last '"'
-            result += Regex.Unescape(jsonString); //remove escape characters
-        }
-        return result;
-    }
-    static string FormatLoadFile(string content)
-    {
-        string result = default;
-        while (true)
-        {
-            var Separatorindex = content.IndexOf(formatterDataFieldName);
-            if (Separatorindex == -1)
+            if (isSaving)
             {
-                result += content;
-                break;
+                jsonString = jsonString.Substring(1, jsonString.Length - 2); // remove first and last '"'
+                result += Regex.Unescape(jsonString); //remove escape characters
             }
-
-            string beforeSeparator = content.Substring(0, Separatorindex + formatterDataFieldName.Length);
-            string AfterSeparator = content.Substring(Separatorindex + formatterDataFieldName.Length);
-            int jsonStringIndex = AfterSeparator.IndexOf(Environment.NewLine);
-            string jsonString = AfterSeparator.Substring(0, jsonStringIndex);
-            content = AfterSeparator.Substring(jsonStringIndex);
-
-            result += beforeSeparator;
-            jsonString = "\"" + jsonString.Replace("\"", "\\\"") + "\""; // undo Regex.Unescape() made in FormatSaveFile
-            result += jsonString;
+            else //is Loading
+            {
+                jsonString = "\"" + jsonString.Replace("\"", "\\\"") + "\""; // undo Regex.Unescape() made in FormatSaveFile
+                result += jsonString;
+            }
         }
         return result;
     }

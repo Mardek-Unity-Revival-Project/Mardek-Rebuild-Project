@@ -20,7 +20,6 @@ public class GuidReferenceConverter : fsDirectConverter<IAddressableGuid>
 
     protected override fsResult DoSerialize(IAddressableGuid model, Dictionary<string, fsData> serialized)
     {
-        Debug.Log("serializing");
         serialized["refGuid"] = new fsData(model.GetGuid().ToString());
         return fsResult.Success;
     }

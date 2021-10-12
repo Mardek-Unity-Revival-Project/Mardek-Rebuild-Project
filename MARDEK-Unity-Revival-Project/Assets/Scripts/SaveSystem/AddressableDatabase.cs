@@ -2,25 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using UnityEditor;
 using System;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu(menuName = "Database")]
 public class AddressableDatabase : ScriptableObject
 {
-    static AddressableDatabase instance;
+    static AddressableDatabase _instance;
+    static AddressableDatabase instance
+    {
+        get
+        {
+            if(_instance == null)
+                _instance = Resources.Load("Database") as AddressableDatabase;
+            return _instance;
+        }
+    }
 
     [SerializeField] List<string> filters = new List<string>();
-    [SerializeField] List<Guid> guids = new List<Guid>();
+    [SerializeField] List<string> guids = new List<string>();
     [SerializeField] List<Object> objects = new List<Object>();
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
-        if(instance == null)
-            instance = this;
-        else
-            throw new Exception("can't create another AddressableDatabase");
-
         foreach(var filter in filters)
         {
             if (string.IsNullOrEmpty(filter))
@@ -32,22 +39,23 @@ public class AddressableDatabase : ScriptableObject
             var result = AssetDatabase.FindAssets(filter,null);
             foreach(var guid in result)
             {
-                guids.Add(Guid.Parse(guid));
+                guids.Add(Guid.Parse(guid).ToString());
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 objects.Add(AssetDatabase.LoadAssetAtPath<Object>(path));
             }
         }
     }
+#endif
 
     public static Object GetAddressableByGuid(string guid)
     {
-        int index = instance.guids.IndexOf(Guid.Parse(guid));
+        int index = instance.guids.IndexOf(guid);
         return instance.objects[index];
     }
 
     public static Guid GetGUID(IAddressableGuid addressable)
     {
         int index = instance.objects.IndexOf((Object)addressable);
-        return instance.guids[index];
+        return Guid.Parse(instance.guids[index]);
     }
 }
