@@ -6,9 +6,11 @@ namespace JRPG
 {
     public class PlaySFXCommand : CommandBase
     {
+        public AudioSource sound;
+
         public override void Trigger()
         {
-            Debug.LogWarning("PlaySFX command not implemented yet");
+            SoundManager.PlaySoundEffect(sound);
         }
     }
 }
