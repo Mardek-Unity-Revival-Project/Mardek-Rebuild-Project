@@ -1,28 +1,35 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class NewGameButton : MonoBehaviour, IPointerClickHandler
+public class NewGameButton : MonoBehaviour
 {
-    public GameObject newGameLabel;
-    public GameObject newGameField;
-    public GameObject beginButton;
+    [SerializeField]
+    GameObject newGameLabel;
+
+    [SerializeField]
+    GameObject newGameFieldObject;
+    
+    [SerializeField]
+    InputField newGameField;
+    
+    [SerializeField]
+    GameObject beginButton;
 
     public void Awake()
     {
         newGameLabel.SetActive(false);
-        newGameField.SetActive(false);
+        newGameFieldObject.SetActive(false);
         beginButton.SetActive(false);
     }
 
     public void Update()
     {
-        beginButton.SetActive(newGameField.GetComponent<InputField>().text.Length > 0);
+        beginButton.SetActive(newGameField.text.Length > 0);
     }
 
-    public void OnPointerClick(PointerEventData clickEvent)
+    public void ShowNameField()
     {
         newGameLabel.SetActive(true);
-        newGameField.SetActive(true);
+        newGameFieldObject.SetActive(true);
     }
 }

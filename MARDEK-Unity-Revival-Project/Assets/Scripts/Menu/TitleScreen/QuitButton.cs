@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class QuitButton : MonoBehaviour, IPointerClickHandler
+public class QuitButton : MonoBehaviour
 {
 
-    public void OnPointerClick(PointerEventData clickEvent) 
+    public void QuitGame()
     {
         Application.Quit();
         #if UNITY_EDITOR

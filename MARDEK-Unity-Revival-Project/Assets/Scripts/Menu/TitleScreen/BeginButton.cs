@@ -1,18 +1,20 @@
 using JRPG;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BeginButton : MonoBehaviour, IPointerClickHandler
+public class BeginButton : MonoBehaviour
 {
 
-    public InputField nameInputField;
+    [SerializeField]
+    InputField nameInputField;
 
-    public TransitionCommand startGameTransition;
+    [SerializeField]
+    TransitionCommand startGameTransition;
 
-    public void OnPointerClick(PointerEventData clickEvent)
+    public void BeginGame()
     {
         Debug.Log("Begin " + nameInputField.text + "...");
+        // TODO The save name (nameInputField.text) will need to be remembered eventually
         startGameTransition.Trigger();
     }
 }
