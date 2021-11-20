@@ -6,7 +6,9 @@ namespace JRPG
 {
     public class PlaySFXCommand : CommandBase
     {
-        public AudioSource sound;
+
+        [SerializeField]
+        AudioClip sound;
 
         public override void Trigger()
         {

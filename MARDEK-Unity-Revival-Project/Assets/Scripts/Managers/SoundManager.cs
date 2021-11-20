@@ -25,20 +25,21 @@ public class SoundManager : MonoBehaviour
     // This needs to be static because the current SoundManager needs to be accessible for commands
     private static SoundManager instance;
 
-    // This needs to be static to handle scene transitions between scenes with the same background sound
-    private static AudioSource currentBackgroundMusic;
+    // These need to be static to handle scene transitions between scenes with the same background sound
+    private static AudioClip currentBackgroundMusic;
+    private static AudioSource staticBackgroundAudioSource;
     
     // I think this should be static in case we need to handle 'music overrides' in dialogues that take place in more
     // than 1 scene
-    private static List<AudioSource> backgroundMusicStack = new List<AudioSource>();
+    private static Stack<AudioClip> backgroundMusicStack = new Stack<AudioClip>();
 
     /// <summary>
     ///     Pushes a new music on top of the background music stack. The given music will be played right away and
     ///     stop the current music until PopBackgroundMusic() is called.
     /// </summary>
-    public static void PushBackgroundMusic(AudioSource music)
+    public static void PushBackgroundMusic(AudioClip music)
     {
-        backgroundMusicStack.Add(music);
+        backgroundMusicStack.Push(music);
         DontDestroyOnLoad(music);
         instance.PlayCurrentBackgroundMusic();
     }
@@ -50,30 +51,42 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     public static void PopBackgroundMusic()
     {
-        backgroundMusicStack.RemoveAt(backgroundMusicStack.Count - 1);
+        backgroundMusicStack.Pop();
         instance.PlayCurrentBackgroundMusic();
     }
 
     /// <summary>
     ///     Plays the given sound effect on top of the current background music.
     /// </summary>
-    public static void PlaySoundEffect(AudioSource sound)
+    public static void PlaySoundEffect(AudioClip sound)
     {
-        sound.Play();
+        instance.effectAudioSource.PlayOneShot(sound);
     }
 
-    public AudioSource rootBackgroundMusic;
+    [SerializeField]
+    AudioClip rootBackgroundMusic;
+
+    [SerializeField]
+    AudioSource backgroundAudioSource;
+    
+    [SerializeField]
+    AudioSource effectAudioSource;
     
     private void Awake()
     {
+        if (staticBackgroundAudioSource == null) {
+            this.backgroundAudioSource.transform.parent = null;
+            DontDestroyOnLoad(this.backgroundAudioSource);
+            staticBackgroundAudioSource = this.backgroundAudioSource;
+        }
         instance = this;
         PlayCurrentBackgroundMusic();
     }
 
-    private AudioSource DetermineNextBackgroundMusic()
+    private AudioClip DetermineNextBackgroundMusic()
     {
         if (backgroundMusicStack.Count > 0) {
-            return backgroundMusicStack[backgroundMusicStack.Count - 1];
+            return backgroundMusicStack.Peek();
         } else if (rootBackgroundMusic != null) {
             return rootBackgroundMusic;
         } else {
@@ -81,23 +94,25 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private bool AreAudioSourcesEqual(AudioSource a, AudioSource b)
+    private bool AreAudioClipsEqual(AudioClip a, AudioClip b)
     {
         if (a == null) return b == null;
         if (b == null) return false;
 
-        return a.clip.name == b.clip.name;
+        return a.name == b.name;
     }
 
     private void PlayCurrentBackgroundMusic() 
     {
-        AudioSource nextBackgroundMusic = DetermineNextBackgroundMusic();
-        if (!AreAudioSourcesEqual(currentBackgroundMusic, nextBackgroundMusic)) {
+        AudioClip nextBackgroundMusic = DetermineNextBackgroundMusic();
+        if (!AreAudioClipsEqual(currentBackgroundMusic, nextBackgroundMusic)) {
             if (currentBackgroundMusic != null) {
-                currentBackgroundMusic.Stop();
+                staticBackgroundAudioSource.clip = null;
+                staticBackgroundAudioSource.Stop();
             }
             if (nextBackgroundMusic != null) {
-                nextBackgroundMusic.Play();
+                staticBackgroundAudioSource.clip = nextBackgroundMusic;
+                staticBackgroundAudioSource.Play();
                 DontDestroyOnLoad(nextBackgroundMusic);
             }
             currentBackgroundMusic = nextBackgroundMusic;

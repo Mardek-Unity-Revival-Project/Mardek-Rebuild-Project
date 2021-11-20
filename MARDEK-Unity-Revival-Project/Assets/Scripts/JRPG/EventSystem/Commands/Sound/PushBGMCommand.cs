@@ -7,7 +7,8 @@ namespace JRPG
     public class PushBGMCommand : CommandBase
     {
 
-        public AudioSource music;
+        [SerializeField]
+        AudioClip music;
 
         public override void Trigger()
         {
