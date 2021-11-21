@@ -12,7 +12,7 @@ namespace JRPG
 
         public override void Trigger()
         {
-            SoundManager.PushBackgroundMusic(music);
+            AudioManager.PushBackgroundMusic(music);
         }
     }
 }

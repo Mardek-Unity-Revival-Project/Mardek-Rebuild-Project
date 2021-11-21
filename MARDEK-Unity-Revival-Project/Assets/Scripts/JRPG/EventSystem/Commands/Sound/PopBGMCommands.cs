@@ -4,7 +4,7 @@ namespace JRPG
     {
         public override void Trigger()
         {
-            SoundManager.PopBackgroundMusic();
+            AudioManager.PopMusic();
         }
     }
 }
