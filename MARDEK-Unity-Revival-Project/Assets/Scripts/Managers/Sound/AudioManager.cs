@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System;
 
 /// <summary>
-/// Represents the SoundManager of a scene. Each scene is expected to have exactly 1 SoundManager.
+/// Represents the AudioManager of a scene. Each scene is expected to have exactly 1 SoundManager (singleton).
 ///
-/// Each SoundManager has a root background music and a stack of additional background musics.
-/// When the stack is empty (which is usually the case), the root background music will be played.
+/// Each AudioManager has a default music and a stack of additional musics.
+/// When the stack is empty (which is usually the case), the default music will be played.
 /// But, Commands can push and pop other music onto the stack. When the stack is not
 /// empty, the music at the top of the stack (the most recently pushed) will be played.
 /// This class also has the method PlaySoundEffect that will simply play the given sound on top of the music.
@@ -14,16 +14,15 @@ using System;
 /// This stack mechanism can be used for characters like Muriance and Clavis that replace the background 
 /// music of the current scene with their own music. The general usage for that should be:
 /// <list>
-///     <item>Push 'Clavis music' using SoundManager.PushBackgroundMusic(clavisSound)</item>
+///     <item>Push 'Clavis music' using SoundManager.PushMusic(clavisSound)</item>
 ///     <item>Let Clavis enter the scene</item>
 ///     <item>Talk with Clavis...</item>
 ///     <item>Let Clavis leave the scene</item>
-///     <item>Pop the music stack using SoundManager.PopBackgroundMusic()</item>
+///     <item>Pop the music stack using AudioManager.PopMusic()</item>
 /// </list>
 /// </summary>
 public class AudioManager : MonoBehaviour 
 {
-    // This needs to be static because the current SoundManager needs to be accessible for commands
     private static AudioManager instance;
     private Stack<Music> musicStack = new Stack<Music>();
     Music currentMusic = null;
@@ -37,7 +36,7 @@ public class AudioManager : MonoBehaviour
         if(instance != null)
         {
             instance.defaultMusic = defaultMusic;
-            Destroy(gameObject); // get rid of this spare manager we don't need;
+            Destroy(gameObject);
         }
         else
         {

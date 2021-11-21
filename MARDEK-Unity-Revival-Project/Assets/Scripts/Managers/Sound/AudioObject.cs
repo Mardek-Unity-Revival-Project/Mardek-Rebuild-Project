@@ -6,8 +6,5 @@ public abstract class AudioObject : ScriptableObject
 {
     [SerializeField] protected AudioClip clip = default;
 
-    public virtual void PlayOnSource(AudioSource audioSource)
-    {
-        audioSource.PlayOneShot(clip);
-    }
+    public abstract void PlayOnSource(AudioSource audioSource);
 }

@@ -8,7 +8,7 @@ namespace JRPG
     {
 
         [SerializeField]
-        AudioObject sound;
+        SoundEffect sound;
 
         public override void Trigger()
         {
