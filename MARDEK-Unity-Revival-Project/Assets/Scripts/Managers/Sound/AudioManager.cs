@@ -32,6 +32,36 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicAudioSource;    
     [SerializeField] AudioSource effectAudioSource;
 
+    private void Awake()
+    {
+        if(instance != null)
+        {
+            instance.defaultMusic = defaultMusic;
+            Destroy(gameObject); // get rid of this spare manager we don't need;
+        }
+        else
+        {
+            instance = this;
+            gameObject.transform.parent = null;
+            DontDestroyOnLoad(gameObject);
+        }
+        instance.UpdateCurrentMusic();
+    }
+    
+    private void UpdateCurrentMusic()
+    {
+        Music desiredMusic = null;
+        if(musicStack.Count > 0)
+            desiredMusic = musicStack.Peek();
+        if (desiredMusic == null)
+            desiredMusic = defaultMusic;
+        if(currentMusic != desiredMusic)
+        {
+            currentMusic = desiredMusic;
+            currentMusic.PlayOnSource(musicAudioSource);
+        }
+    }
+    
     /// <summary>
     ///     Pushes a new music on top of the background music stack. The given music will be played right away and
     ///     stop the current music until PopBackgroundMusic() is called.
@@ -59,33 +89,5 @@ public class AudioManager : MonoBehaviour
     public static void PlaySoundEffect(AudioObject audio)
     {
         audio.PlayOnSource(instance.effectAudioSource);
-    }
-
-    private void Awake()
-    {
-        if(instance != null)
-        {
-            instance.defaultMusic = defaultMusic;
-            Destroy(gameObject); // get rid of this spare manager we don't need;
-        }
-        else
-        {
-            instance = this;
-            gameObject.transform.parent = null;
-            DontDestroyOnLoad(gameObject);
-        }
-        instance.UpdateCurrentMusic();
-    }
-
-    private void UpdateCurrentMusic()
-    {
-        Music desiredMusic = musicStack.Peek();
-        if (desiredMusic == null)
-            desiredMusic = defaultMusic;
-        if(currentMusic != desiredMusic)
-        {
-            currentMusic = desiredMusic;
-            currentMusic.PlayOnSource(musicAudioSource);
-        }
     }
 }

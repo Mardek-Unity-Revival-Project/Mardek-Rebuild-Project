@@ -8,11 +8,11 @@ namespace JRPG
     {
 
         [SerializeField]
-        AudioClip music;
+        Music music;
 
         public override void Trigger()
         {
-            AudioManager.PushBackgroundMusic(music);
+            AudioManager.PushMusic(music);
         }
     }
 }

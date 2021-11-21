@@ -364,6 +364,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4442850479637034710, guid: 4524198ac264da046815598c35039adc, type: 3}
+      propertyPath: defaultMusic
+      value: 
+      objectReference: {fileID: 11400000, guid: 5427f5b6085f7c64ba4b49d02f39d581, type: 2}
+    - target: {fileID: 4442850479637034710, guid: 4524198ac264da046815598c35039adc, type: 3}
       propertyPath: rootBackgroundMusic
       value: 
       objectReference: {fileID: 8300000, guid: fa2b892a7cabe9f4a81d366a336ac779, type: 3}
@@ -7232,7 +7236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0da5d3e3872ec4581737dd5d293205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 2f1fbc550df722b40b7efeabd1b10900, type: 3}
+  sound: {fileID: 0}
 --- !u!1001 &8811371245506013683
 PrefabInstance:
   m_ObjectHideFlags: 0
