@@ -9,8 +9,8 @@ using UnityEditor.SceneManagement;
 using UnityEditor.Experimental.SceneManagement;
 #endif
 
-public class AddressableMB : MonoBehaviour, IAddressableGuid
-{
+public class AddressableMonoBehaviour : MonoBehaviour, IAddressableGuid
+{    
     [SerializeField,HideInInspector,FullSerializer.fsIgnore]
     private byte[] serializedGuid;
     Guid guid
@@ -35,20 +35,23 @@ public class AddressableMB : MonoBehaviour, IAddressableGuid
         }
     }
 
-    private void Awake()
-    {
-        Load();
-    }
-
-    [ContextMenu("Save")]
-    public void Save()
+    public virtual void Save()
     {
         SaveSystem.SaveObject(this);
     }
-
-    [ContextMenu("Load")]
-    public void Load()
+    public virtual void Load()
     {
         SaveSystem.LoadObject(this);
+    }
+
+    [ContextMenu("Save")]
+    void SaveWrapper()
+    {
+        Save();
+    }
+    [ContextMenu("Load")]
+    void LoadWrapper()
+    {
+        Load();
     }
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace JRPG {
     [RequireComponent(typeof(GridObject))]
@@ -9,12 +9,16 @@ namespace JRPG {
 
         private void Awake()
         {
-            if (TransitionCommand.usedWaypoint)
+            if (TransitionCommand.usedWaypoint != null)
             {
                 if (thisWaypoint == TransitionCommand.usedWaypoint)
                 {
-                    Debug.Log($"Arriving at waypoint {thisWaypoint}");
-                    InMapParty.PositionPartyAt(transform.position, TransitionCommand.transitionFacingDirection);
+                    //Debug.Log($"Arriving at waypoint {thisWaypoint}");
+                    var pos = new List<Vector2>();
+                    pos.Add(transform.position);
+                    InMapParty.positionsToLoad = pos;
+                    InMapParty.directionsToLoad = new List<MoveDirection>(){TransitionCommand.transitionFacingDirection};
+                    TransitionCommand.ClearUsedWaypoint();
                 }
             }
         }

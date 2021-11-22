@@ -30,5 +30,10 @@ namespace JRPG
                 transitionFacingDirection = PlayerController.GetPlayerMovement().currentDirection;
             //Debug.Log(transitionFacingDirection);
         }
+
+        public static void ClearUsedWaypoint()
+        {
+            usedWaypoint = null;
+        }
     }
 }
