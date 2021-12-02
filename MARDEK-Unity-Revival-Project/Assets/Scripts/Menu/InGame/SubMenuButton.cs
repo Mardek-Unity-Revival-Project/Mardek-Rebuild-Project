@@ -12,6 +12,7 @@ public class SubMenuButton : MonoBehaviour
     public void SetActive()
     {
         this.text.color = ACTIVE_COLOR;
+        // TODO Show the actual sub menu of this button
     }
 
     public void SetInactive()

@@ -1,3 +1,4 @@
+using JRPG;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -77,7 +78,15 @@ public class InGameMenu : MonoBehaviour
 
     public void OnToggleMenu(InputAction.CallbackContext ctx)
     {
-        canvas.enabled = !canvas.enabled;
+        if (canvas.enabled) {
+            canvas.enabled = false;
+            PlayerController.playerControllerLockValue--;
+        } else {
+            if (PlayerController.playerControllerLockValue <= 0) {
+                canvas.enabled = true;
+                PlayerController.playerControllerLockValue++;
+            }
+        }
     }
 
     public void OnMovementInput(InputAction.CallbackContext ctx)
