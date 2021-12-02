@@ -87,6 +87,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public static void PlaySoundEffect(AudioObject audio)
     {
-        audio.PlayOnSource(instance.effectAudioSource);
+        if(audio)
+            audio.PlayOnSource(instance.effectAudioSource);
     }
 }

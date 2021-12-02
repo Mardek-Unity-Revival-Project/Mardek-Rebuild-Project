@@ -128,7 +128,17 @@ public class DialogueManager : MonoBehaviour
             return false;
         }            
         lineIndex = -1;
+        UpdateCharacterName();
         return AdvanceLine();
+    }
+
+    private void UpdateCharacterName()
+    {
+        CharacterBio characterBio = dialogue.CharacterLines[dialogueIndex].Character;
+        if (characterBio)
+            CharacterNameText.text = characterBio.displayName;
+        else
+            CharacterNameText.text = "";
     }
 
     void EndDialogue()
