@@ -42,6 +42,8 @@ public class InGameMenu : MonoBehaviour
 
     private SubMenuButton activeButton;
 
+    private bool isFocussing;
+
     private SubMenuButton[] GetSubMenuButtons()
     {
         return new SubMenuButton[]{
@@ -76,11 +78,16 @@ public class InGameMenu : MonoBehaviour
         canvas.enabled = false;
     }
 
+    private void LeaveInGameMenu()
+    {
+        canvas.enabled = false;
+        PlayerController.playerControllerLockValue--;
+    }
+
     public void OnToggleMenu(InputAction.CallbackContext ctx)
     {
         if (canvas.enabled) {
-            canvas.enabled = false;
-            PlayerController.playerControllerLockValue--;
+            LeaveInGameMenu();   
         } else {
             if (PlayerController.playerControllerLockValue <= 0) {
                 canvas.enabled = true;
@@ -95,21 +102,57 @@ public class InGameMenu : MonoBehaviour
             Vector2 inputDirection = ctx.ReadValue<Vector2>();
             if (inputDirection.y != 0f) {
 
-                SubMenuButton[] subMenuButtons = GetSubMenuButtons();
-                int currentSubMenuIndex = 0;
-                for (int candidateIndex = 0; candidateIndex < subMenuButtons.Length; candidateIndex++) {
-                    if (subMenuButtons[candidateIndex] == activeButton) {
-                        currentSubMenuIndex = candidateIndex;
-                        break;
+                if (!isFocussing) {
+                    SubMenuButton[] subMenuButtons = GetSubMenuButtons();
+                    int currentSubMenuIndex = 0;
+                    for (int candidateIndex = 0; candidateIndex < subMenuButtons.Length; candidateIndex++) {
+                        if (subMenuButtons[candidateIndex] == activeButton) {
+                            currentSubMenuIndex = candidateIndex;
+                            break;
+                        }
                     }
-                }
 
-                int nextSubMenuIndex = currentSubMenuIndex + (inputDirection.y < 0f ? 1 : -1);
-                if (nextSubMenuIndex < 0) nextSubMenuIndex += subMenuButtons.Length;
-                if (nextSubMenuIndex >= subMenuButtons.Length) nextSubMenuIndex -= subMenuButtons.Length;
-                SetActiveSubMenu(subMenuButtons[nextSubMenuIndex]);
+                    int nextSubMenuIndex = currentSubMenuIndex + (inputDirection.y < 0f ? 1 : -1);
+                    if (nextSubMenuIndex < 0) nextSubMenuIndex += subMenuButtons.Length;
+                    if (nextSubMenuIndex >= subMenuButtons.Length) nextSubMenuIndex -= subMenuButtons.Length;
+                    SetActiveSubMenu(subMenuButtons[nextSubMenuIndex]);
+                } else {
+                    // TODO Handle vertical navigation in focussed sub menu
+                }
             } else {
-                // TODO Handle horizontal navigation
+                // TODO Handle horizontal navigation in sub menu
+            }
+        }
+    }
+
+    public void FocusOnSubMenu(InputAction.CallbackContext ctx)
+    {
+        if (canvas.enabled) {
+            if (!isFocussing) {
+                if (activeButton.IsDeep()) {
+                    foreach (SubMenuButton subMenuButton in GetSubMenuButtons()) {
+                        subMenuButton.StartFade();
+                    }
+                    activeButton.Focus();
+                    isFocussing = true;
+                }
+            } else {
+                // TODO Propagate event to sub menu?
+            }
+        }
+    }
+
+    public void LeaveSubMenu(InputAction.CallbackContext ctx)
+    {
+        if (canvas.enabled) {
+            if (isFocussing) {
+                activeButton.StopFocus();
+                foreach (SubMenuButton subMenuButton in GetSubMenuButtons()) {
+                    subMenuButton.StopFade();
+                }
+                isFocussing = false;
+            } else {
+                LeaveInGameMenu();
             }
         }
     }

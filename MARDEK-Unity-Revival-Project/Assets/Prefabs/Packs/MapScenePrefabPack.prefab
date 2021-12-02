@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2264022396853443493}
+  isDeep: 1
 --- !u!1 &1022828351440175250
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1328248763880443797}
+  isDeep: 0
 --- !u!1 &1053153687317016476
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 90994868107442449}
+  isDeep: 0
 --- !u!1 &1487820661864707793
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 8830126881940685067}
+  isDeep: 0
 --- !u!1 &2574049003634374417
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +661,64 @@ MonoBehaviour:
         - m_Target: {fileID: 2956383918176262583}
           m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
           m_MethodName: OnMovementInput
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Action
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: f2a8fc7d-2d31-4b54-857c-70034c253845
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+      m_Reference: {fileID: 663451883571341888, guid: 842e31e9d541ad04c8c2cd7997d79b05, type: 3}
+    bindStarted: 0
+    bindPerformed: 1
+    bindCanceled: 0
+    _event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2956383918176262583}
+          m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
+          m_MethodName: FocusOnSubMenu
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - action:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Action
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: f2a8fc7d-2d31-4b54-857c-70034c253845
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+      m_Reference: {fileID: 1986530392988518947, guid: 842e31e9d541ad04c8c2cd7997d79b05, type: 3}
+    bindStarted: 0
+    bindPerformed: 1
+    bindCanceled: 0
+    _event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2956383918176262583}
+          m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
+          m_MethodName: LeaveSubMenu
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1063,6 +1125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1644141120612374246}
+  isDeep: 1
 --- !u!1 &4215468913757007852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2819497047839807750}
+  isDeep: 1
 --- !u!1 &5217873288139758427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 3218845312437961212}
+  isDeep: 0
 --- !u!1 &5388210907319822896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,6 +1597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 9098325236360457237}
+  isDeep: 0
 --- !u!1 &6777535957410883861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 7895885254438234660}
+  isDeep: 0
 --- !u!1 &6864199592353478079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,6 +1860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 7825929315940962307}
+  isDeep: 0
 --- !u!1 &7115961631703039720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,6 +1954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 8887890787120013914}
+  isDeep: 0
 --- !u!1001 &964442776224163103
 PrefabInstance:
   m_ObjectHideFlags: 0
