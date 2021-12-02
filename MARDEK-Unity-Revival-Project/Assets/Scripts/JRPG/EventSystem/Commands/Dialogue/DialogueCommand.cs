@@ -6,7 +6,7 @@ namespace JRPG
 {
     public class DialogueCommand : OngoingCommand
     {
-        [SerializeField] List<Dialogue> dialogues = new List<Dialogue>();
+        [SerializeField] Dialogue dialogue = null;
 
         public override bool IsOngoing()
         {
@@ -15,7 +15,7 @@ namespace JRPG
 
         public override void Trigger()
         {
-            DialogueManager.EnqueueDialogue(dialogues);
+            DialogueManager.EnqueueDialogue(dialogue);
         }
     }
 }

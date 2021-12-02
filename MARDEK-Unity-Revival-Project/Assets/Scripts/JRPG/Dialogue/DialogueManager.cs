@@ -25,9 +25,10 @@ public class DialogueManager : MonoBehaviour
     
     [SerializeField] GameObject canvas = null;
     [SerializeField] TMPro.TMP_Text dialogueText = null;
+    [SerializeField] TMPro.TMP_Text CharacterNameText = null;
     [SerializeField] float dialogueSpeed = 5;
 
-    List<Dialogue> dialogues;
+    Dialogue dialogue;
     int dialogueIndex = 0;
     int lineIndex = 0;
     float letterIndex = 0;
@@ -60,7 +61,7 @@ public class DialogueManager : MonoBehaviour
         isSkipping = false;
         dialogueIndex = 0;
         lineIndex = -1;
-        dialogues = new List<Dialogue>();
+        dialogue = null;
     }
 
     [ContextMenu("OnGoToNextLine")]
@@ -93,25 +94,25 @@ public class DialogueManager : MonoBehaviour
 
     string CurrentLine()
     {
-        var linesInDialogue = dialogues[dialogueIndex].GetLines();
-        string FullLine = linesInDialogue[lineIndex];
+        var characterDialogueLines = dialogue.CharacterLines[dialogueIndex];
+        string line = characterDialogueLines.Lines[lineIndex];
 
-        int lengthToShow = FullLine.Length;
-        if (letterIndex >= FullLine.Length || letterIndex < 0)
+        int lengthToShow = line.Length;
+        if (letterIndex >= line.Length || letterIndex < 0)
             letterIndex = -1;
         else
             lengthToShow = Mathf.FloorToInt(letterIndex);
 
-        string lineToShow = FullLine.Substring(0, lengthToShow) + "<color=#00000000>";
-        lineToShow += FullLine.Substring(lengthToShow, FullLine.Length - lengthToShow) + "</color>";
+        string lineToShow = line.Substring(0, lengthToShow) + "<color=#00000000>";
+        lineToShow += line.Substring(lengthToShow, line.Length - lengthToShow) + "</color>";
         return lineToShow;
     }
 
     bool AdvanceLine()
     {
         lineIndex++;
-        var lines = dialogues[dialogueIndex].GetLines();
-        if (lineIndex >= lines.Count)
+        var characterDialogueLines = dialogue.CharacterLines[dialogueIndex];
+        if (lineIndex >= characterDialogueLines.Lines.Count)
         {
             return AdvanceDialogueList();
         }
@@ -122,7 +123,7 @@ public class DialogueManager : MonoBehaviour
     bool AdvanceDialogueList()
     {
         dialogueIndex++;
-        if(dialogueIndex >= dialogues.Count)
+        if(dialogueIndex >= dialogue.CharacterLines.Count)
         {
             return false;
         }            
@@ -141,18 +142,15 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = CurrentLine();
     }
     
-    public static void EnqueueDialogue(List<Dialogue> dialogues)
+    public static void EnqueueDialogue(Dialogue _dialogue)
     {
         if (instance == null)
         {
             Debug.LogWarning("No DialogueManager instance found");
-            foreach (Dialogue d in dialogues)
-                foreach(string s in d.GetLines())
-                Debug.Log(s);
         }
         else
         {
-            instance.dialogues = dialogues;
+            instance.dialogue = _dialogue;
             if (isOngoing == false)
                 instance.TryStartDialogues();
         }
