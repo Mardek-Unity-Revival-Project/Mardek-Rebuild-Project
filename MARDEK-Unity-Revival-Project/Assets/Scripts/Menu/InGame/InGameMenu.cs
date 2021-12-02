@@ -40,6 +40,18 @@ public class InGameMenu : MonoBehaviour
     [SerializeField]
     private SubMenuButton helpButton;
 
+    [SerializeField]
+    private AudioObject openMenuSound;
+
+    [SerializeField]
+    private AudioObject verticalMenuScrollSound;
+
+    [SerializeField]
+    private AudioObject focusMenuSound;
+
+    [SerializeField]
+    private AudioObject stopFocusMenuSound;
+
     private SubMenuButton activeButton;
 
     private bool isFocussing;
@@ -91,6 +103,7 @@ public class InGameMenu : MonoBehaviour
         } else {
             if (PlayerController.playerControllerLockValue <= 0) {
                 canvas.enabled = true;
+                AudioManager.PlaySoundEffect(openMenuSound);
                 PlayerController.playerControllerLockValue++;
             }
         }
@@ -116,6 +129,7 @@ public class InGameMenu : MonoBehaviour
                     if (nextSubMenuIndex < 0) nextSubMenuIndex += subMenuButtons.Length;
                     if (nextSubMenuIndex >= subMenuButtons.Length) nextSubMenuIndex -= subMenuButtons.Length;
                     SetActiveSubMenu(subMenuButtons[nextSubMenuIndex]);
+                    AudioManager.PlaySoundEffect(verticalMenuScrollSound);
                 } else {
                     // TODO Handle vertical navigation in focussed sub menu
                 }
@@ -134,6 +148,7 @@ public class InGameMenu : MonoBehaviour
                         subMenuButton.StartFade();
                     }
                     activeButton.Focus();
+                    AudioManager.PlaySoundEffect(focusMenuSound);
                     isFocussing = true;
                 }
             } else {
@@ -150,6 +165,7 @@ public class InGameMenu : MonoBehaviour
                 foreach (SubMenuButton subMenuButton in GetSubMenuButtons()) {
                     subMenuButton.StopFade();
                 }
+                AudioManager.PlaySoundEffect(stopFocusMenuSound);
                 isFocussing = false;
             } else {
                 LeaveInGameMenu();
