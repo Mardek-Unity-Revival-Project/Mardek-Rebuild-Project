@@ -24,10 +24,10 @@ namespace JRPG
         public static void TriggerChoices(Dialogue dialogue)
         {
             instance.canvas.SetActive(true);
-            instance.ShowChoices(dialogue);
+            instance.StartCoroutine(instance.SetupChoices(dialogue));
         }
 
-        void ShowChoices(Dialogue dialogue)
+        IEnumerator SetupChoices(Dialogue dialogue)
         {
             for(int i = 0; i < dialogue.CharacterLines[0].Lines.Count; i++)
             {
@@ -35,16 +35,9 @@ namespace JRPG
                 choicesUIObjects[i].GetComponent<Text>().text = text;
                 choicesUIObjects[i].SetActive(true);
             }
-            choicesUIObjects[0].GetComponent<Button>().Select();
             LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup);
-        }
-
-        void HideChoices()
-        {
-            foreach(var choiceUI in choicesUIObjects)
-            {
-                choiceUI.SetActive(false);
-            }
+            yield return new WaitForEndOfFrame();
+            choicesUIObjects[0].GetComponent<Button>().Select();
         }
         
         public void Choose()
@@ -75,6 +68,7 @@ namespace JRPG
             foreach (var choice in instance.choicesUIObjects)
                 choice.SetActive(false);
             instance.canvas.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 }

@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30e5ccaf95a1f74096638f95e743da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objsToSaveBeforeSavingToFile:
+  - {fileID: 1152420387898926622}
 --- !u!114 &1152420387898926622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +59,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedGuid: c232db7aba06c342865cb0ffb8111bb0
-  currentMap:
-    sceneAsset: {fileID: 0}
-    scenePath: 
+  currentScene: 
+  inMapPartyPositions: []
+  inMapPartyDirections: []
