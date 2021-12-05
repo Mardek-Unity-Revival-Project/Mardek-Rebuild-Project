@@ -9,7 +9,8 @@ namespace JRPG {
 
         public override void UpdateCommand()
         {
-            commandsBeingExecuted.TryAdvanceQueue();
+            if(commandsBeingExecuted != null)
+                commandsBeingExecuted.TryAdvanceQueue();
         }
 
         public override bool IsOngoing()

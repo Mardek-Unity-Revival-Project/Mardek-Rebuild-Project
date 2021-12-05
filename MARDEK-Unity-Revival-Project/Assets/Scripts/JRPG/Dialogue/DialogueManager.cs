@@ -25,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     
     [SerializeField] GameObject canvas = null;
     [SerializeField] TMPro.TMP_Text dialogueText = null;
-    [SerializeField] TMPro.TMP_Text CharacterNameText = null;
+    [SerializeField] TMPro.TMP_Text characterNameText = null;
     [SerializeField] float dialogueSpeed = 5;
 
     Dialogue dialogue;
@@ -67,6 +67,9 @@ public class DialogueManager : MonoBehaviour
     [ContextMenu("OnGoToNextLine")]
     public void OnGoToNextLine()
     {
+        if (isOngoing == false)
+            return;
+
         if (letterIndex < 0)
         {
             if (AdvanceLine() == false)
@@ -94,6 +97,9 @@ public class DialogueManager : MonoBehaviour
 
     string CurrentLine()
     {
+        if (dialogue == null)
+            return string.Empty;
+
         var characterDialogueLines = dialogue.CharacterLines[dialogueIndex];
         string line = characterDialogueLines.Lines[lineIndex];
 
@@ -134,16 +140,23 @@ public class DialogueManager : MonoBehaviour
 
     private void UpdateCharacterName()
     {
-        CharacterBio characterBio = dialogue.CharacterLines[dialogueIndex].Character;
-        if (characterBio)
-            CharacterNameText.text = characterBio.displayName;
-        else
-            CharacterNameText.text = "";
+        if (dialogue != null)
+        {
+            CharacterBio characterBio = dialogue.CharacterLines[dialogueIndex].Character;
+            if (characterBio != null)
+            {
+                characterNameText.text = characterBio.displayName;
+                return;
+            }
+        }
+        characterNameText.text = "";
     }
 
     void EndDialogue()
     {
         ResetManager();
+        UpdateCharacterName();
+        UpdateUI();
         canvas.SetActive(false);
     }
 

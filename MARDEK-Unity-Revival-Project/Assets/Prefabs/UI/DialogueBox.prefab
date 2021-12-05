@@ -126,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5577278130705883467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3815808, y: 0.6721391, z: -8.781107}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8598445544910507931}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 437987761534143219}
   dialogueText: {fileID: 138099289154438629}
-  CharacterNameText: {fileID: 3692016860128452043}
+  characterNameText: {fileID: 3692016860128452043}
   dialogueSpeed: 30
 --- !u!114 &5487473411388021974
 MonoBehaviour:
@@ -554,6 +554,142 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5288402575316067886}
     m_Modifications:
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5487473411388021974}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5487473411388021974}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Choose
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Choose
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JRPG.ChoicesManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: JRPG.ChoicesManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 512548857328197582, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652730541696202477, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652730541696202477, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652730541696202477, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5487473411388021974}
+    - target: {fileID: 2652730541696202477, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652730541696202477, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Choose
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652730541696202477, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JRPG.ChoicesManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652730541696202477, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741242975007891293, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741242975007891293, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741242975007891293, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5487473411388021974}
+    - target: {fileID: 3741242975007891293, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741242975007891293, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Choose
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741242975007891293, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JRPG.ChoicesManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741242975007891293, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171235791876770257, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171235791876770257, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171235791876770257, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5487473411388021974}
+    - target: {fileID: 5171235791876770257, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171235791876770257, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Choose
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171235791876770257, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JRPG.ChoicesManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171235791876770257, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5312948604517925096, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
       propertyPath: m_Name
       value: ChoicesLayoutGroup
@@ -641,6 +777,34 @@ PrefabInstance:
     - target: {fileID: 5662666610635626073, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711675533626574824, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711675533626574824, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711675533626574824, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5487473411388021974}
+    - target: {fileID: 6711675533626574824, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711675533626574824, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Choose
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711675533626574824, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JRPG.ChoicesManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711675533626574824, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9026b0db81c3ece4fad0edcf4fa3bdea, type: 3}

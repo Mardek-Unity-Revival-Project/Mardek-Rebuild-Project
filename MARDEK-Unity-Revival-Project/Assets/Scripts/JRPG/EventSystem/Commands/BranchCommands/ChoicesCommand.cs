@@ -11,7 +11,24 @@ namespace JRPG
 
         public override void Trigger()
         {
+            commandsBeingExecuted = null;
             ChoicesManager.TriggerChoices(choicesDialogue);
+        }
+
+        public override bool IsOngoing()
+        {
+            if(commandsBeingExecuted == null)
+            {
+                int index = ChoicesManager.GetChosenIndex();
+                if(index > -1)
+                {
+                    commandsBeingExecuted = commandsByChoice[index];
+                    commandsBeingExecuted.TriggerFirst();
+                }
+                return true;
+            }
+            else
+                return base.IsOngoing();
         }
     }
 }
