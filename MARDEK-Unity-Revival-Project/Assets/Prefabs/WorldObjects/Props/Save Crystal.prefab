@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4144129632367787962}
   - component: {fileID: 8052052526800668165}
+  - component: {fileID: 9186232716424151427}
   m_Layer: 7
   m_Name: Save Crytal Commands
   m_TagString: Untagged
@@ -62,6 +63,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waitExcecutionEnd: 1
   dialogue: {fileID: 11400000, guid: ef164f6f14f3870438d2ac734c50ad18, type: 2}
+--- !u!114 &9186232716424151427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762223282813047487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30ea245e5f23b245a64541409c89193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitExcecutionEnd: 1
+  choicesDialogue: {fileID: 11400000, guid: 0c95ba83c6c9fbe45ac1598761862397, type: 2}
+  commandsByChoice: []
 --- !u!1001 &3153002801420167085
 PrefabInstance:
   m_ObjectHideFlags: 0

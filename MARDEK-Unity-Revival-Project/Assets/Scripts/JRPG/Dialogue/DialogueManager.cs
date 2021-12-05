@@ -90,7 +90,7 @@ public class DialogueManager : MonoBehaviour
             canvas.SetActive(true);
             UpdateUI();
         }
-    }
+    }    
 
     string CurrentLine()
     {
