@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MURP.EventSystem;
 
-namespace MURP
+namespace MURP.Movement
 {
     [RequireComponent(typeof(GridObject))]
     public class Waypoint : MonoBehaviour
@@ -15,7 +15,6 @@ namespace MURP
             {
                 if (thisWaypoint == SceneTransitionCommand.usedWaypoint)
                 {
-                    //Debug.Log($"Arriving at waypoint {thisWaypoint}");
                     var pos = new List<Vector2>();
                     pos.Add(transform.position);
                     InMapParty.positionsToLoad = pos;

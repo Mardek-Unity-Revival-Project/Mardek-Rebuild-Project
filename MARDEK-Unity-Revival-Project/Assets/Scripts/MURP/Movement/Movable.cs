@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MURP.Animation;
 
-namespace MURP
+namespace MURP.Movement
 {
-    //[RequireComponent(typeof(GridObject))]
-    public class Movement : MonoBehaviour
+    public class Movable : MonoBehaviour
     {
         [SerializeField] float movementSpeed = 1f;
 
@@ -134,13 +131,11 @@ namespace MURP
 
         private void UpdateAnimatorWithCurrentDirection()
         {
-            //Debug.Log("play");
             if (animator) animator.PlayClipByMoveDirectionReference(currentDirection);
         }
 
         void StopAnimator()
         {
-            //Debug.Log("stop");
             if (animator) animator.StopCurrentAnimation(1); //end with last sprite
         }
 

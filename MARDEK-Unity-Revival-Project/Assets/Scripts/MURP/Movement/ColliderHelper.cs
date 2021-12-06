@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MURP
+namespace MURP.Movement
 {
     [RequireComponent(typeof(Collider2D))]
     public class ColliderHelper : MonoBehaviour

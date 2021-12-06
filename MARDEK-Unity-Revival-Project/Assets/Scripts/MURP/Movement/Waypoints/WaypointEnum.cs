@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "JRPG/WaypointEnum")]
-public class WaypointEnum : ScriptableObject
+namespace MURP.Movement
 {
+    [CreateAssetMenu(menuName = "JRPG/WaypointEnum")]
+    public class WaypointEnum : ScriptableObject
+    {
 
+    }
 }

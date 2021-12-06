@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Event = MURP.EventSystem.Event;
 
-namespace MURP
+namespace MURP.Movement
 {
     public class PlayerController : MovementController
     {
@@ -38,7 +37,7 @@ namespace MURP
                 Debug.LogError("there was already a PlayerController intance when a new PlayerController awoke");
         }
 
-        public static Movement GetPlayerMovement()
+        public static Movable GetPlayerMovement()
         {
             if (instance)
                 return instance.movement;
@@ -64,7 +63,6 @@ namespace MURP
                 Event ev = c.GetComponent<Event>();
                 if (ev) ev.Interact();
             }
-            //return collider to place
             movement.colliderHelper.OffsetCollider(Vector2.zero);
         }
         
@@ -78,7 +76,6 @@ namespace MURP
                 desiredDirection = null;
         }
 
-        //late update to avoid race conditions with the input system calls
         private void Update()
         {
             if (playerControllerLockValue > 0)

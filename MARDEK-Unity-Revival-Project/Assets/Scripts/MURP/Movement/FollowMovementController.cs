@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace MURP
+namespace MURP.Movement
 {
     public class FollowMovementController : MovementController
     {
-        [SerializeField] Movement followedMovement;
+        [SerializeField] Movable followedMovement;
         bool shouldFollow = false;
 
         private void OnEnable()

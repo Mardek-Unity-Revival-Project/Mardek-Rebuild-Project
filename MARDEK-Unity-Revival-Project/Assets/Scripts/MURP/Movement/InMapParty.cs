@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-
-namespace MURP
+namespace MURP.Movement
 {
     [SelectionBase]
     public class InMapParty : MonoBehaviour
@@ -38,7 +37,7 @@ namespace MURP
                         if(directions != null && directions.Count > 0)
                         {
                             var direction = i < directions.Count ? directions[i] : directions[directions.Count-1];
-                            character.GetComponent<Movement>().FaceDirection(direction);
+                            character.GetComponent<Movable>().FaceDirection(direction);
                         }                        
                     }
                 }
@@ -60,7 +59,7 @@ namespace MURP
         {
             List<MoveDirection> directions = new List<MoveDirection>();
             foreach (var character in instance.inMapCharacters)
-                directions.Add(character.GetComponent<Movement>().currentDirection);
+                directions.Add(character.GetComponent<Movable>().currentDirection);
             return directions;
         }
     }

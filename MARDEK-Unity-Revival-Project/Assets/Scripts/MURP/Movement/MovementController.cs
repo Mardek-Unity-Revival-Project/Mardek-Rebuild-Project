@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MURP
+namespace MURP.Movement
 {
     public abstract class MovementController : MonoBehaviour
     {
-        [SerializeField] protected Movement movement = null;
+        [SerializeField] protected Movable movement = null;
         [SerializeField] protected List<MoveDirection> allowedDirections = new List<MoveDirection>();
 
         public void SendDirection(MoveDirection direction)
