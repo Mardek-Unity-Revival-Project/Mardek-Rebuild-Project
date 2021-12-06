@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace MURP
+namespace MURP.EventSystem
 {
-    //[System.Serializable]
     public abstract class CommandBase : MonoBehaviour
     {
         public abstract void Trigger();

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MURP
+namespace MURP.EventSystem
 {
     [System.Serializable]
     public class CommandQueue
@@ -28,7 +28,6 @@ namespace MURP
                 commandQueue = new Queue<CommandBase>(commandsGameObject.GetComponents<CommandBase>());
                 if (commandQueue.Count > 0)
                 {
-                    //Debug.Log($"starting command queue with {commandQueue.Count} commands");
                     isOngoing = true;
                     GetAndTriggerNextCommand();
                 }
@@ -89,7 +88,6 @@ namespace MURP
             else
             {
                 isOngoing = false;
-                //Debug.Log("Command queue ended");
             }
         }
 

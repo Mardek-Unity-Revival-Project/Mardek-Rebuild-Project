@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MURP
+namespace MURP.EventSystem
 {
     public abstract class BranchCommand : OngoingCommand
     {

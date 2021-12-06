@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 namespace MURP.Dialogue
 {
+    using EventSystem = UnityEngine.EventSystems.EventSystem;
+
     public class ChoicesManager : MonoBehaviour
     {
         static ChoicesManager instance;

@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace MURP
+namespace MURP.EventSystem
 {
     public class Event : MonoBehaviour
     {
@@ -50,4 +47,3 @@ namespace MURP
         }
     }
 }
-

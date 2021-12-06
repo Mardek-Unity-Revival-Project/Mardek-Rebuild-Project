@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using MURP.EventSystem;
 
 namespace MURP.UI
 {
     public class BeginButton : MonoBehaviour
     {
-        [SerializeField]
-        InputField nameInputField;
+        [SerializeField] InputField nameInputField;
 
-        [SerializeField]
-        TransitionCommand startGameTransition;
+        [SerializeField] SceneTransitionCommand startGameTransition;
 
         public void BeginGame()
         {

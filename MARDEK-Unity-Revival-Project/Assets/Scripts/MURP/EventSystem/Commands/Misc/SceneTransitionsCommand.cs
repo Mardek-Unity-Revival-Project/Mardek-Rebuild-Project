@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MURP
+namespace MURP.EventSystem
 {
-    public class TransitionCommand : CommandBase
+    public class SceneTransitionCommand : CommandBase
     {
+        public static WaypointEnum usedWaypoint { get; private set; }
+        public static MoveDirection transitionFacingDirection { get; private set; }
+
         [SerializeField] SceneReference scene = null;
         [SerializeField] WaypointEnum waypoint = null;
         [SerializeField] MoveDirection overrideFacingDirection = null;
-
-        public static WaypointEnum usedWaypoint { get; private set; }
-        public static MoveDirection transitionFacingDirection { get; private set; }
 
         public override void Trigger()
         {
@@ -28,7 +27,6 @@ namespace MURP
                 transitionFacingDirection = overrideFacingDirection;
             else
                 transitionFacingDirection = PlayerController.GetPlayerMovement().currentDirection;
-            //Debug.Log(transitionFacingDirection);
         }
 
         public static void ClearUsedWaypoint()

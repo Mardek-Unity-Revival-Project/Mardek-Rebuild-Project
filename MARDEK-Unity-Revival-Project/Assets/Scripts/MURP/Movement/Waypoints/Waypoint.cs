@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using MURP.EventSystem;
 
 namespace MURP
 {
@@ -10,16 +11,16 @@ namespace MURP
 
         private void Awake()
         {
-            if (TransitionCommand.usedWaypoint != null)
+            if (SceneTransitionCommand.usedWaypoint != null)
             {
-                if (thisWaypoint == TransitionCommand.usedWaypoint)
+                if (thisWaypoint == SceneTransitionCommand.usedWaypoint)
                 {
                     //Debug.Log($"Arriving at waypoint {thisWaypoint}");
                     var pos = new List<Vector2>();
                     pos.Add(transform.position);
                     InMapParty.positionsToLoad = pos;
-                    InMapParty.directionsToLoad = new List<MoveDirection>(){TransitionCommand.transitionFacingDirection};
-                    TransitionCommand.ClearUsedWaypoint();
+                    InMapParty.directionsToLoad = new List<MoveDirection>(){ SceneTransitionCommand.transitionFacingDirection};
+                    SceneTransitionCommand.ClearUsedWaypoint();
                 }
             }
         }

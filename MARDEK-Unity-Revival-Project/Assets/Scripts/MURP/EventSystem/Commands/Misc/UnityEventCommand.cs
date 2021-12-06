@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace MURP
+namespace MURP.EventSystem
 {
     public class UnityEventCommand : CommandBase
     {

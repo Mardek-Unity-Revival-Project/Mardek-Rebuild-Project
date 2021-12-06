@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace MURP
+namespace MURP.EventSystem
 {
     public class BoolBranchCommand : BranchCommand
     {
