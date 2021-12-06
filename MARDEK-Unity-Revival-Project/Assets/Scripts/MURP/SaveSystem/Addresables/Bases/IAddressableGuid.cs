@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IAddressableGuid
+namespace MURP.SaveSystem
 {
-    public System.Guid GetGuid();
+    public interface IAddressableGuid
+    {
+        public System.Guid GetGuid();
+    }
 }

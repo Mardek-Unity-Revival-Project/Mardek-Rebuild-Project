@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FullSerializer;
 using System;
+using MURP.SaveSystem;
 
 public class GuidReferenceConverter : fsDirectConverter<IAddressableGuid>
 {

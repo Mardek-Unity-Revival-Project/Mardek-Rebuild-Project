@@ -1,57 +1,52 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-#if UNITY_EDITOR
-using UnityEditor;
-using UnityEditor.SceneManagement;
-using UnityEditor.Experimental.SceneManagement;
-#endif
-
-public class AddressableMonoBehaviour : MonoBehaviour, IAddressableGuid
-{    
-    [SerializeField,HideInInspector,FullSerializer.fsIgnore]
-    private byte[] serializedGuid;
-    Guid guid
+namespace MURP.SaveSystem
+{
+    public class AddressableMonoBehaviour : MonoBehaviour, IAddressableGuid
     {
-        get
+        [SerializeField, HideInInspector, FullSerializer.fsIgnore]
+        private byte[] serializedGuid;
+        Guid guid
         {
-            if (serializedGuid == null || serializedGuid.Length != 16)
-                return Guid.Empty;
-            return new Guid(serializedGuid);
+            get
+            {
+                if (serializedGuid == null || serializedGuid.Length != 16)
+                    return Guid.Empty;
+                return new Guid(serializedGuid);
+            }
+            set { serializedGuid = value.ToByteArray(); }
         }
-        set { serializedGuid = value.ToByteArray(); }
-    }
 
-    public Guid GetGuid() { return guid; }
+        public Guid GetGuid() { return guid; }
 
-    private void OnValidate()
-    {
-        if(guid == Guid.Empty)
+        private void OnValidate()
         {
-            guid = Guid.NewGuid();
-            Debug.Log("new guid assigned");
+            if (guid == Guid.Empty)
+            {
+                guid = Guid.NewGuid();
+                Debug.Log("new guid assigned");
+            }
         }
-    }
 
-    public virtual void Save()
-    {
-        SaveSystem.SaveObject(this);
-    }
-    public virtual void Load()
-    {
-        SaveSystem.LoadObject(this);
-    }
+        public virtual void Save()
+        {
+            SaveSystem.SaveObject(this);
+        }
+        public virtual void Load()
+        {
+            SaveSystem.LoadObject(this);
+        }
 
-    [ContextMenu("Save")]
-    void SaveWrapper()
-    {
-        Save();
-    }
-    [ContextMenu("Load")]
-    void LoadWrapper()
-    {
-        Load();
+        [ContextMenu("Save")]
+        void SaveWrapper()
+        {
+            Save();
+        }
+        [ContextMenu("Load")]
+        void LoadWrapper()
+        {
+            Load();
+        }
     }
 }
