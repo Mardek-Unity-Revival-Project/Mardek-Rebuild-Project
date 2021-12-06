@@ -22,14 +22,12 @@ namespace MURP.Dialogue
                 int index = ChoicesManager.GetChosenIndex();
                 if(index > -1)
                 {
-                    Debug.Log($"Choose option {index+1}");
                     commandsBeingExecuted = commandsByChoice[index];
                     commandsBeingExecuted.TriggerFirst();
                 }
                 return true;
             }
-            else
-                return base.IsOngoing();
+            return base.IsOngoing();
         }
     }
 }

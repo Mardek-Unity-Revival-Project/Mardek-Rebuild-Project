@@ -26,6 +26,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4144129632367787962}
+  - component: {fileID: 3181103757735826823}
   - component: {fileID: 2658317730371711588}
   m_Layer: 7
   m_Name: Save Crystal Commands
@@ -50,6 +51,20 @@ Transform:
   m_Father: {fileID: 2801880452226114186}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3181103757735826823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762223282813047487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31ad1e34f546c340bf85a02096374f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitExcecutionEnd: 1
+  dialogue: {fileID: 11400000, guid: abd929fe3ecc85f4f9480a0f4eaa847f, type: 2}
 --- !u!114 &2658317730371711588
 MonoBehaviour:
   m_ObjectHideFlags: 0
