@@ -17,9 +17,12 @@ public class SaveSystem: MonoBehaviour
 #else
             path = Application.persistentDataPath;
 #endif
+            if (System.IO.Directory.Exists(path) == false)
+                System.IO.Directory.CreateDirectory(path);
             return path;
         }
     }
+
     static bool formatSaveFiles = true;
     const string formatterDataFieldName = "\"jsonData\": ";
     [SerializeField] List<AddressableMonoBehaviour> objsToSaveBeforeSavingToFile = new List<AddressableMonoBehaviour>();
@@ -51,7 +54,7 @@ public class SaveSystem: MonoBehaviour
     }
     public static void LoadFromFile(string fileName = "quicksave.json")
     {
-        string filePath = System.IO.Path.Combine(persistentPath, fileName); // TODO: check if path exists
+        string filePath = System.IO.Path.Combine(persistentPath, fileName);
         string json = System.IO.File.ReadAllText(filePath);
         if (formatSaveFiles)
             json = FormatSaveFile(json, false);
