@@ -41,22 +41,21 @@ namespace MURP.SaveSystem
             loadedAddressables.Clear();
         }
 
-        public void SaveToFile(string fileName = "quicksave.json")
+        public void SaveToFile(string fileName = "quicksave")
         {
             foreach (var o in objsToSaveBeforeSavingToFile)
                 o.Save();
-
             serializer.TrySerialize(loadedAddressables, out fsData data);
             string json = fsJsonPrinter.PrettyJson(data);
             if (formatSaveFiles)
                 json = FormatSaveFile(json, true);
-            string filePath = System.IO.Path.Combine(persistentPath, fileName);
+            string filePath = System.IO.Path.Combine(persistentPath, $"{fileName}.json");
             System.IO.File.WriteAllText(filePath, json);
             Debug.Log($"Game file saved to {filePath}");
         }
-        public static void LoadFromFile(string fileName = "quicksave.json")
+        public static void LoadFromFile(string fileName = "quicksave")
         {
-            string filePath = System.IO.Path.Combine(persistentPath, fileName);
+            string filePath = System.IO.Path.Combine(persistentPath, $"{fileName}.json");
             string json = System.IO.File.ReadAllText(filePath);
             if (formatSaveFiles)
                 json = FormatSaveFile(json, false);

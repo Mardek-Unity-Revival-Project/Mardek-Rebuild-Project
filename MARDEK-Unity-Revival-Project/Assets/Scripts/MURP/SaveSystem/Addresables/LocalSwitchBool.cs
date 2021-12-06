@@ -8,11 +8,6 @@ namespace MURP.SaveSystem
     {
         [SerializeField] bool value = false;
 
-        private void Awake()
-        {
-            Load();
-        }
-
         public bool GetBoolValue()
         {
             return value;

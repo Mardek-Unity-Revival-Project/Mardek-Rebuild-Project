@@ -50,6 +50,7 @@ namespace MURP.Movement
 
         public static List<Vector2> GetPartyPosition()
         {
+            if (instance == null) return null;
             List<Vector2> pos = new List<Vector2>();
             foreach (var character in instance.inMapCharacters)
                 pos.Add(character.transform.position);
@@ -57,6 +58,7 @@ namespace MURP.Movement
         }
         public static List<MoveDirection> GetPartyDirections()
         {
+            if (instance == null) return null;
             List<MoveDirection> directions = new List<MoveDirection>();
             foreach (var character in instance.inMapCharacters)
                 directions.Add(character.GetComponent<Movable>().currentDirection);

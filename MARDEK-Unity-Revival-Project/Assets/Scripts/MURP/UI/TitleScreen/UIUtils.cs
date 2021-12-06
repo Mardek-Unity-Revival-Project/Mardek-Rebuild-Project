@@ -2,9 +2,8 @@ using UnityEngine;
 
 namespace MURP.UI
 {
-    public class QuitButton : MonoBehaviour
+    public class UIUtils : MonoBehaviour
     {
-
         public void QuitGame()
         {
             Application.Quit();

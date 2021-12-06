@@ -17,7 +17,8 @@ namespace MURP.EventSystem
         {
             usedWaypoint = waypoint;
 
-            SetFacingDirection();
+            if(overrideFacingDirection)
+                SetFacingDirection();
 
             SceneManager.LoadScene(scene);
         }

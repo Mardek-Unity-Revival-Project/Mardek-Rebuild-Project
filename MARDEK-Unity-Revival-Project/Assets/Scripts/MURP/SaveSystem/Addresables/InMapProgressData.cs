@@ -5,7 +5,7 @@ using MURP.Movement;
 
 namespace MURP.SaveSystem
 {
-    public class ProgressData : AddressableMonoBehaviour
+    public class InMapProgressData : AddressableMonoBehaviour
     {
         [SerializeField] string currentScene = default;
         [SerializeField] List<Vector2> inMapPartyPositions = new List<Vector2>();
@@ -24,7 +24,10 @@ namespace MURP.SaveSystem
         {
             InMapParty.positionsToLoad = inMapPartyPositions;
             InMapParty.directionsToLoad = inMapPartyDirections;
-            SceneManager.LoadScene(currentScene);
+            if (string.IsNullOrEmpty(currentScene))
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            else
+                SceneManager.LoadScene(currentScene);
         }
     }
 }

@@ -5,6 +5,7 @@ namespace MURP.SaveSystem
 {
     public class AddressableMonoBehaviour : MonoBehaviour, IAddressableGuid
     {
+        [SerializeField, FullSerializer.fsIgnore] bool loadOnAwake = true;
         [SerializeField, HideInInspector, FullSerializer.fsIgnore]
         private byte[] serializedGuid;
         Guid guid
@@ -16,6 +17,12 @@ namespace MURP.SaveSystem
                 return new Guid(serializedGuid);
             }
             set { serializedGuid = value.ToByteArray(); }
+        }
+
+        private void Awake()
+        {
+            if (loadOnAwake)
+                Load();
         }
 
         public Guid GetGuid() { return guid; }
