@@ -30,7 +30,7 @@ MonoBehaviour:
   channelName: $PLATFORM-$ARCHITECTURE
   showUploadProgress: 0
   itchChannelOverride: 
---- !u!114 &-1964283309104975413
+--- !u!114 &-4417948210501968905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,8 +80,8 @@ MonoBehaviour:
     buildPath: $VERSION/$PLATFORM
     openFolderPostBuild: 0
   _productParameters:
-    buildCounter: 3
-    buildVersion: 0.0.3
+    buildCounter: 5
+    buildVersion: 0.0.5
     versionTemplate: 0.0.$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -103,33 +103,28 @@ MonoBehaviour:
         - fileGUID: 6febde95d7660a449b1ff57bbfa809ea
   _platformList:
     platforms:
-    - {fileID: -1964283309104975413}
     - {fileID: 1696010925549556930}
     - {fileID: 1905912444616002523}
+    - {fileID: -4417948210501968905}
   _projectConfigurations:
     configSet:
-      _Buckets: 03000000ffffffff06000000ffffffff050000000100000004000000
-      _HashCodes: 878a7279510e9f596d38f6476da5e235134e5c09fe3787562d6dfd48
-      _Next: ffffffffffffffff0000000002000000ffffffffffffffffffffffff
+      _Buckets: 04000000ffffffff06000000ffffffff030000000500000002000000
+      _HashCodes: 6d38f6476da5e235134e5c09fe378756878a7279510e9f592d6dfd48
+      _Next: ffffffff00000000ffffffffffffffff01000000ffffffffffffffff
       _Count: 7
       _Version: 7
       _FreeList: -1
       _FreeCount: 0
       _Keys:
-      - Release/PC/Windows x64 (App)
-      - Release/PC
       - Release/WebGL/WebGL
       - Release/WebGL
       - Release/Linux/Linux x64
       - Release/Linux
+      - Release/PC/Windows x64 (App)
+      - Release/PC
       - Release
       _Values:
-      - enabled: 0
-        childKeys: []
       - enabled: 1
-        childKeys:
-        - Release/PC/Windows x64 (App)
-      - enabled: 0
         childKeys: []
       - enabled: 1
         childKeys:
@@ -140,10 +135,15 @@ MonoBehaviour:
         childKeys:
         - Release/Linux/Linux x64
       - enabled: 1
+        childKeys: []
+      - enabled: 1
         childKeys:
-        - Release/PC
+        - Release/PC/Windows x64 (App)
+      - enabled: 1
+        childKeys:
         - Release/WebGL
         - Release/Linux
+        - Release/PC
     showViewOptions: 0
     showConfigs: 0
     showBuildInfo: 0

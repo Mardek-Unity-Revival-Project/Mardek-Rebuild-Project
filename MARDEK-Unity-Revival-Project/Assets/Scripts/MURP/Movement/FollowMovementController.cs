@@ -39,7 +39,7 @@ namespace MURP.Movement
         {
             if (shouldFollow)
             {
-                if (Vector2.Distance(followedMovement.lastPosition, transform.position) < Vector2.kEpsilon)
+                if (Vector2.Distance(followedMovement.lastPosition, transform.position) < 2 * Vector2.kEpsilon)
                     shouldFollow = false;
                 else
                     MoveToFollowed();

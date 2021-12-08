@@ -11,15 +11,17 @@ public static class BuildConstants
     public enum Platform
     {
         None,
-        PC,
         WebGL,
+        Linux,
+        PC,
     }
 
     public enum Architecture
     {
         None,
-        Windows_x64,
         WebGL,
+        Linux_x64,
+        Windows_x64,
     }
 
     public enum Distribution
@@ -27,8 +29,8 @@ public static class BuildConstants
         None,
     }
 
-    public static readonly System.DateTime buildDate = new System.DateTime(637745405463830246);
-    public const string version = "0.0.2";
+    public static readonly System.DateTime buildDate = new System.DateTime(637745674220359670);
+    public const string version = "0.0.5";
     public const ReleaseType releaseType = ReleaseType.Release;
     public const Platform platform = Platform.WebGL;
     public const Architecture architecture = Architecture.WebGL;
