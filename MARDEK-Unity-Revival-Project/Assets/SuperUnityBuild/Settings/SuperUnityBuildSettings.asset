@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5175575204825204547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d88f7d353534a4fbdeb11196057db7, type: 3}
+  m_Name: UploadItch
+  m_EditorClassIdentifier: 
+  actionType: 1
+  actionName: UploadItch
+  note: 
+  actionEnabled: 1
+  configureEditor: 0
+  filter:
+    condition: 3
+    clauses:
+    - type: 1
+      comparison: 0
+      test: WEBGL
+  pathToButlerExe: D:\Programs\butler-windows-amd64\butler.exe
+  nameOfItchUser: george-maneta
+  nameOfItchGame: murp
+  useGeneratedBuildVersion: 1
+  channelName: $PLATFORM-$ARCHITECTURE
+  showUploadProgress: 0
+  itchChannelOverride: 
 --- !u!114 &-1964283309104975413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,11 +77,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _basicSettings:
     baseBuildFolder: Builds
-    buildPath: $VERSION/$PLATFORM/$ARCHITECTURE
+    buildPath: $VERSION/$PLATFORM
     openFolderPostBuild: 0
   _productParameters:
-    buildCounter: 2
-    buildVersion: 0.0.2
+    buildCounter: 1
+    buildVersion: 0.0.1
     versionTemplate: 0.0.$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -93,7 +123,7 @@ MonoBehaviour:
       - 
       - 
       _Values:
-      - enabled: 1
+      - enabled: 0
         childKeys: []
       - enabled: 1
         childKeys:
@@ -116,11 +146,13 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: 
+    selectedKeyChain: Release/WebGL/WebGL
   _preBuildActions:
     buildActions: []
   _postBuildActions:
-    buildActions: []
+    buildActions:
+    - {fileID: -5175575204825204547}
+    - {fileID: 8740841105189655030}
 --- !u!114 &1696010925549556930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,3 +177,33 @@ MonoBehaviour:
   platformName: WebGL
   dataDirNameFormat: '{0}_Data'
   targetGroup: 13
+--- !u!114 &8740841105189655030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d88f7d353534a4fbdeb11196057db7, type: 3}
+  m_Name: UploadItch
+  m_EditorClassIdentifier: 
+  actionType: 1
+  actionName: UploadItch
+  note: 
+  actionEnabled: 1
+  configureEditor: 0
+  filter:
+    condition: 2
+    clauses:
+    - type: 1
+      comparison: 0
+      test: WEBGL
+  pathToButlerExe: D:\Programs\butler-windows-amd64\butler.exe
+  nameOfItchUser: george-maneta
+  nameOfItchGame: murp
+  useGeneratedBuildVersion: 1
+  channelName: 
+  showUploadProgress: 0
+  itchChannelOverride: webgl
