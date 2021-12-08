@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.github.superunitybuild.buildactions": "2.1.1",
     "com.github.superunitybuild.buildtool": "5.0.1",
     "com.unity.2d.animation": "5.0.6",
     "com.unity.2d.pixel-perfect": "4.0.1",
@@ -52,7 +53,8 @@
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
-        "com.github.superunitybuild.buildtool"
+        "com.github.superunitybuild.buildtool",
+        "com.github.superunitybuild.buildactions"
       ]
     }
   ]
