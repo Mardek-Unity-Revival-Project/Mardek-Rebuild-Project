@@ -80,8 +80,8 @@ MonoBehaviour:
     buildPath: $VERSION/$PLATFORM
     openFolderPostBuild: 0
   _productParameters:
-    buildCounter: 1
-    buildVersion: 0.0.1
+    buildCounter: 3
+    buildVersion: 0.0.3
     versionTemplate: 0.0.$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -105,13 +105,14 @@ MonoBehaviour:
     platforms:
     - {fileID: -1964283309104975413}
     - {fileID: 1696010925549556930}
+    - {fileID: 1905912444616002523}
   _projectConfigurations:
     configSet:
-      _Buckets: 03000000ffffffff04000000ffffffffffffffff01000000ffffffff
-      _HashCodes: 878a7279510e9f596d38f6476da5e2352d6dfd480000000000000000
-      _Next: ffffffffffffffff0000000002000000ffffffff0000000000000000
-      _Count: 5
-      _Version: 5
+      _Buckets: 03000000ffffffff06000000ffffffff050000000100000004000000
+      _HashCodes: 878a7279510e9f596d38f6476da5e235134e5c09fe3787562d6dfd48
+      _Next: ffffffffffffffff0000000002000000ffffffffffffffffffffffff
+      _Count: 7
+      _Version: 7
       _FreeList: -1
       _FreeCount: 0
       _Keys:
@@ -119,34 +120,36 @@ MonoBehaviour:
       - Release/PC
       - Release/WebGL/WebGL
       - Release/WebGL
+      - Release/Linux/Linux x64
+      - Release/Linux
       - Release
-      - 
-      - 
       _Values:
       - enabled: 0
         childKeys: []
       - enabled: 1
         childKeys:
         - Release/PC/Windows x64 (App)
-      - enabled: 1
+      - enabled: 0
         childKeys: []
       - enabled: 1
         childKeys:
         - Release/WebGL/WebGL
       - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - Release/Linux/Linux x64
+      - enabled: 1
         childKeys:
         - Release/PC
         - Release/WebGL
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
+        - Release/Linux
     showViewOptions: 0
     showConfigs: 0
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: Release/WebGL/WebGL
+    selectedKeyChain: Release/Linux/Linux x64
   _preBuildActions:
     buildActions: []
   _postBuildActions:
@@ -177,6 +180,30 @@ MonoBehaviour:
   platformName: WebGL
   dataDirNameFormat: '{0}_Data'
   targetGroup: 13
+--- !u!114 &1905912444616002523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc439ce9d1bfb34a821f7d6fabc4fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabled: 1
+  distributionList:
+    distributions: []
+  architectures:
+  - target: 24
+    name: Linux x64
+    enabled: 1
+    binaryNameFormat: '{0}.x86_64'
+  variants: []
+  platformName: Linux
+  dataDirNameFormat: '{0}_Data'
+  targetGroup: 1
 --- !u!114 &8740841105189655030
 MonoBehaviour:
   m_ObjectHideFlags: 0
