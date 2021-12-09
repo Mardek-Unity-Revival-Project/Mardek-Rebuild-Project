@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4500335264895812079}
   - component: {fileID: 5639092779641406810}
-  - component: {fileID: 1249792509359061248}
   m_Layer: 0
   m_Name: SaveSystem
   m_TagString: Untagged
@@ -45,25 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30e5ccaf95a1f74096638f95e743da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objsToSaveBeforeSavingToFile:
-  - {fileID: 4848806296384726049}
---- !u!114 &1249792509359061248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7350278987008627193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59d350eb06de3fd4b99e34a9eb6e543f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene:
-    sceneAsset: {fileID: 102900000, guid: ef9d7c3bc2086dd41a9b4d78453f157a, type: 3}
-    scenePath: Assets/Scenes/GameFileLoader.unity
-  waypoint: {fileID: 0}
-  overrideFacingDirection: {fileID: 0}
 --- !u!1001 &4314210115622260459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,14 +106,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4351751439770214631, guid: 0ef26002ae8a1a84ba596c03cad5a712, type: 3}
   m_PrefabInstance: {fileID: 4314210115622260459}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4848806296384726049 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8688935292817615562, guid: 0ef26002ae8a1a84ba596c03cad5a712, type: 3}
-  m_PrefabInstance: {fileID: 4314210115622260459}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd5d2ba7faf01dd4f8b8930a280d6ab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

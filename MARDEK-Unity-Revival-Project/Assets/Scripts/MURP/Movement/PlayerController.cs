@@ -15,7 +15,7 @@ namespace MURP.Movement
         bool isPlayerLocked
         {
             get
-            {
+            {                
                 return CommandQueue.lockValue > 0;
             }
         }

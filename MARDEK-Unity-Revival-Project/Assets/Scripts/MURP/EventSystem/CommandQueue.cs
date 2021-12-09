@@ -7,7 +7,7 @@ namespace MURP.EventSystem
     [System.Serializable]
     public class CommandQueue
     {
-        public static int lockValue { get; private set; }
+        public static int lockValue { get; set; }
 
         [SerializeField] GameObject commandsGameObject;
         public bool isOngoing { get; private set; } = false;

@@ -18,7 +18,7 @@ namespace MURP.Movement
                     var pos = new List<Vector2>();
                     pos.Add(transform.position);
                     var directions = new List<MoveDirection>() { SceneTransitionCommand.transitionFacingDirection };
-                    InMapParty.OverridePositionAndDirection(pos, directions);
+                    InMapParty.SetPositionAndDirectionOverrides(pos, directions);
                     SceneTransitionCommand.ClearUsedWaypoint();
                 }
             }

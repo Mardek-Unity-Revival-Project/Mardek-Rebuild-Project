@@ -11,10 +11,13 @@ namespace MURP.Movement
         static InMapParty instance;
         [SerializeField, FullSerializer.fsIgnore] List<GameObject> inMapCharacters = new List<GameObject>();
 
+        private static List<Vector2> partyPositionsOverride;
+        private static List<MoveDirection> partyDirectionsOverride;
+
         //Saved properties
         [SerializeField, HideInInspector] List<Vector2> partyPositions = new List<Vector2>();
         [SerializeField, HideInInspector] List<MoveDirection> partyDirections = new List<MoveDirection>();
-        
+
         List<Vector2> GetPartyPosition()
         {
             if (instance == null) return null;
@@ -41,7 +44,8 @@ namespace MURP.Movement
         public override void Load()
         {
             base.Load();
-            PositionPartyAt(partyPositions, partyDirections);
+            partyPositionsOverride = partyPositions;
+            partyDirectionsOverride = partyDirections;
         }
 
         private void Awake()
@@ -49,38 +53,35 @@ namespace MURP.Movement
             if (instance)
                 Destroy(instance);
             instance = this;
-            if (partyPositions.Count > 0)
-                PositionPartyAt(partyPositions, partyDirections);
-        }
-        public static void PositionPartyAt(List<Vector2> positions, List<MoveDirection> directions)
-        {
-            if (instance)
+            if(partyPositionsOverride?.Count > 0)
             {
-                for (int i = 0; i < instance.inMapCharacters.Count; i++)
+                OverridePositionAndDirection(partyPositionsOverride, partyDirectionsOverride);
+                partyPositionsOverride = new List<Vector2>();
+                partyDirectionsOverride = new List<MoveDirection>();
+            }
+        }
+        void OverridePositionAndDirection(List<Vector2> positions, List<MoveDirection> directions)
+        {
+            for (int i = 0; i < inMapCharacters.Count; i++)
+            {
+                GameObject character = inMapCharacters[i];
+                if (character != null)
                 {
-                    GameObject character = instance.inMapCharacters[i];
-                    if (character != null)
+                    var position = i < positions.Count ? positions[i] : positions[positions.Count-1];
+                    Utilities2D.SetTransformPosition(character.transform, position);
+                    if(directions != null && directions.Count > 0)
                     {
-                        var position = i < positions.Count ? positions[i] : positions[positions.Count-1];
-                        Utilities2D.SetTransformPosition(character.transform, position);
-                        if(directions != null && directions.Count > 0)
-                        {
-                            var direction = i < directions.Count ? directions[i] : directions[directions.Count-1];
-                            character.GetComponent<Movable>().FaceDirection(direction);
-                        }                        
-                    }
+                        var direction = i < directions.Count ? directions[i] : directions[directions.Count-1];
+                        character.GetComponent<Movable>().FaceDirection(direction);
+                    }                        
                 }
             }
-            else
-            {
-                Debug.LogError("No InMapParty found");
-            }
+
         }
-        public static void OverridePositionAndDirection(List<Vector2> positions, List<MoveDirection> directions)
+        public static void SetPositionAndDirectionOverrides(List<Vector2> positions, List<MoveDirection> directions)
         {
-            if (instance == null) return;
-            instance.partyPositions = positions;
-            instance.partyDirections = directions;
+            partyPositionsOverride = positions;
+            partyDirectionsOverride = directions;
         }
     }
 }

@@ -21,6 +21,9 @@ namespace MURP.Movement
             if(overrideFacingDirection)
                 SetFacingDirection();
 
+            //Command queue won't have the oportunity to reset the lockValue itself cause the scene reload will destroy the object
+            CommandQueue.lockValue = 0;
+
             SceneManager.LoadScene(scene);
         }
 
