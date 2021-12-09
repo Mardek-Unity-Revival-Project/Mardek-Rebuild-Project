@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using MURP.Core;
 using MURP.EventSystem;
+using MURP.UI;
 using Event = MURP.EventSystem.Event;
 
 namespace MURP.Movement
@@ -16,7 +17,7 @@ namespace MURP.Movement
         {
             get
             {                
-                return CommandQueue.lockValue > 0;
+                return CommandQueue.lockValue > 0 || InGameMenu.lockValue;
             }
         }
 
