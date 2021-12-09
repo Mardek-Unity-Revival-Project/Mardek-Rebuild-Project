@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using MURP.Movement;
+using MURP.Core;
+using MURP.EventSystem;
 
-namespace MURP.EventSystem
+namespace MURP.Movement
 {
     public class SceneTransitionCommand : CommandBase
     {

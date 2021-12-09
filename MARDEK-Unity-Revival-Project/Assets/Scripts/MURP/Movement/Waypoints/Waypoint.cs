@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using MURP.EventSystem;
+using MURP.Core;
 
 namespace MURP.Movement
 {
@@ -17,8 +17,8 @@ namespace MURP.Movement
                 {
                     var pos = new List<Vector2>();
                     pos.Add(transform.position);
-                    InMapParty.positionsToLoad = pos;
-                    InMapParty.directionsToLoad = new List<MoveDirection>(){ SceneTransitionCommand.transitionFacingDirection};
+                    var directions = new List<MoveDirection>() { SceneTransitionCommand.transitionFacingDirection };
+                    InMapParty.OverridePositionAndDirection(pos, directions);
                     SceneTransitionCommand.ClearUsedWaypoint();
                 }
             }

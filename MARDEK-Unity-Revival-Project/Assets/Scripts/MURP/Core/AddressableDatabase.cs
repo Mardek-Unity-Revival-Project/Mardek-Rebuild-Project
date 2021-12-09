@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 
-namespace MURP.SaveSystem
+namespace MURP.Core
 {
     //[CreateAssetMenu(menuName = "Database")]
     public class AddressableDatabase : ScriptableObject

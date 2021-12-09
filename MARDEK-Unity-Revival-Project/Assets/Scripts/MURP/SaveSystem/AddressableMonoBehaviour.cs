@@ -1,11 +1,18 @@
 using UnityEngine;
 using System;
+using MURP.Core;
 
 namespace MURP.SaveSystem
 {
     public class AddressableMonoBehaviour : MonoBehaviour, IAddressableGuid
     {
-        [SerializeField, FullSerializer.fsIgnore] bool loadOnAwake = true;
+        [SerializeField, FullSerializer.fsIgnore] SaveOptions saveOptions;
+        [System.Serializable]
+        class SaveOptions {
+            public bool loadOnAwake = true;
+            public bool autoSave = false;
+        }
+
         [SerializeField, HideInInspector, FullSerializer.fsIgnore]
         private byte[] serializedGuid;
         Guid guid
@@ -19,21 +26,30 @@ namespace MURP.SaveSystem
             set { serializedGuid = value.ToByteArray(); }
         }
 
-        private void Awake()
-        {
-            if (loadOnAwake)
-                Load();
-        }
-
         public Guid GetGuid() { return guid; }
-
         private void OnValidate()
         {
             if (guid == Guid.Empty)
             {
                 guid = Guid.NewGuid();
-                Debug.Log("new guid assigned");
+                Debug.Log($"new guid assigned to {this.name}", this);
             }
+        }
+
+        private void OnEnable()
+        {
+            if(saveOptions.autoSave)
+                SaveSystem.objsToSaveBeforeSavingToFile.Add(this);
+        }
+        private void OnDisable()
+        {
+            if(saveOptions.autoSave)
+                SaveSystem.objsToSaveBeforeSavingToFile.Remove(this);
+        }
+        private void Awake()
+        {
+            if (saveOptions.loadOnAwake)
+                Load();
         }
 
         public virtual void Save()

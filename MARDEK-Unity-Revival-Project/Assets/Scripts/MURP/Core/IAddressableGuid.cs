@@ -1,4 +1,4 @@
-namespace MURP.SaveSystem
+namespace MURP.Core
 {
     public interface IAddressableGuid
     {

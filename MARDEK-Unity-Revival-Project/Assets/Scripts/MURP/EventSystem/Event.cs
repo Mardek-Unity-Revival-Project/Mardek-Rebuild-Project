@@ -1,5 +1,4 @@
 using UnityEngine;
-using MURP.Movement;
 
 namespace MURP.EventSystem
 {
@@ -26,7 +25,7 @@ namespace MURP.EventSystem
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (onTriggerEnter)
-                if (collision.GetComponent<PlayerController>())
+                if (collision.gameObject.CompareTag("Player"))
                     commands.TriggerFirst();
         }
 

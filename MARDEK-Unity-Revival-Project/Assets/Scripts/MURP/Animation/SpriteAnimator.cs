@@ -1,5 +1,5 @@
 using UnityEngine;
-using MURP.Movement;
+using MURP.Core;
 
 namespace MURP.Animation
 {

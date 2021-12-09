@@ -48,10 +48,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f14233322d40df4abd843017a242a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveOptions:
+    loadOnAwake: 0
+    autoSave: 1
+  serializedGuid: 9ba8aefc2199ed40bb3efe611f686190
   inMapCharacters:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  partyPositions: []
+  partyDirections: []
 --- !u!114 &25316847360606543
 MonoBehaviour:
   m_ObjectHideFlags: 0

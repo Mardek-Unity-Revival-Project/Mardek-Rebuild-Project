@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5d2ba7faf01dd4f8b8930a280d6ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadOnAwake: 1
+  saveOptions:
+    loadOnAwake: 1
+    autoSave: 1
   serializedGuid: 61c0b29a13d30f48ab5c50d249316529
   _gameName: 
+  currentScene: 

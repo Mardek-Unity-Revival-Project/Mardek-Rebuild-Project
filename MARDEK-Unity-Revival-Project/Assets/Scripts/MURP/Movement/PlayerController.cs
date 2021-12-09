@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using MURP.Core;
+using MURP.EventSystem;
 using Event = MURP.EventSystem.Event;
 
 namespace MURP.Movement
@@ -8,26 +10,15 @@ namespace MURP.Movement
     public class PlayerController : MovementController
     {
         static PlayerController instance;
+        MoveDirection desiredDirection = null;
 
-        int _lockValue = 0;
-
-        public static int playerControllerLockValue
+        bool isPlayerLocked
         {
             get
             {
-                if (instance)
-                    return instance._lockValue;
-                else
-                    return 0;
-            }
-            set
-            {
-                if (instance)
-                    instance._lockValue = value;
+                return CommandQueue.lockValue > 0;
             }
         }
-
-        MoveDirection desiredDirection = null;
 
         private void Awake()
         {
@@ -47,7 +38,7 @@ namespace MURP.Movement
 
         public void OnInteraction(InputAction.CallbackContext ctx)
         {
-            if (playerControllerLockValue > 0)
+            if (isPlayerLocked)
                 return;
 
             if (ctx.performed == false)
@@ -78,7 +69,7 @@ namespace MURP.Movement
 
         private void Update()
         {
-            if (playerControllerLockValue > 0)
+            if (isPlayerLocked)
                 return;
             SendDirection(desiredDirection);
         }

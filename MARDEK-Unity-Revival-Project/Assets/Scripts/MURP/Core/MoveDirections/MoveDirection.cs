@@ -1,9 +1,8 @@
 using System;
 using UnityEngine;
 using FullSerializer;
-using MURP.SaveSystem;
 
-namespace MURP.Movement
+namespace MURP.Core
 {
     [fsObject(Converter = typeof(GuidReferenceConverter))]
     public class MoveDirection : ScriptableObject, IAddressableGuid

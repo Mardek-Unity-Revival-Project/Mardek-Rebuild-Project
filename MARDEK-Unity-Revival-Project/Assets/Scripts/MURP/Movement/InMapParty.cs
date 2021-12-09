@@ -1,28 +1,57 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using MURP.Core;
+using MURP.SaveSystem;
 
 namespace MURP.Movement
 {
     [SelectionBase]
-    public class InMapParty : MonoBehaviour
+    public class InMapParty : AddressableMonoBehaviour
     {
         static InMapParty instance;
-        public static List<Vector2> positionsToLoad = new List<Vector2>();
-        public static List<MoveDirection> directionsToLoad = new List<MoveDirection>();
+        [SerializeField, FullSerializer.fsIgnore] List<GameObject> inMapCharacters = new List<GameObject>();
 
-        [SerializeField] List<GameObject> inMapCharacters = new List<GameObject>();
-     
+        //Saved properties
+        [SerializeField, HideInInspector] List<Vector2> partyPositions = new List<Vector2>();
+        [SerializeField, HideInInspector] List<MoveDirection> partyDirections = new List<MoveDirection>();
+        
+        List<Vector2> GetPartyPosition()
+        {
+            if (instance == null) return null;
+            List<Vector2> pos = new List<Vector2>();
+            foreach (var character in instance.inMapCharacters)
+                pos.Add(character.transform.position);
+            return pos;
+        }
+        List<MoveDirection> GetPartyDirections()
+        {
+            if (instance == null) return null;
+            List<MoveDirection> directions = new List<MoveDirection>();
+            foreach (var character in instance.inMapCharacters)
+                directions.Add(character.GetComponent<Movable>().currentDirection);
+            return directions;
+        }
+
+        public override void Save()
+        {
+            partyPositions = GetPartyPosition();
+            partyDirections = GetPartyDirections();
+            base.Save();
+        }
+        public override void Load()
+        {
+            base.Load();
+            PositionPartyAt(partyPositions, partyDirections);
+        }
+
         private void Awake()
         {
             if (instance)
                 Destroy(instance);
             instance = this;
-            if (positionsToLoad.Count > 0)
-                PositionPartyAt(positionsToLoad, directionsToLoad);
-            positionsToLoad = new List<Vector2>();
-            directionsToLoad = new List<MoveDirection>();
+            if (partyPositions.Count > 0)
+                PositionPartyAt(partyPositions, partyDirections);
         }
-
         public static void PositionPartyAt(List<Vector2> positions, List<MoveDirection> directions)
         {
             if (instance)
@@ -47,22 +76,11 @@ namespace MURP.Movement
                 Debug.LogError("No InMapParty found");
             }
         }
-
-        public static List<Vector2> GetPartyPosition()
+        public static void OverridePositionAndDirection(List<Vector2> positions, List<MoveDirection> directions)
         {
-            if (instance == null) return null;
-            List<Vector2> pos = new List<Vector2>();
-            foreach (var character in instance.inMapCharacters)
-                pos.Add(character.transform.position);
-            return pos;
-        }
-        public static List<MoveDirection> GetPartyDirections()
-        {
-            if (instance == null) return null;
-            List<MoveDirection> directions = new List<MoveDirection>();
-            foreach (var character in instance.inMapCharacters)
-                directions.Add(character.GetComponent<Movable>().currentDirection);
-            return directions;
+            if (instance == null) return;
+            instance.partyPositions = positions;
+            instance.partyDirections = directions;
         }
     }
 }

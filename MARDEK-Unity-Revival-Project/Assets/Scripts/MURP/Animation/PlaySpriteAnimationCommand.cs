@@ -1,6 +1,6 @@
 using UnityEngine;
 using MURP.EventSystem;
-using MURP.Movement;
+using MURP.Core;
 
 namespace MURP.Animation
 {

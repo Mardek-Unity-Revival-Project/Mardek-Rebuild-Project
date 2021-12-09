@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using FullSerializer;
 using System.Text.RegularExpressions;
+using FullSerializer;
+using MURP.Core;
 
 namespace MURP.SaveSystem
 {
@@ -26,7 +27,7 @@ namespace MURP.SaveSystem
 
         static bool formatSaveFiles = true;
         const string formatterDataFieldName = "\"jsonData\": ";
-        [SerializeField] List<AddressableMonoBehaviour> objsToSaveBeforeSavingToFile = new List<AddressableMonoBehaviour>();
+        public static List<AddressableMonoBehaviour> objsToSaveBeforeSavingToFile = new List<AddressableMonoBehaviour>();
 
         class AddresableSaveWrapper
         {

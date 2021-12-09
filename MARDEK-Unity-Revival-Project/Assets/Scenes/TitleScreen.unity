@@ -1137,10 +1137,10 @@ MonoBehaviour:
   startGame:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1357581439}
-        m_TargetAssemblyTypeName: MURP.SaveSystem.SaveSystem, Assembly-CSharp
-        m_MethodName: SaveToFile
-        m_Mode: 5
+      - m_Target: {fileID: 1357581441}
+        m_TargetAssemblyTypeName: MURP.SaveSystem.GeneralProgressData, MURP.SaveSystem
+        m_MethodName: Save
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1476,6 +1476,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 383807915}
     m_Modifications:
+    - target: {fileID: 1249792509359061248, guid: 5b3e93475ee85944a84dac19acaba6b1, type: 3}
+      propertyPath: scene.scenePath
+      value: Assets/Scenes/Maps/DragonLair/DL_Area1.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249792509359061248, guid: 5b3e93475ee85944a84dac19acaba6b1, type: 3}
+      propertyPath: scene.sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
     - target: {fileID: 4500335264895812079, guid: 5b3e93475ee85944a84dac19acaba6b1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1526,17 +1534,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b3e93475ee85944a84dac19acaba6b1, type: 3}
---- !u!114 &1357581439 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5639092779641406810, guid: 5b3e93475ee85944a84dac19acaba6b1, type: 3}
-  m_PrefabInstance: {fileID: 1357581438}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f30e5ccaf95a1f74096638f95e743da0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1357581440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4500335264895812079, guid: 5b3e93475ee85944a84dac19acaba6b1, type: 3}
