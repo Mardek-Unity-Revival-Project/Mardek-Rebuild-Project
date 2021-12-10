@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MURP.Dialogue
+namespace MURP.CharacterSystem
 {
     [CreateAssetMenu(menuName ="JRPG/CharacterBio")]
     public class CharacterBio : ScriptableObject

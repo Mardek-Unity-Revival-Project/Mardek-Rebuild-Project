@@ -29,13 +29,12 @@ namespace MURP.Core
 #if UNITY_EDITOR
         private void OnValidate()
         {
+            guids.Clear();
+            objects.Clear();
             foreach (var filter in filters)
             {
                 if (string.IsNullOrEmpty(filter))
                     continue;
-
-                guids.Clear();
-                objects.Clear();
 
                 var result = AssetDatabase.FindAssets(filter, null);
                 foreach (var guid in result)

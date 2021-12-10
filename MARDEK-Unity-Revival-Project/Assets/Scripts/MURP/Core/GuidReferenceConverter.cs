@@ -8,6 +8,7 @@ namespace MURP.Core
 {
     public class GuidReferenceConverter : fsDirectConverter<IAddressableGuid>
     {
+        
         public override object CreateInstance(fsData data, Type storageType)
         {
             //shoudn't create an instance of an addressable, get reference from database instead
