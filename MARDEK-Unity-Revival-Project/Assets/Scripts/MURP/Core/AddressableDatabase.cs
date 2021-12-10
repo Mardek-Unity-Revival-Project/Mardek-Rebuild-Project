@@ -26,8 +26,8 @@ namespace MURP.Core
         [SerializeField] List<string> guids = new List<string>();
         [SerializeField] List<Object> objects = new List<Object>();
 
-#if UNITY_EDITOR
-        private void OnValidate()
+        [ContextMenu("Validate")]
+        void ValidateDatabase()
         {
             guids.Clear();
             objects.Clear();
@@ -45,16 +45,20 @@ namespace MURP.Core
                 }
             }
         }
-#endif
+
         public static Object GetAddressableByGuid(string guid)
         {
             int index = instance.guids.IndexOf(guid);
+            if (index == -1)
+                return null;
             return instance.objects[index];
         }
 
         public static Guid GetGUID(IAddressableGuid addressable)
         {
             int index = instance.objects.IndexOf((Object)addressable);
+            if (index == -1) 
+                return Guid.Empty;
             return Guid.Parse(instance.guids[index]);
         }
     }

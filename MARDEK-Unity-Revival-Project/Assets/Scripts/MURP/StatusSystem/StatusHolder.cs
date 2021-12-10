@@ -3,9 +3,20 @@ using UnityEngine;
 namespace MURP.StatusSystem
 {
     [System.Serializable]
-    public class StatusHolder<Y, T> where Y : StatusOfType<T>
+    public class StatusHolder<U, T> where T : StatusOfType<U>
     {
-        [SerializeField] StatusOfType<T> statusEnum;
-        [SerializeField] T value;
+        [field: SerializeField] public T statusEnum { get; private set; }
+        [SerializeField] U _value;
+        public U Value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                _value = value;
+            }
+        }
     }
 }
