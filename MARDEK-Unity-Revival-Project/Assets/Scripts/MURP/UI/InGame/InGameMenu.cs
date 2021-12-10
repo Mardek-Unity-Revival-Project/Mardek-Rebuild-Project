@@ -7,49 +7,20 @@ namespace MURP.UI
 {
     public class InGameMenu : MonoBehaviour
     {
-        private SubMenuButton activeButton;
-        private bool isFocussing;
+        SubMenuButton activeButton;
+        bool isFocussing;
         public static bool lockValue { get; private set; }
 
-        [SerializeField] private Canvas canvas;
+        [SerializeField] Canvas canvas;
+        [SerializeField] SubMenuButton[] subMenuButtons;
+        [SerializeField] AudioObject openMenuSound;
+        [SerializeField] AudioObject verticalMenuScrollSound;
+        [SerializeField] AudioObject focusMenuSound;
+        [SerializeField] AudioObject stopFocusMenuSound;
 
-        [SerializeField] private SubMenuButton partyButton;
-        [SerializeField] private SubMenuButton skillsButton;
-        [SerializeField] private SubMenuButton inventoryButton;
-        [SerializeField] private SubMenuButton mapButton;
-        [SerializeField] private SubMenuButton questsButton;
-        [SerializeField] private SubMenuButton plotItemsButton;
-        [SerializeField] private SubMenuButton statusButton;
-        [SerializeField] private SubMenuButton medalsButton;
-        [SerializeField] private SubMenuButton encyclopediaButton;
-        [SerializeField] private SubMenuButton optionsButton;
-        [SerializeField] private SubMenuButton helpButton;
-
-        [SerializeField] private AudioObject openMenuSound;
-        [SerializeField] private AudioObject verticalMenuScrollSound;
-        [SerializeField] private AudioObject focusMenuSound;
-        [SerializeField] private AudioObject stopFocusMenuSound;
-
-        private SubMenuButton[] GetSubMenuButtons()
+        void SetActiveSubMenu(SubMenuButton buttonToActivate)
         {
-            return new SubMenuButton[]{
-            partyButton,
-            skillsButton,
-            inventoryButton,
-            mapButton,
-            questsButton,
-            plotItemsButton,
-            statusButton,
-            medalsButton,
-            encyclopediaButton,
-            optionsButton,
-            helpButton
-        };
-        }
-
-        private void SetActiveSubMenu(SubMenuButton buttonToActivate)
-        {
-            foreach (SubMenuButton button in GetSubMenuButtons())
+            foreach (SubMenuButton button in subMenuButtons)
             {
                 if (button != buttonToActivate)
                 {
@@ -60,13 +31,13 @@ namespace MURP.UI
             activeButton = buttonToActivate;
         }
 
-        private void Awake()
+        void Awake()
         {
-            SetActiveSubMenu(partyButton);
+            SetActiveSubMenu(subMenuButtons[0]);
             canvas.enabled = false;
         }
 
-        private void LeaveInGameMenu()
+        void LeaveInGameMenu()
         {
             canvas.enabled = false;
             lockValue = false;
@@ -99,7 +70,6 @@ namespace MURP.UI
 
                     if (!isFocussing)
                     {
-                        SubMenuButton[] subMenuButtons = GetSubMenuButtons();
                         int currentSubMenuIndex = 0;
                         for (int candidateIndex = 0; candidateIndex < subMenuButtons.Length; candidateIndex++)
                         {
@@ -136,7 +106,7 @@ namespace MURP.UI
                 {
                     if (activeButton.IsDeep())
                     {
-                        foreach (SubMenuButton subMenuButton in GetSubMenuButtons())
+                        foreach (SubMenuButton subMenuButton in subMenuButtons)
                         {
                             subMenuButton.StartFade();
                         }
@@ -159,7 +129,7 @@ namespace MURP.UI
                 if (isFocussing)
                 {
                     activeButton.StopFocus();
-                    foreach (SubMenuButton subMenuButton in GetSubMenuButtons())
+                    foreach (SubMenuButton subMenuButton in subMenuButtons)
                     {
                         subMenuButton.StopFade();
                     }
