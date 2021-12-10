@@ -1306,17 +1306,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1703472279563568656}
-  partyButton: {fileID: 8911320986220486328}
-  skillsButton: {fileID: 1826976331059181802}
-  inventoryButton: {fileID: 8558204778628386470}
-  mapButton: {fileID: 548780202128278698}
-  questsButton: {fileID: 1132388735157013230}
-  plotItemsButton: {fileID: 20605913692621414}
-  statusButton: {fileID: 2648689673593558995}
-  medalsButton: {fileID: 6830818914594579187}
-  encyclopediaButton: {fileID: 2513340601471403715}
-  optionsButton: {fileID: 8508908115630617506}
-  helpButton: {fileID: 6987284380921217304}
+  subMenuButtons:
+  - {fileID: 8911320986220486328}
+  - {fileID: 1826976331059181802}
+  - {fileID: 8558204778628386470}
+  - {fileID: 548780202128278698}
+  - {fileID: 1132388735157013230}
+  - {fileID: 20605913692621414}
+  - {fileID: 2648689673593558995}
+  - {fileID: 6830818914594579187}
+  - {fileID: 2513340601471403715}
+  - {fileID: 8508908115630617506}
+  - {fileID: 6987284380921217304}
   openMenuSound: {fileID: 11400000, guid: 893eb57ad36e8cd439e8c826befd2f83, type: 2}
   verticalMenuScrollSound: {fileID: 11400000, guid: 0da28b87b9cd6e945acf7875aaef8844, type: 2}
   focusMenuSound: {fileID: 11400000, guid: c1ce66a092b05484497d70119f52cfd2, type: 2}
