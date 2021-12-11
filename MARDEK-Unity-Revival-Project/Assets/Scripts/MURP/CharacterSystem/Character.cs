@@ -5,7 +5,7 @@ using MURP.StatusSystem;
 namespace MURP.CharacterSystem
 {
     [System.Serializable]
-    public class Character : MonoBehaviour, IAffectable
+    public class Character : MonoBehaviour, IStatus
     {
         [SerializeField] CharacterBio bio;
 

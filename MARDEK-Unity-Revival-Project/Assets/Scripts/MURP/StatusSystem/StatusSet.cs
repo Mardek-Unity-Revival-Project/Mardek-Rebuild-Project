@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace MURP.StatusSystem
 {
     [System.Serializable]
-    public class StatusSet : IAffectable
+    public class StatusSet : IStatus
     {
         public List<StatusHolder<int, StatusOfType<int>>> statuses;
 

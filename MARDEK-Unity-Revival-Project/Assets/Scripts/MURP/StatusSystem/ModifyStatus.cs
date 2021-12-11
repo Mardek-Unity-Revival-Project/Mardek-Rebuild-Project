@@ -9,7 +9,7 @@ namespace MURP.StatusSystem
         [SerializeField] IntegerStatus targetStatus;
         [SerializeField] int expression;
 
-        public void Apply(IAffectable user, IAffectable target)
+        public void Apply(IStatus user, IStatus target)
         {
             int value = expression;
             var statusHolder = target.GetStatus(targetStatus);
