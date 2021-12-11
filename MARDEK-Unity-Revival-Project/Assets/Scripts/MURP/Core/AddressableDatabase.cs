@@ -8,7 +8,7 @@ using UnityEditor;
 
 namespace MURP.Core
 {
-    //[CreateAssetMenu(menuName = "Database")]
+    //[CreateAssetMenu(menuName = "MURP/Database")]
     public class AddressableDatabase : ScriptableObject
     {
         static AddressableDatabase _instance;
