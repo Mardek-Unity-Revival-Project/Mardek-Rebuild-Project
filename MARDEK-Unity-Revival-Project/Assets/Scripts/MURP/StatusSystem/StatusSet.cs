@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using UnityEngine;
-using MURP.StatusSystem;
 
-namespace MURP.CharacterSystem
+namespace MURP.StatusSystem
 {
-    public class CharacterStatusSet : MonoBehaviour, IAffectable
+    [System.Serializable]
+    public class StatusSet : IAffectable
     {
         public List<StatusHolder<int, StatusOfType<int>>> statuses;
 

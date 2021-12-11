@@ -27,8 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7824422402300035873}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,78 +44,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bio: {fileID: 0}
-  baseStatus: {fileID: 7178701829548710318}
   skill: {fileID: 0}
---- !u!1001 &184595483433544461
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1539904725929005160}
-    m_Modifications:
-    - target: {fileID: 5203306345467209075, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_Name
-      value: DefaultStatusSet
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
---- !u!4 &7824422402300035873 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7933722022679504940, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-  m_PrefabInstance: {fileID: 184595483433544461}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7178701829548710318 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6994107653160972963, guid: 9ed85d67a4bb6ba46a61cafcbe92421c, type: 3}
-  m_PrefabInstance: {fileID: 184595483433544461}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22758bdafbe2dcd44881a69070d1018a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  baseStatus:
+    statuses:
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 66e6bfc20ad436f4f91096bcd539b6f0, type: 2}
+      _value: 100
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 09d38a9ba80723242aff585ba0915607, type: 2}
+      _value: 100
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: b126ec105431be84db0d5e0d2a1d55cc, type: 2}
+      _value: 0
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 7179e0b7f3f17f44bbe9be5b7802b8db, type: 2}
+      _value: 0
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 6194235459af05c4c9cbd04f733ace49, type: 2}
+      _value: 0
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 608b897aad047cc4fa85eaa65f2cc2ec, type: 2}
+      _value: 0
+  statusChanges: []

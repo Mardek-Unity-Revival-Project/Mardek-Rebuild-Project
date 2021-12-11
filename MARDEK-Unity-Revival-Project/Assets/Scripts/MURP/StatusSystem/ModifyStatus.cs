@@ -3,8 +3,8 @@ using MURP.Core;
 
 namespace MURP.StatusSystem
 {
-    [CreateAssetMenu(menuName = "MURP/ModifyStatusEffect")]
-    public class ModifyStatusEffect : AddressableScriptableObject
+    [CreateAssetMenu(menuName = "MURP/ModifyStatus")]
+    public class ModifyStatus : AddressableScriptableObject
     {
         [SerializeField] IntegerStatus targetStatus;
         [SerializeField] int expression;
