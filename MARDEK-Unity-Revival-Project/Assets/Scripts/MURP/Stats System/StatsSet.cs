@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 
-namespace MURP.StatusSystem
+namespace MURP.StatsSystem
 {
     [System.Serializable]
-    public class StatusSet : IStatus
+    public class StatsSet : IStats
     {
-        public List<StatusHolder<int, StatusOfType<int>>> statuses;
+        public List<StatHolder<int, StatOfType<int>>> statuses;
 
-        public StatusHolder<int, StatusOfType<int>> GetStatus(StatusOfType<int> desiredStatus)
+        public StatHolder<int, StatOfType<int>> GetStatus(StatOfType<int> desiredStatus)
         {
             foreach (var statusHolder in statuses)
             {
@@ -18,7 +18,7 @@ namespace MURP.StatusSystem
             }
             return null;
         }
-        public StatusHolder<float, StatusOfType<float>> GetStatus(StatusOfType<float> desiredStatus)
+        public StatHolder<float, StatOfType<float>> GetStatus(StatOfType<float> desiredStatus)
         {
             throw new System.NotImplementedException();
         }

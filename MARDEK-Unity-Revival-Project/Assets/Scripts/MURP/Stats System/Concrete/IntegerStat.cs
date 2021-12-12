@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace MURP.StatusSystem
+namespace MURP.StatsSystem
 {
     [CreateAssetMenu(menuName = "MURP/StatusSystem/IntegerStatus")]
-    public class IntegerStatus : StatusOfType<int>
+    public class IntegerStat : StatOfType<int>
     {
         
     }

@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace MURP.StatusSystem
+namespace MURP.StatsSystem
 {
     [System.Serializable]
-    public class StatusHolder<U, T> where T : StatusOfType<U>
+    public class StatHolder<U, T> where T : StatOfType<U>
     {
-        public StatusHolder(T status)
+        public StatHolder(T status)
         {
             statusEnum = status;
         }
