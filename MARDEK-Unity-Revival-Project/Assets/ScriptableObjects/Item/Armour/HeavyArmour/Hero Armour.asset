@@ -18,8 +18,13 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: 054be94df0e783a45988ebf5c464ae76, type: 3}
   _element: {fileID: 11400000, guid: dc4a9edd1549b5f488f18fb184119adf, type: 2}
   _price: 0
-  _attackDamage: 0
-  _criticalChance: 0
-  _physicalDefense: 50
-  _magicDefense: 0
   _category: {fileID: 11400000, guid: 39eee71154b7dd748882f788cc0c5fb3, type: 2}
+  _statsSet:
+    intStats:
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 46c026df8a249b74d8bcb5a7c1a50f02, type: 2}
+      _value: 50
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 7179e0b7f3f17f44bbe9be5b7802b8db, type: 2}
+      _value: 3
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 66e6bfc20ad436f4f91096bcd539b6f0, type: 2}
+      _value: 600
+    floatStats: []

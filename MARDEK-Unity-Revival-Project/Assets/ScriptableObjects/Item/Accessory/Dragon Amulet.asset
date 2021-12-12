@@ -18,8 +18,19 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: 299322c8d2d47df44aa44309de8a031a, type: 3}
   _element: {fileID: 11400000, guid: e179fa6b43e015742b42814e32864e49, type: 2}
   _price: 0
-  _attackDamage: 0
-  _criticalChance: 0
-  _physicalDefense: 0
-  _magicDefense: 10
   _category: {fileID: 11400000, guid: cc10574bbb211d2459008f7b3458f955, type: 2}
+  _statsSet:
+    intStats:
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 1b22f71dbf2256c4e911d8c67c85b913, type: 2}
+      _value: 10
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: b126ec105431be84db0d5e0d2a1d55cc, type: 2}
+      _value: 1
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 7179e0b7f3f17f44bbe9be5b7802b8db, type: 2}
+      _value: 1
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 6194235459af05c4c9cbd04f733ace49, type: 2}
+      _value: 1
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 608b897aad047cc4fa85eaa65f2cc2ec, type: 2}
+      _value: 1
+    floatStats:
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: f68c8ec8816407b42ab3609b22036c52, type: 2}
+      _value: 0.5

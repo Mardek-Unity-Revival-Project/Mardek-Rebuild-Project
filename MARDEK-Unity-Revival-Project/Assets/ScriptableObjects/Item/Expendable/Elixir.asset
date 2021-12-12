@@ -18,8 +18,9 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: f6fc356502bdb4846afebff28719c7fd, type: 3}
   _element: {fileID: 11400000, guid: dc4a9edd1549b5f488f18fb184119adf, type: 2}
   _price: 0
-  plainHealthRestore: 0
-  percentHealthRestore: 100
-  plainManaRestore: 0
-  percentManaRestore: 100
-  canResurrect: 0
+  _percentHealthRestore: 100
+  _percentManaRestore: 100
+  _canResurrect: 0
+  _statsSet:
+    intStats: []
+    floatStats: []
