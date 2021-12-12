@@ -16,7 +16,7 @@ namespace MURP.MovementSystem
 
         public MoveDirection ApproximanteDirectionByVector2(Vector2 vector)
         {
-            if (vector.sqrMagnitude < Vector2.kEpsilonNormalSqrt)
+            if(Utilities2D.AreCloseEnough(vector, Vector2.zero))
                 return null;
             if (allowedDirections.Count > 0)
             {

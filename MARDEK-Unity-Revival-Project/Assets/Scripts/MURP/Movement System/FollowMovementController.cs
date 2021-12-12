@@ -23,7 +23,9 @@ namespace MURP.MovementSystem
         void OnFollowedMovementMoved()
         {
             shouldFollow = true;
-            MoveToFollowed();
+            //assures that follower-follower movement will happen in the same frame.
+            if (followedMovement.CompareTag("Player") == false)
+                MoveToFollowed();
         }
 
         void MoveToFollowed()
@@ -38,9 +40,9 @@ namespace MURP.MovementSystem
 
         private void Update()
         {
-            if (shouldFollow)
-            {
-                if (Vector2.Distance(followedMovement.lastPosition, transform.position) < 2 * Vector2.kEpsilon)
+            if (movement.isMoving == false && shouldFollow)
+            {                
+                if (Utilities2D.AreCloseEnough(followedMovement.lastPosition, transform.position))
                     shouldFollow = false;
                 else
                     MoveToFollowed();

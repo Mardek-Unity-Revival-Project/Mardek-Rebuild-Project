@@ -67,7 +67,7 @@ namespace MURP.MovementSystem
             StopAnimator();
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             if (isMoving)
             {
@@ -142,23 +142,19 @@ namespace MURP.MovementSystem
 
         bool MoveToPosition(Transform transform, Vector2 targetPosition, float movementSpeed, float deltaTime)
         {
-            Vector2 positionDifferece = new Vector2(targetPosition.x, targetPosition.y) - (Vector2)transform.position;
-            if (positionDifferece == Vector2.zero)
+            // returns true if movement has reached the target
+            if (Utilities2D.AreCloseEnough(transform.position, targetPosition) == false)
             {
-                return true;
+                Vector2 positionDifferece = targetPosition - (Vector2)transform.position;
+                Vector2 increment = positionDifferece.normalized * deltaTime * movementSpeed;
+                if (increment.sqrMagnitude < positionDifferece.sqrMagnitude)
+                {
+                    Utilities2D.SetTransformPosition(transform, (Vector2)transform.position + increment);
+                    return (Utilities2D.AreCloseEnough(transform.position, targetPosition));
+                }
             }
-            Vector2 increment = positionDifferece.normalized * deltaTime * movementSpeed;
-            if (increment.sqrMagnitude < positionDifferece.sqrMagnitude)
-            {
-                Utilities2D.SetTransformPosition(transform, ((Vector2)transform.position + increment));
-                return false;
-            }
-            else
-            {
-                //end movement
-                Utilities2D.SetTransformPosition(transform, targetPosition);
-                return true;
-            }
+            Utilities2D.SetTransformPosition(transform, targetPosition);
+            return true;
         }
     }
 }

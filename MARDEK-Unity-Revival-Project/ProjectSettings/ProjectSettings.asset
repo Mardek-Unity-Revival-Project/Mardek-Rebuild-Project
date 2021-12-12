@@ -134,8 +134,12 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.0.7
+  bundleVersion: 0.0.10
   preloadedAssets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -173,11 +177,11 @@ PlayerSettings:
     Standalone: com.MURPTeam.MARDEK-Unity-Revival-Project
     WebGL: com.MURPTeam.MARDEK-Unity-Revival-Project
   buildNumber:
-    Standalone: 20
-    iPhone: 20
+    Standalone: 24
+    iPhone: 24
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 21
+  AndroidBundleVersionCode: 25
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -617,7 +621,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: 
+    1: BUILD_TYPE_RELEASE;BUILD_PLATFORM_PC;BUILD_ARCH_WINDOWSX64
     13: 
   additionalCompilerArguments: {}
   platformArchitecture: {}

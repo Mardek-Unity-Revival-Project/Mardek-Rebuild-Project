@@ -29,6 +29,7 @@ namespace MURP.Core
         [ContextMenu("Validate")]
         void ValidateDatabase()
         {
+#if UNITY_EDITOR
             guids.Clear();
             objects.Clear();
             foreach (var filter in filters)
@@ -44,6 +45,7 @@ namespace MURP.Core
                     objects.Add(AssetDatabase.LoadAssetAtPath<Object>(path));
                 }
             }
+#endif
         }
 
         public static Object GetAddressableByGuid(string guid)
