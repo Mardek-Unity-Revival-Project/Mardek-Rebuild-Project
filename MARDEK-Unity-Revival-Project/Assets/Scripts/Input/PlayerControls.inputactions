@@ -68,6 +68,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "UI/LeftClick",
+                    "type": "Button",
+                    "id": "735404bc-0821-4882-99be-c03b369fd9f4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "UI/Point",
+                    "type": "PassThrough",
+                    "id": "4ca5cfc3-6b6b-4f32-b371-1db56682f12b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -277,6 +293,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Split Item Stack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8739b7bd-10a3-46d9-9c9e-2af4660b3d9a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI/LeftClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6eaac8f1-201d-41fa-8d4e-fad0174ac342",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI/Point",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -8,7 +8,7 @@ using UnityEditor;
 
 namespace MURP.Core
 {
-    //[CreateAssetMenu(menuName = "Database")]
+    //[CreateAssetMenu(menuName = "MURP/Database")]
     public class AddressableDatabase : ScriptableObject
     {
         static AddressableDatabase _instance;
@@ -26,16 +26,16 @@ namespace MURP.Core
         [SerializeField] List<string> guids = new List<string>();
         [SerializeField] List<Object> objects = new List<Object>();
 
-#if UNITY_EDITOR
-        private void OnValidate()
+        [ContextMenu("Validate")]
+        void ValidateDatabase()
         {
+#if UNITY_EDITOR
+            guids.Clear();
+            objects.Clear();
             foreach (var filter in filters)
             {
                 if (string.IsNullOrEmpty(filter))
                     continue;
-
-                guids.Clear();
-                objects.Clear();
 
                 var result = AssetDatabase.FindAssets(filter, null);
                 foreach (var guid in result)
@@ -45,17 +45,22 @@ namespace MURP.Core
                     objects.Add(AssetDatabase.LoadAssetAtPath<Object>(path));
                 }
             }
-        }
 #endif
+        }
+
         public static Object GetAddressableByGuid(string guid)
         {
             int index = instance.guids.IndexOf(guid);
+            if (index == -1)
+                return null;
             return instance.objects[index];
         }
 
         public static Guid GetGUID(IAddressableGuid addressable)
         {
             int index = instance.objects.IndexOf((Object)addressable);
+            if (index == -1) 
+                return Guid.Empty;
             return Guid.Parse(instance.guids[index]);
         }
     }

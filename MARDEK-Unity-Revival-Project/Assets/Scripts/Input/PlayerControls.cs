@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Misc/PlayerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
@@ -79,6 +79,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""ad7502da-2e4b-4cc2-b0b5-4b496f3ce079"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UI/LeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""735404bc-0821-4882-99be-c03b369fd9f4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UI/Point"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""4ca5cfc3-6b6b-4f32-b371-1db56682f12b"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -292,6 +308,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Split Item Stack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8739b7bd-10a3-46d9-9c9e-2af4660b3d9a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UI/LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6eaac8f1-201d-41fa-8d4e-fad0174ac342"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UI/Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -308,6 +346,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_DefaultMap_PartyDialogueKey = m_DefaultMap.FindAction("Party Dialogue Key", throwIfNotFound: true);
         m_DefaultMap_ChatLogKey = m_DefaultMap.FindAction("Chat Log Key", throwIfNotFound: true);
         m_DefaultMap_SplitItemStack = m_DefaultMap.FindAction("Split Item Stack", throwIfNotFound: true);
+        m_DefaultMap_UILeftClick = m_DefaultMap.FindAction("UI/LeftClick", throwIfNotFound: true);
+        m_DefaultMap_UIPoint = m_DefaultMap.FindAction("UI/Point", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -365,6 +405,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_DefaultMap_PartyDialogueKey;
     private readonly InputAction m_DefaultMap_ChatLogKey;
     private readonly InputAction m_DefaultMap_SplitItemStack;
+    private readonly InputAction m_DefaultMap_UILeftClick;
+    private readonly InputAction m_DefaultMap_UIPoint;
     public struct DefaultMapActions
     {
         private @PlayerControls m_Wrapper;
@@ -377,6 +419,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @PartyDialogueKey => m_Wrapper.m_DefaultMap_PartyDialogueKey;
         public InputAction @ChatLogKey => m_Wrapper.m_DefaultMap_ChatLogKey;
         public InputAction @SplitItemStack => m_Wrapper.m_DefaultMap_SplitItemStack;
+        public InputAction @UILeftClick => m_Wrapper.m_DefaultMap_UILeftClick;
+        public InputAction @UIPoint => m_Wrapper.m_DefaultMap_UIPoint;
         public InputActionMap Get() { return m_Wrapper.m_DefaultMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -410,6 +454,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SplitItemStack.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnSplitItemStack;
                 @SplitItemStack.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnSplitItemStack;
                 @SplitItemStack.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnSplitItemStack;
+                @UILeftClick.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnUILeftClick;
+                @UILeftClick.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnUILeftClick;
+                @UILeftClick.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnUILeftClick;
+                @UIPoint.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnUIPoint;
+                @UIPoint.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnUIPoint;
+                @UIPoint.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnUIPoint;
             }
             m_Wrapper.m_DefaultMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -438,6 +488,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SplitItemStack.started += instance.OnSplitItemStack;
                 @SplitItemStack.performed += instance.OnSplitItemStack;
                 @SplitItemStack.canceled += instance.OnSplitItemStack;
+                @UILeftClick.started += instance.OnUILeftClick;
+                @UILeftClick.performed += instance.OnUILeftClick;
+                @UILeftClick.canceled += instance.OnUILeftClick;
+                @UIPoint.started += instance.OnUIPoint;
+                @UIPoint.performed += instance.OnUIPoint;
+                @UIPoint.canceled += instance.OnUIPoint;
             }
         }
     }
@@ -452,5 +508,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnPartyDialogueKey(InputAction.CallbackContext context);
         void OnChatLogKey(InputAction.CallbackContext context);
         void OnSplitItemStack(InputAction.CallbackContext context);
+        void OnUILeftClick(InputAction.CallbackContext context);
+        void OnUIPoint(InputAction.CallbackContext context);
     }
 }

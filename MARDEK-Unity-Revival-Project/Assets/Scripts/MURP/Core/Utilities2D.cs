@@ -29,5 +29,10 @@ namespace MURP
         {
             transform.position = new Vector3(position.x, position.y, transform.position.z);
         }
+
+        public static bool AreCloseEnough(Vector2 a, Vector2 b)
+        {
+            return (a - b).magnitude < 4 * Vector2.kEpsilon;
+        }
     }
 }
