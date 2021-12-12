@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f13698c79568447a0b3862945c868a, type: 3}
   m_Name: Hero Coat
   m_EditorClassIdentifier: 
-  _displayName: 
-  _description: 
+  _displayName: Hero's Coat
+  _description: An emerald-green greatcoat, worn by a mighty hero.
   _price: 0
   _attackDamage: 0
   _criticalChance: 0
-  _physicalDefense: 0
-  _magicDefense: 0
+  _physicalDefense: 45
+  _magicDefense: 80
+  _category: {fileID: 11400000, guid: 8b4cab54519098d45956395e894afcd1, type: 2}

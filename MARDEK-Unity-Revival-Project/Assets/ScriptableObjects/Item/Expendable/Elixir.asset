@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6535e70ab9379f549ba89d16ecdce68d, type: 3}
   m_Name: Elixir
   m_EditorClassIdentifier: 
-  _displayName: 
-  _description: 
+  _displayName: Elixir
+  _description: An amazing brew made from the tears of a goddess, or something astounding
+    like that. It restores all HP and MP.
   _price: 0
   plainHealthRestore: 0
-  percentHealthRestore: 0
+  percentHealthRestore: 100
   plainManaRestore: 0
-  percentManaRestore: 0
+  percentManaRestore: 100
   canResurrect: 0

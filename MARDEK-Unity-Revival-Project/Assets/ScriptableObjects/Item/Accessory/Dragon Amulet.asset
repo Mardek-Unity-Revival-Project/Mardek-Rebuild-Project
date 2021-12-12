@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f13698c79568447a0b3862945c868a, type: 3}
   m_Name: Dragon Amulet
   m_EditorClassIdentifier: 
-  _displayName: 
-  _description: 
+  _displayName: Dragon Amulet
+  _description: A powerful amulet shaped like a dragon. It protects against fire
+    and boosts bodily energy output.
   _price: 0
   _attackDamage: 0
   _criticalChance: 0
   _physicalDefense: 0
-  _magicDefense: 0
+  _magicDefense: 10
+  _category: {fileID: 11400000, guid: cc10574bbb211d2459008f7b3458f955, type: 2}

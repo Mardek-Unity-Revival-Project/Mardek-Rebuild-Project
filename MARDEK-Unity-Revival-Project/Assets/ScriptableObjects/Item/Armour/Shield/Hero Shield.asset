@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f13698c79568447a0b3862945c868a, type: 3}
   m_Name: Hero Shield
   m_EditorClassIdentifier: 
-  _displayName: 
-  _description: 
+  _displayName: Hero's Shield
+  _description: A silver shield used by a mighty hero.
   _price: 0
   _attackDamage: 0
   _criticalChance: 0
-  _physicalDefense: 0
-  _magicDefense: 0
+  _physicalDefense: 10
+  _magicDefense: 50
+  _category: {fileID: 11400000, guid: dd92070e9d759fd49808966d2083db5a, type: 2}

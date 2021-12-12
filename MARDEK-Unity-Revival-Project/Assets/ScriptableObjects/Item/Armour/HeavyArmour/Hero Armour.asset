@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f13698c79568447a0b3862945c868a, type: 3}
   m_Name: Hero Armour
   m_EditorClassIdentifier: 
-  _displayName: 
-  _description: 
+  _displayName: Hero's Armour
+  _description: Armour made of the strongest and most lustrous of metals. Worn by
+    a mighty hero.
   _price: 0
   _attackDamage: 0
   _criticalChance: 0
-  _physicalDefense: 0
+  _physicalDefense: 50
   _magicDefense: 0
+  _category: {fileID: 11400000, guid: 39eee71154b7dd748882f788cc0c5fb3, type: 2}
