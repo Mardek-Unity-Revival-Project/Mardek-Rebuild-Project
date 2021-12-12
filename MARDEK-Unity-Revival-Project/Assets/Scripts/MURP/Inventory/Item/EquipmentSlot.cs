@@ -2,12 +2,8 @@ using UnityEngine;
 
 namespace MURP.Inventory
 {
-    public enum EquipmentSlot
+    [CreateAssetMenu(menuName = "MURP/Inventory/EquipmentSlot")]
+    public class EquipmentSlot : ScriptableObject
     {
-        MainHand,
-        OffHand,
-        Head,
-        Body,
-        Accessory
     }
 }
