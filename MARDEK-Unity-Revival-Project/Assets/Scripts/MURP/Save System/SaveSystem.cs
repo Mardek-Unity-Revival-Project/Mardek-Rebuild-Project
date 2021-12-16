@@ -73,28 +73,62 @@ namespace MURP.SaveSystem
                 var Separatorindex = content.IndexOf(formatterDataFieldName);
                 if (Separatorindex == -1)
                 {
-                    result += content; //append the rest of the string
+                    result += content; // append the rest of the string
                     break;
                 }
-                string beforeSeparator = content.Substring(0, Separatorindex + formatterDataFieldName.Length);
-                string AfterSeparator = content.Substring(Separatorindex + formatterDataFieldName.Length);
-                int endOfJsonStringIndex = AfterSeparator.IndexOf(Environment.NewLine); //TODO: find end of json string in another way, maybe count "{" and "}"
-                string jsonString = AfterSeparator.Substring(0, endOfJsonStringIndex);
-                content = AfterSeparator.Substring(endOfJsonStringIndex);
 
+                string beforeSeparator = content.Substring(0, Separatorindex + formatterDataFieldName.Length);
                 result += beforeSeparator;
+
+                // get json object by outmost pair of balanced curly braces
+                if (isSaving) Separatorindex++; // skip first '\"'
+                string AfterSeparator = content.Substring(Separatorindex + formatterDataFieldName.Length);
+                ParseCurlyBraces(AfterSeparator, out int startIndex, out int endIndex);
+                string json = AfterSeparator.Substring(startIndex, endIndex - startIndex + 1);
                 if (isSaving)
-                {
-                    jsonString = jsonString.Substring(1, jsonString.Length - 2); // remove first and last '"'
-                    result += Regex.Unescape(jsonString); //remove escape characters
-                }
-                else //is Loading
-                {
-                    jsonString = "\"" + jsonString.Replace("\"", "\\\"") + "\""; // undo Regex.Unescape() made in FormatSaveFile
-                    result += jsonString;
-                }
+                    result += Regex.Unescape(json); // remove escape characters
+                else
+                    result += "\"" + json.Replace("\"", "\\\"") + "\""; // undo Regex.Unescape()
+
+                // update content for next iteration
+                if (isSaving) endIndex++; // skip last '\"'
+                content = AfterSeparator.Substring(endIndex+1); 
             }
             return result;
+        }
+
+        static void ParseCurlyBraces(string content, out int startIndex, out int endIndex)
+        {
+            startIndex = 0;
+            endIndex = content.Length - 1;
+            bool isInsideQuotes = false;
+            int curlyBracesDepth = 0;
+            for (int i = 0; i < content.Length; i++)
+            {
+                if (content[i] == '\"')
+                {
+                    isInsideQuotes = !isInsideQuotes;
+                    continue;
+                }
+                if (isInsideQuotes)
+                    continue;
+
+                if (content[i] == '{')
+                {
+                    if (curlyBracesDepth == 0)
+                        startIndex = i;
+                    curlyBracesDepth++;
+                }
+                else if (content[i] == '}')
+                {
+                    curlyBracesDepth--;
+                    if (curlyBracesDepth == 0)
+                    {
+                        endIndex = i;
+                        break;
+                    }
+                }
+            }
         }
 
         public static void SaveObject(IAddressableGuid addressable)
@@ -125,7 +159,6 @@ namespace MURP.SaveSystem
                 var type = addressable.GetType();
                 var obj = addressable as object;
                 serializer.TryDeserialize(data, storageType: type, ref obj);
-                //JsonUtility.FromJsonOverwrite(wrappedAddressable.jsonData, addressable);
                 return true;
             }
             return false;
