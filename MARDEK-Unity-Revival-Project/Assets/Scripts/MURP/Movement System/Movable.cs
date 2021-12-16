@@ -72,6 +72,11 @@ namespace MURP.MovementSystem
             if (isMoving)
             {
                 isMoving = !MoveToPosition(transform, targetPosition, movementSpeed, Time.deltaTime);
+                if(isMoving == false)
+                {
+                    var snappedTargetPosition = Utilities2D.SnapPositionToGrid(targetPosition);
+                    Utilities2D.SetTransformPosition(transform, snappedTargetPosition);
+                }
                 UpdateMoveStatus();
             }
         }
@@ -153,7 +158,6 @@ namespace MURP.MovementSystem
                     return (Utilities2D.AreCloseEnough(transform.position, targetPosition));
                 }
             }
-            Utilities2D.SetTransformPosition(transform, targetPosition);
             return true;
         }
     }
