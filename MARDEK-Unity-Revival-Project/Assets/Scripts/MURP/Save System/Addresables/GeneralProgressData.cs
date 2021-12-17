@@ -7,9 +7,18 @@ namespace MURP.SaveSystem
 {
     public class GeneralProgressData : AddressableMonoBehaviour
     {
-        [SerializeField, HideInInspector] string _gameName = string.Empty;
-        [SerializeField, HideInInspector] string currentScene = default;
+        [SerializeField] string _gameName = string.Empty;
+        [SerializeField] string currentScene = default;
         [SerializeField] List<Character> characters;
+
+        private void OnEnable()
+        {
+            SaveSystem.OnBeforeSave += Save;
+        }
+        private void OnDisable()
+        {
+            SaveSystem.OnBeforeSave -= Save;            
+        }
 
         public string GameName
         {
@@ -24,6 +33,7 @@ namespace MURP.SaveSystem
                 return;
             }
         }
+        
         public override void Save()
         {
             currentScene = SceneManager.GetActiveScene().path;

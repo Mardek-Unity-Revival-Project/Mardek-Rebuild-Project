@@ -11,13 +11,13 @@ namespace MURP.MovementSystem
         private void OnEnable()
         {
             if (followedMovement)
-                followedMovement.OnMove += OnFollowedMovementMoved;
+                followedMovement.OnStartMove += OnFollowedMovementMoved;
         }
 
         private void OnDisable()
         {
             if (followedMovement)
-                followedMovement.OnMove -= OnFollowedMovementMoved;
+                followedMovement.OnStartMove -= OnFollowedMovementMoved;
         }
 
         void OnFollowedMovementMoved()

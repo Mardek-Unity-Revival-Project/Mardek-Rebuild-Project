@@ -16,9 +16,12 @@ namespace MURP.MovementSystem
                 if (thisWaypoint == SceneTransitionCommand.usedWaypoint)
                 {
                     var pos = new List<Vector2>();
+                    var directions = new List<MoveDirection>();
+
                     pos.Add(transform.position);
-                    var directions = new List<MoveDirection>() { SceneTransitionCommand.transitionFacingDirection };
-                    InMapParty.SetPositionAndDirectionOverrides(pos, directions);
+                    directions.Add(SceneTransitionCommand.transitionFacingDirection);
+
+                    InMapParty.OverrideAfterTransition(pos, directions);
                     SceneTransitionCommand.ClearUsedWaypoint();
                 }
             }

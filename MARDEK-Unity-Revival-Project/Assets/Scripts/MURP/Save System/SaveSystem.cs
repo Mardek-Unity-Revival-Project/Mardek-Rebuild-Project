@@ -24,17 +24,17 @@ namespace MURP.SaveSystem
                 return path;
             }
         }
-
         static bool formatSaveFiles = true;
         const string formatterDataFieldName = "\"jsonData\": ";
-        public static List<AddressableMonoBehaviour> objsToSaveBeforeSavingToFile = new List<AddressableMonoBehaviour>();
-
         class AddresableSaveWrapper
         {
             public string jsonData = default;
         }
         static Dictionary<Guid, AddresableSaveWrapper> loadedAddressables = new Dictionary<Guid, AddresableSaveWrapper>();
         static fsSerializer serializer = new fsSerializer();
+
+        public delegate void SaveCallback();
+        public static event SaveCallback OnBeforeSave = delegate { };
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void Initialization()
@@ -44,8 +44,7 @@ namespace MURP.SaveSystem
 
         public void SaveToFile(string fileName = "quicksave")
         {
-            foreach (var o in objsToSaveBeforeSavingToFile)
-                o.Save();
+            OnBeforeSave.Invoke();
             serializer.TrySerialize(loadedAddressables, out fsData data);
             string json = fsJsonPrinter.PrettyJson(data);
             if (formatSaveFiles)
