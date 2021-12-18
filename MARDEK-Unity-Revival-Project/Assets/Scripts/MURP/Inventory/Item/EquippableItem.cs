@@ -15,5 +15,10 @@ namespace MURP.Inventory
         public EquipmentCategory category { get { return _category; } }
 
         public StatsSet statBoosts { get { return _statsSet; } }
+
+        public override bool CanStack()
+        {
+            return false;
+        }
     }
 }
