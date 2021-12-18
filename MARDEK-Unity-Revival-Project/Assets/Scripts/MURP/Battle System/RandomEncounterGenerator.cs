@@ -13,7 +13,7 @@ namespace MURP.BattleSystem
         [SerializeField] int minSteps = 20;
         [SerializeField] int maxSteps = 30;
         [SerializeField] UnityEvent onTriggerBattle;
-        int steps = 0;
+        int stepsTaken = 0;
         int requiredSteps;
 
         private void Start()
@@ -21,18 +21,11 @@ namespace MURP.BattleSystem
             GenerateRequiredSteps();
             movable.OnEndMove += Step;
         }
-        void GenerateRequiredSteps()
+        private void LateUpdate()
         {
-            requiredSteps = Random.Range(minSteps, maxSteps + 1);
-        }
-        void Step()
-        {
-            if (PlayerController.isPlayerLocked)
+            if (stepsTaken < requiredSteps)
                 return;
-            steps++;
-            if (steps < requiredSteps)
-                return;
-            steps = 0;
+            stepsTaken = 0;
             GenerateRequiredSteps();
             TriggerBattle();
         }
@@ -40,6 +33,16 @@ namespace MURP.BattleSystem
         {
             Debug.Log("TRIGGER BATTLE");
             onTriggerBattle.Invoke();
+        }
+        void Step()
+        {
+            if (PlayerController.isPlayerLocked)
+                return;
+            stepsTaken++;
+        }
+        void GenerateRequiredSteps()
+        {
+            requiredSteps = Random.Range(minSteps, maxSteps + 1);
         }
     }
 }
