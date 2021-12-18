@@ -26,26 +26,39 @@ namespace MURP.SaveSystem
         }
         static bool formatSaveFiles = true;
         const string formatterDataFieldName = "\"jsonData\": ";
-        class AddresableSaveWrapper
-        {
-            public string jsonData = default;
-        }
-        static Dictionary<Guid, AddresableSaveWrapper> loadedAddressables = new Dictionary<Guid, AddresableSaveWrapper>();
         static fsSerializer serializer = new fsSerializer();
-
         public delegate void SaveCallback();
         public static event SaveCallback OnBeforeSave = delegate { };
+
+        static SaveState currentSaveState;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void Initialization()
         {
-            loadedAddressables.Clear();
+            currentSaveState = new SaveState();
         }
+        
+        public static void SaveObject(IAddressableGuid addressable)
+        {
+            if (Application.isPlaying == false)
+                throw new Exception("Don't Save while outside playmode");
+            currentSaveState.SaveObject(addressable, serializer);
+            
+        }
+        public static bool LoadObject(IAddressableGuid addressable)
+        {
+            if (Application.isPlaying == false)
+                throw new Exception("Don't Load while outside playmode");
+            return currentSaveState.LoadObjects(addressable, serializer);
+        }
+
+        [ContextMenu("QuickSave")] void QuickSave() => SaveToFile();
+        [ContextMenu("QuickLoad")] void QuickLoad() => LoadFromFile();
 
         public void SaveToFile(string fileName = "quicksave")
         {
             OnBeforeSave.Invoke();
-            serializer.TrySerialize(loadedAddressables, out fsData data);
+            serializer.TrySerialize(currentSaveState.addressableState, out fsData data);
             string json = fsJsonPrinter.PrettyJson(data);
             if (formatSaveFiles)
                 json = FormatSaveFile(json, true);
@@ -53,14 +66,14 @@ namespace MURP.SaveSystem
             System.IO.File.WriteAllText(filePath, json);
             Debug.Log($"Game file saved to {filePath}");
         }
-        public static void LoadFromFile(string fileName = "quicksave")
+        public void LoadFromFile(string fileName = "quicksave")
         {
             string filePath = System.IO.Path.Combine(persistentPath, $"{fileName}.json");
             string json = System.IO.File.ReadAllText(filePath);
             if (formatSaveFiles)
                 json = FormatSaveFile(json, false);
             fsJsonParser.Parse(json, out fsData data);
-            serializer.TryDeserialize(data, ref loadedAddressables);
+            serializer.TryDeserialize(data, ref currentSaveState.addressableState);
             Debug.Log($"Game file loaded from {filePath}");
         }
 
@@ -95,7 +108,6 @@ namespace MURP.SaveSystem
             }
             return result;
         }
-
         static void ParseCurlyBraces(string content, out int startIndex, out int endIndex)
         {
             startIndex = 0;
@@ -128,50 +140,6 @@ namespace MURP.SaveSystem
                     }
                 }
             }
-        }
-
-        public static void SaveObject(IAddressableGuid addressable)
-        {
-            if (Application.isPlaying == false)
-                throw new Exception("Don't Save while outside playmode");
-
-            Guid guid = addressable.GetGuid();
-            if (loadedAddressables.ContainsKey(guid) == false)
-                loadedAddressables.Add(guid, null);
-
-            serializer.TrySerialize(addressable.GetType(), addressable, out fsData data);
-            var json = fsJsonPrinter.CompressedJson(data);
-            var newWrapper = new AddresableSaveWrapper() { jsonData = json };
-            loadedAddressables[guid] = newWrapper;
-        }
-        public static bool LoadObject(IAddressableGuid addressable)
-        {
-            if (Application.isPlaying == false)
-                throw new Exception("Don't Load while outside playmode");
-
-            Guid guid = addressable.GetGuid();
-            if (loadedAddressables.ContainsKey(guid))
-            {
-                // Addressable found, override object from json
-                loadedAddressables.TryGetValue(guid, out AddresableSaveWrapper wrappedAddressable);
-                fsJsonParser.Parse(wrappedAddressable.jsonData, out fsData data);
-                var type = addressable.GetType();
-                var obj = addressable as object;
-                serializer.TryDeserialize(data, storageType: type, ref obj);
-                return true;
-            }
-            return false;
-        }
-
-        [ContextMenu("SaveToFile")]
-        public void Save()
-        {
-            SaveToFile();
-        }
-        [ContextMenu("LoadFromFile")]
-        public void Load()
-        {
-            LoadFromFile();
         }
     }
 }
