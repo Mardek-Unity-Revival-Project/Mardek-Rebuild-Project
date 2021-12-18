@@ -16,7 +16,6 @@ namespace MURP.SaveSystem
         public void SetBoolValue(bool setValue)
         {
             value = setValue;
-            Save();
         }
     }
 }

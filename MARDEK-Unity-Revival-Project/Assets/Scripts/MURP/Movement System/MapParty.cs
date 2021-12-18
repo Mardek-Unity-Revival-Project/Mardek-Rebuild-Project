@@ -6,14 +6,13 @@ using MURP.SaveSystem;
 namespace MURP.MovementSystem
 {
     [SelectionBase]
-    public class InMapParty : AddressableMonoBehaviour
+    public class MapParty : AddressableMonoBehaviour
     {
-        static InMapParty instance;
+        static MapParty instance;
         static bool forceLoadOnNextAwake = false;
-
         [SerializeField, FullSerializer.fsIgnore] List<GameObject> inMapCharacters = new List<GameObject>();
 
-        //Saved properties
+        //[Header("--- Saved fields ---")]
         [SerializeField] List<Vector2> partyPositions = new List<Vector2>();
         [SerializeField] List<MoveDirection> partyDirections = new List<MoveDirection>();
 
@@ -39,16 +38,6 @@ namespace MURP.MovementSystem
             partyPositions = GetPartyPosition();
             partyDirections = GetPartyDirections();
             base.Save();
-        }
-
-        private void OnEnable()
-        {
-            SaveSystem.SaveSystem.OnBeforeSave += Save;
-        }
-
-        private void OnDisable()
-        {
-            SaveSystem.SaveSystem.OnBeforeSave -= Save;
         }
 
         private void Awake()

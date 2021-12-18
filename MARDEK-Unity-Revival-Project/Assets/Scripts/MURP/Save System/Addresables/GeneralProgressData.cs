@@ -1,25 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using MURP.CharacterSystem;
 
 namespace MURP.SaveSystem
 {
     public class GeneralProgressData : AddressableMonoBehaviour
     {
-        [SerializeField] string _gameName = string.Empty;
         [SerializeField] string currentScene = default;
-        [SerializeField] List<Character> characters;
-
-        private void OnEnable()
-        {
-            SaveSystem.OnBeforeSave += Save;
-        }
-        private void OnDisable()
-        {
-            SaveSystem.OnBeforeSave -= Save;            
-        }
-
+        [SerializeField] string _gameName = string.Empty;
         public string GameName
         {
             get

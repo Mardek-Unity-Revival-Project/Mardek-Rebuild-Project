@@ -21,7 +21,7 @@ namespace MURP.MovementSystem
                     pos.Add(transform.position);
                     directions.Add(SceneTransitionCommand.transitionFacingDirection);
 
-                    InMapParty.OverrideAfterTransition(pos, directions);
+                    MapParty.OverrideAfterTransition(pos, directions);
                     SceneTransitionCommand.ClearUsedWaypoint();
                 }
             }
