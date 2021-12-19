@@ -19,6 +19,11 @@ namespace MURP.BattleSystem
 
         private void Start()
         {
+            if (areaEncounterSet == null)
+            {
+                enabled = false;
+                return;
+            }
             GenerateRequiredSteps();
             movable.OnEndMove += Step;
         }

@@ -1,16 +1,20 @@
 using UnityEngine;
 using System;
 using MURP.Core;
+using System.Collections.Generic;
 
 namespace MURP.SaveSystem
 {
     public class AddressableMonoBehaviour : MonoBehaviour, IAddressableGuid
     {
+        static List<AddressableMonoBehaviour> addressablesToSaveOnTransitio = new List<AddressableMonoBehaviour>();
+
         [SerializeField, FullSerializer.fsIgnore] SaveOptions saveOptions;
         [System.Serializable]
         class SaveOptions {
             public bool loadOnAwake = true;
             public bool autoSave = true;
+            public bool saveOnTransition = true;
         }
 
         [SerializeField, HideInInspector, FullSerializer.fsIgnore]
@@ -45,11 +49,20 @@ namespace MURP.SaveSystem
         {
             if(saveOptions.autoSave)
                 SaveSystem.OnBeforeSave += Save;
+            if (saveOptions.saveOnTransition)
+                addressablesToSaveOnTransitio.Add(this);
         }
         private void OnDisable()
         {
             if (saveOptions.autoSave)
                 SaveSystem.OnBeforeSave -= Save;
+            if (saveOptions.saveOnTransition)
+                addressablesToSaveOnTransitio.Remove(this); 
+        }
+        public static void SaveOnTransition()
+        {
+            foreach (var o in addressablesToSaveOnTransitio)
+                o.Save();
         }
 
         public virtual void Save()

@@ -7,7 +7,9 @@ namespace MURP.CharacterSystem
     [System.Serializable]
     public class Character : MonoBehaviour, IStats
     {
-        [SerializeField] CharacterBio bio;
+        [SerializeField] CharacterInfo bio;
+        public CharacterInfo CharacterInfo { get { return bio; } }
+
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
 
