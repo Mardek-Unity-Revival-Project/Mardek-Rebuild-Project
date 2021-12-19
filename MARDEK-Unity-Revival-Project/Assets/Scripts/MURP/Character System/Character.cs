@@ -10,6 +10,10 @@ namespace MURP.CharacterSystem
         [SerializeField] CharacterBio bio;
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
+        [SerializeField] MURP.Inventory.Inventory _inventory;
+        [SerializeField] ModifyStat skill;
+
+        public MURP.Inventory.Inventory inventory { get { return _inventory; } }
 
         public StatHolder<T, StatOfType<T>> GetStat<T>(StatOfType<T> desiredStatus)
         {            
@@ -33,7 +37,11 @@ namespace MURP.CharacterSystem
             }
         }
 
-        [SerializeField] ModifyStat skill;
+        void Start()
+        {
+            this.inventory.Start();
+        }
+
         [ContextMenu("TriggerSkill")]
         void TriggerSkill()
         {

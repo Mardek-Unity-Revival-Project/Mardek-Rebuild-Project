@@ -4,31 +4,49 @@ using System.Collections.Generic;
 namespace MURP.Inventory
 {
     /*
-     * Represents an inventory. This is a pair of an *immutable* `InventoryStructure` and a *mutable* `InventoryContent`.
+     * Represents an inventory. This is basically a list of `Slot`s.
      */
-    public class Inventory : MonoBehaviour
+    [System.Serializable]
+    public class Inventory
     {
-        readonly InventoryStructure structure;
-        readonly InventoryContent content;
+        [SerializeField] List<Slot> slots;
+        [SerializeField, FullSerializer.fsIgnore] bool isForPlayer;
+        [SerializeField, FullSerializer.fsIgnore] int fullSize;
 
-        public Inventory(InventoryStructure structure, InventoryContent content)
+        // Note: Inventory doesn't extend MonoBehaviour, so this needs to be called by the parent object of the Inventory
+        public void Start()
         {
-            if (this.structure.size != this.content.size)
-            {
-                throw new System.ArgumentException("Structure size (" + this.structure.size + ") must match content size (" + this.content.size + ")");
+            if (this.isForPlayer) {
+                if (this.slots.Count < 6) throw new System.NotSupportedException("You must declare at least the 6 equipment slots");
+                while (this.slots.Count < this.fullSize)
+                {
+                    this.slots.Add(new Slot(null, 0, new List<EquipmentCategory>(), true, true));
+                }
+                foreach (Slot slot in this.slots)
+                {
+                    slot.Validate();
+                }
             }
-            this.structure = structure;
-            this.content = content;
         }
 
         public Slot GetSlot(int index)
         {
-            return new Slot(this.structure.GetSlot(index), this.content, index);
+            return this.slots[index];
         }
 
-        public List<ItemStack> GetAllItems()
+        public List<Slot> GetAllNonEmptySlots()
         {
-            return this.content.GetAllItems();
+            List<Slot> result = new List<Slot>();
+            foreach(Slot slot in this.slots)
+            {
+                if (!slot.IsEmpty())
+                {
+                    result.Add(slot);
+                }
+            }
+            return result;
         }
+
+        public int size { get { return this.fullSize; } }
     }
 }
