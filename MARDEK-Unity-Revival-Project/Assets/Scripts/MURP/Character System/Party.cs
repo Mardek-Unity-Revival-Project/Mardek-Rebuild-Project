@@ -8,9 +8,16 @@ namespace MURP.CharacterSystem
     public class Party : AddressableMonoBehaviour
     {
         [SerializeField] List<Character> characters;
-        public List<Character> GetCharacters()
+        public List<Character> Characters
         {
-            return characters;
+            get
+            {
+                var chars = new List<Character>();
+                foreach (var playerCharacter in characters)
+                    if (playerCharacter.CharacterInfo != null)
+                        chars.Add(playerCharacter);
+                return chars;
+            }
         }
     }
 }

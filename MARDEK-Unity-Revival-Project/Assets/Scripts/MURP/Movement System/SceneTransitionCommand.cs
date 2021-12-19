@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using MURP.Core;
 using MURP.EventSystem;
+using MURP.SaveSystem;
 
 namespace MURP.MovementSystem
 {
@@ -23,7 +24,7 @@ namespace MURP.MovementSystem
 
             //Command queue won't have the oportunity to reset the lockValue itself cause the scene reload will destroy the object
             CommandQueue.lockValue = 0;
-
+            AddressableMonoBehaviour.SaveOnTransition();
             SceneManager.LoadScene(scene);
         }
 

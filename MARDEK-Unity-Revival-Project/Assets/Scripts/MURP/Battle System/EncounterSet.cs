@@ -43,8 +43,12 @@ namespace MURP.BattleSystem
         WeightedEncounter ChooseEncounter()
         {
             var totalWeight = TotalEncounterWeight();
-            var desiredWeight = Random.Range(0, totalWeight + 1);
+            var desiredWeight = Random.Range(0, totalWeight);
             var weight = 0;
+
+            // 0 1 2 3 4 5  (desiredWeight)
+            // [2] [4] [6]  (weight)
+
             foreach (var encounter in possibleEncounters)
             {
                 weight += encounter.encounterWeight;

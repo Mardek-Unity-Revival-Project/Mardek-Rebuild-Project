@@ -145,7 +145,7 @@ namespace MURP.DialogueSystem
         {
             if (dialogue != null)
             {
-                CharacterBio characterBio = dialogue.CharacterLines[dialogueIndex].Character;
+                CharacterSystem.CharacterInfo characterBio = dialogue.CharacterLines[dialogueIndex].Character;
                 if (characterBio != null)
                 {
                     characterNameText.text = characterBio.displayName;

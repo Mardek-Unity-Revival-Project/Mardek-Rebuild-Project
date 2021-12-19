@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using MURP.Core;
 using MURP.EventSystem;
-using MURP.UI;
+//using MURP.UI;
 using Event = MURP.EventSystem.Event;
 
 namespace MURP.MovementSystem
@@ -16,8 +16,8 @@ namespace MURP.MovementSystem
         public static bool isPlayerLocked
         {
             get
-            {                
-                return CommandQueue.lockValue > 0 || InGameMenu.lockValue;
+            {
+                return CommandQueue.lockValue > 0; // || InGameMenu.lockValue;
             }
         }
 

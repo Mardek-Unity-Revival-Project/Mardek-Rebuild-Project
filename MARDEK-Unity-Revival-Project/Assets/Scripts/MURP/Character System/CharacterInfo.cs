@@ -2,8 +2,8 @@
 
 namespace MURP.CharacterSystem
 {
-    [CreateAssetMenu(menuName ="MURP/CharacterSystem/CharacterBio")]
-    public class CharacterBio : ScriptableObject
+    [CreateAssetMenu(menuName ="MURP/CharacterSystem/CharacterInfo")]
+    public class CharacterInfo : ScriptableObject
     {
         [field: SerializeField] public string displayName { get; private set; }
     }

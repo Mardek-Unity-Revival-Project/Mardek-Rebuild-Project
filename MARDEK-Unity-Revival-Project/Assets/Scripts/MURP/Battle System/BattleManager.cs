@@ -11,13 +11,27 @@ namespace MURP.BattleSystem
         [SerializeField] Party playerParty;
         List<GameObject> enemies = new List<GameObject>();
 
-        private void Start()
+        public List<Character> playerCharacters
+        {
+            get
+            {
+                return playerParty.Characters;
+            }
+        }
+        public List<Character> enemyCharacters
+        {
+            get
+            {
+                var chars = new List<Character>();
+                foreach (var enemy in enemies)
+                    chars.Add(enemy.GetComponent<Character>());
+                return chars;
+            }
+        }
+
+        private void Awake()
         {
             enemies = encounter.InstantiateEncounter();
-            foreach (var character in playerParty.GetCharacters())
-                Debug.Log(character.name);
-            foreach (var enemy in enemies)
-                Debug.Log(enemy.name);
         }
     }
 }
