@@ -11,9 +11,8 @@ namespace MURP.StatsSystem
 
         public void Apply(IStats user, IStats target)
         {
-            int value = expression;
-            var statusHolder = target.GetStatus(targetStatus);
-            statusHolder.Value += value;
+            var statusHolder = target.GetStat(targetStatus);
+            Debug.Log(statusHolder.Value);
         }
     }
 }

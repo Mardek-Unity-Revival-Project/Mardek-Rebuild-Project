@@ -1,16 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using MURP.CharacterSystem;
 
 namespace MURP.SaveSystem
 {
     public class GeneralProgressData : AddressableMonoBehaviour
     {
-        [SerializeField, HideInInspector] string _gameName = string.Empty;
-        [SerializeField, HideInInspector] string currentScene = default;
-        [SerializeField] List<Character> characters;
-
+        [SerializeField] string currentScene = default;
+        [SerializeField] string _gameName = string.Empty;
         public string GameName
         {
             get
@@ -24,6 +21,7 @@ namespace MURP.SaveSystem
                 return;
             }
         }
+        
         public override void Save()
         {
             currentScene = SceneManager.GetActiveScene().path;

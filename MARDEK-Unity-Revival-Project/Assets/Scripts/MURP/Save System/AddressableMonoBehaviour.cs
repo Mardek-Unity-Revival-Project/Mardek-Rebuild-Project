@@ -10,7 +10,7 @@ namespace MURP.SaveSystem
         [System.Serializable]
         class SaveOptions {
             public bool loadOnAwake = true;
-            public bool autoSave = false;
+            public bool autoSave = true;
         }
 
         [SerializeField, HideInInspector, FullSerializer.fsIgnore]
@@ -36,20 +36,20 @@ namespace MURP.SaveSystem
             }
         }
 
-        private void OnEnable()
-        {
-            if(saveOptions.autoSave)
-                SaveSystem.objsToSaveBeforeSavingToFile.Add(this);
-        }
-        private void OnDisable()
-        {
-            if(saveOptions.autoSave)
-                SaveSystem.objsToSaveBeforeSavingToFile.Remove(this);
-        }
         private void Awake()
         {
             if (saveOptions.loadOnAwake)
                 Load();
+        }
+        private void OnEnable()
+        {
+            if(saveOptions.autoSave)
+                SaveSystem.OnBeforeSave += Save;
+        }
+        private void OnDisable()
+        {
+            if (saveOptions.autoSave)
+                SaveSystem.OnBeforeSave -= Save;
         }
 
         public virtual void Save()

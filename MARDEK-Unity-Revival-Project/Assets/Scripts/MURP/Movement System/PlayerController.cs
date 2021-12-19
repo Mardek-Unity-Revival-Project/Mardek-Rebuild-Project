@@ -13,7 +13,7 @@ namespace MURP.MovementSystem
         static PlayerController instance;
         MoveDirection desiredDirection = null;
 
-        bool isPlayerLocked
+        public static bool isPlayerLocked
         {
             get
             {                

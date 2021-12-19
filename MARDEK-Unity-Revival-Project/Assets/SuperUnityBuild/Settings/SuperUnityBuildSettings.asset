@@ -80,8 +80,8 @@ MonoBehaviour:
     buildPath: $VERSION/$PLATFORM
     openFolderPostBuild: 0
   _productParameters:
-    buildCounter: 10
-    buildVersion: 0.0.10
+    buildCounter: 12
+    buildVersion: 0.0.12
     versionTemplate: 0.0.$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
       sceneList:
         enabledScenes:
         - fileGUID: a735e495c0df1164ab7e40f6db187c45
+        - fileGUID: 052b29f26673adb418709b6aa1b87f2e
         - fileGUID: ef9d7c3bc2086dd41a9b4d78453f157a
         - fileGUID: 2cda990e2423bbf4892e6590ba056729
         - fileGUID: a837e96160bdf1143be4673903b63b55

@@ -8,32 +8,32 @@ namespace MURP.CharacterSystem
     public class Character : MonoBehaviour, IStats
     {
         [SerializeField] CharacterBio bio;
+        [SerializeField] StatsSet baseStatus = new StatsSet();
+        List<StatsSet> statusChanges = new List<StatsSet>();
 
-        [SerializeField] StatsSet baseStatus;
-        List<StatsSet> statusChanges;
+        public StatHolder<T, StatOfType<T>> GetStat<T>(StatOfType<T> desiredStatus)
+        {            
+            var resultHolder = new StatHolder<T, StatOfType<T>>(desiredStatus);
 
-        [SerializeField] ModifyStat skill;
-
-        public StatHolder<int, StatOfType<int>> GetStatus(StatOfType<int> desiredStatus)
-        {
-            var resultHolder = new StatHolder<int, StatOfType<int>>(desiredStatus);
-
-            SumHolders(ref resultHolder, baseStatus.GetStatus(desiredStatus));
-            foreach(var set in statusChanges)
-                SumHolders(ref resultHolder, set.GetStatus(desiredStatus));
-
+            SumHolders(ref resultHolder, baseStatus.GetStat(desiredStatus));
+            foreach (var set in statusChanges)
+                SumHolders(ref resultHolder, set.GetStat(desiredStatus));
             return resultHolder;
 
-            void SumHolders(ref StatHolder<int, StatOfType<int>> baseHolder, StatHolder<int, StatOfType<int>> targetHolder)
+            void SumHolders(ref StatHolder<T, StatOfType<T>> firstHolder, StatHolder<T, StatOfType<T>> secondHolder)
             {
-                if (targetHolder != null) baseHolder.Value += targetHolder.Value;
+                if (firstHolder == null)
+                    return;
+                if (typeof(T) == typeof(int))
+                {
+                    var firstInt = firstHolder as StatHolder<int, StatOfType<int>>;
+                    var secondInt = secondHolder as StatHolder<int, StatOfType<int>>;
+                    firstInt.Value += secondInt.Value;
+                }                
             }
         }
-        public StatHolder<float, StatOfType<float>> GetStatus(StatOfType<float> desiredStatus)
-        {
-            throw new System.NotImplementedException();
-        }
 
+        [SerializeField] ModifyStat skill;
         [ContextMenu("TriggerSkill")]
         void TriggerSkill()
         {

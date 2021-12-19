@@ -34,7 +34,8 @@ namespace MURP.MovementSystem
 
         public delegate void MoveDelegate();
 
-        public event MoveDelegate OnMove = delegate { };
+        public event MoveDelegate OnStartMove = delegate { };
+        public event MoveDelegate OnEndMove = delegate { };
 
         private void Awake()
         {
@@ -72,6 +73,12 @@ namespace MURP.MovementSystem
             if (isMoving)
             {
                 isMoving = !MoveToPosition(transform, targetPosition, movementSpeed, Time.deltaTime);
+                if(isMoving == false)
+                {
+                    var snappedTargetPosition = Utilities2D.SnapPositionToGrid(targetPosition);
+                    Utilities2D.SetTransformPosition(transform, snappedTargetPosition);
+                    OnEndMove.Invoke();
+                }
                 UpdateMoveStatus();
             }
         }
@@ -85,7 +92,7 @@ namespace MURP.MovementSystem
                 {
                     lastPosition = transform.position;
                     isMoving = true;
-                    OnMove.Invoke();
+                    OnStartMove.Invoke();
                 }
                 else
                 {
@@ -153,7 +160,6 @@ namespace MURP.MovementSystem
                     return (Utilities2D.AreCloseEnough(transform.position, targetPosition));
                 }
             }
-            Utilities2D.SetTransformPosition(transform, targetPosition);
             return true;
         }
     }
