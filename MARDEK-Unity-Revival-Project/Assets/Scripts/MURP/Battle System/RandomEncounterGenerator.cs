@@ -9,7 +9,8 @@ namespace MURP.BattleSystem
 {
     public class RandomEncounterGenerator : MonoBehaviour
     {
-        [SerializeField] Movable movable;
+        [SerializeField, HideInInspector] Movable movable;
+        [SerializeField] EncounterSet areaEncounterSet = null;
         [SerializeField] int minSteps = 20;
         [SerializeField] int maxSteps = 30;
         [SerializeField] UnityEvent onTriggerBattle;
@@ -31,7 +32,7 @@ namespace MURP.BattleSystem
         }
         void TriggerBattle()
         {
-            Debug.Log("TRIGGER BATTLE");
+            BattleManager.encounter = areaEncounterSet;
             onTriggerBattle.Invoke();
         }
         void Step()

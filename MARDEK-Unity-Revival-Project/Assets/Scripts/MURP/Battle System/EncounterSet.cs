@@ -48,7 +48,7 @@ namespace MURP.BattleSystem
             foreach (var encounter in possibleEncounters)
             {
                 weight += encounter.encounterWeight;
-                if (weight <= desiredWeight)
+                if (desiredWeight < weight)
                     return encounter;
             }
             return null;
