@@ -902,53 +902,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[0]._event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3533492873260984478}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[1]._event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3533492873260984478}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[2]._event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3533492873260984478}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[3]._event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3533492873260984478}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[0]._event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnToggleMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[1]._event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnMovementInput
-      objectReference: {fileID: 0}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[2]._event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FocusOnSubMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[3]._event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LeaveSubMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[0]._event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MURP.UI.InGameMenu, MURP.UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[1]._event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MURP.UI.InGameMenu, MURP.UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[2]._event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MURP.UI.InGameMenu, MURP.UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5979275470410677734, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-      propertyPath: binds.Array.data[3]._event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MURP.UI.InGameMenu, MURP.UI
+    - target: {fileID: 3603941758021755952, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6116657111972793080, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
       propertyPath: m_Name
@@ -961,17 +917,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2712680018279468944, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
   m_PrefabInstance: {fileID: 6798683517123524440}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3533492873260984478 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8021117297939390406, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
-  m_PrefabInstance: {fileID: 6798683517123524440}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b59c2f2ead3ca5468e8d98ba644bbe9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7048538554763857420
 PrefabInstance:
   m_ObjectHideFlags: 0
