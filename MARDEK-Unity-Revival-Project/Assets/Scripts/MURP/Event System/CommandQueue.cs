@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MURP.Core;
 
 namespace MURP.EventSystem
 {
     [System.Serializable]
     public class CommandQueue
     {
-        public static int lockValue { get; set; }
-
         [SerializeField] GameObject commandsGameObject;
         public bool isOngoing { get; private set; } = false;
         Queue<CommandBase> commandQueue = new Queue<CommandBase>();
@@ -99,9 +98,9 @@ namespace MURP.EventSystem
             if (cmd != null && cmd.waitForExecutionEnd)
             {
                 if (setValue == true)
-                    lockValue++;
+                    PlayerLocks.EventSystemLock++;
                 else
-                    lockValue--;
+                    PlayerLocks.EventSystemLock--;
             }
         }
     }

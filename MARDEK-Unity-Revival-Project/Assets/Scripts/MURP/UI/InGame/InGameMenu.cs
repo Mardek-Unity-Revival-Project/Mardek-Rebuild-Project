@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using MURP.Core;
 using MURP.Audio;
 using MURP.EventSystem;
 
@@ -9,7 +10,6 @@ namespace MURP.UI
     {
         SubMenuButton activeButton;
         bool isFocussing;
-        public static bool lockValue { get; private set; }
 
         [SerializeField] Canvas canvas;
         [SerializeField] SubMenuButton[] subMenuButtons;
@@ -40,7 +40,7 @@ namespace MURP.UI
         void LeaveInGameMenu()
         {
             canvas.enabled = false;
-            lockValue = false;
+            PlayerLocks.UISystemLock--;
         }
 
         public void OnToggleMenu(InputAction.CallbackContext ctx)
@@ -51,11 +51,11 @@ namespace MURP.UI
             }
             else
             {
-                if (CommandQueue.lockValue == 0)
+                if (PlayerLocks.EventSystemLock == 0)
                 {
                     canvas.enabled = true;
+                    PlayerLocks.UISystemLock++;
                     AudioManager.PlaySoundEffect(openMenuSound);
-                    lockValue = true;
                 }
             }
         }

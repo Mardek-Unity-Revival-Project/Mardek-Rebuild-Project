@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MURP.MovementSystem;
 using UnityEngine.Events;
-//using MURP.EventSystem;
+using MURP.Core;
+using MURP.MovementSystem;
 
 namespace MURP.BattleSystem
 {
@@ -42,7 +42,7 @@ namespace MURP.BattleSystem
         }
         void Step()
         {
-            if (PlayerController.isPlayerLocked)
+            if (PlayerLocks.isPlayerLocked)
                 return;
             stepsTaken++;
         }
