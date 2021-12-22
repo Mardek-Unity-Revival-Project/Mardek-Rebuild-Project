@@ -14514,6 +14514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1594461491}
   - component: {fileID: 1594461492}
+  - component: {fileID: 1594461493}
   m_Layer: 0
   m_Name: TriggerOnceAfterBattle
   m_TagString: Untagged
@@ -14549,6 +14550,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waitExcecutionEnd: 1
   dialogue: {fileID: 11400000, guid: 40d46e4ee376574448265b932fa262d0, type: 2}
+--- !u!114 &1594461493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594461490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d350eb06de3fd4b99e34a9eb6e543f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene:
+    sceneAsset: {fileID: 102900000, guid: a735e495c0df1164ab7e40f6db187c45, type: 3}
+    scenePath: Assets/Scenes/TitleScreen.unity
+  waypoint: {fileID: 0}
+  overrideFacingDirection: {fileID: 0}
 --- !u!1001 &1986284545
 PrefabInstance:
   m_ObjectHideFlags: 0
