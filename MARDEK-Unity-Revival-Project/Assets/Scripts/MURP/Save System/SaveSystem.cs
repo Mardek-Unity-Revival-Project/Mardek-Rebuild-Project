@@ -68,6 +68,7 @@ namespace MURP.SaveSystem
         }
         public void LoadFromFile(string fileName = "quicksave")
         {
+            currentSaveState = new SaveState();
             string filePath = System.IO.Path.Combine(persistentPath, $"{fileName}.json");
             string json = System.IO.File.ReadAllText(filePath);
             if (formatSaveFiles)
