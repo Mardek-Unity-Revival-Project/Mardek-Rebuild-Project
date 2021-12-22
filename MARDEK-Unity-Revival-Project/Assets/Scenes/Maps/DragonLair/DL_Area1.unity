@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitExcecutionEnd: 1
-  dialogue: {fileID: 11400000, guid: a35d2e8b545f54d4babcc2f378e75245, type: 2}
+  dialogue: {fileID: 11400000, guid: e455d0732ca59ff42a6c51340b7d565c, type: 2}
 --- !u!114 &1366511939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,6 +790,7 @@ MonoBehaviour:
   saveOptions:
     loadOnAwake: 1
     autoSave: 1
+    saveOnTransition: 1
   serializedGuid: c2dea570ad90504b938402012e3d93f9
   value: 0
 --- !u!114 &1611162753

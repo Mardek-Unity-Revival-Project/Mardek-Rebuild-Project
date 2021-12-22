@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ca26e8c41c6bf45bc17b3afd5463ed, type: 3}
+  m_Name: DragonAfterBattle
+  m_EditorClassIdentifier: 
+  transcript: 'The Dragon (disintegrating)
+
+    OH DEAR!! I HAVE BEEN SLAIN!!!
+
+    Mardek
+
+    Well,
+    we beated the dragon!
+
+    Princess
+
+    Oh thank you so much for saving me,
+    mighty heroes!
+
+    Mardek
+
+    Well it was really all my fault.
+
+    Deugan
+
+    All
+    your *fault*? Do you mean all your *doing* or something? Because that''s not
+    fair! We beat the dragon together...
+
+    Mardek
+
+    Well I still get the
+    princess.
+
+    Deugan
+
+    You can have her! She''s a *giiirl*! Girls are headlice[sic],
+    I heard! They suck on your wallet and drain out all your money, that''s what
+    my dad says!
+
+    Mardek
+
+    Really?!
+
+    Deugan
+
+    Yeh, really! My dad
+    told me so it must be true!
+
+    Mardek
+
+    Now that we''ve beatened[sic]
+    the dragon though, now what do we do'
+  characterNames:
+  - The Dragon (disintegrating)
+  - Princess
+  - Mardek
+  - Deugan
+  characterInfoRefs:
+  - {fileID: 11400000, guid: e333cc4476c16844a9f1d2a98f28a46f, type: 2}
+  - {fileID: 11400000, guid: e651f62533624154586a9e67498a36ea, type: 2}
+  - {fileID: 11400000, guid: 1b52e3af512408b48b3e3a6f23e95861, type: 2}
+  - {fileID: 11400000, guid: 83695886c34656f4e9e9ae47c4858e6f, type: 2}
+  <CharacterLines>k__BackingField:
+  - <Character>k__BackingField: {fileID: 11400000, guid: e333cc4476c16844a9f1d2a98f28a46f, type: 2}
+    <Lines>k__BackingField:
+    - OH DEAR!! I HAVE BEEN SLAIN!!!
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1b52e3af512408b48b3e3a6f23e95861, type: 2}
+    <Lines>k__BackingField:
+    - "Well, we beated the dragon!\r"
+  - <Character>k__BackingField: {fileID: 11400000, guid: e651f62533624154586a9e67498a36ea, type: 2}
+    <Lines>k__BackingField:
+    - "Oh thank you so much for saving me, mighty heroes!\r"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1b52e3af512408b48b3e3a6f23e95861, type: 2}
+    <Lines>k__BackingField:
+    - "Well it was really all my fault.\r"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 83695886c34656f4e9e9ae47c4858e6f, type: 2}
+    <Lines>k__BackingField:
+    - "All your *fault*? Do you mean all your *doing* or something? Because that's
+      not fair! We beat the dragon together...\r"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1b52e3af512408b48b3e3a6f23e95861, type: 2}
+    <Lines>k__BackingField:
+    - "Well I still get the princess.\r"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 83695886c34656f4e9e9ae47c4858e6f, type: 2}
+    <Lines>k__BackingField:
+    - "You can have her! She's a *giiirl*! Girls are headlice, I heard! They suck
+      on your wallet and drain out all your money, that's what my dad says!\r"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1b52e3af512408b48b3e3a6f23e95861, type: 2}
+    <Lines>k__BackingField:
+    - "Really?!\r"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 83695886c34656f4e9e9ae47c4858e6f, type: 2}
+    <Lines>k__BackingField:
+    - "Yeh, really! My dad told me so it must be true!\r"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1b52e3af512408b48b3e3a6f23e95861, type: 2}
+    <Lines>k__BackingField:
+    - Now that we've beatened the dragon though, now what do we do
