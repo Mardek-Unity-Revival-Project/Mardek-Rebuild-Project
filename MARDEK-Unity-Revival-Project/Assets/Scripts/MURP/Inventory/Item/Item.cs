@@ -22,5 +22,10 @@ namespace MURP.Inventory
         public Element element { get { return _element; } }
 
         public int price { get { return _price; } }
+
+        public virtual bool CanStack()
+        {
+            return true;
+        }
     }
 }
