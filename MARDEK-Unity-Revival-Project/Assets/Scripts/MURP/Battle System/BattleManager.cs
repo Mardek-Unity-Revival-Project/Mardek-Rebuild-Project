@@ -31,7 +31,8 @@ namespace MURP.BattleSystem
 
         private void Awake()
         {
-            enemies = encounter.InstantiateEncounter();
+            if(encounter)
+                enemies = encounter.InstantiateEncounter();
         }
     }
 }

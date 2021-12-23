@@ -23,7 +23,7 @@ namespace MURP.UI
 
         void CreateCharacterUI(RectTransform layout, Character character)
         {
-            var ui = Instantiate(characterUIPrefab, layout).GetComponent<BattleCharacterUI>();
+            var ui = Instantiate(characterUIPrefab, layout).GetComponent<CharacterUI>();
             ui.AssignCharacter(character);
         }
     }

@@ -6,15 +6,18 @@ using MURP.CharacterSystem;
 
 namespace MURP.UI
 {
-    public class BattleCharacterUI : MonoBehaviour
+    public class CharacterUI : MonoBehaviour
     {
-        Character character = null;
-        [SerializeField] TMPro.TMP_Text characteName;
+        public Character character { get; private set; }
+
+        private void Awake()
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
 
         public void AssignCharacter(Character c)
         {
             character = c;
-            characteName.text = character.CharacterInfo == null ? "Null" : character.CharacterInfo.displayName;
         }
     }
 }
