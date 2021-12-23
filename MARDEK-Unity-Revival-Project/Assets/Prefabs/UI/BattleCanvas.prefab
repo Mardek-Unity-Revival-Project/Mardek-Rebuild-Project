@@ -87,14 +87,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
-    m_Right: 0
+    m_Right: 50
     m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 8
+    m_Bottom: 20
+  m_ChildAlignment: 5
   m_StartCorner: 3
   m_StartAxis: 0
-  m_CellSize: {x: 400, y: 200}
-  m_Spacing: {x: 0, y: 0}
+  m_CellSize: {x: 300, y: 0}
+  m_Spacing: {x: 50, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &5125047070889338916
@@ -146,15 +146,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 50
     m_Right: 0
-    m_Top: 0
+    m_Top: 50
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 400, y: 200}
-  m_Spacing: {x: 0, y: 0}
+  m_CellSize: {x: 300, y: 0}
+  m_Spacing: {x: 50, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &4129369519186946166
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleManager: {fileID: 0}
-  characterUIPrefab: {fileID: 7292565312397760116, guid: bea86efcda3828e42b727e983968a265, type: 3}
+  characterUIPrefab: {fileID: 1950446123153637259, guid: 39f2548a3afeb174394d4fae629bb1d4, type: 3}
   enemyUILayout: {fileID: 5975924055652956916}
   partyUILayout: {fileID: 115916223587349836}
 --- !u!1001 &4662693439624830864
