@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1539904725929005160}
   - component: {fileID: 5892545599165651828}
   m_Layer: 0
-  m_Name: DefaultCharacter
+  m_Name: AbstractCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,19 @@ MonoBehaviour:
   bio: {fileID: 0}
   baseStatus:
     intStats:
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 09d38a9ba80723242aff585ba0915607, type: 2}
+      _value: 10
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 66e6bfc20ad436f4f91096bcd539b6f0, type: 2}
+      _value: 10
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: d4f1cafaf7b523f429957c26727de920, type: 2}
+      _value: 1
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: b126ec105431be84db0d5e0d2a1d55cc, type: 2}
+      _value: 0
     - <statusEnum>k__BackingField: {fileID: 11400000, guid: 7179e0b7f3f17f44bbe9be5b7802b8db, type: 2}
+      _value: 0
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 6194235459af05c4c9cbd04f733ace49, type: 2}
+      _value: 0
+    - <statusEnum>k__BackingField: {fileID: 11400000, guid: 608b897aad047cc4fa85eaa65f2cc2ec, type: 2}
       _value: 0
     floatStats: []
   skill: {fileID: 0}
