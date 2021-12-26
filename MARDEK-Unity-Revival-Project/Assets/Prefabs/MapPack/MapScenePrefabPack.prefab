@@ -888,6 +888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestInGameMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 8021117297939390406, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
+      propertyPath: party
+      value: 
+      objectReference: {fileID: 7970277371122817805}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232e2963de121e3459437b2b03d1118e, type: 3}
 --- !u!224 &8934199078131759304 stripped
@@ -1023,6 +1027,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1013374027887860850, guid: 611f50f7562c49a47b7c82bad018a096, type: 3}
   m_PrefabInstance: {fileID: 7799115796407933974}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7970277371122817805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 189181372132509467, guid: 611f50f7562c49a47b7c82bad018a096, type: 3}
+  m_PrefabInstance: {fileID: 7799115796407933974}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4c1f497d6ed6040974cb2dc303f8bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7828328831743381879
 PrefabInstance:
   m_ObjectHideFlags: 0

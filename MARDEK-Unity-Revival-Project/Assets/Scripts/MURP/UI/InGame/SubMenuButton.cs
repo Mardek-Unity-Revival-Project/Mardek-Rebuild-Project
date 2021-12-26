@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using MURP.CharacterSystem;
 
 namespace MURP.UI
 {
@@ -11,23 +12,36 @@ namespace MURP.UI
         static readonly Color FADED_ACTIVE_COLOR = new Color(150 / 255f, 170 / 255f, 200 / 255f);
 
         [SerializeField] Text text;
+        [SerializeField] GameObject panel;
+        [SerializeField] SubMenu subMenu;
 
-        [SerializeField] bool isDeep;
+        public void SetParty(Party party)
+        {
+            this.subMenu.SetParty(party);
+        }
+
+        public void SetForceFocus(System.Action forceFocusAction)
+        {
+            if (this.subMenu is InventorySubMenu) (this.subMenu as InventorySubMenu).SetForceFocusAction(forceFocusAction);
+        }
 
         public bool IsDeep()
         {
-            return isDeep;
+            return this.subMenu is FocusSubMenu;
         }
 
         public void SetActive()
         {
             this.text.color = ACTIVE_COLOR;
-            // TODO Show the actual sub menu of this button
+            if (this.panel != null) this.panel.SetActive(true);
+            this.subMenu.SetActive();
         }
 
         public void SetInactive()
         {
             this.text.color = INACTIVE_COLOR;
+            if (this.panel != null) this.panel.SetActive(false);
+            this.subMenu.SetInActive();
         }
 
         public void StartFade()
@@ -50,12 +64,12 @@ namespace MURP.UI
 
         public void Focus()
         {
-            // TODO Focus on the sub menu of this button
+            (this.subMenu as FocusSubMenu).StartFocus();
         }
 
-        public void StopFocus()
+        public bool StopFocus()
         {
-            // TODO Stop focussing on the sub menu of this button
+            return (this.subMenu as FocusSubMenu).StopFocus();
         }
     }
 }

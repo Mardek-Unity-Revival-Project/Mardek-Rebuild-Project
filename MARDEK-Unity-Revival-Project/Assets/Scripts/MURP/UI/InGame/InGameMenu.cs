@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using MURP.Core;
+using MURP.CharacterSystem;
 using MURP.Audio;
 using MURP.EventSystem;
 
@@ -11,12 +12,22 @@ namespace MURP.UI
         SubMenuButton activeButton;
         bool isFocussing;
 
+        [SerializeField] Party party;
         [SerializeField] Canvas canvas;
         [SerializeField] SubMenuButton[] subMenuButtons;
         [SerializeField] AudioObject openMenuSound;
         [SerializeField] AudioObject verticalMenuScrollSound;
         [SerializeField] AudioObject focusMenuSound;
         [SerializeField] AudioObject stopFocusMenuSound;
+
+        void Start()
+        {
+            foreach (SubMenuButton subMenuButton in this.subMenuButtons)
+            {
+                subMenuButton.SetParty(this.party);
+                subMenuButton.SetForceFocus(ForceFocus);
+            }
+        }
 
         void SetActiveSubMenu(SubMenuButton buttonToActivate)
         {
@@ -39,6 +50,11 @@ namespace MURP.UI
 
         void LeaveInGameMenu()
         {
+            if (this.isFocussing) {
+                if (!this.activeButton.StopFocus()) {
+                    return;
+                }
+            }
             canvas.enabled = false;
             PlayerLocks.UISystemLock--;
         }
@@ -98,6 +114,17 @@ namespace MURP.UI
             }
         }
 
+        void ForceFocus()
+        {
+            foreach (SubMenuButton subMenuButton in subMenuButtons)
+            {
+                subMenuButton.StartFade();
+            }
+            activeButton.Focus();
+            AudioManager.PlaySoundEffect(focusMenuSound);
+            isFocussing = true;
+        }
+
         public void FocusOnSubMenu(InputAction.CallbackContext ctx)
         {
             if (canvas.enabled)
@@ -106,13 +133,7 @@ namespace MURP.UI
                 {
                     if (activeButton.IsDeep())
                     {
-                        foreach (SubMenuButton subMenuButton in subMenuButtons)
-                        {
-                            subMenuButton.StartFade();
-                        }
-                        activeButton.Focus();
-                        AudioManager.PlaySoundEffect(focusMenuSound);
-                        isFocussing = true;
+                        this.ForceFocus();
                     }
                 }
                 else
@@ -128,13 +149,14 @@ namespace MURP.UI
             {
                 if (isFocussing)
                 {
-                    activeButton.StopFocus();
-                    foreach (SubMenuButton subMenuButton in subMenuButtons)
-                    {
-                        subMenuButton.StopFade();
+                    if (activeButton.StopFocus()) {
+                        foreach (SubMenuButton subMenuButton in subMenuButtons)
+                        {
+                            subMenuButton.StopFade();
+                        }
+                        AudioManager.PlaySoundEffect(stopFocusMenuSound);
+                        isFocussing = false;
                     }
-                    AudioManager.PlaySoundEffect(stopFocusMenuSound);
-                    isFocussing = false;
                 }
                 else
                 {
