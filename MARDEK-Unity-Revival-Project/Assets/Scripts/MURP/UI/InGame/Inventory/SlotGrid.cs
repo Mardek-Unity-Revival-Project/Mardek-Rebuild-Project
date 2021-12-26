@@ -7,7 +7,7 @@ namespace MURP.UI
     public class SlotGrid
     {
         readonly List<GameObject> slotComponents;
-        readonly Inventory.Inventory inventory;
+        Inventory.Inventory inventory;
         readonly int firstInventorySlotIndex;
         readonly int numSlots;
 
@@ -32,6 +32,11 @@ namespace MURP.UI
                 slotScript.SetSlot(inventorySlot);
                 slotScript.SetCursorSlot(cursorSlot);
             }
+        }
+
+        public void ChangeInventory(Inventory.Inventory newInventory)
+        {
+            this.inventory = newInventory;
         }
     }
 }

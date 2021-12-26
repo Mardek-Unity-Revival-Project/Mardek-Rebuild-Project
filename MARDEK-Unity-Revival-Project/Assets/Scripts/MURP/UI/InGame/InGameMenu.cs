@@ -104,7 +104,7 @@ namespace MURP.UI
                     }
                     else
                     {
-                        // TODO Handle vertical navigation in focussed sub menu
+                        this.activeButton.PropagateVerticalMovement(inputDirection.y);
                     }
                 }
                 else
@@ -116,13 +116,16 @@ namespace MURP.UI
 
         void ForceFocus()
         {
-            foreach (SubMenuButton subMenuButton in subMenuButtons)
+            if (!this.isFocussing)
             {
-                subMenuButton.StartFade();
+                foreach (SubMenuButton subMenuButton in subMenuButtons)
+                {
+                    subMenuButton.StartFade();
+                }
+                activeButton.Focus();
+                AudioManager.PlaySoundEffect(focusMenuSound);
+                isFocussing = true;
             }
-            activeButton.Focus();
-            AudioManager.PlaySoundEffect(focusMenuSound);
-            isFocussing = true;
         }
 
         public void FocusOnSubMenu(InputAction.CallbackContext ctx)

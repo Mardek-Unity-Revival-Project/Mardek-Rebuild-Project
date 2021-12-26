@@ -9,5 +9,7 @@ namespace MURP.UI
         {
             return true;
         }
+
+        public virtual void HandleVerticalMovement(float movement) {}
     }
 }
