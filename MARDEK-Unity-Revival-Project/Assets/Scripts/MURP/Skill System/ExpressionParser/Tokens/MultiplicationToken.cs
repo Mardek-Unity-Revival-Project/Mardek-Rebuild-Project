@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace MURP.SkillSystem.ExpressionParser
 {
-    public class MultiplicationToken : BranchParserToken
+    public class MultiplicationToken : LeftmostDerivationToken
     {
         public override float Evaluate()
         {
             var leftValue = left.Evaluate();
             var rightValue = right.Evaluate();
-            Debug.Log($"Evaluating {leftValue} multiplied by {rightValue}");
+            //Debug.Log($"Evaluating {leftValue} multiplied by {rightValue}");
             return leftValue * rightValue;
         }
     }

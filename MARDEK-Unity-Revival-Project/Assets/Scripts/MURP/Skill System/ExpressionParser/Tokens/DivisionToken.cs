@@ -10,7 +10,7 @@ namespace MURP.SkillSystem.ExpressionParser
         {
             var leftValue = left == null ? 0 : left.Evaluate();
             var rightValue = right == null ? 0 : right.Evaluate();
-            Debug.Log($"Evaluating {leftValue} divided by {rightValue}");
+            //Debug.Log($"Evaluating {leftValue} divided by {rightValue}");
             return leftValue / rightValue;
         }
     }

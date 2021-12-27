@@ -12,9 +12,21 @@ namespace MURP.SkillSystem
         int index = 0;
         string[] lexicalParts;
 
+        private void Start()
+        {
+            
+        }
+
+        public float Evaluate()
+        {
+            if (finalToken == null)
+                Parse();
+            return finalToken.Evaluate();
+        }
+
         [ContextMenu("Parse")]
         void Parse()
-        { 
+        {
             lexicalParts = expression.Split(' ');
             index = 0;
             var tree = new Stack<ParserToken>();
@@ -76,14 +88,12 @@ namespace MURP.SkillSystem
                     secondToLast.right = last;
             }
             finalToken = tree.Pop();
-            Debug.Log(finalToken.Evaluate());
         }
 
         ParserToken LookAhead()
         {
             var lexicalPart = lexicalParts[index].Replace(" ", "");
             index++;
-            Debug.Log(lexicalPart);
             var isNumeric = float.TryParse(lexicalPart, out var value);
             if (isNumeric)
                 return new LiteralToken(value);
