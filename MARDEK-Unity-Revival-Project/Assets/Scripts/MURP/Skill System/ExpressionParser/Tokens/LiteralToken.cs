@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MURP.StatsSystem
+namespace MURP.SkillSystem.ExpressionParser
 {
-    public class LiteralToken : ParserToken
+    public class LiteralToken : ValueToken
     {
-        [SerializeField] float _value = 0;
+        float _value = 0;
 
         public LiteralToken(float value)
         {

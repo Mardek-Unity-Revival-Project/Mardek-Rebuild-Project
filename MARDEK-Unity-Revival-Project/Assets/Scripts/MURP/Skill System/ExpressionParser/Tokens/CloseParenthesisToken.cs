@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MURP.StatsSystem
+namespace MURP.SkillSystem.ExpressionParser
 {
     public class CloseParenthesisToken : ParserToken
     {

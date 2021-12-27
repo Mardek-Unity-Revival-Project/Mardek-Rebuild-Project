@@ -1,16 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MURP.SkillSystem.ExpressionParser;
 
-namespace MURP.StatsSystem
+namespace MURP.SkillSystem
 {
-    public class ExpressionParser : MonoBehaviour
+    public class SkillExpression : MonoBehaviour
     {
-        public void Start()
-        {
-            Parse();
-        }
-
         [SerializeField] string expression;
         ParserToken finalToken = null;
         int index = 0;
@@ -23,45 +19,36 @@ namespace MURP.StatsSystem
             index = 0;
             var tree = new Stack<ParserToken>();
             tree.Push(LookAhead());
+            // loop through all lexical parts
             while(index < lexicalParts.Length)
             {
                 var token = LookAhead();
-                if(token is AdditionToken)
-                    (token as AdditionToken).left = tree.Pop();
-                if (token is DivisionToken)
-                    (token as DivisionToken).left = tree.Pop();
-                if(token is CloseParenthesisToken)
-                {
-                    foreach (var a in tree)
-                        Debug.Log(a);
-                    //rightmost derivation till open parentesis is found
-                    while (tree.Count > 1)
+
+                var tokenAsBranch = token as BranchParserToken;
+                if (tokenAsBranch != null)
+                    tokenAsBranch.left = tree.Pop();
+
+                if (token is CloseParenthesisToken)
+                {                   
+                    while (tree.Count > 1) //rightmost derivate till open parentesis is found
                     {
                         var last = tree.Pop();
                         var secondToLast = tree.Peek();
+                        if (secondToLast is BranchParserToken)
+                            (secondToLast as BranchParserToken).right = last;
                         if (secondToLast is OpenParenthesisToken)
                         {
-                            Debug.Log($" {last} is internal to {secondToLast}");
                             (secondToLast as OpenParenthesisToken).internalToken = last;
                             break;
                         }
-                        if (secondToLast is BranchParserToken)
-                        {
-                            Debug.Log($" {last} is right to {secondToLast}");
-                            (secondToLast as BranchParserToken).right = last;
-                        }
                     }
-                    if(tree.Count > 1)
-                    {
-                        var openToken = tree.Pop();
-                        if(tree.Peek() is DivisionToken)
-                        {
-
-                        }
-                        else
-                        {
-                            tree.Push(openToken);
-                        }
+                    // if the token to the left of the open parenthesis token is a leftmost derivation it already got
+                    // associated with the open parentheiys, thus we shouldn't keep the open parenthesis in the tree stack
+                    if (tree.Count > 1)
+                    {                        
+                        var openParentesisToken = tree.Pop();                        
+                        if (tree.Peek() is LeftmostDerivationToken == false)
+                            tree.Push(openParentesisToken);
                     }
                     continue;
                 }
@@ -69,21 +56,23 @@ namespace MURP.StatsSystem
                 // leftmost derivation in special cases
                 if (tree.Count > 0)
                 {
-                    if (tree.Peek() is DivisionToken)
+                    var tokenAsLeftmostDerivation = tree.Peek() as LeftmostDerivationToken;
+                    if (tokenAsLeftmostDerivation != null)
                     {
-                        (tree.Peek() as DivisionToken).right = token;
-                        if (token is LiteralToken)
+                        tokenAsLeftmostDerivation.right = token;
+                        // don't add the value token to stack 'cause it was associated with the leftmost derivation token
+                        if (token is ValueToken)
                             continue;
                     }
                 }
                 tree.Push(token);
             }
-            // rightmost derivation
+            // final rightmost derivation
             while (tree.Count > 1)
             {
                 var last = tree.Pop();
                 var secondToLast = tree.Peek() as BranchParserToken;
-                if(secondToLast.right == null)
+                if(secondToLast != null && secondToLast.right == null)
                     secondToLast.right = last;
             }
             finalToken = tree.Pop();
@@ -100,6 +89,10 @@ namespace MURP.StatsSystem
                 return new LiteralToken(value);
             if (lexicalPart == "+")
                 return new AdditionToken();
+            if (lexicalPart == "-")
+                return new SubtractionToken();
+            if (lexicalPart == "*")
+                return new MultiplicationToken();
             if (lexicalPart == "/")
                 return new DivisionToken();
             if (lexicalPart == "(")
