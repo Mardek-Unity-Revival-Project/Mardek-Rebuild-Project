@@ -7,7 +7,6 @@ namespace MURP.StatsSystem
     public class ModifyStat : AddressableScriptableObject
     {
         [SerializeField] IntegerStat targetStatus;
-        [SerializeField] int expression;
 
         public void Apply(IStats user, IStats target)
         {
