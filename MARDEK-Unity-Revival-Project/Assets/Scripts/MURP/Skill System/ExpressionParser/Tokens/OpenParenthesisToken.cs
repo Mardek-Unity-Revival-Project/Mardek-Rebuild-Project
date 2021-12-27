@@ -1,3 +1,4 @@
+using MURP.StatsSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,9 @@ namespace MURP.SkillSystem.ExpressionParser
     {
         public ParserToken internalToken = null;
 
-        public override float Evaluate()
+        public override float Evaluate(IStats user, IStats target)
         {
-            Debug.Log("Evaluating Parenthesis");
-            return internalToken.Evaluate();
+            return internalToken.Evaluate(user, target);
         }
     }
 }

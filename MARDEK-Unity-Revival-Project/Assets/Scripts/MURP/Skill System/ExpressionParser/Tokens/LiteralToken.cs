@@ -1,3 +1,4 @@
+using MURP.StatsSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace MURP.SkillSystem.ExpressionParser
             _value = value;
         }
 
-        public override float Evaluate()
+        public override float Evaluate(IStats user, IStats target)
         {
             return _value;
         }

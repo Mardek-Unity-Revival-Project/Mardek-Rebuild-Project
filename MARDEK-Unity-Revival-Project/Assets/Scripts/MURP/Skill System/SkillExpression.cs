@@ -2,29 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MURP.SkillSystem.ExpressionParser;
+using MURP.StatsSystem;
 
 namespace MURP.SkillSystem
 {
-    public class SkillExpression : MonoBehaviour
+    [System.Serializable]
+    public class SkillExpression
     {
         [SerializeField] string expression;
         ParserToken finalToken = null;
         int index = 0;
         string[] lexicalParts;
 
-        private void Start()
-        {
-            
-        }
-
-        public float Evaluate()
+        [ContextMenu("Parse")]
+        public float Evaluate(IStats user, IStats target)
         {
             if (finalToken == null)
                 Parse();
-            return finalToken.Evaluate();
+            return finalToken.Evaluate(user, target);
         }
 
-        [ContextMenu("Parse")]
         void Parse()
         {
             lexicalParts = expression.Split(' ');

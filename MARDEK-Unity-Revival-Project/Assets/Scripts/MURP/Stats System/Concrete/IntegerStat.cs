@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MURP.StatsSystem
 {
-    [CreateAssetMenu(menuName = "MURP/StatusSystem/IntegerStatus")]
+    [CreateAssetMenu(menuName = "MURP/StatsSystem/IntegerStatus")]
     public class IntegerStat : StatOfType<int>
     {
         

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using MURP.StatsSystem;
+using MURP.SkillSystem;
 
 namespace MURP.CharacterSystem
 {
@@ -13,7 +14,6 @@ namespace MURP.CharacterSystem
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
         [SerializeField] MURP.Inventory.Inventory _inventory;
-        [SerializeField] ModifyStat skill;
 
         public MURP.Inventory.Inventory inventory { get { return _inventory; } }
 
@@ -44,10 +44,12 @@ namespace MURP.CharacterSystem
             this.inventory.Start();
         }
 
+
+        [SerializeField] Skill skill;
         [ContextMenu("TriggerSkill")]
         void TriggerSkill()
         {
-            skill.Apply(this, this);
+            skill.Apply(this, null);
         }
     }
 }
