@@ -34,5 +34,28 @@ namespace MURP.BattleSystem
             if(encounter)
                 enemies = encounter.InstantiateEncounter();
         }
+
+        private void Start()
+        {
+            StartCoroutine(BattleLoop());
+        }
+
+        IEnumerator BattleLoop()
+        {
+            var delay = new WaitForSeconds(5f);
+            var charactersInBattle = new List<Character>(playerCharacters);
+            charactersInBattle.AddRange(enemyCharacters);
+            while (true)
+            {
+                yield return delay;
+                var characterToAct = charactersInBattle[0];
+                charactersInBattle.RemoveAt(0);
+                charactersInBattle.Add(characterToAct);
+                if (playerCharacters.Contains(characterToAct))
+                    characterToAct.BattleAct(playerCharacters, enemyCharacters);
+                else
+                    characterToAct.BattleAct(enemyCharacters, playerCharacters);
+            }
+        }
     }
 }

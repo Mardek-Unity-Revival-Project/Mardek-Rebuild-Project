@@ -47,9 +47,9 @@ MonoBehaviour:
   baseStatus:
     intStats:
     - <statusEnum>k__BackingField: {fileID: 11400000, guid: 09d38a9ba80723242aff585ba0915607, type: 2}
-      _value: 10
+      _value: 100
     - <statusEnum>k__BackingField: {fileID: 11400000, guid: 66e6bfc20ad436f4f91096bcd539b6f0, type: 2}
-      _value: 10
+      _value: 100
     - <statusEnum>k__BackingField: {fileID: 11400000, guid: d4f1cafaf7b523f429957c26727de920, type: 2}
       _value: 1
     - <statusEnum>k__BackingField: {fileID: 11400000, guid: b126ec105431be84db0d5e0d2a1d55cc, type: 2}
@@ -61,4 +61,8 @@ MonoBehaviour:
     - <statusEnum>k__BackingField: {fileID: 11400000, guid: 608b897aad047cc4fa85eaa65f2cc2ec, type: 2}
       _value: 0
     floatStats: []
-  skill: {fileID: 0}
+  _inventory:
+    slots: []
+    isForPlayer: 0
+    fullSize: 0
+  skill: {fileID: 11400000, guid: b71d26a843935224cbb9bd96661a0a90, type: 2}

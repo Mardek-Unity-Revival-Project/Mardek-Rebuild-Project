@@ -10,6 +10,9 @@ namespace MURP.UI
         [SerializeField] CharacterUI characterUI = null;
         [SerializeField] IntegerStat stat;
         [SerializeField] IntegerStat maxStat;
+        [SerializeField] RectTransform barTransform;
+        [SerializeField] TMPro.TMP_Text statText;
+        [SerializeField] TMPro.TMP_Text maxStatText;
 
         private void Update()
         {
@@ -20,8 +23,15 @@ namespace MURP.UI
         [ContextMenu("Update Bar")]
         void UpdateBar()
         {
-            float xScale = (float) characterUI.character.GetStat(stat).Value / characterUI.character.GetStat(maxStat).Value;
-            GetComponent<RectTransform>().localScale = new Vector3(xScale, 1, 1);
+            var statValue = (float)characterUI.character.GetStat(stat).Value;
+            if (statText) statText.text = statValue.ToString();
+            var maxStatValue = (float)characterUI.character.GetStat(maxStat).Value;
+            if (maxStatText) maxStatText.text = maxStatValue.ToString();
+            if (barTransform)
+            {
+                float xScale = statValue / maxStatValue;
+                barTransform.localScale = new Vector3(xScale, 1, 1);
+            }
         }
     }
 }

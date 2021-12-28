@@ -44,12 +44,12 @@ namespace MURP.CharacterSystem
             this.inventory.Start();
         }
 
+        public void BattleAct(List<Character> allies, List<Character> enemies)
+        {
+            var randomEnemy = enemies[Random.Range(0, enemies.Count)];
+            skill.Apply(this, randomEnemy);
+        }
 
         [SerializeField] Skill skill;
-        [ContextMenu("TriggerSkill")]
-        void TriggerSkill()
-        {
-            skill.Apply(this, null);
-        }
     }
 }

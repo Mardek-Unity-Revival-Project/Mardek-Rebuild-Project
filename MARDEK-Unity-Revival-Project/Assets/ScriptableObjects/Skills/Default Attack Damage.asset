@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee63e6016b84c294fb5bf1731f27e951, type: 3}
-  m_Name: TestSkillEffect
+  m_Name: Default Attack Damage
   m_EditorClassIdentifier: 
   targetStatus: {fileID: 11400000, guid: 09d38a9ba80723242aff585ba0915607, type: 2}
   valueExpresion:
-    expression: 10
+    expression: ATK  * 10
+    customTokens:
+    - ID: ATK
+      stat: {fileID: 11400000, guid: b126ec105431be84db0d5e0d2a1d55cc, type: 2}
+      userOrTarget: 0
