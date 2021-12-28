@@ -24,7 +24,6 @@ namespace MURP.MovementSystem
 
             //Command queue won't have the oportunity to reset the lockValue itself cause the scene reload will destroy the object
             PlayerLocks.EventSystemLock = 0;
-            AddressableMonoBehaviour.SaveOnTransition();
             SceneManager.LoadScene(scene);
         }
 

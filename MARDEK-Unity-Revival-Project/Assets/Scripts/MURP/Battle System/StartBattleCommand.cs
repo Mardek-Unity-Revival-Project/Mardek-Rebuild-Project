@@ -15,7 +15,6 @@ namespace MURP.BattleSystem
         public override void Trigger()
         {
             BattleManager.encounter = encounter;
-            AddressableMonoBehaviour.SaveOnTransition();
             SceneManager.LoadScene(battleScene);
         }
     }
