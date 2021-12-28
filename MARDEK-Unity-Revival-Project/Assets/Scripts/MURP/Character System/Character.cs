@@ -26,7 +26,6 @@ namespace MURP.CharacterSystem
         public void BattleAct(List<Character> allies, List<Character> enemies)
         {
             var randomEnemy = enemies[Random.Range(0, enemies.Count)];
-            Debug.Log($"{this.name} attacks {randomEnemy.name}");
             skill.Apply(this, randomEnemy);
         }
 

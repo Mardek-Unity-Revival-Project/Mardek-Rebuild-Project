@@ -13,7 +13,6 @@ namespace MURP.SkillSystem
         public override void Apply(IStats user, IStats target)
         {
             var value = -valueExpresion.Evaluate(user, target);
-            Debug.Log($"modify {targetStatus.name} by {value}");
             target.ModifyStat(targetStatus, value);
         }
     }

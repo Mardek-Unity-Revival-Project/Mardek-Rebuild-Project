@@ -29,7 +29,7 @@ namespace MURP.UI
             if (maxStatText) maxStatText.text = maxStatValue.ToString();
             if (barTransform)
             {
-                float xScale = statValue / maxStatValue;
+                float xScale = Mathf.Clamp(statValue / maxStatValue , 0f, 1f);
                 barTransform.localScale = new Vector3(xScale, 1, 1);
             }
         }

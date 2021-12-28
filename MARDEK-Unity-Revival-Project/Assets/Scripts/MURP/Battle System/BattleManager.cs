@@ -42,7 +42,7 @@ namespace MURP.BattleSystem
 
         IEnumerator BattleLoop()
         {
-            var delay = new WaitForSeconds(5f);
+            var delay = new WaitForSeconds(1f);
             var charactersInBattle = new List<Character>(playerCharacters);
             charactersInBattle.AddRange(enemyCharacters);
             while (true)

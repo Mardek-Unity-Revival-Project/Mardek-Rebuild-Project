@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4351751439770214631, guid: 0ef26002ae8a1a84ba596c03cad5a712, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4351751439770214631, guid: 0ef26002ae8a1a84ba596c03cad5a712, type: 3}
       propertyPath: m_LocalPosition.x
@@ -426,6 +426,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1392470753}
+        m_TargetAssemblyTypeName: MURP.SaveSystem.AddressableMonoBehaviour, MURP.SaveSystem
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1392470753}
         m_TargetAssemblyTypeName: MURP.MovementSystem.MapParty, MURP.MovementSystem
         m_MethodName: SetForceLoadOnNextAwake
         m_Mode: 1
@@ -634,6 +646,10 @@ PrefabInstance:
     - target: {fileID: 2859971442608448863, guid: e83dd42baf92c0b4baa2292b12e6e423, type: 3}
       propertyPath: m_Name
       value: MapParty
+      objectReference: {fileID: 0}
+    - target: {fileID: 4872008754745725967, guid: e83dd42baf92c0b4baa2292b12e6e423, type: 3}
+      propertyPath: saveOptions.saveOnDisable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e83dd42baf92c0b4baa2292b12e6e423, type: 3}
