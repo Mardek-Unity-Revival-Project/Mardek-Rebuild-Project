@@ -17,6 +17,19 @@ namespace MURP.CharacterSystem
 
         public MURP.Inventory.Inventory inventory { get { return _inventory; } }
 
+
+        void Start()
+        {
+            this.inventory.Start();
+        }
+
+        public void BattleAct(List<Character> allies, List<Character> enemies)
+        {
+            var randomEnemy = enemies[Random.Range(0, enemies.Count)];
+            Debug.Log($"{this.name} attacks {randomEnemy.name}");
+            skill.Apply(this, randomEnemy);
+        }
+
         public StatHolder<T, StatOfType<T>> GetStat<T>(StatOfType<T> desiredStatus)
         {            
             var resultHolder = new StatHolder<T, StatOfType<T>>(desiredStatus);
@@ -38,16 +51,9 @@ namespace MURP.CharacterSystem
                 }                
             }
         }
-
-        void Start()
+        public void ModifyStat<T>(StatOfType<T> stat, float delta)
         {
-            this.inventory.Start();
-        }
-
-        public void BattleAct(List<Character> allies, List<Character> enemies)
-        {
-            var randomEnemy = enemies[Random.Range(0, enemies.Count)];
-            skill.Apply(this, randomEnemy);
+            baseStatus.ModifyStat(stat, delta);
         }
 
         [SerializeField] Skill skill;

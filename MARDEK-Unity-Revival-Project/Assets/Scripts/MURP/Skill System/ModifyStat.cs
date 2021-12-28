@@ -12,9 +12,9 @@ namespace MURP.SkillSystem
 
         public override void Apply(IStats user, IStats target)
         {
-            // TODO: modify the stat
-            //var statusHolder = target.GetStat(targetStatus);
-            Debug.Log($"{user} should deal {valueExpresion.Evaluate(user, target)} damage to {target}'s {targetStatus}");
+            var value = -valueExpresion.Evaluate(user, target);
+            Debug.Log($"modify {targetStatus.name} by {value}");
+            target.ModifyStat(targetStatus, value);
         }
     }
 }
