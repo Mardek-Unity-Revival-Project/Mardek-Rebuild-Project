@@ -44,10 +44,16 @@ namespace MURP.CharacterSystem
                     return;
                 if (typeof(T) == typeof(int))
                 {
-                    var firstInt = firstHolder as StatHolder<int, StatOfType<int>>;
-                    var secondInt = secondHolder as StatHolder<int, StatOfType<int>>;
-                    firstInt.Value += secondInt.Value;
-                }                
+                    var firstValue = firstHolder as StatHolder<int, StatOfType<int>>;
+                    var secondValue = secondHolder as StatHolder<int, StatOfType<int>>;
+                    firstValue.Value += secondValue.Value;
+                }
+                if (typeof(T) == typeof(float))
+                {
+                    var firstValue = firstHolder as StatHolder<float, StatOfType<float>>;
+                    var secondValue = secondHolder as StatHolder<float, StatOfType<float>>;
+                    firstValue.Value += secondValue.Value;
+                }
             }
         }
         public void ModifyStat<T>(StatOfType<T> stat, float delta)

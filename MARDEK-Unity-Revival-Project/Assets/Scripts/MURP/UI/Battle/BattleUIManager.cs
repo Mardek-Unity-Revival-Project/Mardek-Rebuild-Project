@@ -17,7 +17,7 @@ namespace MURP.UI
         {
             foreach(var enemy in battleManager.enemyCharacters)
                 CreateCharacterUI(enemyUILayout, enemy);
-            foreach(var playerCharacter in battleManager.playerCharacters)
+            foreach(var playerCharacter in battleManager.playableCharacters)
                 CreateCharacterUI(partyUILayout, playerCharacter);
         }
 

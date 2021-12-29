@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MURP.CharacterSystem;
+using MURP.StatsSystem;
 
 namespace MURP.BattleSystem
 {
     public class BattleManager : MonoBehaviour
     {
         public static EncounterSet encounter { private get; set; }
+        [SerializeField, HideInInspector] FloatStat ACTStat = null;
+        [SerializeField, HideInInspector] IntegerStat AGLStat = null;
+        const float actResolution = 10;
         [SerializeField] Party playerParty;
         List<GameObject> enemies = new List<GameObject>();
 
-        public List<Character> playerCharacters
+        public List<Character> playableCharacters
         {
             get
             {
@@ -31,31 +35,63 @@ namespace MURP.BattleSystem
 
         private void Awake()
         {
-            if(encounter)
-                enemies = encounter.InstantiateEncounter();
+            if(encounter) enemies = encounter.InstantiateEncounter();
         }
 
-        private void Start()
+        private void Update()
         {
-            StartCoroutine(BattleLoop());
-        }
-
-        IEnumerator BattleLoop()
-        {
-            var delay = new WaitForSeconds(1f);
-            var charactersInBattle = new List<Character>(playerCharacters);
-            charactersInBattle.AddRange(enemyCharacters);
-            while (true)
+            var charactersInBattle = GetCharactersInOrder();
+            AddTickRateToACT(ref charactersInBattle, Time.deltaTime);
+            var readyToAct = GetNextCharacterReadyToAct(charactersInBattle);
+            if (readyToAct != null)
             {
-                yield return delay;
-                var characterToAct = charactersInBattle[0];
-                charactersInBattle.RemoveAt(0);
-                charactersInBattle.Add(characterToAct);
-                if (playerCharacters.Contains(characterToAct))
-                    characterToAct.BattleAct(playerCharacters, enemyCharacters);
+                Debug.Log($"{readyToAct.name} should act");
+                // TODO: pause this update if character is playable
+                if (playableCharacters.Contains(readyToAct))
+                    readyToAct.BattleAct(allies: playableCharacters, enemies: enemyCharacters);
                 else
-                    characterToAct.BattleAct(enemyCharacters, playerCharacters);
+                    readyToAct.BattleAct(allies: enemyCharacters, enemies: playableCharacters);
+                // "reset" characters' ACT
+                readyToAct.ModifyStat(ACTStat, -actResolution);
             }
+        }
+        List<Character> GetCharactersInOrder()
+        {
+            // order by position (p1 e1 p2 e2 p3 e3 p4 e4)
+            List<Character> returnList = new List<Character>();
+            for (int i = 0; i < 4; i++)
+            {
+                if (playableCharacters.Count > i)
+                    returnList.Add(playableCharacters[i]);
+                if (enemyCharacters.Count > i)
+                    returnList.Add(enemyCharacters[i]);
+            }
+            return returnList;
+        }
+        void AddTickRateToACT(ref List<Character> characters, float deltatime)
+        {
+            foreach(var c in characters)
+            {
+                var tickRate = 1 + 0.05f * c.GetStat(AGLStat).Value;
+                tickRate *= deltatime;
+                c.ModifyStat(ACTStat, tickRate);
+            }
+        }
+        Character GetNextCharacterReadyToAct(List<Character> characters)
+        {
+            float maxAct = 0;
+            foreach(var c in characters)
+            {
+                var act = c.GetStat(ACTStat).Value;
+                if (act > maxAct)
+                    maxAct = act;
+            }
+            if (maxAct < actResolution)
+                return null;
+            foreach (var c in characters)
+                if (c.GetStat(ACTStat).Value == maxAct)
+                    return c;
+            throw new System.Exception("A character had enough ACT to take a turn but wasn't returned by this method");
         }
     }
 }
