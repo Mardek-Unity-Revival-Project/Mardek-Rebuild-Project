@@ -16,7 +16,7 @@ namespace MURP.MovementSystem
             if (instance == null)
                 instance = this;
             else
-                Debug.LogError("there was already a PlayerController intance when a new PlayerController awoke");
+                Debug.LogError("there was already a PlayerController instance when a new PlayerController awoke");
         }
 
         public static Movable GetPlayerMovement()
