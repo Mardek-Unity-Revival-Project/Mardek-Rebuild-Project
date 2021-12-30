@@ -10,5 +10,7 @@ namespace MURP.UI
         public virtual void SetInActive(){}
 
         public virtual void SetParty(Party theParty){}
+
+        public virtual void HandleHorizontalMovement(float amount){}
     }
 }

@@ -15,6 +15,7 @@ namespace MURP.UI
         [SerializeField] HorizontalLayoutGroup[] equipmentSlotLayouts;
         [SerializeField] Image[] equipmentBarBackgrounds;
         [SerializeField] GameObject slotPrefab;
+        [SerializeField] SelectedItemInfo selectedItemInfo;
         
         CursorSlotUI cursorItem;
         Party theParty;
@@ -27,10 +28,10 @@ namespace MURP.UI
 
         override public void SetActive()
         {
-            this.slotGrid.UpdateSlots(this.cursorSlot, this.focusAction);
+            this.slotGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
             foreach (SlotGrid equipmentGrid in this.equipmentSlotGrids)
             {
-                equipmentGrid.UpdateSlots(this.cursorSlot, this.focusAction);
+                equipmentGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
             }
             this.cursorItem = new CursorSlotUI(this.cursorSlot);
             this.isActive = true;
@@ -90,8 +91,13 @@ namespace MURP.UI
                 }
             }
             this.slotGrid.ChangeInventory(this.theParty.Characters[this.currentCharacterIndex].inventory);
-            this.slotGrid.UpdateSlots(this.cursorSlot, this.focusAction);
+            this.slotGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
             this.UpdateEquipmentBarBackgrounds();
+        }
+
+        public override void HandleHorizontalMovement(float amount)
+        {
+            this.selectedItemInfo.MoveHorizontally(amount);
         }
 
         public void SetForceFocusAction(System.Action forceFocusAction)

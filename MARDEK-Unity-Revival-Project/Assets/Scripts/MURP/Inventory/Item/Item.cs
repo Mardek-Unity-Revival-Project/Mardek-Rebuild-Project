@@ -39,7 +39,9 @@ namespace MURP.Inventory
 
         public string displayName { get { return _displayName; } }
 
-        public string description { get { return _description; } }
+        public string description { get { return CreateFullDescription(_description); } }
+
+        public string properties { get { return CreateProperties(); } }
 
         public Sprite sprite { get { return _sprite; } }
 
@@ -56,6 +58,16 @@ namespace MURP.Inventory
         public virtual bool CanStack()
         {
             return true;
+        }
+
+        protected virtual string CreateFullDescription(string rawDescription)
+        {
+            return "MISCELLANIOUS ITEM\n\n\n" + rawDescription;
+        }
+
+        protected virtual string CreateProperties()
+        {
+            return "";
         }
     }
 }

@@ -35,6 +35,11 @@ namespace MURP.UI
             (this.subMenu as FocusSubMenu).HandleVerticalMovement(movement);
         }
 
+        public void PropagateHorizontalMovement(float movement)
+        {
+            this.subMenu.HandleHorizontalMovement(movement);
+        }
+
         public void SetActive()
         {
             this.text.color = ACTIVE_COLOR;

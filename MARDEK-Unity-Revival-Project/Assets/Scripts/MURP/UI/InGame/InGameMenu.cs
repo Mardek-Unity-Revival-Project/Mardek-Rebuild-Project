@@ -109,7 +109,7 @@ namespace MURP.UI
                 }
                 else
                 {
-                    // TODO Handle horizontal navigation in sub menu
+                    this.activeButton.PropagateHorizontalMovement(inputDirection.x);
                 }
             }
         }

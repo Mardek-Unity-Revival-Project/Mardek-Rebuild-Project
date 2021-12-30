@@ -19,7 +19,7 @@ namespace MURP.UI
             this.numSlots = numSlots;
         }
 
-        public void UpdateSlots(Slot cursorSlot, System.Action focusAction)
+        public void UpdateSlots(Slot cursorSlot, SelectedItemInfo selectedItemInfo, System.Action focusAction)
         {
             for (int uiSlotIndex = 0; uiSlotIndex < this.numSlots; uiSlotIndex++)
             {
@@ -28,6 +28,7 @@ namespace MURP.UI
                 GameObject uiSlot = this.slotComponents[uiSlotIndex];
 
                 SlotUI slotScript = uiSlot.GetComponent<SlotUI>();
+                slotScript.SetSelectedItemInfo(selectedItemInfo);
                 slotScript.SetFocusAction(focusAction);
                 slotScript.SetSlot(inventorySlot);
                 slotScript.SetCursorSlot(cursorSlot);
