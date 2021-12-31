@@ -12,11 +12,11 @@ namespace MURP.Inventory
          * If this is empty, any item can be placed in this slot. If this is non-empty, only equippable items whose category is
          * included in this list can be placed in this slot.
          */
-        [SerializeField, FullSerializer.fsIgnore] List<EquipmentCategory> itemFilter;
+        [SerializeField] List<EquipmentCategory> itemFilter = new List<EquipmentCategory>();
         // Should only be `false` for weapon slots
-        [SerializeField, FullSerializer.fsIgnore] bool canBeEmpty;
+        [SerializeField] bool canBeEmpty;
         // Should only be `false` for loop slots
-        [SerializeField, FullSerializer.fsIgnore] bool canPlayerPutItems;
+        [SerializeField] bool canPlayerPutItems;
 
         public Item item { get { return this.currentItem; } }
 
@@ -26,6 +26,7 @@ namespace MURP.Inventory
         {
             this.currentItem = initialItem;
             this.currentAmount = initialAmount;
+            if (itemFilter == null) throw new System.ArgumentException("itemFilter is null");
             this.itemFilter = itemFilter;
             this.canBeEmpty = canBeEmpty;
             this.canPlayerPutItems = canPlayerPutItems;
@@ -45,9 +46,10 @@ namespace MURP.Inventory
 
         public void Validate()
         {
+            if (this.itemFilter == null) throw new System.ArgumentException("Slot with item " + this.currentItem + " has null itemFilter");
             if (!this.IsEmpty() && !this.ApplyItemFilter(this.currentItem))
             {
-                throw new System.ArgumentException("Item filter doesn't accept initial item");
+                throw new System.ArgumentException("Item filter " + this.itemFilter[0].name + " doesn't accept initial item " + this.currentItem);
             }
             if ((this.currentItem == null) != (this.currentAmount == 0))
             {
@@ -92,6 +94,7 @@ namespace MURP.Inventory
          */
         public void InteractWithCursor(Slot cursor)
         {
+            // TODO Respect Item.canStack
             if (cursor.IsEmpty())
             {
                 if (this.canBeEmpty) {
