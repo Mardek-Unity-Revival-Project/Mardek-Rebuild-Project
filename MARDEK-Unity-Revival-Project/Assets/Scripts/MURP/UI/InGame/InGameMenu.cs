@@ -21,7 +21,6 @@ namespace MURP.UI
 
         void Start()
         {
-
             foreach (SubMenuButton subMenuButton in subMenuButtons)
             {
                 subMenuButton.SetForceFocus(ForceFocus);

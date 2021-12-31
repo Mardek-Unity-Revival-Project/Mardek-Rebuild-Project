@@ -32,13 +32,13 @@ namespace MURP.UI
             SetupParty();
         }
 
-        override public void SetActive()
+        private void OnEnable()
         {
             foreach (SlotGrid slotGrid in slotGrids)
             {
                 slotGrid.UpdateSlots(cursorSlot, selectedItemInfo, focusAction);
             }
-            
+
             foreach (SlotGrid equipmentGrid in this.equipmentSlotGrids)
             {
                 equipmentGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
@@ -49,9 +49,9 @@ namespace MURP.UI
             isActive = true;
         }
 
-        public override void SetInActive()
+        private void OnDisable()
         {
-            isActive = false;
+            isActive = false;            
         }
 
         void Update()

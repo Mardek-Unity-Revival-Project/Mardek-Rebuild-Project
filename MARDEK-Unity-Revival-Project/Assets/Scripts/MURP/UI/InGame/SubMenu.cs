@@ -5,10 +5,6 @@ namespace MURP.UI
 {
     public class SubMenu : MonoBehaviour
     {
-        public virtual void SetActive(){}
-
-        public virtual void SetInActive(){}
-
         public virtual void HandleHorizontalMovement(float amount){}
     }
 }

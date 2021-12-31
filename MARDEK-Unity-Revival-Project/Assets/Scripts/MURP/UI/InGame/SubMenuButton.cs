@@ -12,7 +12,6 @@ namespace MURP.UI
         static readonly Color FADED_ACTIVE_COLOR = new Color(150 / 255f, 170 / 255f, 200 / 255f);
 
         [SerializeField] Text text;
-        [SerializeField] GameObject panel;
         [SerializeField] SubMenu subMenu;
 
         public void SetForceFocus(System.Action forceFocusAction)
@@ -38,15 +37,15 @@ namespace MURP.UI
         public void SetActive()
         {
             text.color = ACTIVE_COLOR;
-            if (panel != null) panel.SetActive(true);
-            subMenu.SetActive();
+            if(subMenu != null)
+                subMenu.gameObject.SetActive(true);
         }
 
         public void SetInactive()
         {
             text.color = INACTIVE_COLOR;
-            if (panel != null) panel.SetActive(false);
-            subMenu.SetInActive();
+            if(subMenu != null)
+                subMenu.gameObject.SetActive(false);
         }
 
         public void StartFade()
