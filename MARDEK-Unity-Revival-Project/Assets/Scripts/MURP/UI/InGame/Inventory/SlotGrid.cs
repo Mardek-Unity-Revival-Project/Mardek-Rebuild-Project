@@ -11,21 +11,21 @@ namespace MURP.UI
         readonly int firstInventorySlotIndex;
         readonly int numSlots;
 
-        public SlotGrid(List<GameObject> slotComponents, Inventory.Inventory inventory, int firstInventorySlotIndex, int numSlots)
+        public SlotGrid(List<GameObject> _slotComponents, Inventory.Inventory _inventory, int _firstInventorySlotIndex, int _numSlots)
         {
-            this.slotComponents = slotComponents;
-            this.inventory = inventory;
-            this.firstInventorySlotIndex = firstInventorySlotIndex;
-            this.numSlots = numSlots;
+            slotComponents = _slotComponents;
+            inventory = _inventory;
+            firstInventorySlotIndex = _firstInventorySlotIndex;
+            numSlots = _numSlots;
         }
 
         public void UpdateSlots(Slot cursorSlot, SelectedItemInfo selectedItemInfo, System.Action focusAction)
         {
-            for (int uiSlotIndex = 0; uiSlotIndex < this.numSlots; uiSlotIndex++)
+            for (int uiSlotIndex = 0; uiSlotIndex < numSlots; uiSlotIndex++)
             {
-                int inventorySlotIndex = this.firstInventorySlotIndex + uiSlotIndex;
-                Slot inventorySlot = this.inventory.GetSlot(inventorySlotIndex);
-                GameObject uiSlot = this.slotComponents[uiSlotIndex];
+                int inventorySlotIndex = firstInventorySlotIndex + uiSlotIndex;
+                Slot inventorySlot = inventory.GetSlot(inventorySlotIndex);
+                GameObject uiSlot = slotComponents[uiSlotIndex];
 
                 SlotUI slotScript = uiSlot.GetComponent<SlotUI>();
                 slotScript.SetSelectedItemInfo(selectedItemInfo);
@@ -37,7 +37,7 @@ namespace MURP.UI
 
         public void SetInActive()
         {
-            foreach (GameObject slotObject in this.slotComponents)
+            foreach (GameObject slotObject in slotComponents)
             {
                 slotObject.GetComponent<SlotUI>().SetInActive();
             }

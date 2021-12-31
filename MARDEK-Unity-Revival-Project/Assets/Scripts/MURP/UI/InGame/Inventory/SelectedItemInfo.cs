@@ -25,97 +25,97 @@ namespace MURP.UI
 
         void Start()
         {
-            this.UpdateInfoText();
+            UpdateInfoText();
         }
 
         void Update()
         {
-            if (this.currentSlot == null || this.currentSlot.IsEmpty())
+            if (currentSlot == null || currentSlot.IsEmpty())
             {
-                if (this.lastItem != null)
+                if (lastItem != null)
                 {
-                    this.UpdateInfoText();
+                    UpdateInfoText();
                 }
             }
             else
             {
-                if (this.lastItem != this.currentSlot.item || this.lastAmount != this.currentSlot.amount)
+                if (lastItem != currentSlot.item || lastAmount != currentSlot.amount)
                 {
-                    this.UpdateInfoText();
+                    UpdateInfoText();
                 }
             }
         }
 
         void UpdateInfoText()
         {
-            foreach (Image panel in new Image[] {this.descriptionPanel, this.skillsPanel, this.propertiesPanel}) panel.color = LOWER_PANEL_BASE_COLOR;
-            foreach (Text text in new Text[] {this.descriptionText, this.skillsText, this.propertiesText}) text.color = LOWER_TEXT_BASE_COLOR;
+            foreach (Image panel in new Image[] {descriptionPanel, skillsPanel, propertiesPanel}) panel.color = LOWER_PANEL_BASE_COLOR;
+            foreach (Text text in new Text[] {descriptionText, skillsText, propertiesText}) text.color = LOWER_TEXT_BASE_COLOR;
             
-            if (this.currentPanelIndex == 0)
+            if (currentPanelIndex == 0)
             {
-                this.descriptionPanel.color = LOWER_PANEL_ACTIVE_COLOR;
-                this.descriptionText.color = LOWER_TEXT_ACTIVE_COLOR;
+                descriptionPanel.color = LOWER_PANEL_ACTIVE_COLOR;
+                descriptionText.color = LOWER_TEXT_ACTIVE_COLOR;
             }
-            else if (this.currentPanelIndex == 1)
+            else if (currentPanelIndex == 1)
             {
-                this.skillsPanel.color = LOWER_PANEL_ACTIVE_COLOR;
-                this.skillsText.color = LOWER_TEXT_ACTIVE_COLOR;
-            }
-            else
-            {
-                this.propertiesPanel.color = LOWER_PANEL_ACTIVE_COLOR;
-                this.propertiesText.color = LOWER_TEXT_ACTIVE_COLOR;
-            }
-
-            if (this.currentSlot == null || this.currentSlot.IsEmpty())
-            {
-                this.titleText.text = "";
-                this.currentInfoText.text = "";
-                this.lastItem = null;
-                this.lastAmount = 0;
+                skillsPanel.color = LOWER_PANEL_ACTIVE_COLOR;
+                skillsText.color = LOWER_TEXT_ACTIVE_COLOR;
             }
             else
             {
-                string titleSuffix = this.currentSlot.amount == 1 ? "" : " x" + this.currentSlot.amount;
-                this.titleText.text = this.currentSlot.item.displayName + titleSuffix;
+                propertiesPanel.color = LOWER_PANEL_ACTIVE_COLOR;
+                propertiesText.color = LOWER_TEXT_ACTIVE_COLOR;
+            }
 
-                if (this.currentPanelIndex == 0)
+            if (currentSlot == null || currentSlot.IsEmpty())
+            {
+                titleText.text = "";
+                currentInfoText.text = "";
+                lastItem = null;
+                lastAmount = 0;
+            }
+            else
+            {
+                string titleSuffix = currentSlot.amount == 1 ? "" : " x" + currentSlot.amount;
+                titleText.text = currentSlot.item.displayName + titleSuffix;
+
+                if (currentPanelIndex == 0)
                 {
-                    this.currentInfoText.text = this.currentSlot.item.description;
+                    currentInfoText.text = currentSlot.item.description;
                 }
-                else if (this.currentPanelIndex == 1)
+                else if (currentPanelIndex == 1)
                 {
-                    this.currentInfoText.text = "List the skills...";
+                    currentInfoText.text = "List the skills...";
                 }
                 else
                 {
-                    this.currentInfoText.text = this.currentSlot.item.properties;
+                    currentInfoText.text = currentSlot.item.properties;
                 }
 
-                this.lastItem = this.currentSlot.item;
-                this.lastAmount = this.currentSlot.amount;
+                lastItem = currentSlot.item;
+                lastAmount = currentSlot.amount;
             }
         }
 
         public void SetCurrentSlot(Slot newSlot)
         {
-            this.currentSlot = newSlot;
-            this.UpdateInfoText();
+            currentSlot = newSlot;
+            UpdateInfoText();
         }
 
         public void MoveHorizontally(float amount)
         {
             if (amount > 0f)
             {
-                this.currentPanelIndex += 1;
-                if (this.currentPanelIndex >= 3) this.currentPanelIndex = 0;
+                currentPanelIndex += 1;
+                if (currentPanelIndex >= 3) currentPanelIndex = 0;
             }
             else
             {
-                this.currentPanelIndex -= 1;
-                if (this.currentPanelIndex < 0) this.currentPanelIndex = 2;
+                currentPanelIndex -= 1;
+                if (currentPanelIndex < 0) currentPanelIndex = 2;
             }
-            this.UpdateInfoText();
+            UpdateInfoText();
         }
     }
 }

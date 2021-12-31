@@ -28,133 +28,131 @@ namespace MURP.UI
 
         override public void SetActive()
         {
-            foreach (SlotGrid slotGrid in this.slotGrids)
+            foreach (SlotGrid slotGrid in slotGrids)
             {
-                slotGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
+                slotGrid.UpdateSlots(cursorSlot, selectedItemInfo, focusAction);
             }
             
             foreach (SlotGrid equipmentGrid in this.equipmentSlotGrids)
             {
                 equipmentGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
             }
-            this.UpdateSelectedInventory();
+            UpdateSelectedInventory();
 
-            this.cursorItem = new CursorSlotUI(this.cursorSlot);
-            this.isActive = true;
+            cursorItem = new CursorSlotUI(cursorSlot);
+            isActive = true;
         }
 
         public override void SetInActive()
         {
-            this.isActive = false;
+            isActive = false;
         }
 
         void Update()
         {
-            if (this.isActive)
+            if (isActive)
             {
-                this.cursorItem.Update();
+                cursorItem.Update();
             }
         }
 
         void UpdateSelectedInventory()
         {
-            foreach (SlotGrid slotGrid in this.slotGrids) slotGrid.SetInActive();
-            for (int characterIndex = 0; characterIndex < this.slotsLayouts.Length; characterIndex++)
+            foreach (SlotGrid slotGrid in slotGrids)
+                slotGrid.SetInActive();
+            for (int characterIndex = 0; characterIndex < slotsLayouts.Length; characterIndex++)
             {
-                this.slotsLayouts[characterIndex].gameObject.SetActive(characterIndex == this.currentCharacterIndex);
+                slotsLayouts[characterIndex].gameObject.SetActive(characterIndex == currentCharacterIndex);
             }
-            this.UpdateEquipmentBarBackgrounds();
+            UpdateEquipmentBarBackgrounds();
         }
 
         void UpdateEquipmentBarBackgrounds()
         {
             Color unselectedColor = new Color(99f / 255f, 75f / 255f, 44f / 255f);
             Color selectedColor = new Color(41f / 255f, 57f / 255f, 106f / 255f);
-            for (int characterIndex = 0; characterIndex < this.equipmentBarBackgrounds.Length; characterIndex++)
+            for (int characterIndex = 0; characterIndex < equipmentBarBackgrounds.Length; characterIndex++)
             {
-                this.equipmentBarBackgrounds[characterIndex].color = characterIndex == this.currentCharacterIndex ? selectedColor : unselectedColor;
+                var color = characterIndex == currentCharacterIndex ? selectedColor : unselectedColor;
+                equipmentBarBackgrounds[characterIndex].color = color;
             }
         }
 
         public override bool StopFocus()
         {
-            return this.cursorSlot.IsEmpty();
+            return cursorSlot.IsEmpty();
         }
 
         override public void SetParty(Party theParty)
         {
             this.theParty = theParty;
-            this.currentCharacterIndex = 0;
+            currentCharacterIndex = 0;
             ConstructSlots();
-            for (int characterIndex = 0; characterIndex < this.equipmentSlotLayouts.Length; characterIndex++)
+            for (int characterIndex = 0; characterIndex < equipmentSlotLayouts.Length; characterIndex++)
             {
-                this.equipmentSlotLayouts[characterIndex].gameObject.transform.parent.gameObject.SetActive(characterIndex < theParty.Characters.Count);
+                equipmentSlotLayouts[characterIndex].gameObject.transform.parent.gameObject.SetActive(characterIndex < theParty.Characters.Count);
             }
         }
 
         public override void HandleVerticalMovement(float movement)
         {
-            int numCharacters = this.theParty.Characters.Count;
-
+            int numCharacters = theParty.Characters.Count;
             if (movement > 0f)
             {
-                this.currentCharacterIndex--;
-                if (this.currentCharacterIndex < 0) this.currentCharacterIndex = numCharacters - 1;
+                currentCharacterIndex--;
+                if (currentCharacterIndex < 0) 
+                    currentCharacterIndex = numCharacters - 1;
             }
-            else
+            else if (movement < 0f)
             {
-                this.currentCharacterIndex++;
-                if (this.currentCharacterIndex >= numCharacters)
-                {
-                    this.currentCharacterIndex = 0;
-                }
+                currentCharacterIndex++;
+                if (currentCharacterIndex >= numCharacters)
+                    currentCharacterIndex = 0;
             }
-
-            this.UpdateSelectedInventory();
+            UpdateSelectedInventory();
         }
 
         public override void HandleHorizontalMovement(float amount)
         {
-            this.selectedItemInfo.MoveHorizontally(amount);
+            selectedItemInfo.MoveHorizontally(amount);
         }
 
         public void SetForceFocusAction(System.Action forceFocusAction)
         {
-            this.focusAction = forceFocusAction;
+            focusAction = forceFocusAction;
         }
 
         void ConstructSlots()
         {
-            int numCharacters = this.theParty.Characters.Count;
-            this.slotGrids = new List<SlotGrid>(numCharacters);
+            int numCharacters = theParty.Characters.Count;
+            slotGrids = new List<SlotGrid>(numCharacters);
 
             for (int characterIndex = 0; characterIndex < numCharacters; characterIndex++)
             {
                 List<GameObject> slotComponents = new List<GameObject>(NUM_BASIC_SLOTS);
                 for (int index = 0; index < NUM_BASIC_SLOTS; index++)
                 {
-                    GameObject slotComponent = Instantiate(this.slotPrefab);
-                    slotComponent.transform.SetParent(this.slotsLayouts[characterIndex].transform, false);
+                    GameObject slotComponent = Instantiate(slotPrefab);
+                    slotComponent.transform.SetParent(slotsLayouts[characterIndex].transform, false);
                     slotComponents.Add(slotComponent);
                 }
 
-                Inventory.Inventory currentInventory = this.theParty.Characters[characterIndex].inventory;
-                this.slotGrids.Add(new SlotGrid(slotComponents, currentInventory, NUM_EQUIPMENT_SLOTS, NUM_BASIC_SLOTS));
+                Inventory.Inventory currentInventory = theParty.Characters[characterIndex].inventory;
+                slotGrids.Add(new SlotGrid(slotComponents, currentInventory, NUM_EQUIPMENT_SLOTS, NUM_BASIC_SLOTS));
             }
 
-            this.equipmentSlotGrids = new List<SlotGrid>(numCharacters);
+            equipmentSlotGrids = new List<SlotGrid>(numCharacters);
             for (int characterIndex = 0; characterIndex < numCharacters; characterIndex++)
             {
                 List<GameObject> equipmentSlotComponents = new List<GameObject>(NUM_EQUIPMENT_SLOTS);
                 for (int slotIndex = 0; slotIndex < NUM_EQUIPMENT_SLOTS; slotIndex++)
                 {
-                    GameObject slotComponent = Instantiate(this.slotPrefab);
-                    slotComponent.transform.SetParent(this.equipmentSlotLayouts[characterIndex].transform, false);
+                    GameObject slotComponent = Instantiate(slotPrefab);
+                    slotComponent.transform.SetParent(equipmentSlotLayouts[characterIndex].transform, false);
                     equipmentSlotComponents.Add(slotComponent);
                 }
-
-                SlotGrid equipmentSlotGrid = new SlotGrid(equipmentSlotComponents, this.theParty.Characters[characterIndex].inventory, 0, NUM_EQUIPMENT_SLOTS);
-                this.equipmentSlotGrids.Add(equipmentSlotGrid);
+                SlotGrid equipmentSlotGrid = new SlotGrid( equipmentSlotComponents, theParty.Characters[characterIndex].inventory, 0, NUM_EQUIPMENT_SLOTS);
+                equipmentSlotGrids.Add(equipmentSlotGrid);
             }
         }
     }

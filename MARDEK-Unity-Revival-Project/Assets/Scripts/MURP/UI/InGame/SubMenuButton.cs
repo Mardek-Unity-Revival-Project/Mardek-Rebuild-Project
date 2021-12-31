@@ -17,69 +17,69 @@ namespace MURP.UI
 
         public void SetParty(Party party)
         {
-            this.subMenu.SetParty(party);
+            subMenu.SetParty(party);
         }
 
         public void SetForceFocus(System.Action forceFocusAction)
         {
-            if (this.subMenu is InventorySubMenu) (this.subMenu as InventorySubMenu).SetForceFocusAction(forceFocusAction);
+            if (subMenu is InventorySubMenu) (subMenu as InventorySubMenu).SetForceFocusAction(forceFocusAction);
         }
 
         public bool IsDeep()
         {
-            return this.subMenu is FocusSubMenu;
+            return subMenu is FocusSubMenu;
         }
 
         public void PropagateVerticalMovement(float movement)
         {
-            (this.subMenu as FocusSubMenu).HandleVerticalMovement(movement);
+            (subMenu as FocusSubMenu).HandleVerticalMovement(movement);
         }
 
         public void PropagateHorizontalMovement(float movement)
         {
-            this.subMenu.HandleHorizontalMovement(movement);
+            subMenu.HandleHorizontalMovement(movement);
         }
 
         public void SetActive()
         {
-            this.text.color = ACTIVE_COLOR;
-            if (this.panel != null) this.panel.SetActive(true);
-            this.subMenu.SetActive();
+            text.color = ACTIVE_COLOR;
+            if (panel != null) panel.SetActive(true);
+            subMenu.SetActive();
         }
 
         public void SetInactive()
         {
-            this.text.color = INACTIVE_COLOR;
-            if (this.panel != null) this.panel.SetActive(false);
-            this.subMenu.SetInActive();
+            text.color = INACTIVE_COLOR;
+            if (panel != null) panel.SetActive(false);
+            subMenu.SetInActive();
         }
 
         public void StartFade()
         {
-            if (this.text.color == ACTIVE_COLOR) {
-                this.text.color = FADED_ACTIVE_COLOR;
+            if (text.color == ACTIVE_COLOR) {
+                text.color = FADED_ACTIVE_COLOR;
             } else {
-                this.text.color = FADED_INACTIVE_COLOR;
+                text.color = FADED_INACTIVE_COLOR;
             }
         }
 
         public void StopFade()
         {
-            if (this.text.color == FADED_ACTIVE_COLOR) {
-                this.text.color = ACTIVE_COLOR;
+            if (text.color == FADED_ACTIVE_COLOR) {
+                text.color = ACTIVE_COLOR;
             } else {
-                this.text.color = INACTIVE_COLOR;
+                text.color = INACTIVE_COLOR;
             }
         }
 
         public void Focus()
         {
-            (this.subMenu as FocusSubMenu).StartFocus();
+            (subMenu as FocusSubMenu).StartFocus();
         }
 
         public bool StopFocus()
         {
-            return (this.subMenu as FocusSubMenu).StopFocus();
+            return (subMenu as FocusSubMenu).StopFocus();
         }
     }
 }

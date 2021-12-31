@@ -25,79 +25,79 @@ namespace MURP.UI
 
         public void SetFocusAction(System.Action focusAction)
         {
-            this.focusAction = focusAction;
+            focusAction = focusAction;
         }
 
         public void SetSelectedItemInfo(SelectedItemInfo selectedItemInfo)
         {
-            this.selectedItemInfo = selectedItemInfo;
+            selectedItemInfo = selectedItemInfo;
         }
 
         public void SetSlot(Slot newSlot)
         {
-            this.ownSlot = newSlot;
-            this.UpdateSprite();
+            ownSlot = newSlot;
+            UpdateSprite();
         }
 
         public void SetCursorSlot(Slot cursorSlot)
         {
-            this.cursorSlot = cursorSlot;
+            cursorSlot = cursorSlot;
         }
 
         public void UpdateSprite()
         {
-            if (this.ownSlot.IsEmpty())
+            if (ownSlot.IsEmpty())
             {
-                this.itemImage.sprite = transparentSprite;
-                this.amountText.text = "";
+                itemImage.sprite = transparentSprite;
+                amountText.text = "";
             } 
             else 
             {
-                this.itemImage.sprite = this.ownSlot.item.sprite;
-                if (this.ownSlot.amount == 1)
+                itemImage.sprite = ownSlot.item.sprite;
+                if (ownSlot.amount == 1)
                 {
-                    this.amountText.text = "";
+                    amountText.text = "";
                 }
                 else
                 {
-                    this.amountText.text = this.ownSlot.amount.ToString();
+                    amountText.text = ownSlot.amount.ToString();
                 }
             }
         }
 
         public void OnPointerClick(PointerEventData pointerEvent)
         {
-            if (this.cursorSlot != null)
+            if (cursorSlot != null)
             {
-                Item oldItem = this.ownSlot.item;
-                int oldAmount = this.ownSlot.amount;
-                this.ownSlot.InteractWithCursor(this.cursorSlot);
+                Item oldItem = ownSlot.item;
+                int oldAmount = ownSlot.amount;
+                ownSlot.InteractWithCursor(cursorSlot);
 
-                if (oldItem != this.ownSlot.item || oldAmount != this.ownSlot.amount)
+                if (oldItem != ownSlot.item || oldAmount != ownSlot.amount)
                 {
-                    this.UpdateSprite();
-                    if (this.cursorSlot.IsEmpty()) AudioManager.PlaySoundEffect(this.putSound);
-                    else AudioManager.PlaySoundEffect(this.pickupSound);
-                    if (this.focusAction != null) this.focusAction.Invoke();
+                    UpdateSprite();
+                    if (cursorSlot.IsEmpty()) AudioManager.PlaySoundEffect(putSound);
+                    else AudioManager.PlaySoundEffect(pickupSound);
+                    if (focusAction != null) focusAction.Invoke();
                 }
-                else if (!this.ownSlot.IsEmpty() || !this.cursorSlot.IsEmpty()) AudioManager.PlaySoundEffect(this.rejectSound);
+                else if (!ownSlot.IsEmpty() || !cursorSlot.IsEmpty()) AudioManager.PlaySoundEffect(rejectSound);
             }
         }
 
         public void OnPointerEnter(PointerEventData pointerEvent)
         {
-            if (this.selectedItemInfo != null) this.selectedItemInfo.SetCurrentSlot(this.ownSlot);
-            this.backgroundImage.sprite = this.hoverSlotSprite;
+            if (selectedItemInfo != null) selectedItemInfo.SetCurrentSlot(ownSlot);
+            backgroundImage.sprite = hoverSlotSprite;
         }
 
         public void OnPointerExit(PointerEventData pointerEvent)
         {
-            this.backgroundImage.sprite = this.baseSlotSprite;
+            backgroundImage.sprite = baseSlotSprite;
         }
 
         public void SetInActive()
         {
-            this.backgroundImage.sprite = this.baseSlotSprite;
+            backgroundImage.sprite = baseSlotSprite;
         }
     }
 }
