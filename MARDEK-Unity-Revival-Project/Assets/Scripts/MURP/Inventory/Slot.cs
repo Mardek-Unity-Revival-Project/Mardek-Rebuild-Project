@@ -55,6 +55,7 @@ namespace MURP.Inventory
             {
                 throw new System.ArgumentException("currentItem must be null if and only if currentAmount is 0");
             }
+            if (this.currentAmount > 1 && !this.currentItem.CanStack()) throw new System.ArgumentException("Item " + this.currentItem.name + " can't stack");
         }
 
         bool ApplyItemFilter(Item candidate)
@@ -94,7 +95,6 @@ namespace MURP.Inventory
          */
         public void InteractWithCursor(Slot cursor)
         {
-            // TODO Respect Item.canStack
             if (cursor.IsEmpty())
             {
                 if (this.canBeEmpty) {
@@ -123,8 +123,11 @@ namespace MURP.Inventory
                     {
                         if (this.currentItem == cursor.currentItem)
                         {
-                            this.currentAmount += cursor.currentAmount;
-                            cursor.SetEmpty();
+                            if (this.currentItem.CanStack())
+                            {
+                                this.currentAmount += cursor.currentAmount;
+                                cursor.SetEmpty();
+                            }
                         }
                         else
                         {
