@@ -11,6 +11,8 @@ namespace MURP.UI
         const int NUM_EQUIPMENT_SLOTS = 6;
         const int NUM_BASIC_SLOTS = 64;
 
+        [SerializeField] Party playerParty;
+        
         [SerializeField] GridLayoutGroup[] slotsLayouts;
         [SerializeField] HorizontalLayoutGroup[] equipmentSlotLayouts;
         [SerializeField] Image[] equipmentBarBackgrounds;
@@ -18,13 +20,17 @@ namespace MURP.UI
         [SerializeField] SelectedItemInfo selectedItemInfo;
         
         CursorSlotUI cursorItem;
-        Party theParty;
         List<SlotGrid> slotGrids;
         int currentCharacterIndex;
         List<SlotGrid> equipmentSlotGrids;
         Slot cursorSlot = new Slot(null, 0, new List<EquipmentCategory>(), true, true);
         bool isActive = false;
         System.Action focusAction;
+
+        private void Awake()
+        {
+            SetupParty();
+        }
 
         override public void SetActive()
         {
@@ -83,20 +89,21 @@ namespace MURP.UI
             return cursorSlot.IsEmpty();
         }
 
-        override public void SetParty(Party theParty)
+        void SetupParty()
         {
-            this.theParty = theParty;
+            if (playerParty == null)
+                throw new System.Exception("Party object not referenced");
             currentCharacterIndex = 0;
             ConstructSlots();
             for (int characterIndex = 0; characterIndex < equipmentSlotLayouts.Length; characterIndex++)
             {
-                equipmentSlotLayouts[characterIndex].gameObject.transform.parent.gameObject.SetActive(characterIndex < theParty.Characters.Count);
+                equipmentSlotLayouts[characterIndex].transform.parent.gameObject.SetActive(characterIndex < playerParty.Characters.Count);
             }
         }
 
         public override void HandleVerticalMovement(float movement)
         {
-            int numCharacters = theParty.Characters.Count;
+            int numCharacters = playerParty.Characters.Count;
             if (movement > 0f)
             {
                 currentCharacterIndex--;
@@ -124,7 +131,7 @@ namespace MURP.UI
 
         void ConstructSlots()
         {
-            int numCharacters = theParty.Characters.Count;
+            int numCharacters = playerParty.Characters.Count;
             slotGrids = new List<SlotGrid>(numCharacters);
 
             for (int characterIndex = 0; characterIndex < numCharacters; characterIndex++)
@@ -137,7 +144,7 @@ namespace MURP.UI
                     slotComponents.Add(slotComponent);
                 }
 
-                Inventory.Inventory currentInventory = theParty.Characters[characterIndex].inventory;
+                Inventory.Inventory currentInventory = playerParty.Characters[characterIndex].inventory;
                 slotGrids.Add(new SlotGrid(slotComponents, currentInventory, NUM_EQUIPMENT_SLOTS, NUM_BASIC_SLOTS));
             }
 
@@ -151,7 +158,7 @@ namespace MURP.UI
                     slotComponent.transform.SetParent(equipmentSlotLayouts[characterIndex].transform, false);
                     equipmentSlotComponents.Add(slotComponent);
                 }
-                SlotGrid equipmentSlotGrid = new SlotGrid( equipmentSlotComponents, theParty.Characters[characterIndex].inventory, 0, NUM_EQUIPMENT_SLOTS);
+                SlotGrid equipmentSlotGrid = new SlotGrid( equipmentSlotComponents, playerParty.Characters[characterIndex].inventory, 0, NUM_EQUIPMENT_SLOTS);
                 equipmentSlotGrids.Add(equipmentSlotGrid);
             }
         }

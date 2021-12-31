@@ -12,7 +12,6 @@ namespace MURP.UI
         SubMenuButton activeButton;
         bool isFocussing;
 
-        [SerializeField] Party party;
         [SerializeField] Canvas canvas;
         [SerializeField] SubMenuButton[] subMenuButtons;
         [SerializeField] AudioObject openMenuSound;
@@ -22,9 +21,9 @@ namespace MURP.UI
 
         void Start()
         {
-            foreach (SubMenuButton subMenuButton in this.subMenuButtons)
+
+            foreach (SubMenuButton subMenuButton in subMenuButtons)
             {
-                subMenuButton.SetParty(this.party);
                 subMenuButton.SetForceFocus(ForceFocus);
             }
         }
@@ -50,8 +49,8 @@ namespace MURP.UI
 
         void LeaveInGameMenu()
         {
-            if (this.isFocussing) {
-                if (!this.activeButton.StopFocus()) {
+            if (isFocussing) {
+                if (!activeButton.StopFocus()) {
                     return;
                 }
             }
@@ -104,19 +103,19 @@ namespace MURP.UI
                     }
                     else
                     {
-                        this.activeButton.PropagateVerticalMovement(inputDirection.y);
+                        activeButton.PropagateVerticalMovement(inputDirection.y);
                     }
                 }
                 else
                 {
-                    this.activeButton.PropagateHorizontalMovement(inputDirection.x);
+                    activeButton.PropagateHorizontalMovement(inputDirection.x);
                 }
             }
         }
 
         void ForceFocus()
         {
-            if (!this.isFocussing)
+            if (!isFocussing)
             {
                 foreach (SubMenuButton subMenuButton in subMenuButtons)
                 {
@@ -136,7 +135,7 @@ namespace MURP.UI
                 {
                     if (activeButton.IsDeep())
                     {
-                        this.ForceFocus();
+                        ForceFocus();
                     }
                 }
                 else

@@ -15,11 +15,6 @@ namespace MURP.UI
         [SerializeField] GameObject panel;
         [SerializeField] SubMenu subMenu;
 
-        public void SetParty(Party party)
-        {
-            subMenu.SetParty(party);
-        }
-
         public void SetForceFocus(System.Action forceFocusAction)
         {
             if (subMenu is InventorySubMenu) (subMenu as InventorySubMenu).SetForceFocusAction(forceFocusAction);

@@ -23,14 +23,14 @@ namespace MURP.UI
         Slot ownSlot;
         Slot cursorSlot;
 
-        public void SetFocusAction(System.Action focusAction)
+        public void SetFocusAction(System.Action _focusAction)
         {
-            focusAction = focusAction;
+            focusAction = _focusAction;
         }
 
-        public void SetSelectedItemInfo(SelectedItemInfo selectedItemInfo)
+        public void SetSelectedItemInfo(SelectedItemInfo _selectedItemInfo)
         {
-            selectedItemInfo = selectedItemInfo;
+            selectedItemInfo = _selectedItemInfo;
         }
 
         public void SetSlot(Slot newSlot)
@@ -39,9 +39,9 @@ namespace MURP.UI
             UpdateSprite();
         }
 
-        public void SetCursorSlot(Slot cursorSlot)
+        public void SetCursorSlot(Slot _cursorSlot)
         {
-            cursorSlot = cursorSlot;
+            cursorSlot = _cursorSlot;
         }
 
         public void UpdateSprite()
