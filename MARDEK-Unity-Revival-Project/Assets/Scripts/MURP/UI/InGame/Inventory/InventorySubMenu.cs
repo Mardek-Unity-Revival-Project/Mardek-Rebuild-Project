@@ -11,7 +11,7 @@ namespace MURP.UI
         const int NUM_EQUIPMENT_SLOTS = 6;
         const int NUM_BASIC_SLOTS = 64;
 
-        [SerializeField] GridLayoutGroup slotsLayout;
+        [SerializeField] GridLayoutGroup[] slotsLayouts;
         [SerializeField] HorizontalLayoutGroup[] equipmentSlotLayouts;
         [SerializeField] Image[] equipmentBarBackgrounds;
         [SerializeField] GameObject slotPrefab;
@@ -19,7 +19,7 @@ namespace MURP.UI
         
         CursorSlotUI cursorItem;
         Party theParty;
-        SlotGrid slotGrid;
+        List<SlotGrid> slotGrids;
         int currentCharacterIndex;
         List<SlotGrid> equipmentSlotGrids;
         Slot cursorSlot = new Slot(null, 0, new List<EquipmentCategory>(), true, true);
@@ -28,11 +28,17 @@ namespace MURP.UI
 
         override public void SetActive()
         {
-            this.slotGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
+            foreach (SlotGrid slotGrid in this.slotGrids)
+            {
+                slotGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
+            }
+            
             foreach (SlotGrid equipmentGrid in this.equipmentSlotGrids)
             {
                 equipmentGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
             }
+            this.UpdateSelectedInventory();
+
             this.cursorItem = new CursorSlotUI(this.cursorSlot);
             this.isActive = true;
         }
@@ -48,6 +54,15 @@ namespace MURP.UI
             {
                 this.cursorItem.Update();
             }
+        }
+
+        void UpdateSelectedInventory()
+        {
+            for (int characterIndex = 0; characterIndex < this.slotsLayouts.Length; characterIndex++)
+            {
+                this.slotsLayouts[characterIndex].gameObject.SetActive(characterIndex == this.currentCharacterIndex);
+            }
+            this.UpdateEquipmentBarBackgrounds();
         }
 
         void UpdateEquipmentBarBackgrounds()
@@ -68,14 +83,13 @@ namespace MURP.UI
         override public void SetParty(Party theParty)
         {
             this.theParty = theParty;
+            this.currentCharacterIndex = 0;
             ConstructSlots();
-            this.UpdateEquipmentBarBackgrounds();
         }
 
         public override void HandleVerticalMovement(float movement)
         {
-            // TODO Use this.theParty.Characters.Length instead when it is more stable
-            int numCharacters = this.equipmentSlotLayouts.Length;
+            int numCharacters = this.theParty.Characters.Count;
 
             if (movement > 0f)
             {
@@ -90,9 +104,8 @@ namespace MURP.UI
                     this.currentCharacterIndex = 0;
                 }
             }
-            this.slotGrid.ChangeInventory(this.theParty.Characters[this.currentCharacterIndex].inventory);
-            this.slotGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
-            this.UpdateEquipmentBarBackgrounds();
+
+            this.UpdateSelectedInventory();
         }
 
         public override void HandleHorizontalMovement(float amount)
@@ -107,20 +120,25 @@ namespace MURP.UI
 
         void ConstructSlots()
         {
-            List<GameObject> slotComponents = new List<GameObject>(NUM_BASIC_SLOTS);
-            for (int index = 0; index < NUM_BASIC_SLOTS; index++)
+            int numCharacters = this.theParty.Characters.Count;
+            this.slotGrids = new List<SlotGrid>(numCharacters);
+
+            for (int characterIndex = 0; characterIndex < numCharacters; characterIndex++)
             {
-                GameObject slotComponent = Instantiate(this.slotPrefab);
-                slotComponent.transform.SetParent(this.slotsLayout.transform, false);
-                slotComponents.Add(slotComponent);
+                List<GameObject> slotComponents = new List<GameObject>(NUM_BASIC_SLOTS);
+                for (int index = 0; index < NUM_BASIC_SLOTS; index++)
+                {
+                    GameObject slotComponent = Instantiate(this.slotPrefab);
+                    slotComponent.transform.SetParent(this.slotsLayouts[characterIndex].transform, false);
+                    slotComponents.Add(slotComponent);
+                }
+
+                Inventory.Inventory currentInventory = this.theParty.Characters[characterIndex].inventory;
+                this.slotGrids.Add(new SlotGrid(slotComponents, currentInventory, NUM_EQUIPMENT_SLOTS, NUM_BASIC_SLOTS));
             }
 
-            this.currentCharacterIndex = 0;
-            Inventory.Inventory firstInventory = this.theParty.Characters[this.currentCharacterIndex].inventory;
-            this.slotGrid = new SlotGrid(slotComponents, firstInventory, NUM_EQUIPMENT_SLOTS, NUM_BASIC_SLOTS);
-
-            this.equipmentSlotGrids = new List<SlotGrid>(this.equipmentSlotLayouts.Length);
-            for (int characterIndex = 0; characterIndex < this.equipmentSlotLayouts.Length; characterIndex++)
+            this.equipmentSlotGrids = new List<SlotGrid>(numCharacters);
+            for (int characterIndex = 0; characterIndex < numCharacters; characterIndex++)
             {
                 List<GameObject> equipmentSlotComponents = new List<GameObject>(NUM_EQUIPMENT_SLOTS);
                 for (int slotIndex = 0; slotIndex < NUM_EQUIPMENT_SLOTS; slotIndex++)
