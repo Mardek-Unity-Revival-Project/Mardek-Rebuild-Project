@@ -80,7 +80,7 @@ namespace MURP.UI
                     else AudioManager.PlaySoundEffect(this.pickupSound);
                     if (this.focusAction != null) this.focusAction.Invoke();
                 }
-                else AudioManager.PlaySoundEffect(this.rejectSound);
+                else if (!this.ownSlot.IsEmpty() || !this.cursorSlot.IsEmpty()) AudioManager.PlaySoundEffect(this.rejectSound);
             }
         }
 
