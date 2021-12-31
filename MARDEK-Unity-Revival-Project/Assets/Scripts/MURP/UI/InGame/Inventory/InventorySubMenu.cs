@@ -85,6 +85,10 @@ namespace MURP.UI
             this.theParty = theParty;
             this.currentCharacterIndex = 0;
             ConstructSlots();
+            for (int characterIndex = 0; characterIndex < this.equipmentSlotLayouts.Length; characterIndex++)
+            {
+                this.equipmentSlotLayouts[characterIndex].gameObject.transform.parent.gameObject.SetActive(characterIndex < theParty.Characters.Count);
+            }
         }
 
         public override void HandleVerticalMovement(float movement)
