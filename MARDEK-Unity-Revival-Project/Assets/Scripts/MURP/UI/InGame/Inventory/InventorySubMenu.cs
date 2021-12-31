@@ -58,6 +58,7 @@ namespace MURP.UI
 
         void UpdateSelectedInventory()
         {
+            foreach (SlotGrid slotGrid in this.slotGrids) slotGrid.SetInActive();
             for (int characterIndex = 0; characterIndex < this.slotsLayouts.Length; characterIndex++)
             {
                 this.slotsLayouts[characterIndex].gameObject.SetActive(characterIndex == this.currentCharacterIndex);

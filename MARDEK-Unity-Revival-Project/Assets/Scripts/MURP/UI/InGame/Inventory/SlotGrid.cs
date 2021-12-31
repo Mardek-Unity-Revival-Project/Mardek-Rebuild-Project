@@ -34,5 +34,13 @@ namespace MURP.UI
                 slotScript.SetCursorSlot(cursorSlot);
             }
         }
+
+        public void SetInActive()
+        {
+            foreach (GameObject slotObject in this.slotComponents)
+            {
+                slotObject.GetComponent<SlotUI>().SetInActive();
+            }
+        }
     }
 }

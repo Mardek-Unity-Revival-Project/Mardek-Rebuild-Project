@@ -94,5 +94,10 @@ namespace MURP.UI
         {
             this.backgroundImage.sprite = this.baseSlotSprite;
         }
+
+        public void SetInActive()
+        {
+            this.backgroundImage.sprite = this.baseSlotSprite;
+        }
     }
 }
