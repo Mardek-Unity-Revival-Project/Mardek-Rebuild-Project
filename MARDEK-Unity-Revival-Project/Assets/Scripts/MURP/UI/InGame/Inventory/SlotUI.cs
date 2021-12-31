@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using MURP.Audio;
 using MURP.Inventory;
 
 namespace MURP.UI
@@ -13,6 +14,9 @@ namespace MURP.UI
         [SerializeField] Sprite baseSlotSprite;
         [SerializeField] Sprite hoverSlotSprite;
         [SerializeField] Sprite transparentSprite;
+        [SerializeField] AudioObject pickupSound;
+        [SerializeField] AudioObject putSound;
+        [SerializeField] AudioObject rejectSound;
 
         SelectedItemInfo selectedItemInfo;
         System.Action focusAction;
@@ -65,9 +69,18 @@ namespace MURP.UI
         {
             if (this.cursorSlot != null)
             {
+                Item oldItem = this.ownSlot.item;
+                int oldAmount = this.ownSlot.amount;
                 this.ownSlot.InteractWithCursor(this.cursorSlot);
-                this.UpdateSprite();
-                if (this.focusAction != null) this.focusAction.Invoke();
+
+                if (oldItem != this.ownSlot.item || oldAmount != this.ownSlot.amount)
+                {
+                    this.UpdateSprite();
+                    if (this.cursorSlot.IsEmpty()) AudioManager.PlaySoundEffect(this.putSound);
+                    else AudioManager.PlaySoundEffect(this.pickupSound);
+                    if (this.focusAction != null) this.focusAction.Invoke();
+                }
+                else AudioManager.PlaySoundEffect(this.rejectSound);
             }
         }
 
