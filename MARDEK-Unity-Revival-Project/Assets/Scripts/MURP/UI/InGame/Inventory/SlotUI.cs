@@ -14,19 +14,9 @@ namespace MURP.UI
         [SerializeField] Sprite baseSlotSprite;
         [SerializeField] Sprite hoverSlotSprite;
         [SerializeField] Sprite transparentSprite;
-        [SerializeField] AudioObject pickupSound;
-        [SerializeField] AudioObject putSound;
-        [SerializeField] AudioObject rejectSound;
 
         SelectedItemInfo selectedItemInfo;
-        System.Action focusAction;
         Slot ownSlot;
-        Slot cursorSlot;
-
-        public void SetFocusAction(System.Action _focusAction)
-        {
-            focusAction = _focusAction;
-        }
 
         public void SetSelectedItemInfo(SelectedItemInfo _selectedItemInfo)
         {
@@ -37,11 +27,6 @@ namespace MURP.UI
         {
             ownSlot = newSlot;
             UpdateSprite();
-        }
-
-        public void SetCursorSlot(Slot _cursorSlot)
-        {
-            cursorSlot = _cursorSlot;
         }
 
         public void UpdateSprite()
@@ -67,21 +52,8 @@ namespace MURP.UI
 
         public void OnPointerClick(PointerEventData pointerEvent)
         {
-            if (cursorSlot != null)
-            {
-                Item oldItem = ownSlot.item;
-                int oldAmount = ownSlot.amount;
-                ownSlot.InteractWithCursor(cursorSlot);
-
-                if (oldItem != ownSlot.item || oldAmount != ownSlot.amount)
-                {
-                    UpdateSprite();
-                    if (cursorSlot.IsEmpty()) AudioManager.PlaySoundEffect(putSound);
-                    else AudioManager.PlaySoundEffect(pickupSound);
-                    if (focusAction != null) focusAction.Invoke();
-                }
-                else if (!ownSlot.IsEmpty() || !cursorSlot.IsEmpty()) AudioManager.PlaySoundEffect(rejectSound);
-            }
+            SlotCursor.InteractWithSlot(ownSlot);
+            UpdateSprite();
         }
 
         public void OnPointerEnter(PointerEventData pointerEvent)

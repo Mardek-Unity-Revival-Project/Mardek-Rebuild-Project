@@ -4,7 +4,7 @@ using MURP.Inventory;
 
 namespace MURP.UI
 {
-    public class SelectedItemInfo : MonoBehaviour
+    public class SelectedItemInfo : SelectableLayout
     {
         static readonly Color LOWER_PANEL_BASE_COLOR = new Color(56f / 255f, 40f / 255f, 23f / 255f, 100f / 255f);
         static readonly Color LOWER_PANEL_ACTIVE_COLOR = new Color(84f / 255f, 64f / 255f, 39f / 255f, 170f / 255f);
@@ -103,19 +103,22 @@ namespace MURP.UI
             UpdateInfoText();
         }
 
-        public void MoveHorizontally(float amount)
-        {
-            if (amount > 0f)
-            {
-                currentPanelIndex += 1;
-                if (currentPanelIndex >= 3) currentPanelIndex = 0;
-            }
-            else
-            {
-                currentPanelIndex -= 1;
-                if (currentPanelIndex < 0) currentPanelIndex = 2;
-            }
-            UpdateInfoText();
-        }
+        //protected override void HandleHorizontalInput(float value)
+        //{
+        //    base.HandleHorizontalInput(value);
+        //    if (value > 0f)
+        //    {
+        //        currentPanelIndex += 1;
+        //        if (currentPanelIndex >= 3)
+        //            currentPanelIndex = 0;
+        //    }
+        //    else
+        //    {
+        //        currentPanelIndex -= 1;
+        //        if (currentPanelIndex < 0)
+        //            currentPanelIndex = 2;
+        //    }
+        //    UpdateInfoText();
+        //}
     }
 }

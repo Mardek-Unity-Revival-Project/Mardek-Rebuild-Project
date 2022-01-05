@@ -29,9 +29,9 @@ namespace MURP.UI
 
                 SlotUI slotScript = uiSlot.GetComponent<SlotUI>();
                 slotScript.SetSelectedItemInfo(selectedItemInfo);
-                slotScript.SetFocusAction(focusAction);
+                //slotScript.SetFocusAction(focusAction);
                 slotScript.SetSlot(inventorySlot);
-                slotScript.SetCursorSlot(cursorSlot);
+                //slotScript.SetCursorSlot(cursorSlot);
             }
         }
 

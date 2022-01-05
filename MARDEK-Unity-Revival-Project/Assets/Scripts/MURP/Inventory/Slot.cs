@@ -6,17 +6,17 @@ namespace MURP.Inventory
     [System.Serializable]
     public class Slot
     {
-        [SerializeField] Item currentItem;
-        [SerializeField] int currentAmount;
+        public  Item currentItem;
+        public int currentAmount;
         /*
          * If this is empty, any item can be placed in this slot. If this is non-empty, only equippable items whose category is
          * included in this list can be placed in this slot.
          */
         [SerializeField] List<EquipmentCategory> itemFilter = new List<EquipmentCategory>();
         // Should only be `false` for weapon slots
-        [SerializeField] bool canBeEmpty;
+        public bool canBeEmpty;
         // Should only be `false` for loop slots
-        [SerializeField] bool canPlayerPutItems;
+        public bool canPlayerPutItems;
 
         public Item item { get { return this.currentItem; } }
 
@@ -38,7 +38,7 @@ namespace MURP.Inventory
             return this.currentItem == null && this.currentAmount == 0;
         }
 
-        void SetEmpty()
+        public void SetEmpty()
         {
             this.currentItem = null;
             this.currentAmount = 0;
@@ -58,7 +58,7 @@ namespace MURP.Inventory
             if (this.currentAmount > 1 && !this.currentItem.CanStack()) throw new System.ArgumentException("Item " + this.currentItem.name + " can't stack");
         }
 
-        bool ApplyItemFilter(Item candidate)
+        public bool ApplyItemFilter(Item candidate)
         {
             if (candidate == null) return this.canBeEmpty;
             else if (this.itemFilter.Count == 0) return true;
@@ -93,55 +93,6 @@ namespace MURP.Inventory
          * Lets this slot interact with the item on the cursor (in the inventory GUI). This should be called whenever the player clicks
          * on this slot.
          */
-        public void InteractWithCursor(Slot cursor)
-        {
-            if (cursor.IsEmpty())
-            {
-                if (this.canBeEmpty) {
-                    cursor.currentItem = this.currentItem;
-                    cursor.currentAmount = this.currentAmount;
-                    this.SetEmpty();
-                } else {
-                    if (this.currentAmount > 1)
-                    {
-                        cursor.currentItem = this.currentItem;
-                        cursor.currentAmount = this.currentAmount - 1;
-                        this.currentAmount = 1;
-                    }
-                    // Else do nothing
-                }
-            } else {
-                if (this.ApplyItemFilter(cursor.currentItem) && this.canPlayerPutItems)
-                {
-                    if (this.IsEmpty())
-                    {
-                        this.currentItem = cursor.currentItem;
-                        this.currentAmount = cursor.currentAmount;
-                        cursor.SetEmpty();
-                    }
-                    else
-                    {
-                        if (this.currentItem == cursor.currentItem)
-                        {
-                            if (this.currentItem.CanStack())
-                            {
-                                this.currentAmount += cursor.currentAmount;
-                                cursor.SetEmpty();
-                            }
-                        }
-                        else
-                        {
-                            Item newCursorItem = this.currentItem;
-                            int newCursorAmount = this.currentAmount;
-                            this.currentItem = cursor.currentItem;
-                            this.currentAmount = cursor.currentAmount;
-                            cursor.currentItem = newCursorItem;
-                            cursor.currentAmount = newCursorAmount;
-                        }
-                    }
-                } 
-                // Else do nothing
-            }
-        }
+       
     }
 }
