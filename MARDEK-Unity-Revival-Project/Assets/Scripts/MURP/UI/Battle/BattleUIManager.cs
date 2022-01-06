@@ -12,6 +12,7 @@ namespace MURP.UI
         [SerializeField] GameObject characterUIPrefab;
         [SerializeField] RectTransform enemyUILayout;
         [SerializeField] RectTransform partyUILayout;
+        [SerializeField] RectTransform turnUILayout;
 
         private void Start()
         {
@@ -19,12 +20,22 @@ namespace MURP.UI
                 CreateCharacterUI(enemyUILayout, enemy);
             foreach(var playerCharacter in battleManager.playableCharacters)
                 CreateCharacterUI(partyUILayout, playerCharacter);
+            UpdateTurnUI(turnUILayout);
         }
 
         void CreateCharacterUI(RectTransform layout, Character character)
         {
             var ui = Instantiate(characterUIPrefab, layout).GetComponent<CharacterUI>();
             ui.AssignCharacter(character);
+        }
+
+        void UpdateTurnUI(RectTransform layout)
+        {
+            var characterTurnsList = battleManager.GetCharactersInTurnOrder(layout.childCount);
+            Debug.Log(characterTurnsList.Count);
+            for(int i=0; i < layout.childCount; i++) {
+                layout.GetChild(i).GetComponent<TurnIconUI>().AssignCharacter(characterTurnsList[i]);
+            }
         }
     }
 }
