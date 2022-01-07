@@ -19,5 +19,10 @@ namespace MURP.Inventory
         public bool canResurrect { get { return _canResurrect; } }
 
         public StatsSet statsSet { get { return _statsSet; } }
+
+        override protected string CreateFullDescription(string rawDescription)
+        {
+            return "EXPENDABLE ITEM\n\n\n" + rawDescription;
+        }
     }
 }

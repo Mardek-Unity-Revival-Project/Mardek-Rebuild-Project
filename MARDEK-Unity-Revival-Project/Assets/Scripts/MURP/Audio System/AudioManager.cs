@@ -88,7 +88,7 @@ namespace MURP.Audio
         /// </summary>
         public static void PlaySoundEffect(AudioObject audio)
         {
-            if (audio)
+            if(instance && audio)
                 audio.PlayOnSource(instance.effectAudioSource);
         }
     }

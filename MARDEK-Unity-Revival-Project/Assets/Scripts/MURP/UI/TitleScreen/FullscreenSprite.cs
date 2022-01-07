@@ -34,13 +34,20 @@ public class FullscreenSprite : MonoBehaviour {
 
     void ResizeSprite()
     {
-        Vector2 cameraSize = new Vector2(Camera.main.pixelWidth / 1f, Camera.main.pixelHeight / 1f);
-        
+        Vector2 cameraSize = new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
         float hardAspect = 1920f / 1080f;
         float cameraAspect = cameraSize.x / cameraSize.y;
-        float combinedAspect = cameraAspect / hardAspect;
-        if (combinedAspect < 1f) combinedAspect = 1f / combinedAspect;
 
-        transform.localScale = new Vector2(combinedAspect, combinedAspect);
+        // Requirements:
+        // (1) No distortion -> scaleX == scaleY
+        // (2) Background image must be at least as wide as the camera -> cameraSize.y * hardAspect * scaleX >= cameraSize.x
+        // (3) Background image must be at leats as high as the camera -> scaleY >= 1
+        // (4) The scale should not be larger than neccessary -> pick minimum required scale
+        //
+        // From (2) it follows that scaleX >= cameraSize.x / cameraSize.y / hardAspect = cameraAspect / hardAspect
+
+        float scale = Mathf.Max(cameraAspect / hardAspect, 1f);
+
+        transform.localScale = new Vector2(scale, scale);
     }
 }
