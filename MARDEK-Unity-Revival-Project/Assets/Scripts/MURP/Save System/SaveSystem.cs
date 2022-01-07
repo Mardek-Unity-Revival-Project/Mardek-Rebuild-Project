@@ -4,11 +4,16 @@ using System;
 using System.Text.RegularExpressions;
 using FullSerializer;
 using MURP.Core;
+using System.Runtime.InteropServices;
 
 namespace MURP.SaveSystem
 {
     public class SaveSystem : MonoBehaviour
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        [DllImport("__Internal")]
+        private static extern void SyncDB();
+#endif
         static string persistentPath
         {
             get
@@ -64,6 +69,11 @@ namespace MURP.SaveSystem
                 json = FormatSaveFile(json, true);
             string filePath = System.IO.Path.Combine(persistentPath, $"{fileName}.json");
             System.IO.File.WriteAllText(filePath, json);
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+            //flush our changes to IndexedDB
+            SyncDB();
+#endif
             Debug.Log($"Game file saved to {filePath}");
         }
         public void LoadFromFile(string fileName = "quicksave")
