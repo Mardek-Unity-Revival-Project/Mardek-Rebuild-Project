@@ -40,7 +40,7 @@ namespace MURP.UI
         GridLayoutGroup layout;
         InputReader input;
 
-        private void OnValidate()
+        private void Awake()
         {
             selectables = GetComponentsInChildren<Selectable>();
             layout = GetComponent<GridLayoutGroup>();
