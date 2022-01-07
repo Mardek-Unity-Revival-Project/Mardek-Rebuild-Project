@@ -12,7 +12,26 @@ namespace MURP.UI
         [SerializeField] GameObject characterUIPrefab;
         [SerializeField] RectTransform enemyUILayout;
         [SerializeField] RectTransform partyUILayout;
+
         [SerializeField] RectTransform turnUILayout;
+        [SerializeField] RectTransform turnUIListParent;
+
+        [SerializeField] RectTransform actionsUILayout;
+        [SerializeField] RectTransform powersUILayout;
+        [SerializeField] RectTransform reactUILayout;
+        [SerializeField] RectTransform victoryUILayout;
+        [SerializeField] RectTransform defeatUILayout;
+
+        enum UIStates {
+            Idle,
+            Actions,
+            Powers,
+            Targeting,
+            Animation,
+            Victory,
+            Defeat
+        };
+        UIStates currentUIState = UIStates.Idle;
 
         private void Start()
         {
@@ -20,7 +39,41 @@ namespace MURP.UI
                 CreateCharacterUI(enemyUILayout, enemy);
             foreach(var playerCharacter in battleManager.playableCharacters)
                 CreateCharacterUI(partyUILayout, playerCharacter);
-            UpdateTurnUI(turnUILayout);
+            UpdateTurnOrder(turnUIListParent);
+        }
+
+        void Update() {
+            if (battleManager == null) {
+                return;
+            }
+
+            if (currentUIState == UIStates.Idle) {
+                if (battleManager.IsPlayerTurn()) {
+                    SetUIState(UIStates.Actions);
+                }
+            }
+        }
+
+        void SetUIState(UIStates newState) {
+            // remove the old UI elements
+            switch (currentUIState) {
+                case UIStates.Actions:
+                    // TODO hide the turnUI
+                    break;
+            }
+
+            currentUIState = newState;
+
+            // show the new UI elements
+            switch (currentUIState) {
+                case UIStates.Actions:
+                    // TODO play animation to show the actionsUI and turnUI
+                    UpdateTurnOrder(turnUIListParent);
+                    break;
+
+                case UIStates.Powers:
+                    break;
+            }
         }
 
         void CreateCharacterUI(RectTransform layout, Character character)
@@ -29,12 +82,12 @@ namespace MURP.UI
             ui.AssignCharacter(character);
         }
 
-        void UpdateTurnUI(RectTransform layout)
+        void UpdateTurnOrder(RectTransform parent)
         {
-            var characterTurnsList = battleManager.GetCharactersInTurnOrder(layout.childCount);
+            var characterTurnsList = battleManager.GetCharactersInTurnOrder(parent.childCount);
             Debug.Log(characterTurnsList.Count);
-            for(int i=0; i < layout.childCount; i++) {
-                layout.GetChild(i).GetComponent<TurnIconUI>().AssignCharacter(characterTurnsList[i]);
+            for(int i=0; i < parent.childCount; i++) {
+                parent.GetChild(i).GetComponent<TurnIconUI>().AssignCharacter(characterTurnsList[i]);
             }
         }
     }

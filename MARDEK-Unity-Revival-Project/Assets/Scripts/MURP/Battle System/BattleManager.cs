@@ -57,8 +57,18 @@ namespace MURP.BattleSystem
             }
         }
 
-        List<Character> GetCharactersInOrder()
-        {
+        public bool IsPlayerTurn() {
+            return IsPlayerTurn(GetCharactersInOrder());
+        }
+
+        public bool IsPlayerTurn(List<Character> characters) {
+            if (playableCharacters.Contains(GetNextCharacterReadyToAct(characters)))
+                return true;
+            else
+                return false;
+        }
+
+        List<Character> GetCharactersInOrder() {
             // order by position (p1 e1 p2 e2 p3 e3 p4 e4)
             List<Character> returnList = new List<Character>();
             for (int i = 0; i < 4; i++)
@@ -110,7 +120,6 @@ namespace MURP.BattleSystem
                         nextCharacterIndex = j;
                     }
                 }
-                Debug.Log(minTimeLeft);
 
                 returnList.Add(characters[nextCharacterIndex]);
                 tempAct[nextCharacterIndex] -= actRequired;
