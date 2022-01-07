@@ -7,40 +7,69 @@ using UnityEngine.UI;
 
 namespace MURP.UI
 {
-    [RequireComponent(typeof(GridLayoutGroup))]
-    public abstract class SelectableLayout : MonoBehaviour
+    [RequireComponent(typeof(GridLayoutGroup), typeof(InputReader))]
+    public class SelectableLayout : MonoBehaviour
     {
-        [SerializeField] int index = 0;
+        int index = 0;
         int Index
         {
-            get { return index; }
+            get
+            {
+                return (index + Selectables.Count) % Selectables.Count;
+            }
             set
             {
-                index = (value + selectables.Length) % selectables.Length;
-                UpdateSelected();
+                index = (value + Selectables.Count) % Selectables.Count;
             }
         }
-        protected Selectable[] selectables { get; private set; }
+
+        Selectable[] selectables;
+        List<Selectable> Selectables
+        {
+            get
+            {
+                List<Selectable> returnList = new List<Selectable>();
+                foreach (var s in selectables)
+                    if (s.gameObject.activeSelf)
+                        returnList.Add(s);
+                return returnList;
+            }
+        }
+        Selectable currentlySelected = null;
+        
         GridLayoutGroup layout;
+        InputReader input;
 
         private void OnValidate()
         {
             selectables = GetComponentsInChildren<Selectable>();
             layout = GetComponent<GridLayoutGroup>();
+            input = GetComponent<InputReader>();
         }
 
         private void OnEnable()
         {
-            UpdateSelected();
+            UpdateSelectionAtIndex(false);
+            input.enabled = true;
         }
 
-        void UpdateSelected()
+        private void OnDisable()
         {
-            selectables[index].Select();
+            input.enabled = false;            
+        }
+
+        void UpdateSelectionAtIndex(bool playSFX = true)
+        {
+            if (currentlySelected)
+                currentlySelected.Deselect();
+            currentlySelected = Selectables[Index];
+            currentlySelected.Select(playSFX);
         }
 
         public void HandleMovementInput(InputAction.CallbackContext ctx)
         {
+            if (enabled == false)
+                return;
             var value = ctx.ReadValue<Vector2>();
             if (value.x == 0)
                 HandleVerticalInput(value.y);
@@ -56,6 +85,7 @@ namespace MURP.UI
                 Index--;
             else
                 Index++;
+            UpdateSelectionAtIndex();
         }
         void HandleHorizontalInput(float value)
         {
@@ -66,6 +96,7 @@ namespace MURP.UI
                 Index++;
             else
                 Index--;
+            UpdateSelectionAtIndex();
         }
     }
 }

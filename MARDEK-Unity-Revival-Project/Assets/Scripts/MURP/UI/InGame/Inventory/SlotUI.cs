@@ -15,50 +15,45 @@ namespace MURP.UI
         [SerializeField] Sprite hoverSlotSprite;
         [SerializeField] Sprite transparentSprite;
 
-        SelectedItemInfo selectedItemInfo;
-        Slot ownSlot;
-
-        public void SetSelectedItemInfo(SelectedItemInfo _selectedItemInfo)
-        {
-            selectedItemInfo = _selectedItemInfo;
-        }
+        Slot slot;
+        public static Slot selectedSlot { get; private set; }
 
         public void SetSlot(Slot newSlot)
         {
-            ownSlot = newSlot;
+            slot = newSlot;
             UpdateSprite();
         }
 
         public void UpdateSprite()
         {
-            if (ownSlot.IsEmpty())
+            if (slot.IsEmpty())
             {
                 itemImage.sprite = transparentSprite;
                 amountText.text = "";
             } 
             else 
             {
-                itemImage.sprite = ownSlot.item.sprite;
-                if (ownSlot.amount == 1)
+                itemImage.sprite = slot.item.sprite;
+                if (slot.amount == 1)
                 {
                     amountText.text = "";
                 }
                 else
                 {
-                    amountText.text = ownSlot.amount.ToString();
+                    amountText.text = slot.amount.ToString();
                 }
             }
         }
 
         public void OnPointerClick(PointerEventData pointerEvent)
         {
-            SlotCursor.InteractWithSlot(ownSlot);
+            SlotCursor.InteractWithSlot(slot);
             UpdateSprite();
         }
 
         public void OnPointerEnter(PointerEventData pointerEvent)
         {
-            if (selectedItemInfo != null) selectedItemInfo.SetCurrentSlot(ownSlot);
+            selectedSlot = slot;
             backgroundImage.sprite = hoverSlotSprite;
         }
 

@@ -11,8 +11,9 @@ namespace MURP.UI
 
         public void SetCharacter(Character character)
         {
-            for (int i = 0; i < 64; i++)
-                slots[i].SetSlot(character.inventory.GetSlot(i+6));
+            if(character.CharacterInfo)
+                for (int i = 0; i < 64; i++)
+                    slots[i].SetSlot(character.inventory.GetSlot(i+6));
         }
     }
 }

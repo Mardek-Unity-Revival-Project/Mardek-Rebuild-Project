@@ -1,42 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
-using MURP.Core;
+using UnityEngine.Events;
 using MURP.Audio;
+using MURP.Core;
 
 namespace MURP.UI
 {
-    public class InGameMenu : SelectableLayout
+    public class InGameMenu : MonoBehaviour
     {
-        [SerializeField] Canvas canvas;
         [SerializeField] AudioObject openMenuSound;
-        [SerializeField] AudioObject verticalMenuScrollSound;
-        [SerializeField] AudioObject focusMenuSound;
-        [SerializeField] AudioObject stopFocusMenuSound;
-
-        private void Awake()
-        {
-            canvas.enabled = false;
-        }
+        [SerializeField] UnityEvent OnOpen;
+        [SerializeField] UnityEvent OnClose;
 
         public void Close()
         {
-            if (canvas.enabled == false)
+            if (gameObject.activeSelf == false)
                 return;
-            canvas.enabled = false;
+            gameObject.SetActive(false);
             PlayerLocks.UISystemLock--;
+            OnClose.Invoke();
         }
 
         public void TryOpen(InputAction.CallbackContext ctx)
         {
-            if (canvas.enabled)
+            if (gameObject.activeSelf)
                 return;
             if (PlayerLocks.EventSystemLock > 0)
                 return;
 
-            canvas.enabled = true;
+            gameObject.SetActive(true);
             PlayerLocks.UISystemLock++;
             AudioManager.PlaySoundEffect(openMenuSound);
+            OnOpen.Invoke();
         }
     }
 }

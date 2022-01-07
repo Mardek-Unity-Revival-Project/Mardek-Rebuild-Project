@@ -17,12 +17,12 @@ namespace MURP.UI
         [SerializeField] HorizontalLayoutGroup[] equipmentSlotLayouts;
         [SerializeField] Image[] equipmentBarBackgrounds;
         [SerializeField] GameObject slotPrefab;
-        [SerializeField] SelectedItemInfo selectedItemInfo;
+        //[SerializeField] SelectedItemInfo selectedItemInfo;
         
         SlotCursor cursorItem;
-        List<SlotGrid> slotGrids;
+        //List<SlotGrid> slotGrids;
         int currentCharacterIndex;
-        List<SlotGrid> equipmentSlotGrids;
+        //List<SlotGrid> equipmentSlotGrids;
         Slot cursorSlot = new Slot(null, 0, new List<EquipmentCategory>(), true, true);
         bool isActive = false;
         System.Action focusAction;
@@ -34,24 +34,24 @@ namespace MURP.UI
 
         private void OnEnable()
         {
-            foreach (SlotGrid slotGrid in slotGrids)
-            {
-                slotGrid.UpdateSlots(cursorSlot, selectedItemInfo, focusAction);
-            }
+            ////foreach (SlotGrid slotGrid in slotGrids)
+            //{
+            //    //slotGrid.UpdateSlots(cursorSlot, selectedItemInfo, focusAction);
+            //}
 
-            foreach (SlotGrid equipmentGrid in this.equipmentSlotGrids)
-            {
-                equipmentGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
-            }
-            UpdateSelectedInventory();
+            //foreach (SlotGrid equipmentGrid in this.equipmentSlotGrids)
+            //{
+            //    //equipmentGrid.UpdateSlots(this.cursorSlot, this.selectedItemInfo, this.focusAction);
+            //}
+            //UpdateSelectedInventory();
 
-            //cursorItem = new CursorSlotUI(cursorSlot);
-            //isActive = true;
+            ////cursorItem = new CursorSlotUI(cursorSlot);
+            ////isActive = true;
         }
 
         private void OnDisable()
         {
-            isActive = false;            
+            isActive = false;
         }
 
         //void Update()
@@ -64,8 +64,8 @@ namespace MURP.UI
 
         void UpdateSelectedInventory()
         {
-            foreach (SlotGrid slotGrid in slotGrids)
-                slotGrid.SetInActive();
+            //    foreach (SlotGrid slotGrid in slotGrids)
+            //        slotGrid.SetInActive();
             for (int characterIndex = 0; characterIndex < slotsLayouts.Length; characterIndex++)
             {
                 slotsLayouts[characterIndex].gameObject.SetActive(characterIndex == currentCharacterIndex);

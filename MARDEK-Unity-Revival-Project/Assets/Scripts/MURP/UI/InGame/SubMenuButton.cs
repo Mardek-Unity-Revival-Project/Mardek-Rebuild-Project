@@ -10,43 +10,17 @@ namespace MURP.UI
         static readonly Color INACTIVE_COLOR = new Color(245 / 255f, 229 / 255f, 156 / 255f);
         static readonly Color ACTIVE_COLOR = new Color(110 / 255f, 170 / 255f, 220 / 255f);
 
-        static SubmenuButton lastSelectedSubmenu = null;
         [SerializeField] Text text;
-        [SerializeField] GameObject submenuPanel;
 
-        void OnValidate()
+        public override void Select(bool playSFX = true)
         {
-            PaintAsDeselected();
-        }
-        public override void Select()
-        {
+            base.Select(playSFX: playSFX);
             text.color = ACTIVE_COLOR;
-            if (lastSelectedSubmenu)
-            {
-                lastSelectedSubmenu.CloseSubmenuPanel();
-                lastSelectedSubmenu.PaintAsDeselected();
-            }
-            OpenSubmenuPanel();
-            lastSelectedSubmenu = this;
         }
         public override void Deselect()
         {
-            PaintAsDeselected();
-            CloseSubmenuPanel();
-        }
-        public void PaintAsDeselected()
-        {
+            base.Deselect();
             text.color = INACTIVE_COLOR;
-        }
-        public void CloseSubmenuPanel()
-        {
-            if (submenuPanel)
-                submenuPanel.SetActive(false);
-        }
-        void OpenSubmenuPanel()
-        {
-            if(submenuPanel)
-                submenuPanel.SetActive(true);
         }
     }
 }

@@ -5,17 +5,52 @@ using MURP.CharacterSystem;
 
 namespace MURP.UI
 {
-    public class PartyInventoryUI : SelectableLayout
+    public class PartyInventoryUI : MonoBehaviour
     {
+        static PartyInventoryUI instance;
         [SerializeField] Party party = null;
+        [SerializeField] List<CharacterEquipmentUI> characterEquipments;
         [SerializeField] CharacterBagUI characterBagUI;
 
-        private void Awake()
+        Character selectedCharacter;
+        public static Character SelectedCharacter
         {
-            for (int i = 0; i < party.Characters.Count; i++)
-                if (i < selectables.Length)
-                    (selectables[i] as CharacterEquipmentUI).SetCharacter(party.Characters[i]);
-            characterBagUI.SetCharacter(party.Characters[0]);
+            get
+            {
+                return instance.selectedCharacter;
+            }
+            set
+            {
+                instance.selectedCharacter = value;
+                instance.UpdateBagUI();
+            }
+        }
+
+        private void OnEnable()
+        {
+            instance = this;
+            UpdateEquipmentUI();
+            if(selectedCharacter == null)
+                characterEquipments[0].Select(playSFX: false);
+            UpdateBagUI();            
+        }
+
+        void UpdateEquipmentUI()
+        {
+            for (int i = 0; i < characterEquipments.Count; i++)
+            {
+                characterEquipments[i].gameObject.SetActive(false);
+                if (i < party.Characters.Count)
+                {
+                    characterEquipments[i].SetCharacter(party.Characters[i]);
+                    characterEquipments[i].gameObject.SetActive(true);
+                }
+            }
+        }
+
+        void UpdateBagUI()
+        {
+            characterBagUI.SetCharacter(selectedCharacter);
         }
     }
 }
