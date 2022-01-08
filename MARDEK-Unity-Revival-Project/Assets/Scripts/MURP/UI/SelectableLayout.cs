@@ -15,10 +15,14 @@ namespace MURP.UI
         {
             get
             {
+                if (Selectables.Count == 0)
+                    return 0;
                 return (index + Selectables.Count) % Selectables.Count;
             }
             set
             {
+                if (Selectables.Count == 0)
+                    index = 0;
                 index = (value + Selectables.Count) % Selectables.Count;
             }
         }
