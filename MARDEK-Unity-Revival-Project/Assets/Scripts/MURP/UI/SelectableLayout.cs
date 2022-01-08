@@ -66,6 +66,8 @@ namespace MURP.UI
         {
             if (currentlySelected)
                 currentlySelected.Deselect();
+            if (Selectables.Count == 0)
+                return;
             currentlySelected = Selectables[Index];
             currentlySelected.Select(playSFX);
         }
