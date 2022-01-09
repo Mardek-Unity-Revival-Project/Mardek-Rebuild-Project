@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Interaction",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "51f5ebf4-417f-4b8d-b098-451de96cf095",
                     "expectedControlType": "Button",
@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Enter Key",
+                    "name": "Open Menu",
                     "type": "Button",
                     "id": "6d420b4f-1953-474d-b0e2-3a2493033763",
                     "expectedControlType": "Button",
@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Escape Key",
+                    "name": "Escape",
                     "type": "Button",
                     "id": "e75c94af-2049-4532-93a4-87451de49d9f",
                     "expectedControlType": "Button",
@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Party Dialogue Key",
+                    "name": "Open Party Dialogue",
                     "type": "Button",
                     "id": "832c1633-597b-43f7-b15b-095fcf364a7b",
                     "expectedControlType": "Button",
@@ -54,7 +54,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Chat Log Key",
+                    "name": "Open Chat Log",
                     "type": "Button",
                     "id": "2734c0fd-92b9-4821-b197-95a9cb40cbdd",
                     "expectedControlType": "Button",
@@ -87,61 +87,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "2D Vector",
-                    "id": "2e6bc784-a808-4209-a15d-b1d3e8f7266d",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "45536c8e-1a49-4072-bbaa-a95d2921b34d",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "4129b195-891c-4ff7-9fd4-531e4aec7354",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "b48f331a-4d03-48b8-93dc-fcc57e8b6151",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "a09041d6-e65d-4b6e-8345-990ff0785321",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "2D Vector",
                     "id": "2a33995f-5b9e-4267-ba01-1e1005124021",
@@ -199,34 +144,12 @@
                 },
                 {
                     "name": "",
-                    "id": "505a3d4e-dfca-4ddb-add0-f61112ae57cc",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interaction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7b49e376-4ced-4dc2-9150-ea0485a62324",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interaction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fcf49389-c036-41f1-b72d-0b55d17daa9d",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -248,7 +171,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Enter Key",
+                    "action": "Open Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -259,7 +182,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Escape Key",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -270,7 +193,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Party Dialogue Key",
+                    "action": "Open Party Dialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -281,14 +204,14 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Chat Log Key",
+                    "action": "Open Chat Log",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "23bedeb8-569b-4472-82ef-efd29792cc4e",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

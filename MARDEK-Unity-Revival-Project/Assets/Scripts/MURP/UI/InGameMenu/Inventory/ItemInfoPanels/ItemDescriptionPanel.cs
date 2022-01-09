@@ -13,7 +13,7 @@ namespace MURP.UI
         {
             var slot = SlotUI.selectedSlot;
             if (slot != null && slot.item != null)
-                textField.text = slot.item.properties;
+                textField.text = slot.item.description;
             else
                 textField.text = string.Empty;
         }
