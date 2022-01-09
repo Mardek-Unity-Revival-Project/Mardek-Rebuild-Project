@@ -72,5 +72,6 @@ public class KeyRebind : MonoBehaviour
         actionReference.action.actionMap.Enable();
         rebindingOperation.Dispose();
         UpdateBindText();
+        InputReader.RefreshInputReaders();
     }
 }
