@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 3cccca8e27b6c9d43adb3acad899e95a, type: 3}
     m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
@@ -236,4 +236,8 @@ MonoBehaviour:
         m_CallState: 2
   selectionSFX: {fileID: 11400000, guid: 0da28b87b9cd6e945acf7875aaef8844, type: 2}
   selectableText: {fileID: 4742112215764809692}
+  DeselectedTextColor: {r: 0.40784314, g: 0.37254903, b: 0.34509805, a: 1}
+  SelectedTextColor: {r: 0.93333334, g: 0.79607844, b: 0.49803922, a: 1}
   selectableImage: {fileID: 7040126256502462764}
+  DeselectedImageColor: {r: 0.21960784, g: 0.15686275, b: 0.09019608, a: 0.39215687}
+  SelectedImageColor: {r: 0.32941177, g: 0.2509804, b: 0.15294118, a: 0.6666667}
