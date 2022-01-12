@@ -27,8 +27,8 @@ namespace MURP.DialogueSystem
         }
 
         [SerializeField] GameObject canvas = null;
-        [SerializeField] TMPro.TMP_Text dialogueText = null;
-        [SerializeField] TMPro.TMP_Text characterNameText = null;
+        [SerializeField] Text dialogueText = null;
+        [SerializeField] Text characterNameText = null;
         [SerializeField] float dialogueSpeed = 5;
 
         Dialogue dialogue;

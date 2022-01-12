@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &256568478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -537,10 +537,10 @@ RectTransform:
   m_Father: {fileID: 256568478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: -10, y: -50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2117606841
 CanvasRenderer:
@@ -571,13 +571,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: f58cde84aef5adb41b9406acd1afae11, type: 3}
     m_FontSize: 34
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 45
-    m_Alignment: 0
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -676,6 +676,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f985ac5cf498064dbe433b4a0f575b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1401170877280182513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617160519331985042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d350eb06de3fd4b99e34a9eb6e543f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene:
+    sceneAsset: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
+    scenePath: Assets/Scenes/Maps/DragonLair/DL_Area1.unity
+  waypoint: {fileID: 0}
+  overrideFacingDirection: {fileID: 0}
 --- !u!114 &4022060815457439161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,23 +734,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1401170877280182513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617160519331985042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59d350eb06de3fd4b99e34a9eb6e543f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene:
-    sceneAsset: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
-    scenePath: Assets/Scenes/Maps/DragonLair/DL_Area1.unity
-  waypoint: {fileID: 0}
-  overrideFacingDirection: {fileID: 0}
 --- !u!1001 &11302436225253568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1214,6 +1214,10 @@ PrefabInstance:
     - target: {fileID: 2242343820437641033, guid: ff27de98e38eae948b6b9848443bc2ce, type: 3}
       propertyPath: m_Text
       value: BEGIN
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242343820437641033, guid: ff27de98e38eae948b6b9848443bc2ce, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 2242343820437641033, guid: ff27de98e38eae948b6b9848443bc2ce, type: 3}
       propertyPath: m_FontData.m_Alignment

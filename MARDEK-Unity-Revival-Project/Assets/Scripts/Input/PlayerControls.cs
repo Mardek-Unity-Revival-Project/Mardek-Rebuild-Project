@@ -27,7 +27,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Interaction"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""51f5ebf4-417f-4b8d-b098-451de96cf095"",
                     ""expectedControlType"": ""Button"",
@@ -43,7 +43,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Enter Key"",
+                    ""name"": ""Open Menu"",
                     ""type"": ""Button"",
                     ""id"": ""6d420b4f-1953-474d-b0e2-3a2493033763"",
                     ""expectedControlType"": ""Button"",
@@ -51,7 +51,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Escape Key"",
+                    ""name"": ""Escape"",
                     ""type"": ""Button"",
                     ""id"": ""e75c94af-2049-4532-93a4-87451de49d9f"",
                     ""expectedControlType"": ""Button"",
@@ -59,7 +59,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Party Dialogue Key"",
+                    ""name"": ""Open Party Dialogue"",
                     ""type"": ""Button"",
                     ""id"": ""832c1633-597b-43f7-b15b-095fcf364a7b"",
                     ""expectedControlType"": ""Button"",
@@ -67,7 +67,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Chat Log Key"",
+                    ""name"": ""Open Chat Log"",
                     ""type"": ""Button"",
                     ""id"": ""2734c0fd-92b9-4821-b197-95a9cb40cbdd"",
                     ""expectedControlType"": ""Button"",
@@ -100,61 +100,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""2e6bc784-a808-4209-a15d-b1d3e8f7266d"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""45536c8e-1a49-4072-bbaa-a95d2921b34d"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""4129b195-891c-4ff7-9fd4-531e4aec7354"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""b48f331a-4d03-48b8-93dc-fcc57e8b6151"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""a09041d6-e65d-4b6e-8345-990ff0785321"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""2a33995f-5b9e-4267-ba01-1e1005124021"",
@@ -212,34 +157,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""505a3d4e-dfca-4ddb-add0-f61112ae57cc"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interaction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7b49e376-4ced-4dc2-9150-ea0485a62324"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interaction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fcf49389-c036-41f1-b72d-0b55d17daa9d"",
-                    ""path"": ""<Keyboard>/z"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cancel"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -261,7 +184,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Enter Key"",
+                    ""action"": ""Open Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -272,7 +195,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Escape Key"",
+                    ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -283,7 +206,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Party Dialogue Key"",
+                    ""action"": ""Open Party Dialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -294,14 +217,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Chat Log Key"",
+                    ""action"": ""Open Chat Log"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""23bedeb8-569b-4472-82ef-efd29792cc4e"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -339,12 +262,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // DefaultMap
         m_DefaultMap = asset.FindActionMap("DefaultMap", throwIfNotFound: true);
         m_DefaultMap_Movement = m_DefaultMap.FindAction("Movement", throwIfNotFound: true);
-        m_DefaultMap_Interaction = m_DefaultMap.FindAction("Interaction", throwIfNotFound: true);
+        m_DefaultMap_Interact = m_DefaultMap.FindAction("Interact", throwIfNotFound: true);
         m_DefaultMap_Cancel = m_DefaultMap.FindAction("Cancel", throwIfNotFound: true);
-        m_DefaultMap_EnterKey = m_DefaultMap.FindAction("Enter Key", throwIfNotFound: true);
-        m_DefaultMap_EscapeKey = m_DefaultMap.FindAction("Escape Key", throwIfNotFound: true);
-        m_DefaultMap_PartyDialogueKey = m_DefaultMap.FindAction("Party Dialogue Key", throwIfNotFound: true);
-        m_DefaultMap_ChatLogKey = m_DefaultMap.FindAction("Chat Log Key", throwIfNotFound: true);
+        m_DefaultMap_OpenMenu = m_DefaultMap.FindAction("Open Menu", throwIfNotFound: true);
+        m_DefaultMap_Escape = m_DefaultMap.FindAction("Escape", throwIfNotFound: true);
+        m_DefaultMap_OpenPartyDialogue = m_DefaultMap.FindAction("Open Party Dialogue", throwIfNotFound: true);
+        m_DefaultMap_OpenChatLog = m_DefaultMap.FindAction("Open Chat Log", throwIfNotFound: true);
         m_DefaultMap_SplitItemStack = m_DefaultMap.FindAction("Split Item Stack", throwIfNotFound: true);
         m_DefaultMap_UILeftClick = m_DefaultMap.FindAction("UI/LeftClick", throwIfNotFound: true);
         m_DefaultMap_UIPoint = m_DefaultMap.FindAction("UI/Point", throwIfNotFound: true);
@@ -398,12 +321,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_DefaultMap;
     private IDefaultMapActions m_DefaultMapActionsCallbackInterface;
     private readonly InputAction m_DefaultMap_Movement;
-    private readonly InputAction m_DefaultMap_Interaction;
+    private readonly InputAction m_DefaultMap_Interact;
     private readonly InputAction m_DefaultMap_Cancel;
-    private readonly InputAction m_DefaultMap_EnterKey;
-    private readonly InputAction m_DefaultMap_EscapeKey;
-    private readonly InputAction m_DefaultMap_PartyDialogueKey;
-    private readonly InputAction m_DefaultMap_ChatLogKey;
+    private readonly InputAction m_DefaultMap_OpenMenu;
+    private readonly InputAction m_DefaultMap_Escape;
+    private readonly InputAction m_DefaultMap_OpenPartyDialogue;
+    private readonly InputAction m_DefaultMap_OpenChatLog;
     private readonly InputAction m_DefaultMap_SplitItemStack;
     private readonly InputAction m_DefaultMap_UILeftClick;
     private readonly InputAction m_DefaultMap_UIPoint;
@@ -412,12 +335,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         private @PlayerControls m_Wrapper;
         public DefaultMapActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_DefaultMap_Movement;
-        public InputAction @Interaction => m_Wrapper.m_DefaultMap_Interaction;
+        public InputAction @Interact => m_Wrapper.m_DefaultMap_Interact;
         public InputAction @Cancel => m_Wrapper.m_DefaultMap_Cancel;
-        public InputAction @EnterKey => m_Wrapper.m_DefaultMap_EnterKey;
-        public InputAction @EscapeKey => m_Wrapper.m_DefaultMap_EscapeKey;
-        public InputAction @PartyDialogueKey => m_Wrapper.m_DefaultMap_PartyDialogueKey;
-        public InputAction @ChatLogKey => m_Wrapper.m_DefaultMap_ChatLogKey;
+        public InputAction @OpenMenu => m_Wrapper.m_DefaultMap_OpenMenu;
+        public InputAction @Escape => m_Wrapper.m_DefaultMap_Escape;
+        public InputAction @OpenPartyDialogue => m_Wrapper.m_DefaultMap_OpenPartyDialogue;
+        public InputAction @OpenChatLog => m_Wrapper.m_DefaultMap_OpenChatLog;
         public InputAction @SplitItemStack => m_Wrapper.m_DefaultMap_SplitItemStack;
         public InputAction @UILeftClick => m_Wrapper.m_DefaultMap_UILeftClick;
         public InputAction @UIPoint => m_Wrapper.m_DefaultMap_UIPoint;
@@ -433,24 +356,24 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnMovement;
-                @Interaction.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnInteraction;
-                @Interaction.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnInteraction;
-                @Interaction.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnInteraction;
+                @Interact.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnInteract;
                 @Cancel.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnCancel;
-                @EnterKey.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnEnterKey;
-                @EnterKey.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnEnterKey;
-                @EnterKey.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnEnterKey;
-                @EscapeKey.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnEscapeKey;
-                @EscapeKey.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnEscapeKey;
-                @EscapeKey.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnEscapeKey;
-                @PartyDialogueKey.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnPartyDialogueKey;
-                @PartyDialogueKey.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnPartyDialogueKey;
-                @PartyDialogueKey.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnPartyDialogueKey;
-                @ChatLogKey.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnChatLogKey;
-                @ChatLogKey.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnChatLogKey;
-                @ChatLogKey.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnChatLogKey;
+                @OpenMenu.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnOpenMenu;
+                @OpenMenu.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnOpenMenu;
+                @OpenMenu.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnOpenMenu;
+                @Escape.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnEscape;
+                @OpenPartyDialogue.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnOpenPartyDialogue;
+                @OpenPartyDialogue.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnOpenPartyDialogue;
+                @OpenPartyDialogue.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnOpenPartyDialogue;
+                @OpenChatLog.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnOpenChatLog;
+                @OpenChatLog.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnOpenChatLog;
+                @OpenChatLog.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnOpenChatLog;
                 @SplitItemStack.started -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnSplitItemStack;
                 @SplitItemStack.performed -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnSplitItemStack;
                 @SplitItemStack.canceled -= m_Wrapper.m_DefaultMapActionsCallbackInterface.OnSplitItemStack;
@@ -467,24 +390,24 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @Interaction.started += instance.OnInteraction;
-                @Interaction.performed += instance.OnInteraction;
-                @Interaction.canceled += instance.OnInteraction;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
-                @EnterKey.started += instance.OnEnterKey;
-                @EnterKey.performed += instance.OnEnterKey;
-                @EnterKey.canceled += instance.OnEnterKey;
-                @EscapeKey.started += instance.OnEscapeKey;
-                @EscapeKey.performed += instance.OnEscapeKey;
-                @EscapeKey.canceled += instance.OnEscapeKey;
-                @PartyDialogueKey.started += instance.OnPartyDialogueKey;
-                @PartyDialogueKey.performed += instance.OnPartyDialogueKey;
-                @PartyDialogueKey.canceled += instance.OnPartyDialogueKey;
-                @ChatLogKey.started += instance.OnChatLogKey;
-                @ChatLogKey.performed += instance.OnChatLogKey;
-                @ChatLogKey.canceled += instance.OnChatLogKey;
+                @OpenMenu.started += instance.OnOpenMenu;
+                @OpenMenu.performed += instance.OnOpenMenu;
+                @OpenMenu.canceled += instance.OnOpenMenu;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
+                @OpenPartyDialogue.started += instance.OnOpenPartyDialogue;
+                @OpenPartyDialogue.performed += instance.OnOpenPartyDialogue;
+                @OpenPartyDialogue.canceled += instance.OnOpenPartyDialogue;
+                @OpenChatLog.started += instance.OnOpenChatLog;
+                @OpenChatLog.performed += instance.OnOpenChatLog;
+                @OpenChatLog.canceled += instance.OnOpenChatLog;
                 @SplitItemStack.started += instance.OnSplitItemStack;
                 @SplitItemStack.performed += instance.OnSplitItemStack;
                 @SplitItemStack.canceled += instance.OnSplitItemStack;
@@ -501,12 +424,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IDefaultMapActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnInteraction(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
-        void OnEnterKey(InputAction.CallbackContext context);
-        void OnEscapeKey(InputAction.CallbackContext context);
-        void OnPartyDialogueKey(InputAction.CallbackContext context);
-        void OnChatLogKey(InputAction.CallbackContext context);
+        void OnOpenMenu(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
+        void OnOpenPartyDialogue(InputAction.CallbackContext context);
+        void OnOpenChatLog(InputAction.CallbackContext context);
         void OnSplitItemStack(InputAction.CallbackContext context);
         void OnUILeftClick(InputAction.CallbackContext context);
         void OnUIPoint(InputAction.CallbackContext context);

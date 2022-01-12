@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour
 {
+    static List<InputReader> readers = new List<InputReader>();
+
     [SerializeField] List<InputActionBind> binds = new List<InputActionBind>();
     List<InputAction> bindedActions = new List<InputAction>();
 
@@ -36,12 +38,23 @@ public class InputReader : MonoBehaviour
 
     private void OnEnable()
     {
+        readers.Add(this);
         BindActions();
     }
 
     private void OnDisable()
     {
+        readers.Remove(this);
         UnbindActions();
+    }
+
+    public static void RefreshInputReaders()
+    {
+        foreach(var r in readers)
+        {
+            r.UnbindActions();
+            r.BindActions();
+        }
     }
 
     [System.Serializable]
