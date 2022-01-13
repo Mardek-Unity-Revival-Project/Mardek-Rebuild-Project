@@ -111,5 +111,10 @@ namespace MURP.UI
 
             Cursor.SetCursor(newTexture, new Vector2(0f, 0f), CursorMode.Auto);
         }
+
+        public bool IsEmpty()
+        {
+            return slot.IsEmpty();
+        }
     }
 }

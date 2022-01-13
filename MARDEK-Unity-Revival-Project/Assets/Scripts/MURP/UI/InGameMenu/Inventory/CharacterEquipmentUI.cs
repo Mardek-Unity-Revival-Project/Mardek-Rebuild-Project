@@ -27,6 +27,12 @@ namespace MURP.UI
             for (int i = 0; i < 6; i++)
                 slots[i].SetSlot(character.inventory.GetSlot(i));
         }
+
+        public void PropagateSubmenuController(SubmenuLayoutController submenuController, SelectableLayout partyLayout)
+        {
+            foreach (SlotUI slot in slots) slot.SetSubmenuController(submenuController, partyLayout);
+        }
+
         public override void Select(bool playSFX = true)
         {
             base.Select(playSFX: playSFX);
