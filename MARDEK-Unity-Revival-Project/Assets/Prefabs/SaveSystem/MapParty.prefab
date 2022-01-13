@@ -50,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveOptions:
     loadOnAwake: 0
+    autoSave: 1
+    saveOnDisable: 1
   serializedGuid: 9ba8aefc2199ed40bb3efe611f686190
   inMapCharacters:
   - {fileID: 8260632007367570631}
@@ -237,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3208123177398757689, guid: 4774015f8d2041a4f9133a74f7e9849e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675053024076076712, guid: 4774015f8d2041a4f9133a74f7e9849e, type: 3}
       propertyPath: m_RootOrder
@@ -347,7 +349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3208123177398757689, guid: 4774015f8d2041a4f9133a74f7e9849e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3590226872818589134, guid: 4774015f8d2041a4f9133a74f7e9849e, type: 3}
       propertyPath: m_Color.a
