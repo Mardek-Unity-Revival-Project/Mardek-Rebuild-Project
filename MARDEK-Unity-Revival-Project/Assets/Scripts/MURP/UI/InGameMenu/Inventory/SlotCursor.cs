@@ -27,7 +27,7 @@ namespace MURP.UI
         { 
             if (slot.IsEmpty())
             {
-                PickupItemFromSlot(slotInteracted);
+                if (!slotInteracted.IsEmpty()) PickupItemFromSlot(slotInteracted);
             }
             else
             {
@@ -95,6 +95,10 @@ namespace MURP.UI
                     slot.currentAmount = slotInteracted.currentAmount - 1;
                     slotInteracted.currentAmount = 1;
                     AudioManager.PlaySoundEffect(pickupSound);
+                }
+                else
+                {
+                    AudioManager.PlaySoundEffect(rejectSound);
                 }
             }
         }
