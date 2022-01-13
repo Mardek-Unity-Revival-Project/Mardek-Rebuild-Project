@@ -40,7 +40,6 @@ namespace MURP.UI
                     AudioManager.PlaySoundEffect(rejectSound);
                 }
             }
-            UpdateCursorTexture();
         }
         void PlaceItemInSlot(Slot slotInteracted)
         {
@@ -103,18 +102,19 @@ namespace MURP.UI
             }
         }
 
-        void UpdateCursorTexture()
-        {
-            Texture2D newTexture;
-            if (slot.IsEmpty()) newTexture = null;
-            else newTexture = slot.item.readableSpriteTexture;
-
-            Cursor.SetCursor(newTexture, new Vector2(0f, 0f), CursorMode.Auto);
-        }
-
         public bool IsEmpty()
         {
             return slot.IsEmpty();
+        }
+
+        public Item GetItem()
+        {
+            return slot.item;
+        }
+
+        public int GetAmount()
+        {
+            return slot.amount;
         }
     }
 }
