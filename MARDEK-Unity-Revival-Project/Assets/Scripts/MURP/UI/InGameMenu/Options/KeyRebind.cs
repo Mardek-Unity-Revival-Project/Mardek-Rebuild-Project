@@ -17,11 +17,13 @@ public class KeyRebind : MonoBehaviour
     [SerializeField, HideInInspector] Color originalColor;
     Color rebindingColor = Color.red;
 
+
+    bool isComposite { get { return actionReference.action.bindings[0].isComposite; } }
     InputBinding Binding
     {
         get
         {
-            if (actionReference.action.bindings[0].isComposite == false)
+            if (isComposite == false)
                 return actionReference.action.bindings[0];
             return actionReference.action.bindings[1 + compositeBindingIndex];
         }
@@ -59,12 +61,15 @@ public class KeyRebind : MonoBehaviour
         bindText.color = rebindingColor;
 
         actionReference.action.actionMap.Disable();
-        rebindingOperation = actionReference.action
-                                .PerformInteractiveRebinding()
-                                .WithControlsExcluding("Mouse")
-                                .OnMatchWaitForAnother(0.1f)
-                                .OnComplete(operation => OnEndRebind())
-                                .Start();
+        rebindingOperation = actionReference.action.PerformInteractiveRebinding();
+
+        if(isComposite)
+            rebindingOperation.WithTargetBinding(1+compositeBindingIndex);
+
+        rebindingOperation.WithControlsExcluding("Mouse");
+        rebindingOperation.OnMatchWaitForAnother(0.1f);
+        rebindingOperation.OnComplete(operation => OnEndRebind());
+        rebindingOperation.Start();
     }
 
     private void OnEndRebind()

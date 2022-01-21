@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4742112215764809692, guid: 4a7550dca54233046b227dce8444243e, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7478917080095791223, guid: 4a7550dca54233046b227dce8444243e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -93,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7803039461252003967, guid: 4a7550dca54233046b227dce8444243e, type: 3}
       propertyPath: m_Name
-      value: DefaultTab
+      value: ItemInfoTab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a7550dca54233046b227dce8444243e, type: 3}

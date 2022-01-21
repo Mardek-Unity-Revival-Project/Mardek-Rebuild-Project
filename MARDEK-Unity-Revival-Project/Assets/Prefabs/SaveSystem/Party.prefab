@@ -50,7 +50,7 @@ MonoBehaviour:
   saveOptions:
     loadOnAwake: 1
     autoSave: 1
-    saveOnTransition: 1
+    saveOnDisable: 1
   serializedGuid: ebeb8f2825897c4cabc105f85e154bb2
   characters:
   - {fileID: 2414872932222458909}
@@ -140,6 +140,10 @@ PrefabInstance:
     - target: {fileID: 7765752777133994383, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: m_Name
       value: AbstractPlayableCharacter (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765752777133994383, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8789894269345474430, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: m_RootOrder
@@ -286,6 +290,10 @@ PrefabInstance:
     - target: {fileID: 7765752777133994383, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: m_Name
       value: AbstractPlayableCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765752777133994383, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8789894269345474430, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: m_RootOrder
