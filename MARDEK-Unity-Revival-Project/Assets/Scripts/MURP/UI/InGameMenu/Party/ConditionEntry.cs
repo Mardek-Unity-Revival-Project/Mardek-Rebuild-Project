@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace MURP.UI
 {
-    public class ConditionEntry : MonoBehaviour
+    public class ConditionEntry : MonoBehaviour, PartyEntry
     {
         [SerializeField] Image portraitImage;
         [SerializeField] Image elementImage;
