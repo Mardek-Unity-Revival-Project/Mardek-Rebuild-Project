@@ -12,12 +12,14 @@ namespace MURP.UI
 
         [SerializeField] List<ConditionEntry> conditionEntries;
         [SerializeField] List<VitalStatisticsEntry> vitalStatisticsEntries;
+        [SerializeField] List<ElementalResistancesEntry> elementalResistancesEntries;
 
         void OnEnable()
         {
             List<PartyEntry>[] entriesList = new List<PartyEntry>[]{
                 this.conditionEntries.Cast<PartyEntry>().ToList(),
-                this.vitalStatisticsEntries.Cast<PartyEntry>().ToList()
+                this.vitalStatisticsEntries.Cast<PartyEntry>().ToList(),
+                this.elementalResistancesEntries.Cast<PartyEntry>().ToList()
                 // TODO Update the other entries
             };
 
