@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace MURP.UI
 {
-    public class ElementalResistancesEntry : MonoBehaviour, PartyEntry
+    public class ResistancesEntry : MonoBehaviour, PartyEntry
     {
-        [SerializeField] List<SingleElementResistance> elements;
+        [SerializeField] List<SingleResistance> elements;
 
         public void SetCharacter(Character character)
         {

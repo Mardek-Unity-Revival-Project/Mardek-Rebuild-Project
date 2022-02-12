@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace MURP.UI
 {
-    public class SingleElementResistance : MonoBehaviour
+    public class SingleResistance : MonoBehaviour
     {
         static readonly Color VULNERABLE_BACKGROUND_COLOR = new Color(0.7f, 0f, 0f, 0.1f);
         static readonly Color NEUTRAL_BACKGROUND_COLOR = new Color(0f, 0f, 0f, 0.2f);

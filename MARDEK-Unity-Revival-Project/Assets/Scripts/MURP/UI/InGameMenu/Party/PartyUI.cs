@@ -1,7 +1,6 @@
 using MURP.CharacterSystem;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
 using UnityEngine;
 
 namespace MURP.UI
@@ -12,15 +11,22 @@ namespace MURP.UI
 
         [SerializeField] List<ConditionEntry> conditionEntries;
         [SerializeField] List<VitalStatisticsEntry> vitalStatisticsEntries;
-        [SerializeField] List<ElementalResistancesEntry> elementalResistancesEntries;
+        [SerializeField] List<ResistancesEntry> elementalResistancesEntries;
+        [SerializeField] List<ResistancesEntry> statusEffectResistancesEntries;
+        [SerializeField] List<GrowthEntry> growthEntries;
+        [SerializeField] List<Performance1Entry> performance1Entries;
+        [SerializeField] List<Performance2Entry> performance2Entries;
 
         void OnEnable()
         {
             List<PartyEntry>[] entriesList = new List<PartyEntry>[]{
                 this.conditionEntries.Cast<PartyEntry>().ToList(),
                 this.vitalStatisticsEntries.Cast<PartyEntry>().ToList(),
-                this.elementalResistancesEntries.Cast<PartyEntry>().ToList()
-                // TODO Update the other entries
+                this.elementalResistancesEntries.Cast<PartyEntry>().ToList(),
+                this.statusEffectResistancesEntries.Cast<PartyEntry>().ToList(),
+                this.growthEntries.Cast<PartyEntry>().ToList(),
+                this.performance1Entries.Cast<PartyEntry>().ToList(),
+                this.performance2Entries.Cast<PartyEntry>().ToList()
             };
 
             foreach (var entries in entriesList) {

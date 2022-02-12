@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6334845180922707417}
   - component: {fileID: 1589207462046974213}
   m_Layer: 0
-  m_Name: SingleElementResistance
+  m_Name: SingleResistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930b7ae9dfb64ea4fa82ff751e1eca3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resistanceStat: {fileID: 0}
   background: {fileID: 6827437408737131664}
   text: {fileID: 6104505489270681692}
 --- !u!1 &5040574378599356146
@@ -74,7 +75,7 @@ GameObject:
   - component: {fileID: 5836841461615051446}
   - component: {fileID: 2507273080349670251}
   m_Layer: 0
-  m_Name: ElementImage
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
