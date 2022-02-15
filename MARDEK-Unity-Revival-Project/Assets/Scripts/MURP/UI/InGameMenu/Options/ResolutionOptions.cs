@@ -10,7 +10,6 @@ namespace MURP.UI
     {
         [SerializeField] Dropdown dropdown = null;
         List<Resolution> resolutions = new List<Resolution>();
-        //[SerializeField] Toggle fullscreen = null;
 
         private void OnEnable()
         {
