@@ -6,23 +6,19 @@ using UnityEngine.UI;
 public class FullscreenButton : MonoBehaviour
 {
     [SerializeField] Toggle toggle;
+    bool skipFrame = false;
 
-    private void OnEnable()
+    private void Update()
     {
-        toggle.isOn = Screen.fullScreen;
+        if (skipFrame)
+            skipFrame = false;
+        else
+            toggle.isOn = Screen.fullScreen;
     }
 
     public void OnValueChanged(bool value)
     {
         Screen.fullScreen = value;
-        StartCoroutine(UpdateAfter1Frame());
-    }
-
-    IEnumerator UpdateAfter1Frame()
-    {
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        toggle.isOn = Screen.fullScreen;
-        yield return null;
+        skipFrame = true;
     }
 }
