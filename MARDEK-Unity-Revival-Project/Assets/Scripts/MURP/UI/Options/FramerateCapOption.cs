@@ -14,9 +14,9 @@ namespace MURP.UI
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void LoadValue()
         {
-            var value = PlayerPrefs.GetInt(framerateCapPlayerPrefsKey);
-            if (value == default)
-                value = Application.targetFrameRate;
+            var value = PlayerPrefs.GetInt(framerateCapPlayerPrefsKey, -1);
+            if (value == -1)
+                value = 120;
             SetCapValue(value);
         }
         static void SetCapValue(int value)
@@ -25,7 +25,6 @@ namespace MURP.UI
             Application.targetFrameRate = value;
             PlayerPrefs.SetInt(framerateCapPlayerPrefsKey, value);
         }
-
         void Start()
         {
             var value = Application.targetFrameRate;
