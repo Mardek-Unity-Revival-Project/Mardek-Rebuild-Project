@@ -86,7 +86,6 @@ public class KeyRebind : MonoBehaviour
         {
             string key = binding.id.ToString();
             string val = binding.overridePath;
-            print(val);
             PlayerPrefs.SetString(key, val);
         }        
     }
