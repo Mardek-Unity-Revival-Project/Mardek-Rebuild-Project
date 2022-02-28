@@ -16,7 +16,11 @@ namespace MURP.UI
         static readonly Color RESIST_TEXT_COLOR = new Color(84f / 255f, 220f / 255f, 254f / 255f);
         static readonly Color ABSORT_TEXT_COLOR = new Color(152f / 255f, 254f / 255f, 101f / 255f);
 
+        static readonly Color PASSIVE_ICON_COLOR = new Color(1f, 1f, 1f, 0.05f);
+        static readonly Color ACTIVE_ICON_COLOR = new Color(1f, 1f, 1f, 0.9f);
+
         [SerializeField] FloatStat resistanceStat;
+        [SerializeField] Image icon;
         [SerializeField] Image background;
         [SerializeField] Text text;
 
@@ -37,20 +41,24 @@ namespace MURP.UI
             {
                 background.color = VULNERABLE_BACKGROUND_COLOR;
                 text.color = VULNERABLE_TEXT_COLOR;
+                icon.color = ACTIVE_ICON_COLOR;
             }
             if (percentage == 0)
             {
                 background.color = NEUTRAL_BACKGROUND_COLOR;
+                icon.color = PASSIVE_ICON_COLOR;
             }
             if (percentage > 0 && percentage <= 100)
             {
                 background.color = RESIST_BACKGROUND_COLOR;
                 text.color = RESIST_TEXT_COLOR;
+                icon.color = ACTIVE_ICON_COLOR;
             }
             if (percentage > 100)
             {
                 background.color = ABSORB_BACKGROUND_COLOR;
                 text.color = ABSORT_TEXT_COLOR;
+                icon.color = ACTIVE_ICON_COLOR;
             }
         }
     }
