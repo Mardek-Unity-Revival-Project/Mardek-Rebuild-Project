@@ -12,6 +12,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1b52e3af512408b48b3e3a6f23e95861, type: 2}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: _skillSet
+      value: 
+      objectReference: {fileID: 11400000, guid: 97d3ee5c53530fc4082df7991eda06e4, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.fullSize
       value: 70
       objectReference: {fileID: 0}
@@ -22,6 +26,22 @@ PrefabInstance:
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.slots.Array.size
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[7]._value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[8]._value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[9]._value
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.slots.Array.data[0].canBeEmpty
@@ -50,6 +70,22 @@ PrefabInstance:
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.slots.Array.data[6].canBeEmpty
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[10]._value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[11]._value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[12]._value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[13]._value
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.slots.Array.data[0].currentItem
@@ -179,6 +215,34 @@ PrefabInstance:
       propertyPath: _inventory.slots.Array.data[5].itemFilter.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: cc10574bbb211d2459008f7b3458f955, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[7].<statusEnum>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 255332e247758b24a9957e562d165af9, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[8].<statusEnum>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c91dd1e879cb82459206193056cae0d, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[9].<statusEnum>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: e63b06eec672dc9458a4ab94e4c84d37, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[10].<statusEnum>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 78be310948365564881caae421cc8d02, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[11].<statusEnum>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 43eade1775d1fb84a9fac2812007a80b, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[12].<statusEnum>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 33070d633c267994fa4d3d2e29dd23e2, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: baseStatus.intStats.Array.data[13].<statusEnum>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 946b3fad7da056b468206c77a966c059, type: 2}
     - target: {fileID: 7765752777133994383, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: m_Name
       value: HeroMardek

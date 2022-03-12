@@ -12,11 +12,15 @@ namespace MURP.CharacterSystem
         [SerializeField] CharacterInfo bio;
         public CharacterInfo CharacterInfo { get { return bio; } }
 
+        [SerializeField] ActiveSkillSet _skillSet;
+
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
         [SerializeField] MURP.Inventory.Inventory _inventory;
 
         public MURP.Inventory.Inventory inventory { get { return _inventory; } }
+
+        public ActiveSkillSet skillSet { get { return _skillSet; } }
 
 
         void Start()
