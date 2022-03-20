@@ -18,7 +18,14 @@ namespace MURP.CharacterSystem
         List<StatsSet> statusChanges = new List<StatsSet>();
         [SerializeField] MURP.Inventory.Inventory _inventory;
 
+        [SerializeField] Sprite _downSprite1;
+        [SerializeField] Sprite _downSprite2;
+
         public MURP.Inventory.Inventory inventory { get { return _inventory; } }
+
+        public Sprite downSprite1 { get { return _downSprite1; } }
+        
+        public Sprite downSprite2 { get { return _downSprite2; } }
 
         public ActiveSkillSet skillSet { get { return _skillSet; } }
 

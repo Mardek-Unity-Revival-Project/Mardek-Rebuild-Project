@@ -77,6 +77,7 @@ namespace MURP.UI
         {
             this.currentlySelected = null;
             this.selectables = GetComponentsInChildren<Selectable>();
+            this.UpdateSelectionAtIndex(false);
         }
 
         public void HandleMovementInput(InputAction.CallbackContext ctx)

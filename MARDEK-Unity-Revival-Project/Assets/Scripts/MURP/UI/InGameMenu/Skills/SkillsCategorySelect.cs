@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MURP.CharacterSystem;
 using MURP.SkillSystem;
+using MURP.StatsSystem;
 
 namespace MURP.UI
 {
@@ -15,9 +16,13 @@ namespace MURP.UI
         [SerializeField] Text skillCategoryLabel;
         [SerializeField] Text selectedSkillName;
         [SerializeField] Text selectedSkillDescription;
+        [SerializeField] Text bottomBarDescription;
         [SerializeField] Image selectedSkillElement;
+        [SerializeField] ConditionBar mpBar;
+        [SerializeField] ConditionBar rpBar;
         [SerializeField] GameObject selectedCategoryPointer;
         [SerializeField] GameObject selectedSkillPointer;
+        [SerializeField] SkillsMenu skillsMenu;
 
         Character currentCharacter;
 
@@ -28,10 +33,10 @@ namespace MURP.UI
 
         public void CancelCategorySelection()
         {
-            Debug.Log("CancelCategorySelection...");
             this.ClearSkillEntries();
             this.selectedCategoryPointer.SetActive(false);
             this.selectedSkillPointer.SetActive(false);
+            this.ShowMpBar();
         }
 
         void ClearSkillEntries()
@@ -64,7 +69,7 @@ namespace MURP.UI
                 if (canLearn || hasMastery || isAlwaysLearned)
                 {
                     SkillEntry skillEntry = Instantiate(this.skillEntryPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<SkillEntry>();
-                    skillEntry.Init(this.selectedSkillName, this.selectedSkillDescription, this.selectedSkillElement, this.selectedSkillPointer);
+                    skillEntry.Init(this.skillsMenu, this.selectedSkillName, this.selectedSkillDescription, this.selectedSkillElement, this.selectedSkillPointer);
                     skillEntry.SetSkill(this.currentCharacter, skill);
                     skillEntry.transform.SetParent(this.skillList.transform);
                     skillEntry.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -79,6 +84,14 @@ namespace MURP.UI
             this.currentCharacter = newCharacter;
         }
 
+        private void ShowMpBar()
+        {
+            this.mpBar.gameObject.SetActive(true);
+            this.rpBar.gameObject.SetActive(false);
+            this.bottomBarDescription.text = "MP";
+            this.mpBar.SetValues(100, 150); // TODO Improve this once we actually have mana
+        }
+
         public override void Select(bool playSFX = true)
         {
             base.Select(playSFX: playSFX);
@@ -86,6 +99,17 @@ namespace MURP.UI
             this.skillCategoryLabel.text = this.category.description;
             this.selectedCategoryPointer.transform.position = this.transform.position;
             this.selectedCategoryPointer.SetActive(true);
+            if (this.category.isActive)
+            {
+                this.ShowMpBar();
+            }  
+            else
+            {
+                this.mpBar.gameObject.SetActive(false);
+                this.rpBar.gameObject.SetActive(true);
+                this.bottomBarDescription.text = "RP";
+                this.rpBar.SetValues(10, 100); // TODO Improve this once this system is more mature
+            }
         }
 
         public override void Deselect()

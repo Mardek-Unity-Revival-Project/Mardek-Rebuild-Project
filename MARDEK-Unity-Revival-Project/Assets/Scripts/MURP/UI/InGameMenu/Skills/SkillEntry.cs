@@ -28,8 +28,16 @@ namespace MURP.UI
         Character character;
         Skill skill;
         bool isSelected;
+        bool isEnabled = true;
 
         int shouldMoveSelectedSkillPointer;
+        SkillsMenu skillsMenu;
+
+        public void Toggle()
+        {
+            this.isEnabled = !this.isEnabled;
+            this.UpdateAppearance();
+        }
 
         void UpdateAppearance()
         {
@@ -47,8 +55,7 @@ namespace MURP.UI
             }
             else
             {
-                bool isEnabled = true; // TODO Add system for enabling/disabling
-                if (isEnabled) this.elementOrCheckbox.sprite = this.checkedSprite;
+                if (this.isEnabled) this.elementOrCheckbox.sprite = this.checkedSprite;
                 else this.elementOrCheckbox.sprite = this.uncheckedSprite;
                 this.elementOrCheckbox.transform.localScale = new Vector3(1f, 1f, 1f);
             }
@@ -73,17 +80,18 @@ namespace MURP.UI
             }
 
             this.selectedSkillName.text = this.skill.displayName;
-            //Debug.Log("Set selectedSkillName text to " + this.selectedSkillName.text);
             this.selectedSkillDescription.text = this.skill.description;
             this.selectedSkillElement.sprite = this.skill.element.thinSprite;
         }
 
-        public void Init(Text selectedSkillName, Text selectedSkillDescription, Image selectedSkillElement, GameObject selectedSkillPointer)
+        public void Init(SkillsMenu skillsMenu, Text selectedSkillName, Text selectedSkillDescription, Image selectedSkillElement, GameObject selectedSkillPointer)
         {
             this.selectedSkillName = selectedSkillName;
             this.selectedSkillDescription = selectedSkillDescription;
             this.selectedSkillElement = selectedSkillElement;
             this.selectedSkillPointer = selectedSkillPointer;
+            this.skillsMenu = skillsMenu;
+            this.isEnabled = true;
         }
 
         public void SetSkill(Character character, Skill skill)
@@ -100,7 +108,6 @@ namespace MURP.UI
             {
                 this.selectedSkillPointer.transform.position = this.transform.position;
                 this.selectedSkillPointer.SetActive(true);
-                Debug.Log("Moved crystal pointer to " + this.selectedSkillPointer.transform.position);
             }
             if (this.shouldMoveSelectedSkillPointer > 0)
             {
@@ -112,10 +119,10 @@ namespace MURP.UI
         public override void Select(bool playSFX = true)
         {
             base.Select(playSFX: playSFX);
-            Debug.Log("SkillEntry.OnSelect: select " + this.skill.name);
             this.isSelected = true;
             this.shouldMoveSelectedSkillPointer = 2;
             this.UpdateAppearance();
+            this.skillsMenu.selectedSkill = this;
         }
 
         public override void Deselect()

@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MURP.CharacterSystem;
+using MURP.StatsSystem;
 
 namespace MURP.UI
 {
@@ -12,15 +12,35 @@ namespace MURP.UI
 
         [SerializeField] Image backgroundImage;
         [SerializeField] Image characterImage;
+        [SerializeField] Text selectedCharacterName;
+        [SerializeField] ConditionBar mpBar;
 
         SkillsMenu skillsMenu;
         Character character;
+        int currentTick;
 
         public void SetCharacter(SkillsMenu skillsMenu, Character character)
         {
-            // TODO Set character image
             this.skillsMenu = skillsMenu;
             this.character = character;
+            this.currentTick = 0;
+        }
+
+        public void FixedUpdate()
+        {
+            if (this.currentTick == 0)
+            {
+                this.characterImage.sprite = this.character.downSprite1;
+            }
+            if (this.currentTick == 15)
+            {
+                this.characterImage.sprite = this.character.downSprite2;
+            }
+            this.currentTick += 1;
+            if (this.currentTick == 30)
+            {
+                this.currentTick = 0;
+            }
         }
 
         public override void Select(bool playSFX = true)
@@ -28,6 +48,8 @@ namespace MURP.UI
             base.Select(playSFX: playSFX);
             this.backgroundImage.color = selectedColor;
             this.skillsMenu.OnSelect(this.character);
+            this.selectedCharacterName.text = character.name;
+            this.mpBar.SetValues(100, 150); // TODO Fix this once we have mana
         }
 
         public override void Deselect()

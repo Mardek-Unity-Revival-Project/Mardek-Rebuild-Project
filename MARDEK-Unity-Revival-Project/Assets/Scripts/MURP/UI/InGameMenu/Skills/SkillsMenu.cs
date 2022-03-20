@@ -17,6 +17,8 @@ namespace MURP.UI
         [SerializeField] Image selectedSkillElement;
         [SerializeField] List<SkillsCategorySelect> categories;
 
+        public SkillEntry selectedSkill;
+
         void OnEnable()
         {
             this.OnSelect(this.party.Characters[0]);
@@ -31,6 +33,11 @@ namespace MURP.UI
                     this.characters[index].gameObject.SetActive(false);
                 }
             }
+        }
+
+        public void ToggleSelectedSkill()
+        {
+            if (this.selectedSkill != null) this.selectedSkill.Toggle();
         }
 
         public void OnSelect(Character character)
