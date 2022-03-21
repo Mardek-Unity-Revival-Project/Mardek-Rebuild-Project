@@ -7,7 +7,6 @@ using System;
 
 public class KeyRebind : MonoBehaviour
 {
-    //[SerializeField] PlayerInput control = null;
     [SerializeField] InputActionReference actionReference = null;
     [SerializeField, Range(0, 3)] int compositeBindingIndex = 0;
     InputActionRebindingExtensions.RebindingOperation rebindingOperation;
@@ -78,5 +77,16 @@ public class KeyRebind : MonoBehaviour
         rebindingOperation.Dispose();
         UpdateBindText();
         InputReader.RefreshInputReaders();
+        SaveRebind();
+    }
+
+    void SaveRebind()
+    {
+        foreach (var binding in actionReference.action.bindings)
+        {
+            string key = binding.id.ToString();
+            string val = binding.overridePath;
+            PlayerPrefs.SetString(key, val);
+        }        
     }
 }
