@@ -12,23 +12,20 @@ namespace MURP.CharacterSystem
         [SerializeField] CharacterInfo bio;
         public CharacterInfo CharacterInfo { get { return bio; } }
 
-        [SerializeField] ActiveSkillSet _skillSet;
-
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
-        [SerializeField] MURP.Inventory.Inventory _inventory;
 
+        [SerializeField] Inventory.Inventory _inventory;
+        [SerializeField] ActiveSkillSet _skillSet;
         [SerializeField] Sprite _downSprite1;
         [SerializeField] Sprite _downSprite2;
 
-        public MURP.Inventory.Inventory inventory { get { return _inventory; } }
-
+        public Inventory.Inventory inventory { get { return _inventory; } }
+        public ActiveSkillSet skillSet { get { return _skillSet; } }
         public Sprite downSprite1 { get { return _downSprite1; } }
-        
         public Sprite downSprite2 { get { return _downSprite2; } }
 
-        public ActiveSkillSet skillSet { get { return _skillSet; } }
-
+        [SerializeField] Skill skill;
 
         void Start()
         {
@@ -51,8 +48,11 @@ namespace MURP.CharacterSystem
 
             for (int equipmentSlotIndex = 0; equipmentSlotIndex < 6; equipmentSlotIndex++)
             {
-                var equipmentSlot = this.inventory.GetSlot(equipmentSlotIndex);
-                if (!equipmentSlot.IsEmpty() && equipmentSlot.item is EquippableItem) {
+                var equipmentSlot = inventory.GetSlot(equipmentSlotIndex);
+                if (equipmentSlot == null)
+                    continue;
+                if ( !equipmentSlot.IsEmpty() && equipmentSlot.item is EquippableItem)
+                {
                     var equipment = equipmentSlot.item as EquippableItem;
                     SumHolders(ref resultHolder, equipment.statBoosts.GetStat(desiredStatus));
                 }
@@ -83,6 +83,5 @@ namespace MURP.CharacterSystem
             baseStatus.ModifyStat(stat, delta);
         }
 
-        [SerializeField] Skill skill;
     }
 }
