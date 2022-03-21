@@ -47,6 +47,8 @@ namespace MURP.UI
         {
             base.Select(playSFX: playSFX);
             this.backgroundImage.color = selectedColor;
+            if (character == null)
+                return;
             this.skillsMenu.OnSelect(this.character);
             this.selectedCharacterName.text = character.name;
             this.mpBar.SetValues(100, 150); // TODO Fix this once we have mana

@@ -21,32 +21,32 @@ namespace MURP.UI
 
         void OnEnable()
         {
-            this.OnSelect(this.party.Characters[0]);
-            for (int index = 0; index < this.characters.Count; index++) {
-                if (index < this.party.Characters.Count)
+            OnSelect(party.Characters[0]);
+            for (int index = 0; index < characters.Count; index++) {
+                if (index < party.Characters.Count)
                 {
-                    this.characters[index].gameObject.SetActive(true);
-                    this.characters[index].SetCharacter(this, this.party.Characters[index]);
+                    characters[index].gameObject.SetActive(true);
+                    characters[index].SetCharacter(this, party.Characters[index]);
                 }
                 else
                 {
-                    this.characters[index].gameObject.SetActive(false);
+                    characters[index].gameObject.SetActive(false);
                 }
             }
         }
 
         public void ToggleSelectedSkill()
         {
-            if (this.selectedSkill != null) this.selectedSkill.Toggle();
+            if (selectedSkill != null) selectedSkill.Toggle();
         }
 
         public void OnSelect(Character character)
         {
-            this.skillSetIcon.sprite = character.skillSet.sprite;
-            this.selectedSkillName.text = character.skillSet.displayName;
-            this.selectedSkillDescription.text = character.skillSet.description;
-            this.selectedSkillElement.sprite = this.transparentSprite;
-            foreach (var categorySelect in this.categories)
+            skillSetIcon.sprite = character.skillSet.sprite;
+            selectedSkillName.text = character.skillSet.displayName;
+            selectedSkillDescription.text = character.skillSet.description;
+            selectedSkillElement.sprite = transparentSprite;
+            foreach (var categorySelect in categories)
             {
                 categorySelect.SetCharacter(character);
             }
