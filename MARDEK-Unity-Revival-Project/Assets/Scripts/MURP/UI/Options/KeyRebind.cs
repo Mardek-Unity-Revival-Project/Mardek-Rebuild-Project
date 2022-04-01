@@ -47,6 +47,11 @@ public class KeyRebind : MonoBehaviour
         UpdateBindText();
     }
 
+    private void OnEnable()
+    {
+        UpdateBindText();
+    }
+
     void UpdateBindText()
     {
         var bindPath = Binding.effectivePath;
