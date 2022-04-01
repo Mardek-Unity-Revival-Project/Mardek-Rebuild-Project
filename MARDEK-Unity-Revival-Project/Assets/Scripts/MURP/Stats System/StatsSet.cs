@@ -31,7 +31,7 @@ namespace MURP.StatsSystem
             foreach (var statusHolder in statList)
                 if (statusHolder.statusEnum == stat)
                     return statusHolder as StatHolder<T, StatOfType<T>>;
-            return new StatHolder<T, StatOfType<T>>(stat);
+            return null;
         }
     }
 }

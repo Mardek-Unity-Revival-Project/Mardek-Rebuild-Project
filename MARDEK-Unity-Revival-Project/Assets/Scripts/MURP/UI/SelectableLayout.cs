@@ -23,8 +23,7 @@ namespace MURP.UI
             {
                 if (Selectables.Count == 0)
                     index = 0;
-                else
-                    index = (value + Selectables.Count) % Selectables.Count;
+                index = (value + Selectables.Count) % Selectables.Count;
             }
         }
 
@@ -35,7 +34,7 @@ namespace MURP.UI
             {
                 List<Selectable> returnList = new List<Selectable>();
                 foreach (var s in selectables)
-                    if (s && s.gameObject.activeSelf)
+                    if (s.gameObject.activeSelf)
                         returnList.Add(s);
                 return returnList;
             }
@@ -71,13 +70,6 @@ namespace MURP.UI
                 return;
             currentlySelected = Selectables[Index];
             currentlySelected.Select(playSFX);
-        }
-
-        public void RefreshSelectables()
-        {
-            this.currentlySelected = null;
-            this.selectables = GetComponentsInChildren<Selectable>();
-            this.UpdateSelectionAtIndex(false);
         }
 
         public void HandleMovementInput(InputAction.CallbackContext ctx)

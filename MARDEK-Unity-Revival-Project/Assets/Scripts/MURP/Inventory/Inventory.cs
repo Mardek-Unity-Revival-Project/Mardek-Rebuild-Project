@@ -9,10 +9,9 @@ namespace MURP.Inventory
     [System.Serializable]
     public class Inventory
     {
+        [SerializeField] List<Slot> slots;
         [SerializeField, FullSerializer.fsIgnore] bool isForPlayer;
         [SerializeField, FullSerializer.fsIgnore] int fullSize;
-
-        [SerializeField] List<Slot> slots;
 
         // Note: Inventory doesn't extend MonoBehaviour, so this needs to be called by the parent object of the Inventory
         public void Start()
@@ -32,15 +31,13 @@ namespace MURP.Inventory
 
         public Slot GetSlot(int index)
         {
-            if (index >= slots.Count)
-                return null;
-            return slots[index];
+            return this.slots[index];
         }
 
         public List<Slot> GetAllNonEmptySlots()
         {
             List<Slot> result = new List<Slot>();
-            foreach(Slot slot in slots)
+            foreach(Slot slot in this.slots)
             {
                 if (!slot.IsEmpty())
                 {
@@ -50,6 +47,6 @@ namespace MURP.Inventory
             return result;
         }
 
-        public int size { get { return fullSize; } }
+        public int size { get { return this.fullSize; } }
     }
 }

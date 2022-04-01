@@ -5,11 +5,8 @@ namespace MURP.StatsSystem
     [CreateAssetMenu(menuName = "MURP/StatsSystem/Element")]
     public class Element : ScriptableObject
     {
-        [SerializeField] Sprite _thinSprite;
-        [SerializeField] Sprite _thickSprite;
+        [SerializeField] Sprite _sprite;
 
-        public Sprite thinSprite { get { return _thinSprite; } }
-
-        public Sprite thickSprite { get { return _thickSprite; } }
+        public Sprite sprite { get { return _sprite; } }
     }
 }

@@ -15,10 +15,5 @@ namespace MURP.UI
                 for (int i = 0; i < 64; i++)
                     slots[i].SetSlot(character.inventory.GetSlot(i+6));
         }
-
-        public void PropagateSubmenuController(SubmenuLayoutController submenuController, SelectableLayout partyLayout)
-        {
-            foreach (SlotUI slot in slots) slot.SetSubmenuController(submenuController, partyLayout);
-        }
     }
 }

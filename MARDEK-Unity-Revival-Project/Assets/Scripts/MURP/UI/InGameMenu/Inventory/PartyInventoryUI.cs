@@ -11,8 +11,6 @@ namespace MURP.UI
         [SerializeField] Party party = null;
         [SerializeField] List<CharacterEquipmentUI> characterEquipments;
         [SerializeField] CharacterBagUI characterBagUI;
-        [SerializeField] SubmenuLayoutController submenuController;
-        [SerializeField] SelectableLayout partyLayout;
 
         Character selectedCharacter;
         public static Character SelectedCharacter
@@ -31,17 +29,10 @@ namespace MURP.UI
         private void OnEnable()
         {
             instance = this;
-            PropagateSubmenuController();
             UpdateEquipmentUI();
             if(selectedCharacter == null)
                 characterEquipments[0].Select(playSFX: false);
             UpdateBagUI();            
-        }
-
-        void PropagateSubmenuController()
-        {
-            foreach (var equipmentUI in characterEquipments) equipmentUI.PropagateSubmenuController(submenuController, partyLayout);
-            characterBagUI.PropagateSubmenuController(submenuController, partyLayout);
         }
 
         void UpdateEquipmentUI()
@@ -60,15 +51,6 @@ namespace MURP.UI
         void UpdateBagUI()
         {
             characterBagUI.SetCharacter(selectedCharacter);
-        }
-
-        public void TryExitInventory()
-        {
-            if (SlotCursor.instance.IsEmpty())
-            {
-                partyLayout.enabled = false;
-                submenuController.Focus();
-            }
         }
     }
 }

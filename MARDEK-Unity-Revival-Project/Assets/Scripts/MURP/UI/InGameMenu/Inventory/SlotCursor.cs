@@ -27,7 +27,7 @@ namespace MURP.UI
         { 
             if (slot.IsEmpty())
             {
-                if (!slotInteracted.IsEmpty()) PickupItemFromSlot(slotInteracted);
+                PickupItemFromSlot(slotInteracted);
             }
             else
             {
@@ -40,6 +40,7 @@ namespace MURP.UI
                     AudioManager.PlaySoundEffect(rejectSound);
                 }
             }
+            UpdateCursorTexture();
         }
         void PlaceItemInSlot(Slot slotInteracted)
         {
@@ -95,26 +96,16 @@ namespace MURP.UI
                     slotInteracted.currentAmount = 1;
                     AudioManager.PlaySoundEffect(pickupSound);
                 }
-                else
-                {
-                    AudioManager.PlaySoundEffect(rejectSound);
-                }
             }
         }
 
-        public bool IsEmpty()
+        void UpdateCursorTexture()
         {
-            return slot.IsEmpty();
-        }
+            Texture2D newTexture;
+            if (slot.IsEmpty()) newTexture = null;
+            else newTexture = slot.item.readableSpriteTexture;
 
-        public Item GetItem()
-        {
-            return slot.item;
-        }
-
-        public int GetAmount()
-        {
-            return slot.amount;
+            Cursor.SetCursor(newTexture, new Vector2(0f, 0f), CursorMode.Auto);
         }
     }
 }
