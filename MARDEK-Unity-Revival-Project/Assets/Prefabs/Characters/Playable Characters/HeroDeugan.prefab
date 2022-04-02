@@ -104,6 +104,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: inventory.slots.Array.data[0].currentItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 3071228e88047bf4295c85c047f12146, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.slots.Array.data[0].currentItem
       value: 
       objectReference: {fileID: 11400000, guid: 9f44d2ce67d4c63428b26c460a494c8e, type: 2}
@@ -132,6 +136,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3071228e88047bf4295c85c047f12146, type: 2}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: inventory.slots.Array.data[0].currentAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.slots.Array.data[0].currentAmount
       value: 1
       objectReference: {fileID: 0}
@@ -158,6 +166,22 @@ PrefabInstance:
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.slots.Array.data[6].currentAmount
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: equippedItems.slots.Array.data[0].currentItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f44d2ce67d4c63428b26c460a494c8e, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: equippedItems.slots.Array.data[2].currentItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d545b6b019ef57499fd306d4bb86984, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: equippedItems.slots.Array.data[0].currentAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: equippedItems.slots.Array.data[2].currentAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.slots.Array.data[0].canPlayerPutItems

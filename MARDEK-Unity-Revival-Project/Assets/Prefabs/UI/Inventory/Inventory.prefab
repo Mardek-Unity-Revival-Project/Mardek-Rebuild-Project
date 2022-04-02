@@ -184,7 +184,6 @@ GameObject:
   - component: {fileID: 5778641351727845772}
   - component: {fileID: 2860249925650661221}
   - component: {fileID: 2513193275458839842}
-  - component: {fileID: 7957160790034650996}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -238,27 +237,6 @@ MonoBehaviour:
   pickupSound: {fileID: 11400000, guid: 19ced7238c9f5034eb03871cf72b2ee2, type: 2}
   placeSound: {fileID: 11400000, guid: dc9e4eea01c6a8048ac7b48d125e29b9, type: 2}
   rejectSound: {fileID: 11400000, guid: d83e1109dfe9cec4a8a03173bae06075, type: 2}
---- !u!114 &7957160790034650996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8855660801247215250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4613dfb94cd4b847a66ec67dd8d76c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  party: {fileID: 0}
-  characterEquipments:
-  - {fileID: 8904397065080675568}
-  - {fileID: 4510207223315684497}
-  - {fileID: 5804052890414280751}
-  - {fileID: 4426697490249575751}
-  characterBagUI: {fileID: 2041600106031651214}
-  submenuController: {fileID: 0}
-  partyLayout: {fileID: 0}
 --- !u!1001 &1223983185002632219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -386,6 +364,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2041600106031651214}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FetchSelectedCharacterAndUpdateUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MURP.UI.CharacterBagUI, MURP.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2957739689404235259, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -457,17 +463,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1704190577881950983, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
   m_PrefabInstance: {fileID: 1223983185002632219}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4510207223315684497 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -5878587665380292470, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
-  m_PrefabInstance: {fileID: 1223983185002632219}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0313bcbdd8b2834080e8e23cd7ff119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1370719656736957901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -599,6 +594,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2041600106031651214}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FetchSelectedCharacterAndUpdateUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MURP.UI.CharacterBagUI, MURP.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2957739689404235259, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -670,17 +693,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1704190577881950983, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
   m_PrefabInstance: {fileID: 1370719656736957901}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4426697490249575751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -5878587665380292470, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
-  m_PrefabInstance: {fileID: 1370719656736957901}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0313bcbdd8b2834080e8e23cd7ff119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3004639110768359305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1417,6 +1429,10 @@ PrefabInstance:
     - target: {fileID: 2430267451057854040, guid: ac5fb0cd708f76b47ab33ae894ddb605, type: 3}
       propertyPath: m_Name
       value: CharacterBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430267451057854040, guid: ac5fb0cd708f76b47ab33ae894ddb605, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2431744530871755747, guid: ac5fb0cd708f76b47ab33ae894ddb605, type: 3}
       propertyPath: m_CellSize.x
@@ -2695,6 +2711,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2041600106031651214}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FetchSelectedCharacterAndUpdateUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MURP.UI.CharacterBagUI, MURP.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2957739689404235259, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2766,17 +2810,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1704190577881950983, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
   m_PrefabInstance: {fileID: 6195205267956290682}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8904397065080675568 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -5878587665380292470, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
-  m_PrefabInstance: {fileID: 6195205267956290682}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0313bcbdd8b2834080e8e23cd7ff119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6554463168596336079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3336,6 +3369,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2041600106031651214}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FetchSelectedCharacterAndUpdateUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MURP.UI.CharacterBagUI, MURP.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929098900189685587, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2957739689404235259, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3402,17 +3463,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
---- !u!114 &5804052890414280751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -5878587665380292470, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}
-  m_PrefabInstance: {fileID: 9144326979292182693}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0313bcbdd8b2834080e8e23cd7ff119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &7584533177205756834 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1704190577881950983, guid: 013db1dbb2117e941ad098be5e8d8c66, type: 3}

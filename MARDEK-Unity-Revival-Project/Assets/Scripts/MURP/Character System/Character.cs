@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using MURP.Inventory;
+using MURP.InventorySystem;
 using MURP.StatsSystem;
 using MURP.SkillSystem;
 
@@ -12,28 +12,21 @@ namespace MURP.CharacterSystem
         [SerializeField] CharacterInfo bio;
         public CharacterInfo CharacterInfo { get { return bio; } }
 
-        [SerializeField] ActiveSkillSet _skillSet;
-
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
-        [SerializeField] MURP.Inventory.Inventory _inventory;
+
+        [SerializeField] ActiveSkillSet _skillSet;
+        public ActiveSkillSet skillSet { get { return _skillSet; } }
+
+        [SerializeField] Inventory inventory;
+        [SerializeField] Inventory equippedItems;
+        public Inventory Inventory { get { return inventory; } }
+        public Inventory EquippedItems { get { return equippedItems; } }
 
         [SerializeField] Sprite _downSprite1;
         [SerializeField] Sprite _downSprite2;
-
-        public MURP.Inventory.Inventory inventory { get { return _inventory; } }
-
         public Sprite downSprite1 { get { return _downSprite1; } }
-        
         public Sprite downSprite2 { get { return _downSprite2; } }
-
-        public ActiveSkillSet skillSet { get { return _skillSet; } }
-
-
-        void Start()
-        {
-            this.inventory.Start();
-        }
 
         public void BattleAct(List<Character> allies, List<Character> enemies)
         {
@@ -49,13 +42,11 @@ namespace MURP.CharacterSystem
             foreach (var set in statusChanges)
                 SumHolders(ref resultHolder, set.GetStat(desiredStatus));
 
-            for (int equipmentSlotIndex = 0; equipmentSlotIndex < 6; equipmentSlotIndex++)
+            foreach(var slot in EquippedItems.Slots)
             {
-                var equipmentSlot = this.inventory.GetSlot(equipmentSlotIndex);
-                if (!equipmentSlot.IsEmpty() && equipmentSlot.item is EquippableItem) {
-                    var equipment = equipmentSlot.item as EquippableItem;
-                    SumHolders(ref resultHolder, equipment.statBoosts.GetStat(desiredStatus));
-                }
+                var equippableItem = slot.item as EquippableItem;
+                if(equippableItem != null)
+                    SumHolders(ref resultHolder, equippableItem.statBoosts.GetStat(desiredStatus));
             }
             
             return resultHolder;
