@@ -2,7 +2,7 @@ using UnityEngine;
 using MURP.Core;
 using MURP.StatsSystem;
 
-namespace MURP.Inventory
+namespace MURP.InventorySystem
 {
     [CreateAssetMenu(menuName = "MURP/Inventory/Item")]
     public class Item : AddressableScriptableObject

@@ -1,5 +1,5 @@
 using UnityEngine;
-using MURP.Inventory;
+using MURP.InventorySystem;
 using MURP.Audio;
 
 namespace MURP.UI

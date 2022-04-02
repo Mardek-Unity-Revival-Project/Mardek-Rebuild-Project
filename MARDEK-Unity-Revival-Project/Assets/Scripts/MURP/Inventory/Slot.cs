@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace MURP.Inventory
+namespace MURP.InventorySystem
 {
     [System.Serializable]
     public class Slot

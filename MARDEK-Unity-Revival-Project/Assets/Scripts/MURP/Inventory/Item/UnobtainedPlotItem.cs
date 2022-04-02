@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MURP.Inventory
+namespace MURP.InventorySystem
 {
     /*
      * Represents a `PlotItem` before it is obtained by the player. Such items can be stored in a shop inventory and a battle loot

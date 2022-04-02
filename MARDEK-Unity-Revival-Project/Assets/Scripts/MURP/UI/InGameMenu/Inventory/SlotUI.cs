@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using MURP.Audio;
-using MURP.Inventory;
+using MURP.InventorySystem;
 
 namespace MURP.UI
 {

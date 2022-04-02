@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MURP.Inventory
+namespace MURP.InventorySystem
 {
     [CreateAssetMenu(menuName = "MURP/Inventory/EquipmentCategory")]
     public class EquipmentCategory : ScriptableObject
