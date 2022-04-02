@@ -55,12 +55,14 @@ namespace MURP.UI
         private void OnEnable()
         {
             UpdateSelectionAtIndex(false);
-            input.enabled = true;
+            if(input)
+                input.enabled = true;
         }
 
         private void OnDisable()
         {
-            input.enabled = false;            
+            if (input)
+                input.enabled = false;            
         }
 
         void UpdateSelectionAtIndex(bool playSFX = true)
