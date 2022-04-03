@@ -26,7 +26,7 @@ namespace MURP.UI
                 if (index < this.party.Characters.Count)
                 {
                     this.characters[index].gameObject.SetActive(true);
-                    this.characters[index].SetCharacter(this, this.party.Characters[index]);
+                    this.characters[index].SetCharacter(party.Characters[index]);
                 }
                 else
                 {

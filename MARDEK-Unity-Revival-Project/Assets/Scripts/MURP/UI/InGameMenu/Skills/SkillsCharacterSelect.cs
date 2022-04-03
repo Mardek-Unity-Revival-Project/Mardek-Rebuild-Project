@@ -15,13 +15,12 @@ namespace MURP.UI
         [SerializeField] Text selectedCharacterName;
         [SerializeField] ConditionBar mpBar;
 
-        SkillsMenu skillsMenu;
+        [SerializeField] SkillsMenu skillsMenu;
         Character character;
         int currentTick;
 
-        public void SetCharacter(SkillsMenu skillsMenu, Character character)
+        public void SetCharacter(Character character)
         {
-            this.skillsMenu = skillsMenu;
             this.character = character;
             this.currentTick = 0;
         }
