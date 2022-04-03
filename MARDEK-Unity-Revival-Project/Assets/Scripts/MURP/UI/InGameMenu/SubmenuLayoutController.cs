@@ -23,5 +23,10 @@ namespace MURP.UI
             blurPanel.SetActive(false);
             AudioManager.PlaySoundEffect(focusSound);
         }
+
+        public bool IsFocussed()
+        {
+            return enabled;
+        }
     }
 }

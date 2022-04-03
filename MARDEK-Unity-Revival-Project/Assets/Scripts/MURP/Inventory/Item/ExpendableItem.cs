@@ -1,7 +1,7 @@
 using UnityEngine;
 using MURP.StatsSystem;
 
-namespace MURP.Inventory
+namespace MURP.InventorySystem
 {
     [CreateAssetMenu(menuName = "MURP/Inventory/ExpendableItem")]
     public class ExpendableItem : Item

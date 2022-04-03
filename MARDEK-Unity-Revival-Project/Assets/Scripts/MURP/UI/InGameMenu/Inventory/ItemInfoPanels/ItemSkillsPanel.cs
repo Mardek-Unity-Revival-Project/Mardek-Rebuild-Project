@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MURP.Inventory;
+using MURP.InventorySystem;
 using UnityEngine.UI;
 
 namespace MURP.UI

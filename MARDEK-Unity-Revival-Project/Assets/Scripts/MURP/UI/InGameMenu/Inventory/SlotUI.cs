@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using MURP.Audio;
-using MURP.Inventory;
+using MURP.InventorySystem;
 
 namespace MURP.UI
 {
@@ -15,6 +15,8 @@ namespace MURP.UI
         [SerializeField] Sprite hoverSlotSprite;
         [SerializeField] Sprite transparentSprite;
 
+        SubmenuLayoutController submenuController;
+        SelectableLayout partyLayout;
         Slot slot;
         public static Slot selectedSlot { get; private set; }
 
@@ -22,6 +24,12 @@ namespace MURP.UI
         {
             slot = newSlot;
             UpdateSprite();
+        }
+
+        public void SetSubmenuController(SubmenuLayoutController submenuController, SelectableLayout partyLayout)
+        {
+            this.submenuController = submenuController;
+            this.partyLayout = partyLayout;
         }
 
         public void UpdateSprite()
@@ -49,6 +57,11 @@ namespace MURP.UI
         {
             SlotCursor.InteractWithSlot(slot);
             UpdateSprite();
+            if (submenuController != null && submenuController.IsFocussed())
+            {
+                submenuController.Unfocus();
+                partyLayout.enabled = true;
+            }
         }
 
         public void OnPointerEnter(PointerEventData pointerEvent)

@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1704190577881950983}
   - component: {fileID: 7548399783177137448}
+  - component: {fileID: 1929098900189685587}
   - component: {fileID: -5878587665380292470}
   m_Layer: 0
   m_Name: EquipmentBar
@@ -124,6 +125,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349028162986570891}
   m_CullTransparentMesh: 1
+--- !u!114 &1929098900189685587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349028162986570891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9feba03784d905499100622890e3e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  selectionSFX: {fileID: 0}
+  characterName: {fileID: 439865548107057736}
+  backgroundBar: {fileID: 5435431635686148324}
 --- !u!114 &-5878587665380292470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,15 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0313bcbdd8b2834080e8e23cd7ff119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnSelected:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeselected:
-    m_PersistentCalls:
-      m_Calls: []
-  selectionSFX: {fileID: 11400000, guid: 0da28b87b9cd6e945acf7875aaef8844, type: 2}
-  backgroundBar: {fileID: 5435431635686148324}
-  characterName: {fileID: 439865548107057736}
   slots:
   - {fileID: 3931240265315124663}
   - {fileID: 1589424993919725754}
@@ -152,6 +165,7 @@ MonoBehaviour:
   - {fileID: 8519084321844135668}
   - {fileID: 3288780765431819424}
   - {fileID: 6677213175911463435}
+  character: {fileID: 0}
 --- !u!1 &1937558865830073343
 GameObject:
   m_ObjectHideFlags: 0

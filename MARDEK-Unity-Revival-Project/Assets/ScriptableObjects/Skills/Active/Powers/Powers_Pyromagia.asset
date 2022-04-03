@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10dc68eb500d4d4091ecca828b02ac8, type: 3}
+  m_Name: Powers_Pyromagia
+  m_EditorClassIdentifier: 
+  _displayName: Pyromagia
+  _description: Powerful Fire elemental magic attack with 280 power, can target multiple
+    enemies.
+  _cost: 15
+  _category: {fileID: 11400000, guid: 721d370ab52f8dc46aa8a4ca7226bfa3, type: 2}
+  _element: {fileID: 11400000, guid: e179fa6b43e015742b42814e32864e49, type: 2}
+  _masteryPoints: 1
+  _masteryStat: {fileID: 11400000, guid: 6b2a28f51a65421418b980d6b491c9e6, type: 2}
+  effects: []

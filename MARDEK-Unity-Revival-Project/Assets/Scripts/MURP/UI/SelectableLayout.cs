@@ -23,7 +23,8 @@ namespace MURP.UI
             {
                 if (Selectables.Count == 0)
                     index = 0;
-                index = (value + Selectables.Count) % Selectables.Count;
+                else
+                    index = (value + Selectables.Count) % Selectables.Count;
             }
         }
 
@@ -34,7 +35,7 @@ namespace MURP.UI
             {
                 List<Selectable> returnList = new List<Selectable>();
                 foreach (var s in selectables)
-                    if (s.gameObject.activeSelf)
+                    if (s && s.gameObject.activeSelf)
                         returnList.Add(s);
                 return returnList;
             }
@@ -54,12 +55,14 @@ namespace MURP.UI
         private void OnEnable()
         {
             UpdateSelectionAtIndex(false);
-            input.enabled = true;
+            if(input)
+                input.enabled = true;
         }
 
         private void OnDisable()
         {
-            input.enabled = false;            
+            if (input)
+                input.enabled = false;            
         }
 
         void UpdateSelectionAtIndex(bool playSFX = true)
@@ -70,6 +73,13 @@ namespace MURP.UI
                 return;
             currentlySelected = Selectables[Index];
             currentlySelected.Select(playSFX);
+        }
+
+        public void RefreshSelectables()
+        {
+            this.currentlySelected = null;
+            this.selectables = GetComponentsInChildren<Selectable>();
+            this.UpdateSelectionAtIndex(false);
         }
 
         public void HandleMovementInput(InputAction.CallbackContext ctx)

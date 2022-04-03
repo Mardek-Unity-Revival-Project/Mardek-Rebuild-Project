@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using MURP.InventorySystem;
 using MURP.StatsSystem;
 using MURP.SkillSystem;
 
@@ -13,15 +14,19 @@ namespace MURP.CharacterSystem
 
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
-        [SerializeField] MURP.Inventory.Inventory _inventory;
 
-        public MURP.Inventory.Inventory inventory { get { return _inventory; } }
+        [SerializeField] ActiveSkillSet _skillSet;
+        public ActiveSkillSet skillSet { get { return _skillSet; } }
 
+        [SerializeField] Inventory inventory;
+        [SerializeField] Inventory equippedItems;
+        public Inventory Inventory { get { return inventory; } }
+        public Inventory EquippedItems { get { return equippedItems; } }
 
-        void Start()
-        {
-            this.inventory.Start();
-        }
+        [SerializeField] Sprite _downSprite1;
+        [SerializeField] Sprite _downSprite2;
+        public Sprite downSprite1 { get { return _downSprite1; } }
+        public Sprite downSprite2 { get { return _downSprite2; } }
 
         public void BattleAct(List<Character> allies, List<Character> enemies)
         {
@@ -36,6 +41,14 @@ namespace MURP.CharacterSystem
             SumHolders(ref resultHolder, baseStatus.GetStat(desiredStatus));
             foreach (var set in statusChanges)
                 SumHolders(ref resultHolder, set.GetStat(desiredStatus));
+
+            foreach(var slot in EquippedItems.Slots)
+            {
+                var equippableItem = slot.item as EquippableItem;
+                if(equippableItem != null)
+                    SumHolders(ref resultHolder, equippableItem.statBoosts.GetStat(desiredStatus));
+            }
+            
             return resultHolder;
 
             void SumHolders(ref StatHolder<T, StatOfType<T>> firstHolder, StatHolder<T, StatOfType<T>> secondHolder)
