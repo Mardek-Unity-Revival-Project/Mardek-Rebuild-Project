@@ -42,6 +42,8 @@ namespace MURP.UI
 
         public void OnSelect(Character character)
         {
+            if (character == null)
+                return;
             this.skillSetIcon.sprite = character.skillSet.sprite;
             this.selectedSkillName.text = character.skillSet.displayName;
             this.selectedSkillDescription.text = character.skillSet.description;
