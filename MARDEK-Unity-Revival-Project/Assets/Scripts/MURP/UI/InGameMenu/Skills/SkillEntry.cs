@@ -41,27 +41,27 @@ namespace MURP.UI
 
         void UpdateAppearance()
         {
-            this.skillNameText.text = this.skill.displayName;
-            this.mpOrRp.text = this.skill.cost.ToString();
+            this.skillNameText.text = this.skill.DisplayName;
+            this.mpOrRp.text = this.skill.Cost.ToString();
 
             Color textColor = this.isSelected ? SELECTED_TEXT_COLOR : DEFAULT_TEXT_COLOR;
             this.skillNameText.color = textColor;
             this.mpOrRp.color = textColor;
 
-            if (this.skill.category.isActive)
-            {
-                this.elementOrCheckbox.sprite = this.skill.element.thickSprite;
-                this.elementOrCheckbox.transform.localScale = new Vector3(1.4f, 1.4f, 1f);
-            }
-            else
-            {
-                if (this.isEnabled) this.elementOrCheckbox.sprite = this.checkedSprite;
-                else this.elementOrCheckbox.sprite = this.uncheckedSprite;
-                this.elementOrCheckbox.transform.localScale = new Vector3(1f, 1f, 1f);
-            }
+            //if (this.skill.category.isActive)
+            //{
+            //    this.elementOrCheckbox.sprite = this.skill.element.thickSprite;
+            //    this.elementOrCheckbox.transform.localScale = new Vector3(1.4f, 1.4f, 1f);
+            //}
+            //else
+            //{
+            //    if (this.isEnabled) this.elementOrCheckbox.sprite = this.checkedSprite;
+            //    else this.elementOrCheckbox.sprite = this.uncheckedSprite;
+            //    this.elementOrCheckbox.transform.localScale = new Vector3(1f, 1f, 1f);
+            //}
 
-            int currentMastery = this.character.GetStat(this.skill.masteryStat).Value;
-            int maxMastery = this.skill.masteryPoints;
+            int currentMastery = -1;
+            int maxMastery = this.skill.PointsRequiredToMaster;
 
             if (currentMastery >= maxMastery)
             {
@@ -75,13 +75,14 @@ namespace MURP.UI
                 this.masteredImage.gameObject.SetActive(false);
                 this.apBar.SetValues(currentMastery, maxMastery);
 
-                bool canLearn = this.character.GetStat(this.skill.canLearnStat).Value > 0;
-                this.disabledCover.gameObject.SetActive(!canLearn);
+                //bool canLearn = this.character.GetStat(this.skill.canLearnStat).Value > 0;
+                //this.disabledCover.gameObject.SetActive(!canLearn);
+                disabledCover.gameObject.SetActive(true);
             }
 
-            this.selectedSkillName.text = this.skill.displayName;
-            this.selectedSkillDescription.text = this.skill.description;
-            this.selectedSkillElement.sprite = this.skill.element.thinSprite;
+            this.selectedSkillName.text = this.skill.DisplayName;
+            this.selectedSkillDescription.text = this.skill.Description;
+            this.selectedSkillElement.sprite = this.skill.Element.thinSprite;
         }
 
         public void Init(SkillsMenu skillsMenu, Text selectedSkillName, Text selectedSkillDescription, Image selectedSkillElement, GameObject selectedSkillPointer)

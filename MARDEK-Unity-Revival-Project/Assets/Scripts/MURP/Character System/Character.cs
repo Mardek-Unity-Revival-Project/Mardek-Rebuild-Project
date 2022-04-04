@@ -9,29 +9,26 @@ namespace MURP.CharacterSystem
     [System.Serializable]
     public class Character : MonoBehaviour, IStats
     {
+        [SerializeField] Sprite _downSprite1;
+        [SerializeField] Sprite _downSprite2;
+        public Sprite downSprite1 { get { return _downSprite1; } }
+        public Sprite downSprite2 { get { return _downSprite2; } }
+
         [SerializeField] CharacterInfo bio;
         public CharacterInfo CharacterInfo { get { return bio; } }
 
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
 
-        [SerializeField] ActiveSkillSet _skillSet;
-        public ActiveSkillSet skillSet { get { return _skillSet; } }
-
         [SerializeField] Inventory inventory;
         [SerializeField] Inventory equippedItems;
         public Inventory Inventory { get { return inventory; } }
         public Inventory EquippedItems { get { return equippedItems; } }
 
-        [SerializeField] Sprite _downSprite1;
-        [SerializeField] Sprite _downSprite2;
-        public Sprite downSprite1 { get { return _downSprite1; } }
-        public Sprite downSprite2 { get { return _downSprite2; } }
-
         public void BattleAct(List<Character> allies, List<Character> enemies)
         {
             var randomEnemy = enemies[Random.Range(0, enemies.Count)];
-            skill.Apply(this, randomEnemy);
+            //skill.Apply(this, randomEnemy);
         }
 
         public StatHolder<T, StatOfType<T>> GetStat<T>(StatOfType<T> desiredStatus)

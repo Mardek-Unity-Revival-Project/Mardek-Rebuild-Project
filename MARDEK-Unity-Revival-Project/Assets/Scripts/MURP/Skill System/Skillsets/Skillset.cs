@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace MURP.SkillSystem
 {
-    [CreateAssetMenu(menuName ="MURP/SkillSystem/SkillCategory")]
-    public class SkillCategory : ScriptableObject
+    [CreateAssetMenu(menuName ="MURP/SkillSystem")]
+    public class Skillset : ScriptableObject
     {
+        [SerializeField] List<Skill> _skills;
         [SerializeField] string _description;
         [SerializeField] Sprite _sprite;
         [SerializeField] bool _active;
-        [SerializeField] List<Skill> _skills;
 
         public string description { get { return _description; } }
 

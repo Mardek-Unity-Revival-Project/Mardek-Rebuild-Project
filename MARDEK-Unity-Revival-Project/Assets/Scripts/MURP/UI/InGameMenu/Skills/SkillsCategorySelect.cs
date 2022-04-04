@@ -9,7 +9,7 @@ namespace MURP.UI
 {
     public class SkillsCategorySelect : Selectable
     {
-        [SerializeField] SkillCategory category;
+        [SerializeField] Skillset category;
         [SerializeField] Image image;
         [SerializeField] GridLayoutGroup skillList;
         [SerializeField] GameObject skillEntryPrefab;
@@ -63,10 +63,11 @@ namespace MURP.UI
 
             foreach (Skill skill in candidateSkills)
             {
-                bool canLearn = this.currentCharacter.GetStat(skill.canLearnStat).Value > 0;
-                bool hasMastery = this.currentCharacter.GetStat(skill.masteryStat).Value > 0;
-                bool isAlwaysLearned = skill.masteryPoints == 0;
-                if (canLearn || hasMastery || isAlwaysLearned)
+                //bool canLearn = this.currentCharacter.GetStat(skill.canLearnStat).Value > 0;
+                //bool hasMastery = this.currentCharacter.GetStat(skill.masteryStat).Value > 0;
+                //bool isAlwaysLearned = skill.masteryPoints == 0;
+                //if (canLearn || hasMastery || isAlwaysLearned)
+                if (true)
                 {
                     SkillEntry skillEntry = Instantiate(this.skillEntryPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<SkillEntry>();
                     skillEntry.Init(this.skillsMenu, this.selectedSkillName, this.selectedSkillDescription, this.selectedSkillElement, this.selectedSkillPointer);
