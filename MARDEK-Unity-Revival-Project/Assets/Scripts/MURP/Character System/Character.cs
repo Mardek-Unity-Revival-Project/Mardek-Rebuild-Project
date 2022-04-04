@@ -22,9 +22,9 @@ namespace MURP.CharacterSystem
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
 
-        [field: SerializeField, FormerlySerializedAs("inventory")]
+        [field: SerializeField]
         public Inventory Inventory { get; private set; }
-        [field: SerializeField, FormerlySerializedAs("equippedItems")]
+        [field: SerializeField]
         public Inventory EquippedItems { get; private set; }
 
         public void BattleAct(List<Character> allies, List<Character> enemies)

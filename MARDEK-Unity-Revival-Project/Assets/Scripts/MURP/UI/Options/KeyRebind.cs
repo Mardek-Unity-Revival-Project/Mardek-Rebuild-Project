@@ -44,7 +44,8 @@ public class KeyRebind : MonoBehaviour
         originalColor = bindText.color;
         actionNameText.text = ActionName;
         gameObject.name = ActionName;
-        UpdateBindText();
+        bindText.text = "-";
+        bindText.color = originalColor;
     }
 
     private void OnEnable()
