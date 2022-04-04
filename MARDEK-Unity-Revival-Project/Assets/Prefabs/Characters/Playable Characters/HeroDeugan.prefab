@@ -264,6 +264,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <Inventory>k__BackingField.slots.Array.data[0].currentItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 3071228e88047bf4295c85c047f12146, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <Inventory>k__BackingField.slots.Array.data[0].currentAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: baseStatus.intStats.Array.data[6].<statusEnum>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 09e0b473c7dddf24d903cb1b9e9cb522, type: 2}
@@ -279,6 +287,14 @@ PrefabInstance:
       propertyPath: baseStatus.intStats.Array.data[9].<statusEnum>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 608b897aad047cc4fa85eaa65f2cc2ec, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <EquippedItems>k__BackingField.slots.Array.data[0].currentItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f44d2ce67d4c63428b26c460a494c8e, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <EquippedItems>k__BackingField.slots.Array.data[2].currentItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d545b6b019ef57499fd306d4bb86984, type: 2}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: baseStatus.intStats.Array.data[10].<statusEnum>k__BackingField
       value: 
@@ -299,6 +315,14 @@ PrefabInstance:
       propertyPath: baseStatus.intStats.Array.data[14].<statusEnum>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 946b3fad7da056b468206c77a966c059, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <EquippedItems>k__BackingField.slots.Array.data[0].currentAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <EquippedItems>k__BackingField.slots.Array.data[2].currentAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7765752777133994383, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: m_Name
       value: HeroDeugan

@@ -338,7 +338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfae3e3db8000048b5d4f0474703e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioGroup: {fileID: 24300002, guid: 1d639220ee8ccaf448ed840a6fa75147, type: 2}
+  audioGroupVolume:
+    audioGroup: {fileID: 0}
   groupNameText: {fileID: 6940749192156283010}
   volumeSlider: {fileID: 1049386602158628251}
 --- !u!1 &6581977731336224789

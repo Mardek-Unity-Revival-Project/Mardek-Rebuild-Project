@@ -47,11 +47,10 @@ MonoBehaviour:
   saveOptions:
     loadOnAwake: 1
     autoSave: 1
+    saveOnDisable: 1
   serializedGuid: 61c0b29a13d30f48ab5c50d249316529
-  _gameName: 
   currentScene: 
-  characters:
-  - {fileID: 9202206601202836849}
+  _gameName: 
 --- !u!1001 &3346817898021420549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,7 +113,7 @@ PrefabInstance:
     - target: {fileID: 5892545599165651828, guid: 76065d952c95e2e4888cdcca5c4155e6, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: f5d7cd1de704cdb4b9eccf23995b111f, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76065d952c95e2e4888cdcca5c4155e6, type: 3}
 --- !u!4 &4263956764062248557 stripped
@@ -122,14 +121,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1539904725929005160, guid: 76065d952c95e2e4888cdcca5c4155e6, type: 3}
   m_PrefabInstance: {fileID: 3346817898021420549}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9202206601202836849 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5892545599165651828, guid: 76065d952c95e2e4888cdcca5c4155e6, type: 3}
-  m_PrefabInstance: {fileID: 3346817898021420549}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e926f53c4efbed945ad3f5f9fd8e0d5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
