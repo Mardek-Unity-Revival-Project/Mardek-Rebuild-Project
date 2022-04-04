@@ -4,35 +4,62 @@ using MURP.InventorySystem;
 using MURP.StatsSystem;
 using MURP.SkillSystem;
 
-using UnityEngine.Serialization;
-
 namespace MURP.CharacterSystem
 {
     [System.Serializable]
     public class Character : MonoBehaviour, IStats
     {
-        [SerializeField] Sprite _downSprite1;
-        [SerializeField] Sprite _downSprite2;
-        public Sprite downSprite1 { get { return _downSprite1; } }
-        public Sprite downSprite2 { get { return _downSprite2; } }
-
-        [SerializeField] CharacterInfo bio;
-        public CharacterInfo CharacterInfo { get { return bio; } }
-
+        [field: SerializeField] public CharacterInfo CharacterInfo { get; private set; }
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
+        [field: SerializeField] public Inventory EquippedItems { get; private set; }
+        [field: SerializeField] public Inventory Inventory { get; private set; }
+        [field: SerializeField] public Skillset ActionSkillset { get; private set; }
+        [SerializeField] List<Skill> startingSkills = new List<Skill>();
 
-        [field: SerializeField]
-        public Inventory Inventory { get; private set; }
-        [field: SerializeField]
-        public Inventory EquippedItems { get; private set; }
-
-        public void BattleAct(List<Character> allies, List<Character> enemies)
+        Dictionary<Skill, SkillProgress> internalSkills = new Dictionary<Skill, SkillProgress>();
+        void Awake()
         {
-            var randomEnemy = enemies[Random.Range(0, enemies.Count)];
-            //skill.Apply(this, randomEnemy);
+            foreach(var skill in startingSkills)
+            {
+                var slot = new SkillProgress();
+                slot.MasteryPoints = -1;
+                internalSkills.Add(skill, slot);
+            }
         }
 
+        void GetSkills(
+            ref Dictionary<Skill, SkillProgress> masteredSkills,
+            ref Dictionary<Skill, SkillProgress> equippedSkills,
+            ref Dictionary<Skill, SkillProgress> unequippedSkills
+            )
+        {
+            UpdateSkillDictionary();
+            masteredSkills = new Dictionary<Skill, SkillProgress>();
+            foreach (var entry in internalSkills)
+            {
+                if (IsSkillMastered(entry.Key, entry.Value))
+                    masteredSkills.Add(entry.Key, entry.Value);
+            }
+        }
+
+        bool IsSkillMastered(Skill skill, SkillProgress progress)
+        {
+            var points = progress.MasteryPoints;
+            var requiredPoints = skill.PointsRequiredToMaster;
+            return ((points >= requiredPoints) || (points == -1));
+        }
+
+        public void UpdateSkillDictionary()
+        {
+            foreach (var slot in EquippedItems.Slots)
+                foreach (var skill in slot.item.SkillsToEquip)
+                {
+                    if (internalSkills.ContainsKey(skill))
+                        continue;
+                    internalSkills.Add(skill, new SkillProgress());
+                }
+        }
         public StatHolder<T, StatOfType<T>> GetStat<T>(StatOfType<T> desiredStatus)
         {            
             var resultHolder = new StatHolder<T, StatOfType<T>>(desiredStatus);
@@ -72,7 +99,5 @@ namespace MURP.CharacterSystem
         {
             baseStatus.ModifyStat(stat, delta);
         }
-
-        [SerializeField] Skill skill;
     }
 }

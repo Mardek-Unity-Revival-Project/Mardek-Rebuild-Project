@@ -6,7 +6,7 @@ namespace MURP.InventorySystem
     [System.Serializable]
     public class Slot
     {
-        public  Item currentItem;
+        public Item currentItem;
         public int currentAmount;
         /*
          * If this is empty, any item can be placed in this slot. If this is non-empty, only equippable items whose category is

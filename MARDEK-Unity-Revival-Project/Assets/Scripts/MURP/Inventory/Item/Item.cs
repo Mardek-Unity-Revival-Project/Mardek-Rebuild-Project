@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 using MURP.Core;
 using MURP.StatsSystem;
+using MURP.SkillSystem;
 
 namespace MURP.InventorySystem
 {
@@ -8,33 +10,27 @@ namespace MURP.InventorySystem
     public class Item : AddressableScriptableObject
     {
         [SerializeField] string _displayName;
-        [SerializeField] string _description;
-        [SerializeField] Sprite _sprite;
-        [SerializeField] Element _element;
-        [SerializeField] int _price;
-
         public string displayName { get { return _displayName; } }
-
+        [SerializeField] string _description;
         public string description { get { return CreateFullDescription(_description); } }
-
+        [SerializeField] Sprite _sprite;
+        public Sprite sprite { get { return _sprite; } }
+        [SerializeField] Element _element;
+        public Element element { get { return _element; } }
+        [SerializeField] int _price;
+        public int price { get { return _price; } }
         public string properties { get { return CreateProperties(); } }
 
-        public Sprite sprite { get { return _sprite; } }
-
-        public Element element { get { return _element; } }
-
-        public int price { get { return _price; } }
+        [field: SerializeField] public List<Skill> SkillsToEquip { get; private set; }
 
         public virtual bool CanStack()
         {
             return true;
         }
-
         protected virtual string CreateFullDescription(string rawDescription)
         {
             return "MISCELLANIOUS ITEM\n\n\n" + rawDescription;
         }
-
         protected virtual string CreateProperties()
         {
             return "";

@@ -40,9 +40,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: startingSkills.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: _inventory.slots.Array.size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: startingSkills.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 261f6189ffd858f4e89b399a80138a0b, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: startingSkills.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 26bcfdc1d48632a42b14c402e9957b5b, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <CharacterInfo>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b52e3af512408b48b3e3a6f23e95861, type: 2}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: baseStatus.intStats.Array.size
       value: 14

@@ -45,12 +45,7 @@ namespace MURP.BattleSystem
             var readyToAct = GetNextCharacterReadyToAct(charactersInBattle);
             if (readyToAct != null)
             {
-                Debug.Log($"{readyToAct.name} should act");
-                // TODO: pause this update if character is playable
-                if (playableCharacters.Contains(readyToAct))
-                    readyToAct.BattleAct(allies: playableCharacters, enemies: enemyCharacters);
-                else
-                    readyToAct.BattleAct(allies: enemyCharacters, enemies: playableCharacters);
+                Debug.Log($"{readyToAct.name} should act");                
                 // "reset" characters' ACT
                 readyToAct.ModifyStat(ACTStat, -actResolution);
             }

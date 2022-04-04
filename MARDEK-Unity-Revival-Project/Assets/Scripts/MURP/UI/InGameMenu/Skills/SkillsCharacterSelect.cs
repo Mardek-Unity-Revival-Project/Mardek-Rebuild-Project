@@ -11,35 +11,15 @@ namespace MURP.UI
         Color selectedColor = new Color(165f / 255f, 205f / 255f, 1f, 0.3f);
 
         [SerializeField] Image backgroundImage;
-        [SerializeField] Image characterImage;
         [SerializeField] Text selectedCharacterName;
         [SerializeField] ConditionBar mpBar;
 
         [SerializeField] SkillsMenu skillsMenu;
         Character character;
-        int currentTick;
 
         public void SetCharacter(Character character)
         {
             this.character = character;
-            this.currentTick = 0;
-        }
-
-        public void FixedUpdate()
-        {
-            if (this.currentTick == 0)
-            {
-                this.characterImage.sprite = this.character.downSprite1;
-            }
-            if (this.currentTick == 15)
-            {
-                this.characterImage.sprite = this.character.downSprite2;
-            }
-            this.currentTick += 1;
-            if (this.currentTick == 30)
-            {
-                this.currentTick = 0;
-            }
         }
 
         public override void Select(bool playSFX = true)
