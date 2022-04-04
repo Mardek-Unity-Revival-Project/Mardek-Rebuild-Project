@@ -44,9 +44,9 @@ namespace MURP.UI
         {
             if (character == null)
                 return;
-            this.skillSetIcon.sprite = character.skillSet.sprite;
-            this.selectedSkillName.text = character.skillSet.displayName;
-            this.selectedSkillDescription.text = character.skillSet.description;
+            //this.skillSetIcon.sprite = character.skillSet.sprite;
+            //this.selectedSkillName.text = character.skillSet.displayName;
+            //this.selectedSkillDescription.text = character.skillSet.description;
             this.selectedSkillElement.sprite = this.transparentSprite;
             foreach (var categorySelect in this.categories)
             {

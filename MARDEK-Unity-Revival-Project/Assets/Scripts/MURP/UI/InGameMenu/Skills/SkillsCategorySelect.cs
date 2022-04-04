@@ -57,9 +57,8 @@ namespace MURP.UI
         {
             this.ClearSkillEntries();
             
-            List<Skill> candidateSkills;
-            if (this.category.isActive) candidateSkills = this.currentCharacter.skillSet.skills;
-            else candidateSkills = this.category.skills;
+            List<Skill> candidateSkills = category.skills;
+            //if (this.category.isActive) candidateSkills = this.currentCharacter.skillSet.skills;
 
             foreach (Skill skill in candidateSkills)
             {

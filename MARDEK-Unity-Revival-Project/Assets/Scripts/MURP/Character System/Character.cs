@@ -4,6 +4,8 @@ using MURP.InventorySystem;
 using MURP.StatsSystem;
 using MURP.SkillSystem;
 
+using UnityEngine.Serialization;
+
 namespace MURP.CharacterSystem
 {
     [System.Serializable]
@@ -20,10 +22,10 @@ namespace MURP.CharacterSystem
         [SerializeField] StatsSet baseStatus = new StatsSet();
         List<StatsSet> statusChanges = new List<StatsSet>();
 
-        [SerializeField] Inventory inventory;
-        [SerializeField] Inventory equippedItems;
-        public Inventory Inventory { get { return inventory; } }
-        public Inventory EquippedItems { get { return equippedItems; } }
+        [field: SerializeField, FormerlySerializedAs("inventory")]
+        public Inventory Inventory { get; private set; }
+        [field: SerializeField, FormerlySerializedAs("equippedItems")]
+        public Inventory EquippedItems { get; private set; }
 
         public void BattleAct(List<Character> allies, List<Character> enemies)
         {
