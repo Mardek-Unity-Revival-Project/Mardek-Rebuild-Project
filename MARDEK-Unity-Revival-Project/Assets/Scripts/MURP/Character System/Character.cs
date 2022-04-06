@@ -15,51 +15,8 @@ namespace MURP.CharacterSystem
         [field: SerializeField] public Inventory EquippedItems { get; private set; }
         [field: SerializeField] public Inventory Inventory { get; private set; }
         [field: SerializeField] public Skillset ActionSkillset { get; private set; }
-        [SerializeField] List<Skill> startingSkills = new List<Skill>();
+        [field: SerializeField] public List<SkillSlot> SkillSlots { get; private set; }
 
-        Dictionary<Skill, SkillProgress> internalSkills = new Dictionary<Skill, SkillProgress>();
-        void Awake()
-        {
-            foreach(var skill in startingSkills)
-            {
-                var slot = new SkillProgress();
-                slot.MasteryPoints = -1;
-                internalSkills.Add(skill, slot);
-            }
-        }
-
-        void GetSkills(
-            ref Dictionary<Skill, SkillProgress> masteredSkills,
-            ref Dictionary<Skill, SkillProgress> equippedSkills,
-            ref Dictionary<Skill, SkillProgress> unequippedSkills
-            )
-        {
-            UpdateSkillDictionary();
-            masteredSkills = new Dictionary<Skill, SkillProgress>();
-            foreach (var entry in internalSkills)
-            {
-                if (IsSkillMastered(entry.Key, entry.Value))
-                    masteredSkills.Add(entry.Key, entry.Value);
-            }
-        }
-
-        bool IsSkillMastered(Skill skill, SkillProgress progress)
-        {
-            var points = progress.MasteryPoints;
-            var requiredPoints = skill.PointsRequiredToMaster;
-            return ((points >= requiredPoints) || (points == -1));
-        }
-
-        public void UpdateSkillDictionary()
-        {
-            foreach (var slot in EquippedItems.Slots)
-                foreach (var skill in slot.item.SkillsToEquip)
-                {
-                    if (internalSkills.ContainsKey(skill))
-                        continue;
-                    internalSkills.Add(skill, new SkillProgress());
-                }
-        }
         public StatHolder<T, StatOfType<T>> GetStat<T>(StatOfType<T> desiredStatus)
         {            
             var resultHolder = new StatHolder<T, StatOfType<T>>(desiredStatus);

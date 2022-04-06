@@ -28,7 +28,7 @@ namespace MURP.UI
 
         void OnEnable()
         {
-            this.image.sprite = this.category.sprite;
+            this.image.sprite = this.category.Sprite;
         }
 
         public void CancelCategorySelection()
@@ -57,7 +57,7 @@ namespace MURP.UI
         {
             this.ClearSkillEntries();
             
-            List<Skill> candidateSkills = category.skills;
+            List<Skill> candidateSkills = category.Skills;
             //if (this.category.isActive) candidateSkills = this.currentCharacter.skillSet.skills;
 
             foreach (Skill skill in candidateSkills)
@@ -96,20 +96,20 @@ namespace MURP.UI
         {
             base.Select(playSFX: playSFX);
             this.UpdateSkillEntries();
-            this.skillCategoryLabel.text = this.category.description;
+            this.skillCategoryLabel.text = this.category.Description;
             this.selectedCategoryPointer.transform.position = this.transform.position;
             this.selectedCategoryPointer.SetActive(true);
-            if (this.category.isActive)
-            {
-                this.ShowMpBar();
-            }  
-            else
-            {
-                this.mpBar.gameObject.SetActive(false);
-                this.rpBar.gameObject.SetActive(true);
-                this.bottomBarDescription.text = "RP";
-                this.rpBar.SetValues(10, 100); // TODO Improve this once this system is more mature
-            }
+            //if (this.category.isActive)
+            //{
+            //    this.ShowMpBar();
+            //}  
+            //else
+            //{
+            //    this.mpBar.gameObject.SetActive(false);
+            //    this.rpBar.gameObject.SetActive(true);
+            //    this.bottomBarDescription.text = "RP";
+            //    this.rpBar.SetValues(10, 100); // TODO Improve this once this system is more mature
+            //}
         }
 
         public override void Deselect()

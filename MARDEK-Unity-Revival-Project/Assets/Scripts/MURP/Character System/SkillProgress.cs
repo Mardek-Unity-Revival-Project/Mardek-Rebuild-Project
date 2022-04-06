@@ -5,8 +5,19 @@ using MURP.SkillSystem;
 
 namespace MURP.CharacterSystem
 {
-    public class SkillProgress
+    [System.Serializable]
+    public class SkillSlot
     {
+        [field: SerializeField] public Skill Skill {get;set;}
         [field: SerializeField] public int MasteryPoints { get; set; }
+        public bool IsMastered
+        {
+            get
+            {
+                var points = MasteryPoints;
+                var requiredPoints = Skill.PointsRequiredToMaster;
+                return ((points >= requiredPoints) || (points == -1));
+            }
+        }
     }
 }
