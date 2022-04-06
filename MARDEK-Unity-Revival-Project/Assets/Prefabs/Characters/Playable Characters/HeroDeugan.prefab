@@ -52,6 +52,14 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <ActionSkillset>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 97d3ee5c53530fc4082df7991eda06e4, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: baseStatus.intStats.Array.data[6]._value
       value: 1
       objectReference: {fileID: 0}
@@ -331,6 +339,42 @@ PrefabInstance:
       propertyPath: <EquippedItems>k__BackingField.slots.Array.data[3].currentAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[1].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: aceb6579998cc054cae25a57414cbe84, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[2].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: aacac0dd56300a34fbf3060c733ebbf1, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[3].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: b4b5b21800ecd4d4dbeb75a10270c543, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[4].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 16ebce88c9d14d342a129e17e0b3bef2, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[5].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 261f6189ffd858f4e89b399a80138a0b, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[6].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: adab48175a498d743a9a7a3a3203e195, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[7].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 2bd1b1024ffd08b439844b2b820da377, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[8].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 166c9cdad6c15d748817dba4aa51e833, type: 2}
+    - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[9].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 26bcfdc1d48632a42b14c402e9957b5b, type: 2}
     - target: {fileID: 4423566676288269410, guid: 0217abd5630466647b6f50010771aa24, type: 3}
       propertyPath: <EquippedItems>k__BackingField.slots.Array.data[3].canPlayerPutItems
       value: 0

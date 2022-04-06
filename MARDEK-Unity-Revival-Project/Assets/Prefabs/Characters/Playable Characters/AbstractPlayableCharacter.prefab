@@ -56,6 +56,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5892545599165651828, guid: 76065d952c95e2e4888cdcca5c4155e6, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892545599165651828, guid: 76065d952c95e2e4888cdcca5c4155e6, type: 3}
       propertyPath: <Inventory>k__BackingField.slots.Array.size
       value: 64
       objectReference: {fileID: 0}
@@ -119,6 +123,10 @@ PrefabInstance:
       propertyPath: <Inventory>k__BackingField.slots.Array.data[9].canPlayerPutItems
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5892545599165651828, guid: 76065d952c95e2e4888cdcca5c4155e6, type: 3}
+      propertyPath: <SkillSlots>k__BackingField.Array.data[0].<Skill>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: b71d26a843935224cbb9bd96661a0a90, type: 2}
     - target: {fileID: 5892545599165651828, guid: 76065d952c95e2e4888cdcca5c4155e6, type: 3}
       propertyPath: <Inventory>k__BackingField.slots.Array.data[10].canPlayerPutItems
       value: 1
