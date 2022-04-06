@@ -82,6 +82,13 @@ namespace MURP.UI
             this.selectedSkillName.text = this.skill.displayName;
             this.selectedSkillDescription.text = this.skill.description;
             this.selectedSkillElement.sprite = this.skill.element.thinSprite;
+            
+            // Since the normal element icon doesn't have a translucent aura, the SVG renderer considers it to be smaller...
+            if (this.skill.element.name.Equals("Normal")) {
+                this.selectedSkillElement.transform.localScale = new Vector3(0.85f, 0.85f, 1f);
+            } else {
+                this.selectedSkillElement.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
         }
 
         public void Init(SkillsMenu skillsMenu, Text selectedSkillName, Text selectedSkillDescription, Image selectedSkillElement, GameObject selectedSkillPointer)
