@@ -10,6 +10,8 @@ namespace MURP.UI
         static readonly Color SELECTED_TEXT_COLOR = new Color(240f / 255f, 224f / 255f, 185f / 255f);
         static readonly Color DEFAULT_TEXT_COLOR = new Color(238f / 255f, 203f / 255f, 127f / 255f);
 
+        public static SkillEntry selectedSkill { get; private set; }
+
         [SerializeField] Image elementOrCheckbox;
         [SerializeField] Text skillNameText;
         [SerializeField] Text mpOrRp;
@@ -129,7 +131,7 @@ namespace MURP.UI
             this.isSelected = true;
             this.shouldMoveSelectedSkillPointer = 2;
             this.UpdateAppearance();
-            this.skillsMenu.selectedSkill = this;
+            SkillEntry.selectedSkill = this;
         }
 
         public override void Deselect()
