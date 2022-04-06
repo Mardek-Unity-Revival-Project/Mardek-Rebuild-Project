@@ -33,7 +33,6 @@ namespace MURP.UI
         bool isEnabled = true;
 
         int shouldMoveSelectedSkillPointer;
-        SkillsMenu skillsMenu;
 
         public void Toggle()
         {
@@ -93,13 +92,12 @@ namespace MURP.UI
             }
         }
 
-        public void Init(SkillsMenu skillsMenu, Text selectedSkillName, Text selectedSkillDescription, Image selectedSkillElement, GameObject selectedSkillPointer)
+        public void Init(Text selectedSkillName, Text selectedSkillDescription, Image selectedSkillElement, GameObject selectedSkillPointer)
         {
             this.selectedSkillName = selectedSkillName;
             this.selectedSkillDescription = selectedSkillDescription;
             this.selectedSkillElement = selectedSkillElement;
             this.selectedSkillPointer = selectedSkillPointer;
-            this.skillsMenu = skillsMenu;
             this.isEnabled = true;
         }
 

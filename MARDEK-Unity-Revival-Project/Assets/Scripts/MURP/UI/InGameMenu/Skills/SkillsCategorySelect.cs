@@ -22,7 +22,6 @@ namespace MURP.UI
         [SerializeField] ConditionBar rpBar;
         [SerializeField] GameObject selectedCategoryPointer;
         [SerializeField] GameObject selectedSkillPointer;
-        [SerializeField] SkillsMenu skillsMenu;
 
         Character currentCharacter;
 
@@ -69,7 +68,7 @@ namespace MURP.UI
                 if (canLearn || hasMastery || isAlwaysLearned)
                 {
                     SkillEntry skillEntry = Instantiate(this.skillEntryPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<SkillEntry>();
-                    skillEntry.Init(this.skillsMenu, this.selectedSkillName, this.selectedSkillDescription, this.selectedSkillElement, this.selectedSkillPointer);
+                    skillEntry.Init(this.selectedSkillName, this.selectedSkillDescription, this.selectedSkillElement, this.selectedSkillPointer);
                     skillEntry.SetSkill(this.currentCharacter, skill);
                     skillEntry.transform.SetParent(this.skillList.transform);
                     skillEntry.transform.localScale = new Vector3(1f, 1f, 1f);
