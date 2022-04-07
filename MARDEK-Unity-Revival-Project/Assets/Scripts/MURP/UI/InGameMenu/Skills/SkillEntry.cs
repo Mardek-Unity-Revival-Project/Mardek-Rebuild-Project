@@ -85,8 +85,9 @@ namespace MURP.UI
             this.selectedSkillDescription.text = this.skill.Description;
             this.selectedSkillElement.sprite = this.skill.Element.thinSprite;
 
+            // TODO: remove this hardcoding
             // Since the normal element icon doesn't have a translucent aura, the SVG renderer considers it to be smaller...
-            if (this.skill.element.name.Equals("Normal")) {
+            if (this.skill.Element.name.Equals("Normal")) {
                 this.selectedSkillElement.transform.localScale = new Vector3(0.85f, 0.85f, 1f);
             } else {
                 this.selectedSkillElement.transform.localScale = new Vector3(1f, 1f, 1f);
