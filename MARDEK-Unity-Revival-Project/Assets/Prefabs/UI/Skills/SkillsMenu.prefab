@@ -165,9 +165,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1627598483850312714}
   - component: {fileID: 8207203541902756415}
-  - component: {fileID: 7485899260267896237}
   m_Layer: 0
-  m_Name: SelectedSkillElement
+  m_Name: SelectedSkillElementContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +182,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7515415874329055198}
   m_Father: {fileID: 6912622010066102150}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -200,36 +200,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809554846011990875}
   m_CullTransparentMesh: 1
---- !u!114 &7485899260267896237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809554846011990875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.11764706}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c57170930d7e74b42a80f7e31cef8dd0, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1591448843718082322
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +355,7 @@ MonoBehaviour:
   selectedSkillName: {fileID: 8436108963643981910}
   selectedSkillDescription: {fileID: 808625821762855577}
   transparentSprite: {fileID: 21300000, guid: c57170930d7e74b42a80f7e31cef8dd0, type: 3}
-  selectedSkillElement: {fileID: 7485899260267896237}
+  selectedSkillElement: {fileID: 6066885449595012235}
   categories:
   - {fileID: 5743279903278189598}
   - {fileID: 5108054631037872782}
@@ -393,7 +363,6 @@ MonoBehaviour:
   - {fileID: 7060928803628473587}
   - {fileID: 1948344783141963380}
   - {fileID: 2134690647773648880}
-  selectedSkill: {fileID: 0}
 --- !u!1 &2457392939407272232
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +579,81 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: 4d6d85e164a7b2a4c8e6ceddc061c8ed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3425795004604473655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7515415874329055198}
+  - component: {fileID: 2393552466349268481}
+  - component: {fileID: 6066885449595012235}
+  m_Layer: 0
+  m_Name: SelectedSkillElement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7515415874329055198
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425795004604473655}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1627598483850312714}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2393552466349268481
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425795004604473655}
+  m_CullTransparentMesh: 1
+--- !u!114 &6066885449595012235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425795004604473655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.11764706}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c57170930d7e74b42a80f7e31cef8dd0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1505,7 +1549,7 @@ PrefabInstance:
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillElement
       value: 
-      objectReference: {fileID: 7485899260267896237}
+      objectReference: {fileID: 6066885449595012235}
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillPointer
       value: 
@@ -1640,11 +1684,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
---- !u!224 &7090793346924772619 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8475592208691367865, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
-  m_PrefabInstance: {fileID: 1727364445693899442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5743279903278189598 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
@@ -1656,6 +1695,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f7cb79e59e76e4082f1d63d76038b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &7090793346924772619 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8475592208691367865, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
+  m_PrefabInstance: {fileID: 1727364445693899442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2211156317911716898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1706,7 +1750,7 @@ PrefabInstance:
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillElement
       value: 
-      objectReference: {fileID: 7485899260267896237}
+      objectReference: {fileID: 6066885449595012235}
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillPointer
       value: 
@@ -1845,6 +1889,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
+--- !u!224 &7723885300327586715 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8475592208691367865, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
+  m_PrefabInstance: {fileID: 2211156317911716898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5108054631037872782 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
@@ -1856,11 +1905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f7cb79e59e76e4082f1d63d76038b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &7723885300327586715 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8475592208691367865, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
-  m_PrefabInstance: {fileID: 2211156317911716898}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2392426975281164743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2017,7 +2061,7 @@ PrefabInstance:
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillElement
       value: 
-      objectReference: {fileID: 7485899260267896237}
+      objectReference: {fileID: 6066885449595012235}
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillPointer
       value: 
@@ -2472,7 +2516,7 @@ PrefabInstance:
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillElement
       value: 
-      objectReference: {fileID: 7485899260267896237}
+      objectReference: {fileID: 6066885449595012235}
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillPointer
       value: 
@@ -2677,7 +2721,7 @@ PrefabInstance:
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillElement
       value: 
-      objectReference: {fileID: 7485899260267896237}
+      objectReference: {fileID: 6066885449595012235}
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillPointer
       value: 
@@ -2816,11 +2860,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
---- !u!224 &3952574012852778849 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8475592208691367865, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
-  m_PrefabInstance: {fileID: 4847288454336854232}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1948344783141963380 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
@@ -2832,6 +2871,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f7cb79e59e76e4082f1d63d76038b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &3952574012852778849 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8475592208691367865, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
+  m_PrefabInstance: {fileID: 4847288454336854232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5017942523940567556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3075,7 +3119,7 @@ PrefabInstance:
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillElement
       value: 
-      objectReference: {fileID: 7485899260267896237}
+      objectReference: {fileID: 6066885449595012235}
     - target: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
       propertyPath: selectedSkillPointer
       value: 
@@ -3214,11 +3258,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
---- !u!224 &3480233079351256805 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8475592208691367865, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
-  m_PrefabInstance: {fileID: 5031400112330746204}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2134690647773648880 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6362722517562441388, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
@@ -3230,6 +3269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f7cb79e59e76e4082f1d63d76038b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &3480233079351256805 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8475592208691367865, guid: fbe42380b5f4a214a9c9d407e50a8f5d, type: 3}
+  m_PrefabInstance: {fileID: 5031400112330746204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5231694351518899382
 PrefabInstance:
   m_ObjectHideFlags: 0

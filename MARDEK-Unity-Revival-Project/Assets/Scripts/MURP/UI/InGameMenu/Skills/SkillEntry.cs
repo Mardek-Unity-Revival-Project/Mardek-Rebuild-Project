@@ -10,6 +10,8 @@ namespace MURP.UI
         static readonly Color SELECTED_TEXT_COLOR = new Color(240f / 255f, 224f / 255f, 185f / 255f);
         static readonly Color DEFAULT_TEXT_COLOR = new Color(238f / 255f, 203f / 255f, 127f / 255f);
 
+        public static SkillEntry selectedSkill { get; private set; }
+
         [SerializeField] Image elementOrCheckbox;
         [SerializeField] Text skillNameText;
         [SerializeField] Text mpOrRp;
@@ -31,7 +33,6 @@ namespace MURP.UI
         bool isEnabled = true;
 
         int shouldMoveSelectedSkillPointer;
-        SkillsMenu skillsMenu;
 
         public void Toggle()
         {
@@ -83,15 +84,21 @@ namespace MURP.UI
             this.selectedSkillName.text = this.skill.DisplayName;
             this.selectedSkillDescription.text = this.skill.Description;
             this.selectedSkillElement.sprite = this.skill.Element.thinSprite;
+
+            // Since the normal element icon doesn't have a translucent aura, the SVG renderer considers it to be smaller...
+            if (this.skill.element.name.Equals("Normal")) {
+                this.selectedSkillElement.transform.localScale = new Vector3(0.85f, 0.85f, 1f);
+            } else {
+                this.selectedSkillElement.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
         }
 
-        public void Init(SkillsMenu skillsMenu, Text selectedSkillName, Text selectedSkillDescription, Image selectedSkillElement, GameObject selectedSkillPointer)
+        public void Init(Text selectedSkillName, Text selectedSkillDescription, Image selectedSkillElement, GameObject selectedSkillPointer)
         {
             this.selectedSkillName = selectedSkillName;
             this.selectedSkillDescription = selectedSkillDescription;
             this.selectedSkillElement = selectedSkillElement;
             this.selectedSkillPointer = selectedSkillPointer;
-            this.skillsMenu = skillsMenu;
             this.isEnabled = true;
         }
 
@@ -123,7 +130,7 @@ namespace MURP.UI
             this.isSelected = true;
             this.shouldMoveSelectedSkillPointer = 2;
             this.UpdateAppearance();
-            this.skillsMenu.selectedSkill = this;
+            SkillEntry.selectedSkill = this;
         }
 
         public override void Deselect()
