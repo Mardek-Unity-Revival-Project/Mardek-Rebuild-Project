@@ -36,10 +36,6 @@ namespace MURP.UI
             this.counter += 1;
             if (this.counter % 40 == 0)
             {
-                if (this.MarkAreaAroundPlayerAsDiscovered())
-                {
-                    this.UpdateSprites();
-                }
                 this.mapImage.sprite = this.flickerSprite;
                 this.counter = 0;
             }
@@ -79,37 +75,7 @@ namespace MURP.UI
             }
         }
 
-        bool MarkAreaAroundPlayerAsDiscovered()
-        {
-            Scene activeScene = SceneManager.GetActiveScene();
-            PlayerController player = null;
-            foreach (GameObject gameObject in activeScene.GetRootGameObjects())
-            {
-                player = gameObject.GetComponentInChildren<PlayerController>();
-                if (player != null)
-                {
-                    break;
-                }
-            }
-
-            int playerX = (int) player.transform.position.x;
-            int playerY = (int) player.transform.position.y;
-            bool madeNewDiscoveries = false;
-
-            int discoverRadius = 9;
-            for (int x = playerX - discoverRadius; x <= playerX + discoverRadius; x++)
-            {
-                for (int y = playerY - discoverRadius; y <= playerY + discoverRadius; y++)
-                {
-                    if (!this.exploredAreas.MarkDiscovered(this.sceneID, x, y))
-                    {
-                        madeNewDiscoveries = true;
-                    }
-                }
-            }
-
-            return madeNewDiscoveries;
-        }
+        
 
         void UpdateSprites()
         {
@@ -140,7 +106,6 @@ namespace MURP.UI
             }
             this.activeSceneName.text = sceneInfo.displayName;
             this.sceneID = sceneInfo.id;
-            this.MarkAreaAroundPlayerAsDiscovered();
 
             // Find the relevant part of the map (the smallest rectangle that contains all passable terrain and all chests, people, etc)
             int minX = 1000;
