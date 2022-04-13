@@ -6,7 +6,7 @@ using MURP.Audio;
 
 namespace MURP.UI
 {
-    public class Selectable: MonoBehaviour
+    public class Selectable : MonoBehaviour
     {
         [SerializeField] UnityEvent OnSelected = new UnityEvent();
         [SerializeField] UnityEvent OnDeselected = new UnityEvent();

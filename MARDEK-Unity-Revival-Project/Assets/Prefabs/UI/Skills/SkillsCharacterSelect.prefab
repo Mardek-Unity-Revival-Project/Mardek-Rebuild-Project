@@ -56,7 +56,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 89767348097460172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d8d2cbd9b837c42a9f4e2f0158604a, type: 3}
+  m_Script: {fileID: 11500000, guid: f9feba03784d905499100622890e3e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnSelected:
@@ -65,11 +65,15 @@ MonoBehaviour:
   OnDeselected:
     m_PersistentCalls:
       m_Calls: []
-  selectionSFX: {fileID: 11400000, guid: 0da28b87b9cd6e945acf7875aaef8844, type: 2}
-  backgroundImage: {fileID: 7444236206552032933}
-  selectedCharacterName: {fileID: 0}
-  mpBar: {fileID: 0}
-  skillsMenu: {fileID: 0}
+  selectionSFX: {fileID: 0}
+  selectableText: {fileID: 0}
+  DeselectedTextColor: {r: 0.40784314, g: 0.37254903, b: 0.34509805, a: 1}
+  SelectedTextColor: {r: 0.93333334, g: 0.79607844, b: 0.49803922, a: 1}
+  selectableImage: {fileID: 7444236206552032933}
+  DeselectedImageColor: {r: 1, g: 1, b: 1, a: 0}
+  SelectedImageColor: {r: 0.2943663, g: 0.5513531, b: 0.990566, a: 0.6666667}
+  character: {fileID: 0}
+  backgroundBar: {fileID: 7444236206552032933}
 --- !u!1 &3706579917261779228
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +160,7 @@ GameObject:
   - component: {fileID: 5317004973417001194}
   - component: {fileID: 4483726699376663606}
   - component: {fileID: 7302407299084019423}
+  - component: {fileID: 6205740346568689407}
   m_Layer: 0
   m_Name: CharacterImage
   m_TagString: Untagged
@@ -220,3 +225,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6205740346568689407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5473587315857198160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b3f391a74e9614e879dd0d707658fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterSelectable: {fileID: 3895709001674175548}
+  characterImage: {fileID: 7302407299084019423}
+  movementSpriteAnimationDirection: {fileID: 11400000, guid: ea6556b4aef89a245b8056a40173133b, type: 2}

@@ -9,7 +9,7 @@ namespace MURP.UI
 
         public void FetchSelectedCharacterAndUpdateUI()
         {
-            character = CharacterSelectable.currentSelected;
+            character = CharacterSelectable.currentSelected.Character;
             AssignInventoryToUI(character.Inventory);
         }
     }

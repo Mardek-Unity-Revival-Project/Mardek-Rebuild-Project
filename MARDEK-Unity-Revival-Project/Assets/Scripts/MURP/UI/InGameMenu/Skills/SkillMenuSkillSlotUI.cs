@@ -5,12 +5,12 @@ using MURP.SkillSystem;
 
 namespace MURP.UI
 {
-    public class SkillEntry : Selectable
+    public class SkillMenuSkillSlotUI : SelectableWithCurrentSelected<SkillMenuSkillSlotUI>
     {
         static readonly Color SELECTED_TEXT_COLOR = new Color(240f / 255f, 224f / 255f, 185f / 255f);
         static readonly Color DEFAULT_TEXT_COLOR = new Color(238f / 255f, 203f / 255f, 127f / 255f);
 
-        public static SkillEntry selectedSkill { get; private set; }
+        public static SkillMenuSkillSlotUI selectedSkill { get; private set; }
 
         [SerializeField] Image elementOrCheckbox;
         [SerializeField] Text skillNameText;
@@ -131,7 +131,7 @@ namespace MURP.UI
             this.isSelected = true;
             this.shouldMoveSelectedSkillPointer = 2;
             this.UpdateAppearance();
-            SkillEntry.selectedSkill = this;
+            SkillMenuSkillSlotUI.selectedSkill = this;
         }
 
         public override void Deselect()
