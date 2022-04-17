@@ -11,5 +11,9 @@ namespace MURP.UI
     {
         [SerializeField] Character character;
         public Character Character { get { return character; } }
+        public override bool isValid()
+        {
+            return Character.CharacterInfo != null;
+        }
     }
 }

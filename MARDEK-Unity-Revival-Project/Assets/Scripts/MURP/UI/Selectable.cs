@@ -11,7 +11,11 @@ namespace MURP.UI
         [SerializeField] UnityEvent OnSelected = new UnityEvent();
         [SerializeField] UnityEvent OnDeselected = new UnityEvent();
         [SerializeField] AudioObject selectionSFX;
-
+        
+        public virtual bool isValid()
+        {
+            return true;
+        }
         public virtual void Select(bool playSFX = true)
         {
             OnSelected.Invoke();

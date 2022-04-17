@@ -35,7 +35,7 @@ namespace MURP.UI
             {
                 List<Selectable> returnList = new List<Selectable>();
                 foreach (var s in selectables)
-                    if (s && s.gameObject.activeSelf)
+                    if (s && s.isValid())
                         returnList.Add(s);
                 return returnList;
             }
