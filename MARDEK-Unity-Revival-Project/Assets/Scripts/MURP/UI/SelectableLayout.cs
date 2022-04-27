@@ -10,6 +10,9 @@ namespace MURP.UI
     [RequireComponent(typeof(GridLayoutGroup), typeof(InputReader))]
     public class SelectableLayout : MonoBehaviour
     {
+        [SerializeField] int scrollSize;
+        int scrollIndex = 0;
+
         int index = 0;
         int Index
         {
@@ -73,6 +76,21 @@ namespace MURP.UI
                 return;
             currentlySelected = Selectables[Index];
             currentlySelected.Select(playSFX);
+            if (scrollSize > 0)
+            {
+                if (Index - scrollIndex >= scrollSize) SetScrollIndex(1 + Index - scrollSize);
+                if (Index - scrollIndex < 0) SetScrollIndex(Index);
+            }
+        }
+
+        void SetScrollIndex(int newScrollIndex)
+        {
+            float oldY = transform.localPosition.y;
+            int oldScrollIndex = scrollIndex;
+            scrollIndex = newScrollIndex;
+
+            float deltaY = (layout.cellSize.y + layout.spacing.y) * (scrollIndex - oldScrollIndex);
+            transform.Translate(new Vector3(0f, deltaY * transform.lossyScale.y, 0f));
         }
 
         public void RefreshSelectables()
