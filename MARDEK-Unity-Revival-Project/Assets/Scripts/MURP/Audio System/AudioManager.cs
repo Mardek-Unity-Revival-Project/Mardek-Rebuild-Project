@@ -48,6 +48,11 @@ namespace MURP.Audio
             instance.UpdateCurrentMusic();
         }
 
+        public static AudioSource GetMusicAudioSource()
+        {
+            return instance.musicAudioSource;
+        }
+
         private void UpdateCurrentMusic()
         {
             Music desiredMusic = null;

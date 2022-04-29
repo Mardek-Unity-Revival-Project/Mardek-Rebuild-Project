@@ -33,6 +33,7 @@ namespace MURP.UI
 
         void UpdateAppearance()
         {
+            displayName.text = music.id + ". " + music.displayName;
             if (selectedMusic == music)
             {
                 displayName.color = new Color(221f / 255f, 238f / 255f, 253f / 255f);
