@@ -12,7 +12,7 @@ namespace MURP.UI
     {
         [SerializeField] ScrollRect scrollRect;
         [SerializeField] int numFittingEntries;
-        int scrollIndex = 0;
+        int currentScrollIndex = 0;
 
         int index = 0;
         int Index
@@ -79,16 +79,23 @@ namespace MURP.UI
             currentlySelected.Select(playSFX);
             if (numFittingEntries > 0 && scrollRect != null)
             {
-                if (Index - scrollIndex >= numFittingEntries) SetScrollIndex(1 + Index - numFittingEntries);
-                if (Index - scrollIndex < 0) SetScrollIndex(Index);
+                int desiredScrollIndex = Index / layout.constraintCount;
+                if (desiredScrollIndex - currentScrollIndex >= numFittingEntries) SetScrollIndex(1 + desiredScrollIndex - numFittingEntries);
+                if (desiredScrollIndex - currentScrollIndex < 0) SetScrollIndex(desiredScrollIndex);
             }
         }
 
         void SetScrollIndex(int newScrollIndex)
         {
-            scrollIndex = newScrollIndex;
-            int numNonFittingEntries = Selectables.Count - numFittingEntries;
-            scrollRect.verticalNormalizedPosition = 1f - scrollIndex / (float) numNonFittingEntries;
+            currentScrollIndex = newScrollIndex;
+            int numTotalEntries = Selectables.Count / layout.constraintCount;
+            if (Selectables.Count % layout.constraintCount != 0) numTotalEntries += 1;
+
+            int numNonFittingEntries = numTotalEntries - numFittingEntries;
+            float scrollAmount = newScrollIndex / (float) numNonFittingEntries;
+            
+            if (scrollRect.vertical) scrollRect.verticalNormalizedPosition = 1f - scrollAmount;
+            else scrollRect.horizontalNormalizedPosition = scrollAmount;
         }
 
         public void RefreshSelectables()
@@ -108,26 +115,31 @@ namespace MURP.UI
             if (value.y == 0)
                 HandleHorizontalInput(value.x);
         }
+
         void HandleVerticalInput(float value)
         {
-            if (layout.constraint == GridLayoutGroup.Constraint.FixedRowCount)
-                if (layout.constraintCount == 1)
-                    return;
+            if (layout.constraint == GridLayoutGroup.Constraint.FixedRowCount && layout.constraintCount == 1) return;
+                
             if (value > 0)
                 Index--;
             else
                 Index++;
             UpdateSelectionAtIndex();
         }
+
         void HandleHorizontalInput(float value)
         {
-            if (layout.constraint == GridLayoutGroup.Constraint.FixedColumnCount)
-                if (layout.constraintCount == 1)
-                    return;
-            if (value > 0)
-                Index++;
-            else
-                Index--;
+            if (layout.constraint == GridLayoutGroup.Constraint.FixedColumnCount && layout.constraintCount == 1) return;
+
+            if (layout.constraint == GridLayoutGroup.Constraint.FixedRowCount && layout.constraintCount != 1)
+            {
+                if (value > 0) Index += layout.constraintCount;
+                else Index -= layout.constraintCount;
+            } else {
+                if (value > 0) Index++;
+                else Index--;
+            }
+            
             UpdateSelectionAtIndex();
         }
     }
