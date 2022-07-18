@@ -13,13 +13,14 @@ namespace MURP.UI
         [SerializeField] PersonDetails personDetails;
         [SerializeField] PlaceDetails placeDetails;
         [SerializeField] ArtefactDetails artefactDetails;
+        [SerializeField] MonsterDetails monsterDetails;
 
         public void EnterSelectedSection()
         {
-            // TODO Remove this early return once epvery section has its own list
-            if (EncyclopediaSection.selected.section == null) return;
-
             menu.ShowEncyclopediaSection(EncyclopediaSection.selected.section);
+
+            // The list will be null for the dreamstone section because that section has a custom setup
+            if (EncyclopediaSection.selected.list == null) return;
 
             // Clear the old encyclopedia entries because they could be outdated
             var grid = EncyclopediaSection.selected.section.GetComponentsInChildren<GridLayoutGroup>()[0];
@@ -71,6 +72,11 @@ namespace MURP.UI
                 {
                     artefactDetails.SetArtefact(item as EncyclopediaArtefact);
                     artefactDetails.gameObject.SetActive(true);
+                }
+                if (item is EncyclopediaMonster)
+                {
+                    monsterDetails.SetMonster(item as EncyclopediaMonster);
+                    monsterDetails.gameObject.SetActive(true);
                 }
             }
         }

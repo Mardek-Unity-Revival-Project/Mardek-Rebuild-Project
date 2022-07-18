@@ -93,6 +93,7 @@ namespace MURP.UI
 
             int numNonFittingEntries = numTotalEntries - numFittingEntries;
             float scrollAmount = newScrollIndex / (float) numNonFittingEntries;
+            Debug.Log("scrollAmount is " + scrollAmount);
             
             if (scrollRect.vertical) scrollRect.verticalNormalizedPosition = 1f - scrollAmount;
             else scrollRect.horizontalNormalizedPosition = scrollAmount;
@@ -119,11 +120,16 @@ namespace MURP.UI
         void HandleVerticalInput(float value)
         {
             if (layout.constraint == GridLayoutGroup.Constraint.FixedRowCount && layout.constraintCount == 1) return;
-                
-            if (value > 0)
-                Index--;
-            else
-                Index++;
+
+            if (layout.constraint == GridLayoutGroup.Constraint.FixedColumnCount && layout.constraintCount != 1)
+            {
+                if (value > 0) Index -= layout.constraintCount;
+                else Index += layout.constraintCount;
+            } else {
+                if (value > 0) Index--;
+                else Index++;
+            }
+
             UpdateSelectionAtIndex();
         }
 
