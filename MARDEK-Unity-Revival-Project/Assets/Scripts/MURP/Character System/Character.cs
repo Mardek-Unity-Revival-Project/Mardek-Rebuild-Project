@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MURP.InventorySystem;
 using MURP.StatsSystem;
 using MURP.SkillSystem;
+using System;
 
 namespace MURP.CharacterSystem
 {
@@ -15,6 +16,7 @@ namespace MURP.CharacterSystem
         [field: SerializeField] public Inventory EquippedItems { get; private set; }
         [field: SerializeField] public Inventory Inventory { get; private set; }
         [field: SerializeField] public List<SkillSlot> SkillSlots { get; private set; }
+
 
         public StatHolder<T, StatOfType<T>> GetStat<T>(StatOfType<T> desiredStatus)
         {            
@@ -51,6 +53,20 @@ namespace MURP.CharacterSystem
                 }
             }
         }
+
+        public BattleAI battleAI = null;
+        public void DoBattleAct()
+        {
+            if (battleAI)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
         public void ModifyStat<T>(StatOfType<T> stat, float delta)
         {
             baseStatus.ModifyStat(stat, delta);

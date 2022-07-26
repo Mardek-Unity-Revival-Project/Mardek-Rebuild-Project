@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MURP.CharacterSystem;
 using MURP.StatsSystem;
+using MURP.SkillSystem;
 
 namespace MURP.BattleSystem
 {
@@ -14,6 +15,7 @@ namespace MURP.BattleSystem
         const float actResolution = 10;
         [SerializeField] Party playerParty;
         List<GameObject> enemies = new List<GameObject>();
+        [SerializeField] GameObject actionPickerUI = null;
 
         public List<Character> playableCharacters
         {
@@ -33,22 +35,48 @@ namespace MURP.BattleSystem
             }
         }
 
+        public static Character characterActing { get; private set; }
+        public static SkillSlot selectedSkill { get; set; }
+        public static List<Character> targets { get; private set; }
+
         private void Awake()
         {
             if(encounter) enemies = encounter.InstantiateEncounter();
         }
-
         private void Update()
+        {
+            if (characterActing == null)
+            {
+                characterActing = StepActCycleTryGetNextCharacter();
+                if (characterActing)
+                {
+                    actionPickerUI.SetActive(true);
+                }
+            }
+            else
+            {
+                // resolve action
+                if (selectedSkill != null)
+                {
+                    if(targets != null)
+                    {
+                        foreach (var t in targets)
+                            Debug.Log($"{characterActing.name} uses {selectedSkill.Skill.DisplayName} on {t.name}");
+                        targets = null;
+                        selectedSkill = null;
+                        characterActing = null;
+                    }
+                }
+            }
+        }
+        Character StepActCycleTryGetNextCharacter()
         {
             var charactersInBattle = GetCharactersInOrder();
             AddTickRateToACT(ref charactersInBattle, Time.deltaTime);
             var readyToAct = GetNextCharacterReadyToAct(charactersInBattle);
             if (readyToAct != null)
-            {
-                Debug.Log($"{readyToAct.name} should act");                
-                // "reset" characters' ACT
-                readyToAct.ModifyStat(ACTStat, -actResolution);
-            }
+                readyToAct.ModifyStat(ACTStat, -actResolution); // "reset" charact ACT
+            return readyToAct;
         }
         List<Character> GetCharactersInOrder()
         {
