@@ -10,6 +10,7 @@ public class MapImporter : MonoBehaviour
     [SerializeField] string mapInfo = default;
     [SerializeField] Tilemap waterTilemap = null;
     [SerializeField] Tilemap terrainTilemap = null;
+    [SerializeField] Tilemap objectsTilemap = null;
 
     private void OnValidate()
     {
@@ -29,8 +30,9 @@ public class MapImporter : MonoBehaviour
     {
         var tileArray = mapInfo.Substring(mapInfo.IndexOf("map = "));
         tileArray = tileArray.Substring(tileArray.IndexOf('[')).Split(';')[0].Substring(2);
-        terrainTilemap.ClearAllTiles();
         waterTilemap.ClearAllTiles();
+        terrainTilemap.ClearAllTiles();
+        objectsTilemap.ClearAllTiles();
         var tileMatrix = tileArray.Split('[');
         for(int y = 0; y< tileMatrix.Length; y++)
         {
@@ -38,9 +40,12 @@ public class MapImporter : MonoBehaviour
             for(int x = 0; x < row.Length; x++)
             {
                 var tileID = row[x];
-                var tile = tilesetImporter.GetTileById(tileID);
+                var tile = tilesetImporter.GetTileById(tileID) as Tile;
                 var position = new Vector3Int(x, tileMatrix.Length - y - 1, 0);
-                terrainTilemap.SetTile(position, tile);
+                if(tile.colliderType == Tile.ColliderType.Grid)
+                    objectsTilemap.SetTile(position, tile);
+                else
+                    terrainTilemap.SetTile(position, tile);
                 var waterTile = tilesetImporter.TileBeneathTileOfId(tileID);
                 waterTilemap.SetTile(position, waterTile);
             }
