@@ -8,7 +8,8 @@ public class MapImporter : MonoBehaviour
 {
     [SerializeField] TilesetImporter tilesetImporter;
     [SerializeField] string mapInfo = default;
-    [SerializeField] Tilemap tilemap = null;
+    [SerializeField] Tilemap waterTilemap = null;
+    [SerializeField] Tilemap terrainTilemap = null;
 
     private void OnValidate()
     {
@@ -28,15 +29,20 @@ public class MapImporter : MonoBehaviour
     {
         var tileArray = mapInfo.Substring(mapInfo.IndexOf("map = "));
         tileArray = tileArray.Substring(tileArray.IndexOf('[')).Split(';')[0].Substring(2);
-        tilemap.ClearAllTiles();
+        terrainTilemap.ClearAllTiles();
+        waterTilemap.ClearAllTiles();
         var tileMatrix = tileArray.Split('[');
         for(int y = 0; y< tileMatrix.Length; y++)
         {
             var row = tileMatrix[y].Split(']')[0].Split(',');
             for(int x = 0; x < row.Length; x++)
             {
-                var tile = tilesetImporter.GetTileById(row[x]);
-                tilemap.SetTile(new Vector3Int(x, tileMatrix.Length - y - 1, 0), tile);
+                var tileID = row[x];
+                var tile = tilesetImporter.GetTileById(tileID);
+                var position = new Vector3Int(x, tileMatrix.Length - y - 1, 0);
+                terrainTilemap.SetTile(position, tile);
+                var waterTile = tilesetImporter.TileBeneathTileOfId(tileID);
+                waterTilemap.SetTile(position, waterTile);
             }
         }
     }

@@ -4,27 +4,29 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine.Tilemaps;
+using System.IO;
 
 [CreateAssetMenu(menuName = "MURP/TilesetImporter")]
 public class TilesetImporter : ScriptableObject
 {
     public static List<TilesetImporter> tilesetImporters { get; private set; } = new List<TilesetImporter>();
     [SerializeField] Texture2D texture = null;
-    //[SerializeField] TextureImporter importer = null;
-    [SerializeField] List<TileWrapper> tileWrappers = new List<TileWrapper>();
     const int tileSize = 16;
 
-    string TileID(int x, int y)
+    [System.Serializable]
+    class TileWrapper
     {
-        var firstDigit = 1 + x / 10;
-        var lastDigits = (y-1)*10 + x % 10;
-        return $"{firstDigit}{lastDigits}";
+        public string id;
+        public Color encodingColor;
+        public Sprite sprite;
+        public TileBase tile;
     }
+    [SerializeField] List<TileWrapper> tileWrappers = new List<TileWrapper>();
+
     private void OnValidate()
     {
         if (!tilesetImporters.Contains(this))
             tilesetImporters.Add(this);
-        //Import();
     }
     [ContextMenu("Import")]
     void Import()
@@ -32,64 +34,111 @@ public class TilesetImporter : ScriptableObject
         string path = AssetDatabase.GetAssetPath(texture);
         var importer = AssetImporter.GetAtPath(path) as TextureImporter;
         importer.spriteImportMode = SpriteImportMode.Multiple;
-        List<SpriteMetaData> sprites = new List<SpriteMetaData>();
+        List<SpriteMetaData> slices = new List<SpriteMetaData>();
+        tileWrappers = new List<TileWrapper>();
 
-        for(int x = 0; x < texture.width / tileSize; x++)
+        slices.Add(new SpriteMetaData()
+        {
+            name = "water",
+            rect = new Rect(10 * tileSize, texture.height - tileSize, tileSize, tileSize),
+            alignment = 9,
+            pivot = new Vector2(.5f, .5f)
+        });
+        tileWrappers.Add(new TileWrapper()
+        {
+            id = "water"
+        });
+
+        for (int x = 0; x < texture.width / tileSize; x++)
         {
             for(int y = 1; y < texture.height / tileSize; y++)
             {
                 var tileHeight = 1 + x / 10;
-                if ((y-1) % tileHeight != 0)
-                {
-                    Debug.Log($"skipping tile at {x},{y}");
-                    // only consider the first tile for tiles with height bigger than 1
+                // only consider the first tile for tiles with height bigger than 1
+                if ((y-1) % tileHeight != 0) 
                     continue;
-                }
+                // check if rect is out of bounds
+                var rect = new Rect(x * tileSize, texture.height - (y + tileHeight) * tileSize, tileSize, tileSize * tileHeight);
+                if (rect.y < 0 || rect.yMax > texture.height)
+                    continue;
+                // skip tile if it's not encoded
+                var encodingColor = texture.GetPixel(x, texture.height - y);
+                if (encodingColor.a == 0)
+                    continue;
+                
+                var tileID = TileID(x, y);
                 var sprite = new SpriteMetaData
                 {
-                    name = TileID(x, y),
-                    rect = new Rect(x * tileSize, texture.height - (y + tileHeight) * tileSize, tileSize, tileSize * tileHeight),
+                    name = tileID,
+                    rect = rect,
                     alignment = 9,
                     pivot = new Vector2(.5f, .5f / tileHeight)
                 };
-                sprites.Add(sprite);
+                slices.Add(sprite);
+                tileWrappers.Add(new TileWrapper()
+                {
+                    id = tileID,
+                    encodingColor = encodingColor
+                });
             }
         }
-        importer.spritesheet = sprites.ToArray();
+        
+        importer.spritesheet = slices.ToArray();
         EditorUtility.SetDirty(importer);
         importer.SaveAndReimport();
 
         var newName = texture.name.Substring(texture.name.LastIndexOf("_") + 1);
         AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(this), newName);
         AssetDatabase.SaveAssets();
+
+        var sprites = AssetDatabase.LoadAllAssetRepresentationsAtPath(AssetDatabase.GetAssetPath(texture));
+        for (int i = 0; i < tileWrappers.Count; i++)
+            foreach (var sprite in sprites)
+                if (string.Equals(sprite.name, tileWrappers[i].id))
+                    tileWrappers[i].sprite = sprite as Sprite;
     }
-    [System.Serializable]
-    struct TileWrapper
+    string TileID(int x, int y)
     {
-        public string id;
-        public TileBase tile;
+        var firstDigit = 1 + x / 10;
+        var lastDigits = (y-1)*10 + x % 10;
+        return $"{firstDigit}{lastDigits}";
     }
     public TileBase GetTileById(string id)
     {
-        foreach(var tileWrapper in tileWrappers)
-        {
-            if (tileWrapper.id == id)
-                return tileWrapper.tile;
-        }
-        var tile = CreateInstance<Tile>();
-        var sprites = AssetDatabase.LoadAllAssetRepresentationsAtPath(AssetDatabase.GetAssetPath(texture));
-        foreach (var sprite in sprites)
-            if (string.Equals(sprite.name, id))
+        foreach(var wrapper in tileWrappers)
+            if (string.Equals(wrapper.id, id))
             {
-                tile.sprite = sprite as Sprite;
-                var tilePath = AssetDatabase.GetAssetPath(this);
-                tilePath = System.IO.Path.GetDirectoryName(tilePath);
-                tilePath = System.IO.Path.Combine(tilePath, $"{id}.asset");
-                AssetDatabase.CreateAsset(tile, tilePath);
-                tileWrappers.Add(new TileWrapper() { id = id, tile = tile });
-                return tile;
+                if(wrapper.tile == null)
+                    CreateTile(wrapper);
+                return wrapper.tile;
             }
-        Debug.LogError($"couldn't find tile of id = {id}, and failed to create one");
+        Debug.LogError($"Couldn't find tile of id = {id}, and failed to create one");
         return null;
+    }
+    void CreateTile(TileWrapper wrapper)
+    {
+        var newTile = CreateInstance<Tile>();
+        wrapper.tile = newTile;
+        newTile.sprite = wrapper.sprite;
+        var tileImporterPath = AssetDatabase.GetAssetPath(this);
+        var tileFolderPath = Path.Combine(Path.GetDirectoryName(tileImporterPath), "Imported Tiles");
+        Directory.CreateDirectory(tileFolderPath);
+        var tilePath = Path.Combine(tileFolderPath , $"{name}_{wrapper.id}.asset");
+        AssetDatabase.CreateAsset(newTile, tilePath);
+        Debug.Log("New tile created", newTile);
+    }
+    public TileBase TileBeneathTileOfId(string id)
+    {
+        var WaterEncoding = new Color(0, 221, 255, 255)/255;
+        foreach (var wrapper in tileWrappers)
+            if (wrapper.id.Equals(id) && (wrapper.encodingColor == WaterEncoding)) 
+            //if (wrapper.id.Equals(id) && CompareColors(wrapper.encodingColor, WaterEncoding)) 
+                    return GetTileById("water");
+        return GetTileById("10");
+    }
+    bool CompareColors(Color a, Color b)
+    {
+        var c = a.b == b.b;
+        return c;
     }
 }
