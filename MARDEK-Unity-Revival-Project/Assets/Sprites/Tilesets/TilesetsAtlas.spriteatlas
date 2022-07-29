@@ -17,17 +17,29 @@ SpriteAtlas:
       textureCompression: 0
       filterMode: 0
       generateMipMaps: 0
-      readable: 0
+      readable: 1
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 0
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 8
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
-      enableTightPacking: 1
+      enableTightPacking: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
@@ -114,6 +126,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3b27d12bc6060e449827ddfdeee4f8a2, type: 3}
   - {fileID: 21300000, guid: 45317f3b956440e4d8e7f89a3a06ee8d, type: 3}
   - {fileID: 21300000, guid: 9f72df1c07b8f1b429c407f4c4c20bf1, type: 3}
+  - {fileID: -4597305455481275527, guid: ca623a6c49e7a1046bd03f8199d27314, type: 3}
   - {fileID: -8946788012438720712, guid: ca623a6c49e7a1046bd03f8199d27314, type: 3}
   - {fileID: -3538851436377425636, guid: ca623a6c49e7a1046bd03f8199d27314, type: 3}
   - {fileID: -6691012767228139306, guid: ca623a6c49e7a1046bd03f8199d27314, type: 3}
@@ -265,6 +278,7 @@ SpriteAtlas:
   - 5375_tilesheet_temple_DARK
   - 5382_tilesheet_monastery_lost
   - 5383_tilesheet_monastery
+  - waterBackground
   - 32
   - 33
   - 30
