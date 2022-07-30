@@ -9,6 +9,7 @@ using System.IO;
 public class WaveringTile : AnimatedTile
 {
     [SerializeField] int[] deltasByFrame = { 1, 1, 1, 15, 15, 15 };
+    [SerializeField] int yOffeset = 0;
     [ContextMenu("CreateAnimation")]
     public void CreateAnimation()
     {
@@ -35,18 +36,15 @@ public class WaveringTile : AnimatedTile
             var tex = new Texture2D(tileWidth, tileHeight);
             tex.filterMode = originalSprite.texture.filterMode;
             tex.SetPixels(lastTex.GetPixels());
-            for (int y = 0; y < 4; y++)
-            {
-                if (y == i % 4) // only displace 1/4 of tile per frame (top to bottom)
-                {
-                    var delta = deltasByFrame[i/4];
-                    var ypos = tileHeight - (y + 1) * 4;
-                    var leftColors = lastTex.GetPixels(0, ypos, delta, 4);
-                    var rightColors = lastTex.GetPixels(delta, ypos, tileWidth - delta, 4);
-                    tex.SetPixels(tileWidth - delta, ypos, delta, 4, leftColors);
-                    tex.SetPixels(0, ypos, tileWidth - delta, 4, rightColors);
-                }
-            }
+            int y = i % 4; // only displace 1/4 of tile per frame (top to bottom)
+            
+            var delta = deltasByFrame[i/4];
+            var ypos = tileHeight - (y + 1) * 4 - yOffeset;
+            var leftColors = lastTex.GetPixels(0, ypos, delta, 4);
+            var rightColors = lastTex.GetPixels(delta, ypos, tileWidth - delta, 4);
+            tex.SetPixels(tileWidth - delta, ypos, delta, 4, leftColors);
+            tex.SetPixels(0, ypos, tileWidth - delta, 4, rightColors);
+            
             lastTex = tex;
             AssetDatabase.CreateAsset(tex, Path.Combine(animationDirectory, $"tex{i}.asset"));
             var sprite = Sprite.Create(tex, new Rect(0, 0, tileWidth, tileHeight), originalSprite.pivot / originalSprite.rect.size, originalSprite.pixelsPerUnit);

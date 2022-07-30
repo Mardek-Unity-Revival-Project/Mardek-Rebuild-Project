@@ -25,9 +25,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 22ee2a2751a96cc49976b9ac77454c94, type: 2}
   - {fileID: 21300000, guid: df5365d72cf8f1445a27a9996b93c68b, type: 2}
   - {fileID: 21300000, guid: b532ca4fbcfe9f54b8c4d57172821853, type: 2}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1.1
+  - {fileID: 21300000, guid: 5d6f93cd3581ef74a984134978e4399f, type: 2}
+  - {fileID: 21300000, guid: 79293b455571e3b489edea08b770ba16, type: 2}
+  - {fileID: 21300000, guid: 2488d5a1e7d94c641a8a4d3a6bb2be98, type: 2}
+  - {fileID: 21300000, guid: 55d5209f443cf714e961b86f886b5bd2, type: 2}
+  m_MinSpeed: 4
+  m_MaxSpeed: 4
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 2
-  deltasByFrame: 010000000f0000000f000000
+  deltasByFrame: 010000000f0000000f00000001000000
+  yOffeset: 4
