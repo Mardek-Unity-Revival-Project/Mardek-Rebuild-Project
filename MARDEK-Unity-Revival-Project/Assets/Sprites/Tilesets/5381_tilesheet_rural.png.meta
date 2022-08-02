@@ -968,6 +968,12 @@ TextureImporter:
   - first:
       213: -4597305455481275527
     second: waterBackground
+  - first:
+      213: 7055374874864954388
+    second: water_background
+  - first:
+      213: 8283533273962829627
+    second: water_backwall
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1097,6 +1103,48 @@ TextureImporter:
       bones: []
       spriteID: 231c3096535cde2c0800000000000000
       internalID: -4400644427685314254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_background
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 176
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41caa85511ab9e160800000000000000
+      internalID: 7055374874864954388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_backwall
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 176
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b37dea7ef9505f270800000000000000
+      internalID: 8283533273962829627
       vertices: []
       indices: 
       edges: []
@@ -1312,6 +1360,27 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: 11
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 160
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45262e4fc67a21850800000000000000
+      internalID: 6346318911325233748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: 111
       rect:
         serializedVersion: 2
@@ -1496,6 +1565,27 @@ TextureImporter:
       bones: []
       spriteID: 92fe994df06c1bd80800000000000000
       internalID: -8236584472190259415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bc22690df3398910800000000000000
+      internalID: 1840059084634729652
       vertices: []
       indices: 
       edges: []
@@ -3344,27 +3434,6 @@ TextureImporter:
       bones: []
       spriteID: 63a71aba47f00aa00800000000000000
       internalID: 765628930423093814
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: waterBackground
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97bb21abb071330c0800000000000000
-      internalID: -4597305455481275527
       vertices: []
       indices: 
       edges: []

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc02e795181efb74687c74b88dfd92ce, type: 3}
+  m_Name: interior1_dream
+  m_EditorClassIdentifier: 
+  texture: {fileID: 2800000, guid: 4e6abaaf1c2583e4bb5d1356717cf6db, type: 3}
+  tileWrappers:
+  - id: water
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: -4400644427685314254, guid: 4e6abaaf1c2583e4bb5d1356717cf6db, type: 3}
+    tile: {fileID: 0}
+  - id: water_background
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 0}
+    tile: {fileID: 0}
+  - id: water_backwall
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 0}
+    tile: {fileID: 0}
+  - id: 11
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: 6346318911325233748, guid: 4e6abaaf1c2583e4bb5d1356717cf6db, type: 3}
+    tile: {fileID: 0}
+  - id: 12
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 1840059084634729652, guid: 4e6abaaf1c2583e4bb5d1356717cf6db, type: 3}
+    tile: {fileID: 0}
+  - id: 13
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 1127223760459724062, guid: 4e6abaaf1c2583e4bb5d1356717cf6db, type: 3}
+    tile: {fileID: 0}
+  - id: 14
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: 2450565909728410856, guid: 4e6abaaf1c2583e4bb5d1356717cf6db, type: 3}
+    tile: {fileID: 0}
+  - id: 15
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: -3165705482850905674, guid: 4e6abaaf1c2583e4bb5d1356717cf6db, type: 3}
+    tile: {fileID: 0}
+  - id: 20
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 6836142153017594085, guid: 4e6abaaf1c2583e4bb5d1356717cf6db, type: 3}
+    tile: {fileID: 0}

@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc02e795181efb74687c74b88dfd92ce, type: 3}
+  m_Name: interior4
+  m_EditorClassIdentifier: 
+  texture: {fileID: 2800000, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+  tileWrappers:
+  - id: water
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: -4400644427685314254, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: water_background
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 7055374874864954388, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: water_backwall
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 8283533273962829627, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 10
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: -8655818156195654838, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 110
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 2692228934559545928, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 11
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: 6346318911325233748, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 111
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 8694305388649107506, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 12
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 1840059084634729652, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 13
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 1127223760459724062, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 14
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: 2450565909728410856, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 15
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: -3165705482850905674, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 16
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: -5774996654182199871, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 17
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: 4443897450750874535, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 18
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 5661049957185019681, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 19
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 8474981341611232960, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 20
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: 6836142153017594085, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 21
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: 2185498278340178504, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 22
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 430984766625829748, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 23
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: -1317986280940093683, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 24
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: -8326724806951850010, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 25
+    encodingColor: {r: 0, g: 1, b: 0, a: 1}
+    sprite: {fileID: 8914089594741642868, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}
+  - id: 26
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 276181914589855336, guid: 907f0375b8f334d418d00b23915d3cac, type: 3}
+    tile: {fileID: 0}

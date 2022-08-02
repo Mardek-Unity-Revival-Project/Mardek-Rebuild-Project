@@ -9,15 +9,16 @@ public class MapImporter : MonoBehaviour
     [SerializeField] TilesetImporter tilesetImporter;
     [SerializeField] string mapInfo = default;
     [SerializeField] Tilemap waterTilemap = null;
+    [SerializeField] Tilemap waterBackgroundTilemap = null;
     [SerializeField] Tilemap terrainTilemap = null;
     [SerializeField] Tilemap objectsTilemap = null;
 
     private void OnValidate()
     {
-        GetTilesetImporter();
+        //GetTilesetImporter();
     }
 
-    void GetTilesetImporter()
+    public void GetTilesetImporter()
     {
         var tilesetName = mapInfo.Substring(mapInfo.IndexOf("tileset = ")).Split('\"')[1];
         foreach (var ti in TilesetImporter.tilesetImporters)
@@ -31,6 +32,7 @@ public class MapImporter : MonoBehaviour
         var tileArray = mapInfo.Substring(mapInfo.IndexOf("map = "));
         tileArray = tileArray.Substring(tileArray.IndexOf('[')).Split(';')[0].Substring(2);
         waterTilemap.ClearAllTiles();
+        waterBackgroundTilemap.ClearAllTiles();
         terrainTilemap.ClearAllTiles();
         objectsTilemap.ClearAllTiles();
         var tileMatrix = tileArray.Split('[');
@@ -41,15 +43,22 @@ public class MapImporter : MonoBehaviour
             {
                 var tileID = row[x];
                 var tile = tilesetImporter.GetTileById(tileID);
-                var position = new Vector3Int(x, tileMatrix.Length - y - 1, 0);
+                var position = new Vector3Int(x, -y, 0);
                 var hasCollider = ((tile as Tile)?.colliderType == Tile.ColliderType.Grid
                     || (tile as AnimatedTile)?.m_TileColliderType == Tile.ColliderType.Grid);
                 if (hasCollider)
                     objectsTilemap.SetTile(position, tile);
                 else
                     terrainTilemap.SetTile(position, tile);
-                var waterTile = tilesetImporter.TileBeneathTileOfId(tileID);
-                waterTilemap.SetTile(position, waterTile);
+                var waterTile = tilesetImporter.PutWaterBellowTile(tileID);
+                if(waterTile != null)
+                {
+                    waterTilemap.SetTile(position, waterTile);
+                    if (waterTilemap.GetTile(position + Vector3Int.up) != null)
+                        waterBackgroundTilemap.SetTile(position, tilesetImporter.GetTileById("water_background"));
+                    else
+                        waterBackgroundTilemap.SetTile(position, tilesetImporter.GetTileById("water_backwall"));
+                }
             }
         }
     }
