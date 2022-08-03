@@ -197,14 +197,22 @@ public class TilesetImporter : ScriptableObject
     void CreateTile(TileWrapper wrapper)
     {
         TileBase newTile;
-        if (   wrapper.id == "water" 
-            || wrapper.id == "water_background" 
-            || wrapper.id == "water_backwall" 
-            || wrapper.id == "lava")
+        if (wrapper.id == "water" || wrapper.id == "water_background" || wrapper.id == "water_backwall" || wrapper.id == "lava")
         {
             var tile = CreateInstance<WaveringTile>();
             tile.m_AnimatedSprites = new List<Sprite>() { wrapper.sprite }.ToArray();
             tile.m_TileColliderType = Tile.ColliderType.None;
+            tile.m_MaxSpeed = wrapper.id == "water" ? 8 : 2;
+            tile.m_MinSpeed = tile.m_MaxSpeed;
+            newTile = tile;
+        }
+        else if (wrapper.id == "waterfall")
+        {
+            var tile = CreateInstance<WaterfallTile>();
+            tile.m_AnimatedSprites = new List<Sprite>() { wrapper.sprite }.ToArray();
+            tile.m_TileColliderType = Tile.ColliderType.None;
+            tile.m_MinSpeed = 10;
+            tile.m_MaxSpeed = 10;
             newTile = tile;
         }
         else
@@ -226,18 +234,8 @@ public class TilesetImporter : ScriptableObject
         AssetDatabase.CreateAsset(newTile, tilePath);
         Debug.Log("New tile created", newTile);
 
-        var waveringTile = newTile as WaveringTile;
-        if (waveringTile)
-        {
-            float animSpeed;
-            if (wrapper.id == "water")
-                animSpeed = 8;
-            else
-                animSpeed = 2;
-            waveringTile.m_MinSpeed = animSpeed;
-            waveringTile.m_MaxSpeed = animSpeed;
-            waveringTile.CreateAnimation();
-        }
+        (newTile as WaveringTile)?.CreateAnimation();
+        (newTile as WaterfallTile)?.CreateAnimation();
     }
     public TileBase PutWaterBellowTile(string id)
     {
