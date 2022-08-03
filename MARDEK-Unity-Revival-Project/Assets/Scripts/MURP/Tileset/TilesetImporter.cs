@@ -121,28 +121,29 @@ public class TilesetImporter : ScriptableObject
             {
                 var tileHeight = 1 + x / 10;
                 // only consider the first tile for tiles with height bigger than 1
-                if ((y-1) % tileHeight != 0) 
-                    continue;
+                //if ((y-1) % tileHeight != 0) 
+                //    continue;
                 // check if rect is out of bounds
-                var rect = new Rect(x * tileSize, texture.height - (y + tileHeight) * tileSize, tileSize, tileSize * tileHeight);
+                var rect = new Rect(x * tileSize, texture.height - (1 + y * tileHeight) * tileSize, tileSize, tileSize * tileHeight);
                 if (rect.y < 0 || rect.yMax > texture.height)
                     continue;
 
                 var encodingColor = texture.GetPixel(x, texture.height - y);
+
                 // skip fully transparent tiles
-                if(encodingColor.a == 0)
-                {
-                    var colors = texture.GetPixels((int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height);
-                    var skipTile = true;
-                    foreach(var c in colors)
-                        if(c.a != 0)
-                        {
-                            skipTile = false;
-                            break;
-                        }
-                    if (skipTile)
-                        continue;
-                }
+                //if(encodingColor.a == 0)
+                //{
+                //    var colors = texture.GetPixels((int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height);
+                //    var skipTile = true;
+                //    foreach(var c in colors)
+                //        if(c.a != 0)
+                //        {
+                //            skipTile = false;
+                //            break;
+                //        }
+                //    if (skipTile)
+                //        continue;
+                //}
                 
                 var tileID = TileID(x, y);
                 var sprite = new SpriteMetaData

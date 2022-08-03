@@ -17,6 +17,7 @@ public class MapImporter : MonoBehaviour
 
     public void GetTilesetImporter()
     {
+        Debug.Log(mapInfo);
         var tilesetName = mapInfo.Substring(mapInfo.IndexOf("tileset = ")).Split('\"')[1];
         foreach (var ti in TilesetImporter.tilesetImporters)
             if(ti && ti.name == tilesetName)
@@ -31,13 +32,14 @@ public class MapImporter : MonoBehaviour
         foreach(var file in selectedTextFiles)
         {
             var text = (file as TextAsset).text;
-            var path = System.IO.Path.Combine("Assets", "Scenes", $"{file.name}.unity");
+            var path = System.IO.Path.Combine("Assets", "Scenes", "Imported Maps", $"{file.name}.unity");
             var templateScene = Resources.Load<SceneTemplateAsset>("map scene template");
             var result = SceneTemplateService.Instantiate(templateScene, false, path);
             var importer = FindObjectOfType<MapImporter>();
             importer.mapInfo = text;
             importer.GetTilesetImporter();
             importer.DrawMap();
+            EditorSceneManager.SaveScene(result.scene, path);
         }
     }
 

@@ -26,6 +26,14 @@ MonoBehaviour:
     encodingColor: {r: 0, g: 0, b: 0, a: 0}
     sprite: {fileID: 0}
     tile: {fileID: 0}
+  - id: lava
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 0}
+    tile: {fileID: 0}
+  - id: waterfall
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 0}
+    tile: {fileID: 0}
   - id: 10
     encodingColor: {r: 0, g: 0, b: 0, a: 1}
     sprite: {fileID: -8655818156195654838, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
@@ -214,6 +222,34 @@ MonoBehaviour:
     encodingColor: {r: 0, g: 1, b: 0, a: 1}
     sprite: {fileID: 6734684633657039821, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
     tile: {fileID: 0}
+  - id: 125
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: -3713311849071092161, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
+  - id: 135
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: -1583898042935591190, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
+  - id: 145
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: -2406893295983391241, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
+  - id: 155
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: -952682199232832059, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
+  - id: 165
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 7161397670792433542, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
+  - id: 175
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: -1724086907042617910, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
+  - id: 185
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: -3150301486310352595, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
   - id: 16
     encodingColor: {r: 0, g: 1, b: 0, a: 1}
     sprite: {fileID: -5774996654182199871, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
@@ -286,6 +322,14 @@ MonoBehaviour:
     encodingColor: {r: 0, g: 0, b: 0, a: 0}
     sprite: {fileID: -3204314713441666975, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
     tile: {fileID: 0}
+  - id: 18
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 5661049957185019681, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
+  - id: 118
+    encodingColor: {r: 0, g: 1, b: 0, a: 0}
+    sprite: {fileID: -8957284035257282584, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
   - id: 128
     encodingColor: {r: 0, g: 1, b: 0, a: 0}
     sprite: {fileID: 821699465916322869, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
@@ -313,6 +357,14 @@ MonoBehaviour:
   - id: 188
     encodingColor: {r: 0, g: 0, b: 0, a: 0}
     sprite: {fileID: -8295142853972654705, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
+  - id: 19
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: 8474981341611232960, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
+  - id: 119
+    encodingColor: {r: 0, g: 0, b: 0, a: 0}
+    sprite: {fileID: -9138037040227770232, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
     tile: {fileID: 0}
   - id: 129
     encodingColor: {r: 0, g: 0, b: 0, a: 0}
@@ -346,15 +398,15 @@ MonoBehaviour:
     encodingColor: {r: 0, g: 0, b: 0, a: 1}
     sprite: {fileID: 6836142153017594085, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
     tile: {fileID: 0}
+  - id: 210
+    encodingColor: {r: 0, g: 0, b: 0, a: 1}
+    sprite: {fileID: 3739629566794811945, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    tile: {fileID: 0}
   - id: 220
     encodingColor: {r: 0, g: 0, b: 0, a: 0}
     sprite: {fileID: -6167804180273747926, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
     tile: {fileID: 0}
-  - id: 240
+  - id: 230
     encodingColor: {r: 0, g: 0, b: 0, a: 0}
-    sprite: {fileID: 1080804530591515564, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
-    tile: {fileID: 0}
-  - id: 260
-    encodingColor: {r: 0, g: 0, b: 0, a: 0}
-    sprite: {fileID: -4382326732657954914, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
+    sprite: {fileID: 8298471800516993061, guid: 510d967c43c2f664a9188e35d2ef7acc, type: 3}
     tile: {fileID: 0}
