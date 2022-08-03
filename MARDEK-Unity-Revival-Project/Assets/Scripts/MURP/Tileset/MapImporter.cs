@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEditor.SceneTemplate;
 
 public class MapImporter : MonoBehaviour
 {
@@ -13,17 +15,30 @@ public class MapImporter : MonoBehaviour
     [SerializeField] Tilemap terrainTilemap = null;
     [SerializeField] Tilemap objectsTilemap = null;
 
-    private void OnValidate()
-    {
-        //GetTilesetImporter();
-    }
-
     public void GetTilesetImporter()
     {
         var tilesetName = mapInfo.Substring(mapInfo.IndexOf("tileset = ")).Split('\"')[1];
         foreach (var ti in TilesetImporter.tilesetImporters)
             if(ti && ti.name == tilesetName)
                 tilesetImporter = ti;
+    }
+
+
+    [MenuItem("Flash Importer/Create Map From File")]
+    static void CreateMapScene()
+    {
+        var selectedTextFiles = Selection.GetFiltered(typeof(TextAsset), SelectionMode.Assets);
+        foreach(var file in selectedTextFiles)
+        {
+            var text = (file as TextAsset).text;
+            var path = System.IO.Path.Combine("Assets", "Scenes", $"{file.name}.unity");
+            var templateScene = Resources.Load<SceneTemplateAsset>("map scene template");
+            var result = SceneTemplateService.Instantiate(templateScene, false, path);
+            var importer = FindObjectOfType<MapImporter>();
+            importer.mapInfo = text;
+            importer.GetTilesetImporter();
+            importer.DrawMap();
+        }
     }
 
     [ContextMenu("DrawMap")]

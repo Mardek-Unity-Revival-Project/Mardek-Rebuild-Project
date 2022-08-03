@@ -19,7 +19,10 @@ public class TilesetImporter : ScriptableObject
             return tileFolderPath;
         }
     }
-    Color WaterEncoding = new Color(0, 221, 255, 255) / 255;
+    Color BlueEncoding = new Color(0, 221, 255, 255) / 255;
+    Color CyanEncoding = new Color(0, 255, 255, 255) / 255;
+    Color DarkBlueEncoding = new Color(0, 0, 200, 255) / 255;
+    Color RedEncoding = new Color(255, 0, 0, 255) / 255;
     Color GreenEncoding = new Color(0, 255, 0, 255) / 255;
     Color DarkGreenEncoding = new Color(0, .6f, 0, 1f);
     const int tileSize = 16;
@@ -85,6 +88,30 @@ public class TilesetImporter : ScriptableObject
         tileWrappers.Add(new TileWrapper()
         {
             id = "water_backwall"
+        });
+        // lava tile
+        slices.Add(new SpriteMetaData()
+        {
+            name = "lava",
+            rect = new Rect(13 * tileSize, texture.height - tileSize, tileSize, tileSize),
+            alignment = 9,
+            pivot = new Vector2(.5f, .5f)
+        });
+        tileWrappers.Add(new TileWrapper()
+        {
+            id = "lava"
+        });
+        // waterfall tile
+        slices.Add(new SpriteMetaData()
+        {
+            name = "waterfall",
+            rect = new Rect(14 * tileSize, texture.height - tileSize, tileSize, tileSize),
+            alignment = 9,
+            pivot = new Vector2(.5f, .5f)
+        });
+        tileWrappers.Add(new TileWrapper()
+        {
+            id = "waterfall"
         });
 
         // encoded tiles
@@ -170,7 +197,10 @@ public class TilesetImporter : ScriptableObject
     void CreateTile(TileWrapper wrapper)
     {
         TileBase newTile;
-        if (wrapper.id == "water" || wrapper.id == "water_background" || wrapper.id == "water_backwall")
+        if (   wrapper.id == "water" 
+            || wrapper.id == "water_background" 
+            || wrapper.id == "water_backwall" 
+            || wrapper.id == "lava")
         {
             var tile = CreateInstance<WaveringTile>();
             tile.m_AnimatedSprites = new List<Sprite>() { wrapper.sprite }.ToArray();
@@ -181,7 +211,9 @@ public class TilesetImporter : ScriptableObject
         {
             var tile = CreateInstance<Tile>();
             tile.sprite = wrapper.sprite;
-            var tileIsPassable = wrapper.encodingColor == GreenEncoding || wrapper.encodingColor.Equals(DarkGreenEncoding);
+            var tileIsPassable = wrapper.encodingColor == GreenEncoding 
+                || wrapper.encodingColor == DarkGreenEncoding
+                || wrapper.encodingColor == CyanEncoding;
             if (tileIsPassable)
                 tile.colliderType = Tile.ColliderType.None;
             else
@@ -211,8 +243,16 @@ public class TilesetImporter : ScriptableObject
     {
         foreach (var wrapper in tileWrappers)
             if (wrapper.id.Equals(id))
-                if ((wrapper.encodingColor == WaterEncoding) || wrapper.encodingColor == DarkGreenEncoding) 
+            {
+                if (wrapper.encodingColor == BlueEncoding 
+                    || wrapper.encodingColor == CyanEncoding 
+                    || wrapper.encodingColor == DarkGreenEncoding) 
                     return GetTileById("water");
+                if (wrapper.encodingColor.Equals(DarkBlueEncoding))
+                    return GetTileById("waterfall");
+                if (wrapper.encodingColor.Equals(RedEncoding))
+                    return GetTileById("lava");
+            }
         return null;
     }
 

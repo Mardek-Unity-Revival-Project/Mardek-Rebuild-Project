@@ -203,6 +203,18 @@ TextureImporter:
   - first:
       213: -6691012767228139306
     second: 30
+  - first:
+      213: -9138037040227770232
+    second: 119
+  - first:
+      213: 1641813613071775055
+    second: 139
+  - first:
+      213: -201460538643699791
+    second: lava
+  - first:
+      213: 4392170440827130783
+    second: waterfall
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -374,6 +386,48 @@ TextureImporter:
       bones: []
       spriteID: b37dea7ef9505f270800000000000000
       internalID: 8283533273962829627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lava
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 144
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b722ed15b4443df0800000000000000
+      internalID: -201460538643699791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterfall
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 144
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f93d876cebf14fc30800000000000000
+      internalID: 4392170440827130783
       vertices: []
       indices: 
       edges: []
@@ -1408,6 +1462,27 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: 119
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 112
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 880acd03abb2f2180800000000000000
+      internalID: -9138037040227770232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: 129
       rect:
         serializedVersion: 2
@@ -1424,6 +1499,27 @@ TextureImporter:
       bones: []
       spriteID: 89f7197b31a75c680800000000000000
       internalID: -8735441677112475752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 139
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 80
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f453b8a48c4e8c610800000000000000
+      internalID: 1641813613071775055
       vertices: []
       indices: 
       edges: []
