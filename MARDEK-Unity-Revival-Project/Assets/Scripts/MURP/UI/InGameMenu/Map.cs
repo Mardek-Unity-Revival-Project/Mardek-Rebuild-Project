@@ -1,3 +1,5 @@
+using MURP.Core;
+using MURP.DiscoverySystem;
 using MURP.MovementSystem;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +11,7 @@ namespace MURP.UI
 {
     public class Map : MonoBehaviour
     {
+        static readonly Color UNEXPLORED_COLOR = new Color(48f / 255f, 34f / 255f, 20f / 255f);
         static readonly Color PASSABLE_TERRAIN_COLOR = new Color(128f / 255f, 110f / 255f, 78f / 255f);
         static readonly Color IMPASSABLE_TERRAIN_COLOR = new Color(78f / 255f, 51f / 255f, 33f / 255f);
         static readonly Color INTERACT_COLOR = new Color(0f, 1f, 0f);
@@ -21,7 +24,9 @@ namespace MURP.UI
 
         [SerializeField] Text activeSceneName;
         [SerializeField] Image mapImage;
+        [SerializeField] ExploredAreas exploredAreas;
 
+        string sceneID;
         Sprite baseSprite;
         Sprite flickerSprite;
 
@@ -40,8 +45,10 @@ namespace MURP.UI
             }
         }
 
-        Color DetermineColor(Tilemap tilemap, List<Collider2D> otherColliders, int x, int y, bool useMoreColors)
+        Color DetermineColor(Tilemap tilemap, List<Collider2D> otherColliders, int x, int y, bool useMoreColors, bool ignoreExploration)
         {
+            if (!ignoreExploration && !this.exploredAreas.IsDiscovered(this.sceneID, x, y)) return UNEXPLORED_COLOR;
+
             foreach (Collider2D otherCollider in otherColliders)
             {
                 if (otherCollider.OverlapPoint(new Vector2(x + 0.5f, y + 0.5f)))
@@ -68,13 +75,15 @@ namespace MURP.UI
             }
         }
 
-        void OnEnable()
+        
+
+        void UpdateSprites()
         {
             Scene activeScene = SceneManager.GetActiveScene();
-            this.activeSceneName.text = activeScene.name;
 
             Tilemap tilemap = null;
             List<Collider2D> otherColliders = new List<Collider2D>();
+            SceneInfo sceneInfo = null;
 
             foreach (GameObject gameObject in activeScene.GetRootGameObjects()) {
                 if (gameObject.name.Equals("Grid")) {
@@ -86,7 +95,17 @@ namespace MURP.UI
                         otherColliders.Add(collider);
                     }
                 }
+                if (sceneInfo == null) {
+                    sceneInfo = gameObject.GetComponent<SceneInfo>();
+                }
             }
+
+            if (sceneInfo == null)
+            {
+                throw new System.ApplicationException("Scene " + activeScene.name + " doesn't have a SceneInfo root component");
+            }
+            this.activeSceneName.text = sceneInfo.displayName;
+            this.sceneID = sceneInfo.id;
 
             // Find the relevant part of the map (the smallest rectangle that contains all passable terrain and all chests, people, etc)
             int minX = 1000;
@@ -98,7 +117,8 @@ namespace MURP.UI
             {
                 for (int y = tilemap.cellBounds.yMin; y <= tilemap.cellBounds.yMax; y++)
                 {
-                    bool isInteresting = this.DetermineColor(tilemap, otherColliders, x, y, true) != IMPASSABLE_TERRAIN_COLOR;
+                    Color color = this.DetermineColor(tilemap, otherColliders, x, y, true, true);
+                    bool isInteresting = color != IMPASSABLE_TERRAIN_COLOR;
 
                     if (isInteresting)
                     {
@@ -123,8 +143,8 @@ namespace MURP.UI
                 {
                     int tileX = textureX + minX;
                     int tileY = textureY + minY;
-                    baseMapTexture.SetPixel(textureX, textureY, this.DetermineColor(tilemap, otherColliders, tileX, tileY, false));
-                    flickerMapTexture.SetPixel(textureX, textureY, this.DetermineColor(tilemap, otherColliders, tileX, tileY, true));
+                    baseMapTexture.SetPixel(textureX, textureY, this.DetermineColor(tilemap, otherColliders, tileX, tileY, false, false));
+                    flickerMapTexture.SetPixel(textureX, textureY, this.DetermineColor(tilemap, otherColliders, tileX, tileY, true, false));
                 }
             }
             baseMapTexture.Apply();
@@ -136,6 +156,11 @@ namespace MURP.UI
 
             int sizePerTile = 12;
             this.mapImage.rectTransform.sizeDelta = new Vector2(width * sizePerTile, height * sizePerTile);
+        }
+
+        void OnEnable()
+        {
+            UpdateSprites();
         }
     }
 }
